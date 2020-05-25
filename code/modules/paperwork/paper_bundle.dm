@@ -103,7 +103,7 @@
 		. += "<span class='notice'>It is too far away.</span>"
 
 /obj/item/weapon/paper_bundle/proc/show_content(mob/user as mob)
-	var/dat
+	var/dat = "<meta charset=\"utf-8\">"
 	var/obj/item/weapon/W = pages[page]
 
 	// first

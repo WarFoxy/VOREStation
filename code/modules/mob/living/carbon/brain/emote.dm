@@ -4,7 +4,7 @@
 
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
-		act = copytext(act, 1, t1)
+		act = copytext_char(act, 1, t1)
 
 	if(stat == DEAD)
 		return

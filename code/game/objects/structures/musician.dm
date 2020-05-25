@@ -109,7 +109,7 @@
 					if(cur_note < 1 || cur_note > 7)
 						continue
 					for(var/i=2 to length(note))
-						var/ni = copytext(note,i,i+1)
+						var/ni = copytext_char(note,i,i+1)
 						if(!text2num(ni))
 							if(ni == "#" || ni == "b" || ni == "n")
 								cur_acc[cur_note] = ni
@@ -204,8 +204,8 @@
 		//split into lines
 		spawn()
 			lines = splittext(t, "\n")
-			if(copytext(lines[1],1,6) == "BPM: ")
-				tempo = sanitize_tempo(600 / text2num(copytext(lines[1],6)))
+			if(copytext_char(lines[1],1,6) == "BPM: ")
+				tempo = sanitize_tempo(600 / text2num(copytext_char(lines[1],6)))
 				lines.Cut(1,2)
 			else
 				tempo = sanitize_tempo(5) // default 120 BPM
@@ -245,7 +245,7 @@
 		if(lines.len > INSTRUMENT_MAX_LINE_NUMBER)
 			return
 		if(length(newline) > INSTRUMENT_MAX_LINE_LENGTH)
-			newline = copytext(newline, 1, INSTRUMENT_MAX_LINE_LENGTH)
+			newline = copytext_char(newline, 1, INSTRUMENT_MAX_LINE_LENGTH)
 		lines.Add(newline)
 	else if(href_list["deleteline"])
 		var/num = round(text2num(href_list["deleteline"]))
@@ -258,7 +258,7 @@
 		if(!content || !in_range(instrumentObj, usr))
 			return
 		if(length(content) > INSTRUMENT_MAX_LINE_LENGTH)
-			content = copytext(content, 1, INSTRUMENT_MAX_LINE_LENGTH)
+			content = copytext_char(content, 1, INSTRUMENT_MAX_LINE_LENGTH)
 		if(num > lines.len || num < 1)
 			return
 		lines[num] = content

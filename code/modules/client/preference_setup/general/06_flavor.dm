@@ -50,9 +50,9 @@
 	character.ooc_notes 				= pref.metadata //VOREStation Add
 
 /datum/category_item/player_setup_item/general/flavor/content(var/mob/user)
-	. += "<b>Flavor:</b><br>"
-	. += "<a href='?src=\ref[src];flavor_text=open'>Set Flavor Text</a><br/>"
-	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Set Robot Flavor Text</a><br/>"
+	. += "<b>Описание:</b><br>"
+	. += "<a href='?src=\ref[src];flavor_text=open'>Установить описание</a><br/>"
+	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Установить описание робота</a><br/>"
 
 /datum/category_item/player_setup_item/general/flavor/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["flavor_text"])
@@ -87,7 +87,7 @@
 
 /datum/category_item/player_setup_item/general/flavor/proc/SetFlavorText(mob/user)
 	var/HTML = "<body>"
-	HTML += "<tt><center>"
+	HTML += "<tt><meta charset=\"utf-8\"><center>"
 	HTML += "<b>Set Flavour Text</b> <hr />"
 	HTML += "<br></center>"
 	HTML += "<a href='?src=\ref[src];flavor_text=general'>General:</a> "

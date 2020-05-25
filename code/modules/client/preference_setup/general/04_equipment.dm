@@ -76,9 +76,9 @@
 
 /datum/category_item/player_setup_item/general/equipment/content()
 	. = list()
-	. += "<b>Equipment:</b><br>"
+	. += "<b>Снаряжение:</b><br>"
 	for(var/datum/category_group/underwear/UWC in global_underwear.categories)
-		var/item_name = pref.all_underwear[UWC.name] ? pref.all_underwear[UWC.name] : "None"
+		var/item_name = pref.all_underwear[UWC.name] ? pref.all_underwear[UWC.name] : "Нет"
 		. += "[UWC.name]: <a href='?src=\ref[src];change_underwear=[UWC.name]'><b>[item_name]</b></a>"
 		var/datum/category_item/underwear/UWI = UWC.items_by_name[item_name]
 		if(UWI)
@@ -86,9 +86,9 @@
 				. += " <a href='?src=\ref[src];underwear=[UWC.name];tweak=\ref[gt]'>[gt.get_contents(get_metadata(UWC.name, gt))]</a>"
 
 		. += "<br>"
-	. += "Backpack Type: <a href='?src=\ref[src];change_backpack=1'><b>[backbaglist[pref.backbag]]</b></a><br>"
-	. += "PDA Type: <a href='?src=\ref[src];change_pda=1'><b>[pdachoicelist[pref.pdachoice]]</b></a><br>"
-	. += "Communicator Visibility: <a href='?src=\ref[src];toggle_comm_visibility=1'><b>[(pref.communicator_visibility) ? "Yes" : "No"]</b></a><br>"
+	. += "Тип рюкзака: <a href='?src=\ref[src];change_backpack=1'><b>[backbaglist[pref.backbag]]</b></a><br>"
+	. += "Тип ПДА: <a href='?src=\ref[src];change_pda=1'><b>[pdachoicelist[pref.pdachoice]]</b></a><br>"
+	. += "Показывать наушник: <a href='?src=\ref[src];toggle_comm_visibility=1'><b>[(pref.communicator_visibility) ? "Да" : "Нет"]</b></a><br>"
 
 	return jointext(.,null)
 
@@ -111,13 +111,13 @@
 
 /datum/category_item/player_setup_item/general/equipment/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["change_backpack"])
-		var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
+		var/new_backbag = input(user, "Выберите стиль сумки вашего персонажа:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
 		if(!isnull(new_backbag) && CanUseTopic(user))
 			pref.backbag = backbaglist.Find(new_backbag)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["change_pda"])
-		var/new_pdachoice = input(user, "Choose your character's style of PDA:", "Character Preference", pdachoicelist[pref.pdachoice]) as null|anything in pdachoicelist
+		var/new_pdachoice = input(user, "Выберите стиль ПДА вашего персонажа:", "Character Preference", pdachoicelist[pref.pdachoice]) as null|anything in pdachoicelist
 		if(!isnull(new_pdachoice) && CanUseTopic(user))
 			pref.pdachoice = pdachoicelist.Find(new_pdachoice)
 			return TOPIC_REFRESH
@@ -126,7 +126,7 @@
 		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[href_list["change_underwear"]]
 		if(!UWC)
 			return
-		var/datum/category_item/underwear/selected_underwear = input(user, "Choose underwear:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items
+		var/datum/category_item/underwear/selected_underwear = input(user, "Выберите нижнее белье:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items
 		if(selected_underwear && CanUseTopic(user))
 			pref.all_underwear[UWC.name] = selected_underwear.name
 		return TOPIC_REFRESH_UPDATE_PREVIEW

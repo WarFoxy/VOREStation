@@ -4,6 +4,6 @@
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
-			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+5)
+			t = copytext_char(t, 1, index) + repl_chars[char] + copytext_char(t, index+5)
 			index = findtext(t, char)
 	return t

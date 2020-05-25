@@ -64,24 +64,24 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()
-	. += "<b>Name:</b> "
+	. += "<b>Имя:</b> "
 	. += "<a href='?src=\ref[src];rename=1'><b>[pref.real_name]</b></a><br>"
-	. += "<a href='?src=\ref[src];random_name=1'>Randomize Name</A><br>"
-	. += "<a href='?src=\ref[src];always_random_name=1'>Always Random Name: [pref.be_random_name ? "Yes" : "No"]</a><br>"
-	. += "<b>Nickname:</b> "
+	. += "<a href='?src=\ref[src];random_name=1'>Рандомизировать имя</A><br>"
+	. += "<a href='?src=\ref[src];always_random_name=1'>Всегда рандомить имя: [pref.be_random_name ? "Да" : "Нет"]</a><br>"
+	. += "<b>Прозвище:</b> "
 	. += "<a href='?src=\ref[src];nickname=1'><b>[pref.nickname]</b></a>"
 	. += "<br>"
-	. += "<b>Biological Sex:</b> <a href='?src=\ref[src];bio_gender=1'><b>[gender2text(pref.biological_gender)]</b></a><br>"
-	. += "<b>Pronouns:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
-	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
-	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
+	. += "<b>Биологический пол:</b> <a href='?src=\ref[src];bio_gender=1'><b>[gender2text(pref.biological_gender)]</b></a><br>"
+	. += "<b>Гендер:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
+	. += "<b>Возраст:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
+	. += "<b>Спавн</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
 	if(config.allow_Metadata)
-		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+		. += "<b>OOC Заметки:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["rename"])
-		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
+		var/raw_name = input(user, "Введите И.Ф персонажа:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
 			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
 			if(new_name)
@@ -100,7 +100,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		return TOPIC_REFRESH
 
 	else if(href_list["nickname"])
-		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
+		var/raw_nickname = input(user, "Введите прозвище вашего персонажа:", "Character Nickname")  as text|null
 		if (!isnull(raw_nickname) && CanUseTopic(user))
 			var/new_nickname = sanitize_name(raw_nickname, pref.species, is_FBP())
 			if(new_nickname)
@@ -111,13 +111,13 @@ datum/preferences/proc/set_biological_gender(var/gender)
 				return TOPIC_NOACTION
 
 	else if(href_list["bio_gender"])
-		var/new_gender = input(user, "Choose your character's biological sex:", "Character Preference", pref.biological_gender) as null|anything in get_genders()
+		var/new_gender = input(user, "Выберите свой биологический пол:", "Character Preference", pref.biological_gender) as null|anything in get_genders()
 		if(new_gender && CanUseTopic(user))
 			pref.set_biological_gender(new_gender)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["id_gender"])
-		var/new_gender = input(user, "Choose your character's pronouns:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
+		var/new_gender = input(user, "Выберите ваш гендер:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
 		if(new_gender && CanUseTopic(user))
 			pref.identifying_gender = new_gender
 		return TOPIC_REFRESH
@@ -125,7 +125,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	else if(href_list["age"])
 		var/min_age = get_min_age()
 		var/max_age = get_max_age()
-		var/new_age = input(user, "Choose your character's age:\n([min_age]-[max_age])", "Character Preference", pref.age) as num|null
+		var/new_age = input(user, "Введите возраст персонажа:\n([min_age]-[max_age])", "Character Preference", pref.age) as num|null
 		if(new_age && CanUseTopic(user))
 			pref.age = max(min(round(text2num(new_age)), max_age), min_age)
 			return TOPIC_REFRESH
@@ -134,13 +134,13 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		var/list/spawnkeys = list()
 		for(var/spawntype in spawntypes)
 			spawnkeys += spawntype
-		var/choice = input(user, "Where would you like to spawn when late-joining?") as null|anything in spawnkeys
+		var/choice = input(user, "Где бы вы хотели появиться после старта раунда?") as null|anything in spawnkeys
 		if(!choice || !spawntypes[choice] || !CanUseTopic(user))	return TOPIC_NOACTION
 		pref.spawnpoint = choice
 		return TOPIC_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0) //VOREStation Edit
+		var/new_metadata = sanitize(input(user, "Введите любую информацию, которую вы хотите показать другим игрокам, например, предпочтения в РП:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0) //VOREStation Edit
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return TOPIC_REFRESH

@@ -16,8 +16,7 @@
 // Run all strings to be used in an SQL query through this proc first to properly escape out injection attempts.
 /proc/sanitizeSQL(var/t as text)
 	var/sqltext = dbcon.Quote(t);
-	return copytext(sqltext, 2, length(sqltext));//Quote() adds quotes around input, we already do that
-
+	return copytext_char(sqltext, 2, length(sqltext));//Quote() adds quotes around input, we already do that
 /*
  * Text sanitization
  */
@@ -28,7 +27,7 @@
 		return
 
 	if(max_length)
-		input = copytext(input,1,max_length)
+		input = copytext_char(input,1,max_length)
 
 	if(extra)
 		input = replace_characters(input, list("\n"=" ","\t"=" "))
@@ -45,7 +44,7 @@
 		input = replace_characters(input, list("<"=" ", ">"=" "))
 
 	if(trim)
-		//Maybe, we need trim text twice? Here and before copytext?
+		//Maybe, we need trim text twice? Here and before copytext_char?
 		input = trim(input)
 
 	return input
@@ -59,25 +58,25 @@
 
 //Filters out undesirable characters from names
 /proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN, var/allow_numbers = 0)
-	if(!input || length(input) > max_length)
+	if(!input || length_char(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
 	var/number_of_alphanumeric	= 0
 	var/last_char_group			= 0
 	var/output = ""
 
-	for(var/i=1, i<=length(input), i++)
-		var/ascii_char = text2ascii(input,i)
+	for(var/i=1, i<=length_char(input), i++)
+		var/ascii_char = text2ascii_char(input,i)
 		switch(ascii_char)
 			// A  .. Z
-			if(65 to 90)			//Uppercase Letters
+			if(65 to 90, 1040 to 1071)			//Uppercase Letters
 				output += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
 
 			// a  .. z
-			if(97 to 122)			//Lowercase Letters
-				if(last_char_group<2)		output += ascii2text(ascii_char-32)	//Force uppercase first character
+			if(97 to 122, 1072 to 1103)			//Lowercase Letters
+				if(last_char_group<2)		output += uppertext(ascii2text(ascii_char))	//Force uppercase first character
 				else						output += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
@@ -113,7 +112,7 @@
 	if(number_of_alphanumeric < 2)	return		//protects against tiny names like "A" and also names like "' ' ' ' ' ' ' '"
 
 	if(last_char_group == 1)
-		output = copytext(output,1,length(output))	//removes the last character (in this case a space)
+		output = copytext_char(output,1,length(output))	//removes the last character (in this case a space)
 
 	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai","plating"))	//prevents these common metagamey names
 		if(cmptext(output,bad_name))	return	//(not case sensitive)
@@ -122,10 +121,10 @@
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(var/text, var/max_length=512)
-	if(length(text) > max_length)	return			//message too long
+	if(length_char(text) > max_length)	return			//message too long
 	var/non_whitespace = 0
-	for(var/i=1, i<=length(text), i++)
-		switch(text2ascii(text,i))
+	for(var/i=1, i<=length_char(text), i++)
+		switch(text2ascii_char(text,i))
 			if(62,60,92,47)	return			//rejects the text if it contains these bad characters: <, >, \ or /
 			if(127 to 255)	return			//rejects weird letters like �
 			if(0 to 31)		return			//more weird stuff
@@ -146,69 +145,69 @@
 //Returns the position of the substring or 0 if it was not found
 /proc/dd_hasprefix(text, prefix)
 	var/start = 1
-	var/end = length(prefix) + 1
-	return findtext(text, prefix, start, end)
+	var/end = length_char(prefix) + 1
+	return findtext_char(text, prefix, start, end)
 
 //Checks the beginning of a string for a specified sub-string. This proc is case sensitive
 //Returns the position of the substring or 0 if it was not found
 /proc/dd_hasprefix_case(text, prefix)
 	var/start = 1
-	var/end = length(prefix) + 1
-	return findtextEx(text, prefix, start, end)
+	var/end = length_char(prefix) + 1
+	return findtextEx_char(text, prefix, start, end)
 
 //Checks the end of a string for a specified substring.
 //Returns the position of the substring or 0 if it was not found
 /proc/dd_hassuffix(text, suffix)
-	var/start = length(text) - length(suffix)
+	var/start = length_char(text) - length(suffix)
 	if(start)
-		return findtext(text, suffix, start, null)
+		return findtext_char(text, suffix, start, null)
 	return
 
 //Checks the end of a string for a specified substring. This proc is case sensitive
 //Returns the position of the substring or 0 if it was not found
 /proc/dd_hassuffix_case(text, suffix)
-	var/start = length(text) - length(suffix)
+	var/start = length_char(text) - length(suffix)
 	if(start)
-		return findtextEx(text, suffix, start, null)
+		return findtextEx_char(text, suffix, start, null)
 
 /*
  * Text modification
  */
 /proc/replace_characters(var/t,var/list/repl_chars)
 	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
+		t = replacetext_char(t, char, repl_chars[char])
 	return t
 
 //Adds 'u' number of zeros ahead of the text 't'
 /proc/add_zero(t, u)
-	while (length(t) < u)
+	while (length_char(t) < u)
 		t = "0[t]"
 	return t
 
 //Adds 'u' number of spaces ahead of the text 't'
 /proc/add_lspace(t, u)
-	while(length(t) < u)
+	while(length_char(t) < u)
 		t = " [t]"
 	return t
 
 //Adds 'u' number of spaces behind the text 't'
 /proc/add_tspace(t, u)
-	while(length(t) < u)
+	while(length_char(t) < u)
 		t = "[t] "
 	return t
 
 //Returns a string with reserved characters and spaces before the first letter removed
 /proc/trim_left(text)
 	for (var/i = 1 to length(text))
-		if (text2ascii(text, i) > 32)
-			return copytext(text, i)
+		if (text2ascii_char(text, i) > 32)
+			return copytext_char(text, i)
 	return ""
 
 //Returns a string with reserved characters and spaces after the last letter removed
 /proc/trim_right(text)
-	for (var/i = length(text), i > 0, i--)
-		if (text2ascii(text, i) > 32)
-			return copytext(text, 1, i + 1)
+	for (var/i = length_char(text), i > 0, i--)
+		if (text2ascii_char(text, i) > 32)
+			return copytext_char(text, 1, i + 1)
 	return ""
 
 //Returns a string with reserved characters and spaces before the first word and after the last word removed.
@@ -217,7 +216,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(var/t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+	return uppertext(uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2))
 
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
@@ -249,18 +248,18 @@
 //This is used for fingerprints
 /proc/stringmerge(var/text,var/compare,replace = "*")
 	var/newtext = text
-	if(length(text) != length(compare))
+	if(length_char(text) != length_char(compare))
 		return 0
-	for(var/i = 1, i < length(text), i++)
-		var/a = copytext(text,i,i+1)
-		var/b = copytext(compare,i,i+1)
+	for(var/i = 1, i < length_char(text), i++)
+		var/a = copytext_char(text,i,i+1)
+		var/b = copytext_char(compare,i,i+1)
 		//if it isn't both the same letter, or if they are both the replacement character
 		//(no way to know what it was supposed to be)
 		if(a != b)
 			if(a == replace) //if A is the replacement char
-				newtext = copytext(newtext,1,i) + b + copytext(newtext, i+1)
+				newtext = copytext_char(newtext,1,i) + b + copytext_char(newtext, i+1)
 			else if(b == replace) //if B is the replacement char
-				newtext = copytext(newtext,1,i) + a + copytext(newtext, i+1)
+				newtext = copytext_char(newtext,1,i) + a + copytext_char(newtext, i+1)
 			else //The lists disagree, Uh-oh!
 				return 0
 	return newtext
@@ -271,32 +270,32 @@
 	if(!text || !character)
 		return 0
 	var/count = 0
-	for(var/i = 1, i <= length(text), i++)
-		var/a = copytext(text,i,i+1)
+	for(var/i = 1, i <= length_char(text), i++)
+		var/a = copytext_char(text,i,i+1)
 		if(a == character)
 			count++
 	return count
 
 /proc/reverse_text(var/text = "")
 	var/new_text = ""
-	for(var/i = length(text); i > 0; i--)
-		new_text += copytext(text, i, i+1)
+	for(var/i = length_char(text); i > 0; i--)
+		new_text += copytext_char(text, i, i+1)
 	return new_text
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
 proc/TextPreview(var/string,var/len=40)
-	if(length(string) <= len)
+	if(length_char(string) <= len)
 		if(!length(string))
 			return "\[...\]"
 		else
 			return string
 	else
-		return "[copytext_preserve_html(string, 1, 37)]..."
+		return "[copytext_char_preserve_html(string, 1, 37)]..."
 
-//alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
-/proc/copytext_preserve_html(var/text, var/first, var/last)
-	return html_encode(copytext(html_decode(text), first, last))
+//alternative copytext_char() for encoded text, doesn't break html entities (&#34; and other)
+/proc/copytext_char_preserve_html(var/text, var/first, var/last)
+	return html_encode(copytext_char(html_decode(text), first, last))
 
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources
@@ -312,7 +311,7 @@ proc/TextPreview(var/string,var/len=40)
 	return text_tag_cache[tagname]
 
 /proc/contains_az09(var/input)
-	for(var/i=1, i<=length(input), i++)
+	for(var/i=1, i<=length_char(input), i++)
 		var/ascii_char = text2ascii(input,i)
 		switch(ascii_char)
 			// A  .. Z
@@ -391,16 +390,16 @@ proc/TextPreview(var/string,var/len=40)
 
 	var/leng = length(string)
 
-	var/next_space = findtext(string, " ", next_backslash + 1)
+	var/next_space = findtext_char(string, " ", next_backslash + 1)
 	if(!next_space)
 		next_space = leng - next_backslash
 
 	if(!next_space)	//trailing bs
 		return string
 
-	var/base = next_backslash == 1 ? "" : copytext(string, 1, next_backslash)
-	var/macro = lowertext(copytext(string, next_backslash + 1, next_space))
-	var/rest = next_backslash > leng ? "" : copytext(string, next_space + 1)
+	var/base = next_backslash == 1 ? "" : copytext_char(string, 1, next_backslash)
+	var/macro = lowertext(copytext_char(string, next_backslash + 1, next_space))
+	var/rest = next_backslash > leng ? "" : copytext_char(string, next_space + 1)
 
 	//See http://www.byond.com/docs/ref/info.html#/DM/text/macros
 	switch(macro)

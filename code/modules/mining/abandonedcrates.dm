@@ -154,7 +154,7 @@
 	var/list/sanitised = list()
 	var/sanitycheck = 1
 	for(var/i=1,i<=length(input),i++) //put the guess into a list
-		sanitised += text2num(copytext(input,i,i+1))
+		sanitised += text2num(copytext_char(input,i,i+1))
 	for(var/i=1,i<=(length(input)-1),i++) //compare each digit in the guess to all those following it
 		for(var/j=(i+1),j<=length(input),j++)
 			if(sanitised[i] == sanitised[j])
@@ -187,7 +187,7 @@
 	. = 1
 	lastattempt.Cut()
 	for(var/i in 1 to codelen)
-		var/guesschar = copytext(input, i, i+1)
+		var/guesschar = copytext_char(input, i, i+1)
 		lastattempt += guesschar
 		if(guesschar != code[i])
 			. = 0

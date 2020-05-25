@@ -22,37 +22,37 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 /datum/skill/management
 	ID = "management"
 	name = "Command"
-	desc = "Your ability to manage and commandeer other crew members."
+	desc = "Ваша способность управлять и управлять другими членами экипажа."
 
 /datum/skill/combat
 	ID = "combat"
 	name = "Close Combat"
-	desc = "This skill describes your training in hand-to-hand combat or melee weapon usage. While expertise in this area is rare in the era of firearms, experts still exist among athletes."
+	desc = "Этот навык описывает вашу подготовку в рукопашном бою или использовании оружия ближнего боя. Хотя опыт в этой области редок в эпоху огнестрельного оружия, эксперты по-прежнему существуют среди спортсменов."
 	field = "Security"
 
 /datum/skill/weapons
 	ID = "weapons"
 	name = "Weapons Expertise"
-	desc = "This skill describes your expertise with and knowledge of weapons. A low level in this skill implies knowledge of simple weapons, for example tazers and flashes. A high level in this skill implies knowledge of complex weapons, such as grenades, riot shields, pulse rifles or bombs. A low level in this skill is typical for security officers, a high level of this skill is typical for special agents and soldiers."
+	desc = "Этот навык описывает ваш опыт и знания оружия. Низкий уровень этого навыка подразумевает знание простого оружия, например, тазеров и флешек. Высокий уровень в этом навыке подразумевает знание сложного оружия, такого как гранаты, щиты, боеприпасы или бомбы. Низкий уровень этого навыка типичен для офицеров безопасности, высокий уровень этого навыка типичен для специальных агентов и солдат."
 	field = "Security"
 
 /datum/skill/EVA
 	ID = "EVA"
 	name = "Extra-vehicular activity"
-	desc = "This skill describes your skill and knowledge of space-suits and working in vacuum."
+	desc = "Этот навык описывает ваши навыки и знания скафандров и работы в вакууме."
 	field = "Engineering"
 	secondary = 1
 
 /datum/skill/forensics
 	ID = "forensics"
 	name = "Forensics"
-	desc = "Describes your skill at performing forensic examinations and identifying vital evidence. Does not cover analytical abilities, and as such isn't the only indicator for your investigation skill. Note that in order to perform autopsy, the surgery skill is also required."
+	desc = "Описывает ваши навыки в проведении судебных экспертиз и выявлении жизненно важных доказательств. Не распространяется на аналитические способности, и, как таковой, не является единственным показателем ваших навыков исследования. Обратите внимание, что для выполнения вскрытия также требуется навык хирургии."
 	field = "Security"
 
 /datum/skill/construction
 	ID = "construction"
 	name = "Construction"
-	desc = "Your ability to construct various buildings, such as walls, floors, tables and so on. Note that constructing devices such as APCs additionally requires the Electronics skill. A low level of this skill is typical for janitors, a high level of this skill is typical for engineers."
+	desc = "Ваша способность строить различные здания, такие как стены, полы, столы и так далее. Обратите внимание, что для создания таких устройств, как APC, требуется навык электроники. Низкий уровень этого навыка характерен для уборщиков, высокий уровень этого навыка характерен для инженеров."
 	field = "Engineering"
 
 /datum/skill/management

@@ -222,7 +222,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	var/list/params = list()
 	for(var/key in href_list)
 		if(length(key) > 7 && findtext(key, "param"))
-			var/param_name = copytext(key, 7, -1)
+			var/param_name = copytext_char(key, 7, -1)
 			var/item = href_list[key]
 			params[param_name] = item
 
@@ -275,7 +275,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	GLOB.iconCache[iconKey] << icon
 	var/iconData = GLOB.iconCache.ExportText(iconKey)
 	var/list/partial = splittext(iconData, "{")
-	return replacetext(copytext(partial[2], 3, -5), "\n", "")
+	return replacetext(copytext_char(partial[2], 3, -5), "\n", "")
 
 /proc/expire_bicon_cache(key)
 	if(GLOB.bicon_cache[key])

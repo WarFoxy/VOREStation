@@ -14,38 +14,38 @@ var/global/list/seen_religions = list()
 	return
 
 var/global/list/citizenship_choices = list(
-	"Earth",
-	"Mars",
-	"Sif",
-	"Binma",
-	"Moghes",
-	"Meralar",
-	"Qerr'balak"
+	"Земля",
+	"Марс",
+	"Сиф",
+	"Бинма",
+	"Могес",
+	"Мералар",
+	"Керр'Балак"
 	)
 
 var/global/list/home_system_choices = list(
-	"Sol",
-	"Vir",
-	"Nyx",
-	"Tau Ceti",
-	"Qerr'valis",
-	"Epsilon Ursae Minoris",
-	"Rarkajar"
+	"Солнечная",
+	"Вир",
+	"Никс",
+	"Тау Кита",
+	"Керр'Валис",
+	"Эпсилон Урсае Минорис",
+	"Раркаджар"
 	)
 
 var/global/list/faction_choices = list(
-	"Sol Central",
-	"Vey Med",
-	"Einstein Engines",
-	"Free Trade Union",
-	"NanoTrasen",
-	"Ward-Takahashi GMB",
-	"Gilthari Exports",
-	"Grayson Manufactories Ltd.",
+	"ЦПСС",
+	"Вэй Мед",
+	"Двигатели Эйнштейна",
+	"Вольный Торговый Союз",
+	"НаноТрейзер",
+	"Уорд-Такахаши ГМБ",
+	"Экспорт Гилтари",
+	"ООО Заводы Грейсона.",
 	"Aether Atmospherics",
-	"Zeng-Hu Pharmaceuticals",
-	"Hephaestus Industries",
-	"Morpheus Cyberkinetics",
+	"Цзэн-Ху Фармацевтикал",
+	"Гефест Индастри",
+	"Кибернетика Морфеус",
 	"Xion Manufacturing Group"
 	)
 

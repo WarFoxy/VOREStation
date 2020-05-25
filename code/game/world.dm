@@ -102,7 +102,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				n++
 		return n
 
-	else if (copytext(T,1,7) == "status")
+	else if (copytext_char(T,1,7) == "status")
 		var/input[] = params2list(T)
 		var/list/s = list()
 		s["version"] = game_version
@@ -221,7 +221,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		else
 			return "unknown"
 
-	else if(copytext(T,1,5) == "info")
+	else if(copytext_char(T,1,5) == "info")
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
@@ -298,7 +298,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				ret[M.key] = M.name
 			return list2params(ret)
 
-	else if(copytext(T,1,9) == "adminmsg")
+	else if(copytext_char(T,1,9) == "adminmsg")
 		/*
 			We got an adminmsg from IRC bot lets split the input then validate the input.
 			expected output:
@@ -352,7 +352,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		return "Message Successful"
 
-	else if(copytext(T,1,6) == "notes")
+	else if(copytext_char(T,1,6) == "notes")
 		/*
 			We got a request for notes from the IRC Bot
 			expected output:
@@ -373,7 +373,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		return show_player_info_irc(ckey(input["notes"]))
 
-	else if(copytext(T,1,4) == "age")
+	else if(copytext_char(T,1,4) == "age")
 		var/input[] = params2list(T)
 		if(input["key"] != config.comms_password)
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
@@ -470,13 +470,13 @@ var/world_topic_spam_protect_time = world.timeofday
 				if (!line)
 					continue
 
-				if (copytext(line, 1, 2) == ";")
+				if (copytext_char(line, 1, 2) == ";")
 					continue
 
 				var/title = "Moderator"
 				var/rights = admin_ranks[title]
 
-				var/ckey = copytext(line, 1, length(line)+1)
+				var/ckey = copytext_char(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
 				D.associate(GLOB.directory[ckey])
 
@@ -490,13 +490,13 @@ var/world_topic_spam_protect_time = world.timeofday
 			for(var/line in lines)
 				if (!line)
 					continue
-				if (copytext(line, 1, 2) == ";")
+				if (copytext_char(line, 1, 2) == ";")
 					continue
 
 				var/title = "Mentor"
 				var/rights = admin_ranks[title]
 
-				var/ckey = copytext(line, 1, length(line)+1)
+				var/ckey = copytext_char(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
 				D.associate(GLOB.directory[ckey])
 

@@ -10,7 +10,7 @@
 /client/verb/toggle_eating_noises()
 	set name = "Eating Noises"
 	set category = "Preferences"
-	set desc = "Toggles Vore Eating noises."
+	set desc = "Переключает звуки поедания для vore."
 
 	var/pref_path = /datum/client_preference/eating_noises
 
@@ -26,13 +26,13 @@
 /client/verb/toggle_digestion_noises()
 	set name = "Digestion Noises"
 	set category = "Preferences"
-	set desc = "Toggles Vore Digestion noises."
+	set desc = "Переключает звуки переваривания для vore"
 
 	var/pref_path = /datum/client_preference/digestion_noises
 
 	toggle_preference(pref_path)
 
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
+	to_chat(src, "Теперь вы [ (is_preference_enabled(pref_path)) ? "" : "не"] слышите звуки пищеварения для Voreфилов.")
 
 	SScharacter_setup.queue_preferences_save(prefs)
 

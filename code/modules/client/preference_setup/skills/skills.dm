@@ -25,9 +25,9 @@
 
 /datum/category_item/player_setup_item/skills/content()
 	. = list()
-	. += "<b>Select your Skills</b><br>"
-	. += "Current skill level: <b>[pref.GetSkillClass(pref.used_skillpoints)]</b> ([pref.used_skillpoints])<br>"
-	. += "<a href='?src=\ref[src];preconfigured=1'>Use preconfigured skillset</a><br>"
+	. += "<meta charset=\"utf-8\"><b>Выберите свои навыки</b><br>"
+	. += "Текущий уровень навыков: <b>[pref.GetSkillClass(pref.used_skillpoints)]</b> ([pref.used_skillpoints])<br>"
+	. += "<a href='?src=\ref[src];preconfigured=1'>Используйте предварительно настроенный набор навыков</a><br>"
 	. += "<table>"
 	for(var/V in SKILLS)
 		. += "<tr><th colspan = 5><b>[V]</b>"

@@ -24,7 +24,7 @@
 			pref.language_prefixes -= prefix
 
 /datum/category_item/player_setup_item/general/language/content()
-	. += "<b>Languages</b><br>"
+	. += "<b>Языки</b><br>"
 	var/datum/species/S = GLOB.all_species[pref.species]
 	if(S.language)
 		. += "- [S.language]<br>"
@@ -34,15 +34,15 @@
 		if(pref.alternate_languages.len)
 			for(var/i = 1 to pref.alternate_languages.len)
 				var/lang = pref.alternate_languages[i]
-				. += "- [lang] - <a href='?src=\ref[src];remove_language=[i]'>remove</a><br>"
+				. += "- [lang] - <a href='?src=\ref[src];remove_language=[i]'>убрать</a><br>"
 
 		if(pref.alternate_languages.len < S.num_alternate_languages)
-			. += "- <a href='?src=\ref[src];add_language=1'>add</a> ([S.num_alternate_languages - pref.alternate_languages.len] remaining)<br>"
+			. += "- <a href='?src=\ref[src];add_language=1'>добавить</a> ([S.num_alternate_languages - pref.alternate_languages.len] remaining)<br>"
 	else
-		. += "- [pref.species] cannot choose secondary languages.<br>"
+		. += "- [pref.species] не может владеть вторым языком.<br>"
 
-	. += "<b>Language Keys</b><br>"
-	. += " [jointext(pref.language_prefixes, " ")] <a href='?src=\ref[src];change_prefix=1'>Change</a> <a href='?src=\ref[src];reset_prefix=1'>Reset</a><br>"
+	. += "<b>Префикс языка</b><br>"
+	. += " [jointext(pref.language_prefixes, " ")] <a href='?src=\ref[src];change_prefix=1'>Изменить</a> <a href='?src=\ref[src];reset_prefix=1'>Сброс</a><br>"
 
 /datum/category_item/player_setup_item/general/language/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["remove_language"])
@@ -52,7 +52,7 @@
 	else if(href_list["add_language"])
 		var/datum/species/S = GLOB.all_species[pref.species]
 		if(pref.alternate_languages.len >= S.num_alternate_languages)
-			alert(user, "You have already selected the maximum number of alternate languages for this species!")
+			alert(user, "Вы уже выбрали максимальное количество альтернативных языков для этой расы!")
 		else
 			var/list/available_languages = S.secondary_langs.Copy()
 			for(var/L in GLOB.all_languages)
@@ -66,9 +66,9 @@
 			available_languages -= pref.alternate_languages
 
 			if(!available_languages.len)
-				alert(user, "There are no additional languages available to select.")
+				alert(user, "Нет дополнительных языков, доступных для выбора.")
 			else
-				var/new_lang = input(user, "Select an additional language", "Character Generation", null) as null|anything in available_languages
+				var/new_lang = input(user, "Выберите дополнительный язык", "Создание персонажа", null) as null|anything in available_languages
 				if(new_lang && pref.alternate_languages.len < S.num_alternate_languages)
 					pref.alternate_languages |= new_lang
 					return TOPIC_REFRESH
@@ -77,14 +77,14 @@
 		var/char
 		var/keys[0]
 		do
-			char = input("Enter a single special character.\nYou may re-select the same characters.\nThe following characters are already in use by radio: ; : .\nThe following characters are already in use by special say commands: ! * ^", "Enter Character - [3 - keys.len] remaining") as null|text
+			char = input("Введите один специальный символ.\nВы можете повторно выбрать те же символы.\nСледующие символы уже используются по радио: ; : .\nСледующие символы уже используются специальными командами say: ! * ^", "Enter Character - [3 - keys.len] remaining") as null|text
 			if(char)
 				if(length(char) > 1)
-					alert(user, "Only single characters allowed.", "Error", "Ok")
+					alert(user, "Разрешены только одиночные символы.", "Error", "Ok")
 				else if(char in list(";", ":", "."))
-					alert(user, "Radio character. Rejected.", "Error", "Ok")
+					alert(user, "Символ радио. Отклонено.", "Error", "Ok")
 				else if(char in list("!","*","^","-"))
-					alert(user, "Say character. Rejected.", "Error", "Ok")
+					alert(user, "Символ say. Отклонено.", "Error", "Ok")
 				else if(contains_az09(char))
 					alert(user, "Non-special character. Rejected.", "Error", "Ok")
 				else

@@ -59,12 +59,12 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 			// invalid icon_state
 			continue
 
-		var/ikey = copytext(icostate,(split+1))
+		var/ikey = copytext_char(icostate,(split+1))
 		if(ikey == "dead")
 			// don't count dead icons
 			continue
 		ikey = text2num(ikey)
-		var/base = copytext(icostate,1,split)
+		var/base = copytext_char(icostate,1,split)
 
 		if(!(plant_sprites[base]) || (plant_sprites[base]<ikey))
 			plant_sprites[base] = ikey
@@ -73,7 +73,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 
 	for(var/icostate in cached_icon_states('icons/obj/hydroponics_products.dmi'))
 		var/split = findtext(icostate,"-")
-		var/base = copytext(icostate,1,split)
+		var/base = copytext_char(icostate,1,split)
 		if(split)
 			plant_product_sprites |= base
 			if(!(base in GLOB.forbidden_plant_product_sprites))

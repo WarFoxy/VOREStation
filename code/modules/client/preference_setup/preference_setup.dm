@@ -3,27 +3,27 @@
 #define PREF_FBP_SOFTWARE "software"
 
 /datum/category_group/player_setup_category/general_preferences
-	name = "General"
+	name = "Внешность"
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
 /datum/category_group/player_setup_category/skill_preferences
-	name = "Skills"
+	name = "Навыки"
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/skills
 
 /datum/category_group/player_setup_category/occupation_preferences
-	name = "Occupation"
+	name = "Профессия"
 	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/occupation
 
 /datum/category_group/player_setup_category/appearance_preferences
-	name = "Antagonism"
+	name = "Антагонисты"
 	sort_order = 4
 	category_item_type = /datum/category_item/player_setup_item/antagonism
 
 /datum/category_group/player_setup_category/loadout_preferences
-	name = "Loadout"
+	name = "Предметы"
 	sort_order = 5
 	category_item_type = /datum/category_item/player_setup_item/loadout
 /* //VOREStation Removal
@@ -33,7 +33,7 @@
 	category_item_type = /datum/category_item/player_setup_item/traits
 */ //VOREStation Removal End
 /datum/category_group/player_setup_category/global_preferences
-	name = "Global"
+	name = "Настройки"
 	sort_order = 6 //VOREStation Edit due to above commented out
 	category_item_type = /datum/category_item/player_setup_item/player_global
 

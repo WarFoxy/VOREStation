@@ -19,7 +19,7 @@ GLOBAL_DATUM(revdata, /datum/getrev)
 	if(!revision) // File parse method
 		var/list/head_branch = file2list(".git/HEAD", "\n")
 		if(head_branch.len)
-			branch = copytext(head_branch[1], 17)
+			branch = copytext_char(head_branch[1], 17)
 
 		var/list/head_log = file2list(".git/logs/HEAD", "\n")
 		for(var/line=head_log.len, line>=1, line--)

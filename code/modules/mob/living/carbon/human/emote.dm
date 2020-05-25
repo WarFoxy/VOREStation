@@ -5,8 +5,8 @@
 
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
-		param = copytext(act, t1 + 1, length(act) + 1)
-		act = copytext(act, 1, t1)
+		param = copytext_char(act, t1 + 1, length(act) + 1)
+		act = copytext_char(act, 1, t1)
 
 	var/muzzled = is_muzzled()
 	//var/m_type = 1

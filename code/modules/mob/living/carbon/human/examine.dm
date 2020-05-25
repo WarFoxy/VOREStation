@@ -111,7 +111,7 @@
 		else if(species.name != "Human")
 			name_ender = ", <b><font color='[species.get_flesh_colour(src)]'>\a [species.get_examine_name()]!</font></b>[species.get_additional_examine_text(src)]"
 
-	var/list/msg = list("<span class='info'>*---------*","This is [bicon(src)] <EM>[src.name]</EM>[name_ender]")
+	var/list/msg = list("<meta charset=\"utf-8\"><span class='info'>*---------*","This is [bicon(src)] <EM>[src.name]</EM>[name_ender]")
 
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPJUMPSUIT) && w_uniform.show_examine)
@@ -134,7 +134,7 @@
 					tie_msg += " Attached to it is [english_list(accessories_visible)]."
 
 		if(w_uniform.blood_DNA)
-			msg += "<span class='warning'>[T.He] [T.is] wearing [bicon(w_uniform)] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [w_uniform.name]![tie_msg]</span>"
+			msg += "<meta charset=\"utf-8\"><span class='warning'>[T.He] [T.is] wearing [bicon(w_uniform)] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [w_uniform.name]![tie_msg]</span>"
 		else
 			msg += "[T.He] [T.is] wearing [bicon(w_uniform)] \a [w_uniform].[tie_msg]"
 
@@ -433,16 +433,16 @@
 				medical = R.fields["p_stat"]
 
 		msg += "<span class='deptradio'>Physical status:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>"
-		msg += "<span class='deptradio'>Medical records:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
+		msg += "<span class='deptradio'>Медицинские записи:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
 
 
-	var/flavor_text = print_flavor_text()
+	var/flavor_text = print_flavor_text("<meta charset=\"utf-8\">")
 	if(flavor_text)
 		msg += "[flavor_text]"
 
 	// VOREStation Start
 	if(ooc_notes)
-		msg += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
+		msg += "<span class = 'deptradio'>OOC Заметки:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
 	msg += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
 	// VOREStation End
 	msg += "*---------*</span>"

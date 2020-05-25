@@ -60,7 +60,7 @@
 
 /mob/living/carbon/alien/say_quote(var/message, var/datum/language/speaking = null)
 	var/verb = "hisses"
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message))
 
 	if(speaking && (speaking.name != "Galactic Common")) //this is so adminbooze xenos speaking common have their custom verbs,
 		verb = speaking.get_spoken_verb(ending)          //and use normal verbs for their own languages and non-common languages

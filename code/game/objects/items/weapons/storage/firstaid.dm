@@ -226,7 +226,7 @@
 		desc = base_desc
 		return
 	else if(length(label_text) > 10)
-		var/short_label_text = copytext(label_text, 1, 11)
+		var/short_label_text = copytext_char(label_text, 1, 11)
 		name = "[base_name] ([short_label_text]...)"
 	else
 		name = "[base_name] ([label_text])"

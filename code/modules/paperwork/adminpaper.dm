@@ -38,7 +38,7 @@
 
 /obj/item/weapon/paper/admin/proc/generateHeader()
 	var/originhash = md5("[origin]")
-	var/timehash = copytext(md5("[world.time]"),1,10)
+	var/timehash = copytext_char(md5("[world.time]"),1,10)
 	var/text = null
 	var/logo = alert(usr, "Do you want the header of your fax to have a NanoTrasen, SolGov, or Trader logo?","Fax Logo","NanoTrasen","SolGov","Trader") //VOREStation Add - Trader
 	if(logo == "SolGov")
