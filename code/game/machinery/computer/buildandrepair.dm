@@ -96,7 +96,7 @@
 				to_chat(user, "<span class='notice'>You start to put in the glass panel.</span>")
 				if(do_after(user, 20) && state == 3)
 					if (G.use(2))
-						to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+						to_chat(user, "<span class='notice'>Вы вставляете стеклянную панель.</span>")
 						src.state = 4
 						src.icon_state = "4"
 		if(4)

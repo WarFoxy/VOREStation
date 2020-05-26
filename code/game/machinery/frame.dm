@@ -531,7 +531,7 @@
 				to_chat(user, "<span class='notice'>You start to put in the glass panel.</span>")
 				if(do_after(user, 20) && state == FRAME_WIRED)
 					if(G.use(2))
-						to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+						to_chat(user, "<span class='notice'>Вы вставляете стеклянную панель.</span>")
 						state = FRAME_PANELED
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
@@ -543,7 +543,7 @@
 				to_chat(user, "<span class='notice'>You start to put in the glass panel.</span>")
 				if(do_after(user, 20) && state == FRAME_WIRED)
 					if(G.use(2))
-						to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+						to_chat(user, "<span class='notice'>Вы вставляете стеклянную панель.</span>")
 						state = FRAME_PANELED
 
 	else if(istype(P, /obj/item))
