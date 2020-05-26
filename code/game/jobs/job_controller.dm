@@ -394,7 +394,7 @@ var/global/datum/controller/occupations/job_master
 					var/datum/gear/G = gear_datums[thing]
 					if(!G) //Not a real gear datum (maybe removed, as this is loaded from their savefile)
 						continue
-					
+
 					var/permitted
 					// Check if it is restricted to certain roles
 					if(G.allowed_roles)
@@ -435,13 +435,13 @@ var/global/datum/controller/occupations/job_master
 
 			// Set up their account
 			job.setup_account(H)
-			
+
 			// Equip job items.
 			job.equip(H, H.mind ? H.mind.role_alt_title : "")
-			
+
 			// Stick their fingerprints on literally everything
 			job.apply_fingerprints(H)
-			
+
 			// Only non-silicons get post-job-equip equipment
 			if(!(job.mob_type & JOB_SILICON))
 				H.equip_post_job()
@@ -487,7 +487,7 @@ var/global/datum/controller/occupations/job_master
 				return H.Robotize()
 			if(job.mob_type & JOB_SILICON_AI)
 				return H
-			
+
 			// TWEET PEEP
 			if(rank == "Colony Director")
 				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
@@ -526,16 +526,16 @@ var/global/datum/controller/occupations/job_master
 					W.color = R.color
 					qdel(R)
 
-		to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+		to_chat(H, "<B>Вы [alt_title ? alt_title : rank].</B>")
 
 		if(job.supervisors)
-			to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+			to_chat(H, "<b>Как [alt_title ? alt_title : rank] вы отвечаете перед [job.supervisors]. Но особые обстоятельства могут это изменить.</b>")
 		if(job.has_headset)
 			H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
-			to_chat(H, "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>")
+			to_chat(H, "<b>Чтобы говорить по радиоканалу вашего отдела, используйте в чате :h Для общения на других каналах используйте свою гарнитуру.</b>")
 
 		if(job.req_admin_notify)
-			to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+			to_chat(H, "<b>Вы играете в работу, которая важна для развития игры. Если вам придется отключиться, пожалуйста, сообщите об этом администраторам через adminhelp.</b>")
 
 		// EMAIL GENERATION
 		// Email addresses will be created under this domain name. Mostly for the looks.

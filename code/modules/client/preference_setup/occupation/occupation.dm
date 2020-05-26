@@ -137,7 +137,7 @@
 		lastJob = job
 		. += "<a href='?src=\ref[src];job_info=[rank]'>"
 		if(jobban_isbanned(user, rank))
-			. += "<del>[rank]</del></td></a><td><b> \[BANNED]</b></td></tr>"
+			. += "<del>[rank]</del></td></a><td><b> \[БЛОК]</b></td></tr>"
 			continue
 		if(!job.player_old_enough(user.client))
 			var/available_in_days = job.available_in_days(user.client)
@@ -150,7 +150,7 @@
 			continue
 		//VOREStation Add End
 		if(job.minimum_character_age && user.client && (user.client.prefs.age < job.minimum_character_age))
-			. += "<del>[rank]</del></td></a><td> \[MINIMUM CHARACTER AGE: [job.minimum_character_age]]</td></tr>"
+			. += "<del>[rank]</del></td></a><td> \[МИНИЛЬНЫЙ ВОЗРАСТ	: [job.minimum_character_age]]</td></tr>"
 			continue
 		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/assistant)
 			. += "<font color=grey>[rank]</font></a></td><td></td></tr>"
@@ -166,22 +166,22 @@
 
 		if(job.type == /datum/job/assistant)//Assistant is special
 			if(pref.job_civilian_low & ASSISTANT)
-				. += " <font color=55cc55>\[Yes]</font>"
+				. += " <font color=55cc55>\[Да]</font>"
 			else
-				. += " <font color=black>\[No]</font>"
+				. += " <font color=black>\[Нет]</font>"
 			if(LAZYLEN(job.alt_titles)) //Blatantly cloned from a few lines down.
 				. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
 			. += "</a></td></tr>"
 			continue
 
 		if(pref.GetJobDepartment(job, 1) & job.flag)
-			. += " <font color=55cc55>\[High]</font>"
+			. += " <font color=55cc55>\[Выс]</font>"
 		else if(pref.GetJobDepartment(job, 2) & job.flag)
-			. += " <font color=eecc22>\[Medium]</font>"
+			. += " <font color=eecc22>\[Сред]</font>"
 		else if(pref.GetJobDepartment(job, 3) & job.flag)
-			. += " <font color=cc5555>\[Low]</font>"
+			. += " <font color=cc5555>\[Низ]</font>"
 		else
-			. += " <font color=black>\[NEVER]</font>"
+			. += " <font color=black>\[Никогда]</font>"
 		if(LAZYLEN(job.alt_titles))
 			. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
 		. += "</a></td></tr>"
@@ -190,13 +190,13 @@
 
 	switch(pref.alternate_option)
 		if(GET_RANDOM_JOB)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Get random job if preferences unavailable</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Получите случайную работу, если професии недоступны</a></u>"
 		if(BE_ASSISTANT)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Be assistant if preference unavailable</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Будьте ассистентом, если професии недоступны</a></u>"
 		if(RETURN_TO_LOBBY)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Return to lobby if preference unavailable</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Вернитесь в лобби, если професии недоступны</a></u>"
 
-	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Reset\]</a></center>"
+	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Сброс\]</a></center>"
 	. += "</tt>"
 	. = jointext(.,null)
 
@@ -232,13 +232,13 @@
 
 		dat += "<p style='background-color: [job.selection_color]'><br><br><p>"
 		if(job.alt_titles)
-			dat += "<i><b>Alternate titles:</b> [english_list(job.alt_titles)].</i>"
+			dat += "<i><b>Другое название:</b> [english_list(job.alt_titles)].</i>"
 		send_rsc(user, job.get_job_icon(), "job[ckey(rank)].png")
 		dat += "<img src=job[ckey(rank)].png width=96 height=96 style='float:left;'>"
 		if(job.departments)
-			dat += "<b>Departments:</b> [english_list(job.departments)]."
+			dat += "<b>Департамент:</b> [english_list(job.departments)]."
 			if(LAZYLEN(job.departments_managed))
-				dat += "You manage these departments: [english_list(job.departments_managed)]"
+				dat += "Вы руководите отделом: [english_list(job.departments_managed)]"
 
 		dat += "You answer to <b>[job.supervisors]</b> normally."
 
