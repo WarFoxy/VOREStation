@@ -49,13 +49,13 @@ mob/living/carbon/human/proc/handle_pain()
 		var/msg
 		switch(maxdam)
 			if(1 to 10)
-				msg =  "Your [damaged_organ.name] [burning ? "burns" : "hurts"]."
+				msg =  "Вы чувствуете [burning ? "жжение" : "боль"] в [damaged_organ.name]."
 			if(11 to 90)
 				flash_weak_pain()
-				msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
+				msg = "<font size=2>Вы чувствуете [burning ? "сильное жжение" : "сильную боль"] в [damaged_organ.name]!</font>"
 			if(91 to 10000)
 				flash_pain()
-				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
+				msg = "<font size=3>О БОЖЕ! Вы чувствуете, что [damaged_organ.name] [burning ? "словно в огне" : "ужасно болит"]!</font>"
 		custom_pain(msg, maxdam, prob(10))
 
 	// Damage to internal organs hurts a lot.
@@ -63,15 +63,15 @@ mob/living/carbon/human/proc/handle_pain()
 		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT) continue
 		if(I.damage > 2) if(prob(2))
 			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
-			src.custom_pain("You feel a sharp pain in your [parent.name]", 50)
+			src.custom_pain("Вы чувствуете острую боль в [parent.name]", 50)
 
 	if(prob(2))
 		switch(getToxLoss())
 			if(1 to 10)
-				custom_pain("Your body stings slightly.", getToxLoss())
+				custom_pain("Ваше тело слегка покалывает.", getToxLoss())
 			if(11 to 30)
-				custom_pain("Your body hurts a little.", getToxLoss())
+				custom_pain("Ваше тело немного болит.", getToxLoss())
 			if(31 to 60)
-				custom_pain("Your whole body hurts badly.", getToxLoss())
+				custom_pain("Все ваше тело ужасно болит.", getToxLoss())
 			if(61 to INFINITY)
-				custom_pain("Your body aches all over, it's driving you mad.", getToxLoss())
+				custom_pain("Все ваше тело болит, это сводит вас с ума.", getToxLoss())

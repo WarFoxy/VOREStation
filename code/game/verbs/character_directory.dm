@@ -21,7 +21,7 @@
 					if(!find_record("name", H.real_name, data_core.hidden_general))
 						continue
 			curID++
-			html += "<div class='block'>"
+			html += "<div class='block'><meta charset=\"utf-8\">"
 			html += "<h3 class='uiContent highlight' style='font-size:16px'>[H.real_name]</h3><br>"
 			if(H.flavor_texts["general"])
 				html += "<a onclick='togglesection(\"[ckey(H.real_name)] [curID] flavor\")'>Flavor text</a>"

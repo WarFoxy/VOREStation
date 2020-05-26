@@ -329,8 +329,8 @@
 			msg += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]"
 		//VOREStation Add End
 
-	var/list/wound_flavor_text = list()
-	var/list/is_bleeding = list()
+	var/list/wound_flavor_text = list("<meta charset=\"utf-8\">")
+	var/list/is_bleeding = list("<meta charset=\"utf-8\">")
 	var/applying_pressure = ""
 
 	for(var/organ_tag in species.has_limbs)
@@ -436,8 +436,9 @@
 		msg += "<span class='deptradio'>Медицинские записи:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
 
 
-	var/flavor_text = print_flavor_text("<meta charset=\"utf-8\">")
+	var/flavor_text = print_flavor_text()
 	if(flavor_text)
+		msg += "<meta charset=\"utf-8\">"
 		msg += "[flavor_text]"
 
 	// VOREStation Start

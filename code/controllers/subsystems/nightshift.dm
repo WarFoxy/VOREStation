@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(nightshift)
 			pickedsound = 'sound/AI/dim_lights.ogg'
 		else
 			pickedsound = 'sound/AI/bright_lights.ogg'
-	priority_announcement.Announce(message, new_title = "Automated Lighting System Announcement", new_sound = pickedsound, zlevel = announce_z)
+	priority_announcement.Announce(message, new_title = "Объявление Автоматизированной Системы Освещения", new_sound = pickedsound, zlevel = announce_z)
 	//VOREStation Edit End
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift(check_canfire=FALSE) //This is called from elsewhere, like setting the alert levels
@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(nightshift)
 	nightshift_active = active
 	if(announce)
 		if(active)
-			announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
+			announce("Добрый вечер, экипаж. Чтобы уменьшить потребление энергии и стимулировать циркадные ритмы некоторых рас, все освещение на борту станции было приглушено на ночное время.")
 		else
 			announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
