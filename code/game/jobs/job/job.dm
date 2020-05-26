@@ -73,18 +73,18 @@
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
 	if(H.mind)
 		var/remembered_info = ""
-		remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
-		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
+		remembered_info += "<b>Номер вашего счета:</b> #[M.account_number]<br>"
+		remembered_info += "<b>Ваш ПИН-код:</b> [M.remote_access_pin]<br>"
+		remembered_info += "<b>Средства на вашем счету:</b> $[M.money]<br>"
 
 		if(M.transaction_log.len)
 			var/datum/transaction/T = M.transaction_log[1]
-			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+			remembered_info += "<b>Ваш аккаунт создан:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
 
-	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
+	to_chat(H, "<span class='notice'><b>Номер вашего счета: [M.account_number], ваш ПИН-код: [M.remote_access_pin]</b></span>")
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)

@@ -97,7 +97,7 @@
 				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 				if (do_after(user, 20) && state == 3)
 					if(RG.use(2))
-						to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+						to_chat(user, "<span class='notice'>Вы вставляете стеклянную панель.</span>")
 						state = 4
 						icon_state = "4"
 

@@ -22,6 +22,9 @@ var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
 
 var/list/mannequins_
 
+// Times that players are allowed to respawn ("ckey" = world.time)
+GLOBAL_LIST_EMPTY(respawn_timers)
+
 // Posters
 var/global/list/poster_designs = list()
 var/global/list/NT_poster_designs = list()
@@ -40,8 +43,8 @@ var/global/list/body_marking_styles_list = list()		//stores /datum/sprite_access
 var/datum/category_collection/underwear/global_underwear = new()
 
 	//Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag")
-var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged", "Holographic")
+var/global/list/backbaglist = list("Ничего", "Рюкзак", "Сумка", "Сумка другая", "Курьерская сумка")
+var/global/list/pdachoicelist = list("Обычный", "Компакт", "Старый", "Грубый", "Голографический")
 var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 
 // Visual nets
@@ -59,15 +62,15 @@ var/global/list/syndicate_access = list(access_maint_tunnels, access_syndicate, 
 
 // Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(
-	"head" = HEAD,
-	"face" = FACE,
-	"eyes" = EYES,
-	"upper body" = UPPER_TORSO,
-	"lower body" = LOWER_TORSO,
-	"legs" = LEGS,
-	"feet" = FEET,
-	"arms" = ARMS,
-	"hands" = HANDS
+	"голова" = HEAD,
+	"лицо" = FACE,
+	"глаза" = EYES,
+	"верхняя часть тела" = UPPER_TORSO,
+	"нижняя часть тела" = LOWER_TORSO,
+	"ноги" = LEGS,
+	"стопы" = FEET,
+	"руки" = ARMS,
+	"кисти" = HANDS
 )
 
 // Strings which corraspond to slot flags, useful for outputting what slot something is.

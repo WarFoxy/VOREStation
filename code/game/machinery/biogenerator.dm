@@ -83,7 +83,7 @@
 		else
 			user.remove_from_mob(O)
 			O.loc = src
-			to_chat(user, "<span class='notice'>You put \the [O] in \the [src]</span>")
+			to_chat(user, "<span class='notice'>Вы кладете [O] в [src]</span>")
 	update_icon()
 	return
 
