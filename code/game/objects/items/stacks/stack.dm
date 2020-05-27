@@ -59,7 +59,7 @@
 
 /obj/item/stack/examine(mob/user)
 	. = ..()
-	
+
 	if(Adjacent(user))
 		if(!uses_charge)
 			. += "There are [src.amount] [src.singular_name]\s in the stack."
@@ -362,7 +362,7 @@
 				src.interact(usr)
 	else
 		return ..()
-
+/*
 /obj/item/stack/proc/combine_in_loc()
 	for(var/obj/item/stack/S in loc)
 		if(S == src)
@@ -378,7 +378,7 @@
 	. = ..()
 	if(pulledby && isturf(loc))
 		combine_in_loc()
-
+*/
 /*
  * Recipe datum
  */
