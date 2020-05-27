@@ -556,8 +556,8 @@ var/global/datum/controller/occupations/job_master
 			var/datum/computer_file/data/email_account/EA = new/datum/computer_file/data/email_account()
 			EA.password = GenerateKey()
 			EA.login = 	complete_login
-			to_chat(H, "Your email account address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
-			H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
+			to_chat(H, "Ваш почтовый адрес <b>[EA.login]</b> и ваш пароль от него <b>[EA.password]</b>. Эта информация также была помещена в ваши заметки.")
+			H.mind.store_memory("Ваш почтовый адрес [EA.login] и ваш пароль от него [EA.password].")
 		// END EMAIL GENERATION
 
 		//Gives glasses to the vision impaired

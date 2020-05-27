@@ -24,9 +24,9 @@
 /obj/structure/lift/proc/pressed(var/mob/user)
 	if(!istype(user, /mob/living/silicon))
 		if(user.a_intent == I_HURT)
-			user.visible_message("<span class='danger'>\The [user] hammers on the lift button!</span>")
+			user.visible_message("<span class='danger'>[user] бьет по кнопке лифта!</span>")
 		else
-			user.visible_message("<span class='notice'>\The [user] presses the lift button.</span>")
+			user.visible_message("<span class='notice'>[user] нажимает на кнопку лифта.</span>")
 
 
 /obj/structure/lift/New(var/newloc, var/datum/turbolift/_lift)
@@ -51,7 +51,7 @@
 // Button. No HTML interface, just calls the associated lift to its floor.
 /obj/structure/lift/button
 	name = "elevator button"
-	desc = "A call button for an elevator. Be sure to hit it three hundred times."
+	desc = "Кнопка вызова лифта. Не забудьте нажать на нее триста раз."
 	icon_state = "button"
 	var/light_up = FALSE
 	req_access = list(access_eva)
@@ -116,7 +116,7 @@
 // Panel. Lists floors (HTML), moves with the elevator, schedules a move to a given floor.
 /obj/structure/lift/panel
 	name = "elevator control panel"
-	desc = "A control panel for moving the elevator. There's a slot for swiping IDs to enable additional controls."
+	desc = "Панель управления для перемещения лифта. Там есть слот для считывания ID, чтобы включить дополнительные элементы управления."
 	icon_state = "panel"
 	req_access = list(access_eva)
 	req_one_access = list(access_heads, access_atmospherics, access_medical)
@@ -130,10 +130,10 @@
 			return
 		lift.update_fire_mode(!lift.fire_mode)
 		if(lift.fire_mode)
-			audible_message("<span class='danger'>Firefighter Mode Activated.  Door safeties disabled.  Manual control engaged.</span>")
+			audible_message("<span class='danger'>Активирован Режим Пожарного.  Дверные предохранители отключены.  Включено ручное управление.</span>")
 			playsound(src, 'sound/machines/airalarm.ogg', 25, 0, 4)
 		else
-			audible_message("<span class='warning'>Firefighter Mode Deactivated. Door safeties enabled.  Automatic control engaged.</span>")
+			audible_message("<span class='warning'>Режим Пожарного Отключен. Дверные предохранители включены.  Включено автоматическое управление.</span>")
 		return
 	. = ..()
 
@@ -152,16 +152,16 @@
 	//lower levels at the bottom, we need to go through the list in reverse
 	for(var/i in lift.floors.len to 1 step -1)
 		var/datum/turbolift_floor/floor = lift.floors[i]
-		var/label = floor.label? floor.label : "Level #[i]"
+		var/label = floor.label? floor.label : "Уровень #[i]"
 		dat += "<font color = '[(floor in lift.queued_floors) ? COLOR_YELLOW : COLOR_WHITE]'>"
 		dat += "<a href='?src=\ref[src];move_to_floor=["\ref[floor]"]'>[label]</a>: [floor.name]</font><br>"
 
 	dat += "<hr>"
 	if(lift.doors_are_open())
-		dat += "<a href='?src=\ref[src];close_doors=1'>Close Doors</a><br>"
+		dat += "<a href='?src=\ref[src];close_doors=1'>Закрыть двери</a><br>"
 	else
-		dat += "<a href='?src=\ref[src];open_doors=1'>Open Doors</a><br>"
-	dat += "<a href='?src=\ref[src];emergency_stop=1'>Emergency Stop</a>"
+		dat += "<a href='?src=\ref[src];open_doors=1'>Открыть двери</a><br>"
+	dat += "<a href='?src=\ref[src];emergency_stop=1'>Аварийная остановка</a>"
 	dat += "<hr></body></html>"
 
 	user.set_machine(src)

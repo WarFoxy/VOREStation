@@ -31,7 +31,7 @@ var/list/spawntypes = list()
 
 		if(!(J.mob_type & allowed_mob_types))
 			return 0
-		
+
 		return 1
 
 /datum/spawnpoint/proc/get_spawn_position()
@@ -39,7 +39,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/arrivals
 	display_name = "Arrivals Shuttle"
-	msg = "will arrive to the station shortly by shuttle"
+	msg = "прибывает на шаттле"
 
 /datum/spawnpoint/arrivals/New()
 	..()
@@ -47,7 +47,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
-	msg = "has completed translation from offsite gateway"
+	msg = "завершает переход с внешнего шлюза"
 
 /datum/spawnpoint/gateway/New()
 	..()
@@ -63,7 +63,7 @@ var/list/spawntypes = list()
 */
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
-	msg = "has completed cryogenic revival"
+	msg = "завершает криогенный сон"
 	allowed_mob_types = JOB_CARBON
 
 /datum/spawnpoint/cryo/New()
@@ -72,7 +72,7 @@ var/list/spawntypes = list()
 
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
-	msg = "has been activated from storage"
+	msg = "активирован в хранилище"
 	allowed_mob_types = JOB_SILICON
 
 /datum/spawnpoint/cyborg/New()

@@ -4,26 +4,26 @@
 -->
 
 {{if data.mode == 0}} <!-- Listing -->
-<h2>Items available</h2>
+<h2>Доступные предметы</h2>
 <div class='item'>
 	{{for data.products}}
 	<div class='item'>
 			<div style='float'>
 				{{if value.price > 0}}
-					{{:helper.link('Buy (' + value.price + ')', 'cart', { "vend" : value.key }, value.amount > 0 ? null : 'disabled')}}
+					{{:helper.link('Купить (' + value.price + ')', 'cart', { "vend" : value.key }, value.amount > 0 ? null : 'disabled')}}
 				{{else}}
-					{{:helper.link('Vend', 'circle-arrow-s', { "vend" : value.key }, value.amount > 0 ? null : 'disabled')}}
+					{{:helper.link('Выдача', 'circle-arrow-s', { "vend" : value.key }, value.amount > 0 ? null : 'disabled')}}
 				{{/if}}
 			</div>
 		<div class='itemContent'>
 		{{if value.color}}<span style='color:{{:value.color}}'>{{:value.name}}</span>
 		{{else}}{{:value.name}}
 		{{/if}}
-			 ({{:value.amount ? value.amount : "NONE LEFT"}})
+			 ({{:value.amount ? value.amount : "Ничего нет"}})
 		</div>
 	</div>
 	{{empty}}
-	No items available!
+	Нет доступных предметов!
 	{{/for}}
 </div>
 {{if data.coin}}
@@ -37,8 +37,8 @@
 <h2>Item selected</h2>
 <div class='item'>
 	<div class='item'>
-		<div class='itemLabel'>Item selected:</div> <div class='itemContent'>{{:data.product}}</div>
-		<div class='itemLabel'>Charge:</div> <div class='itemContent'>{{:data.price}}</div>
+		<div class='itemLabel'>Выбраный предмет:</div> <div class='itemContent'>{{:data.product}}</div>
+		<div class='itemLabel'>Цена:</div> <div class='itemContent'>{{:data.price}}</div>
 	</div>
 	<div class='statusDisplay' style='overflow: auto;'>
 		{{if data.message_err}} <span class='uiIcon16 icon-alert' ></span>{{/if}} {{:data.message}}
@@ -49,8 +49,8 @@
 </div>
 {{/if}}
 {{if data.panel}}
-<h2>Maintenance panel</h2>
+<h2>Панель обслуживания</h2>
 <div class='item'>
-	<div class='itemLabel'>Speaker</div><div class='item'>{{:helper.link(data.speaker ? 'Enabled' : 'Disabled',  'gear', {'togglevoice' : 1})}}</div>
+	<div class='itemLabel'>Динамик</div><div class='item'>{{:helper.link(data.speaker ? 'Вкл' : 'Выкл',  'gear', {'togglevoice' : 1})}}</div>
 </div>
 {{/if}}
