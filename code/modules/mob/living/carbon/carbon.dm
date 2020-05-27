@@ -147,7 +147,7 @@
 	if (src.health >= config.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			//var/datum/gender/T = gender_datums[H.get_visible_gender()]
 			src.visible_message( \
 				"<span class='notice'>[src] проверяет себя.</span>", \
 				"<span class='notice'>Вы проверяете себя на наличие травм.</span>" \
@@ -166,36 +166,36 @@
 				*/
 				switch(brutedamage)
 					if(1 to 20)
-						status += "в волдырях"
+						status += "в синяках"
 					if(20 to 40)
 						status += "имеет ранение"
 					if(40 to INFINITY)
-						status += "в ушибах"
+						status += "искалечена"
 
 				switch(burndamage)
 					if(1 to 10)
 						status += "онемела"
 					if(10 to 40)
-						status += "в волдырях"
+						status += "покрыта волдырями"
 					if(40 to INFINITY)
 						status += "отслаивается"
 
 				if(org.is_stump())
-					status += "отсутствует"
+					status += "ОТСУТСТВУЕТ"
 				if(org.status & ORGAN_MUTATED)
-					status += "странной формы"
+					status += "имеет странную форму"
 				if(org.dislocated == 2)
-					status += "имеет вывих"
+					status += "вывихнута"
 				if(org.status & ORGAN_BROKEN)
 					status += "болит при касании"
 				if(org.status & ORGAN_DEAD)
-					status += "ушиблено и омертвело"
+					status += "покрыта синяками и омертвела"
 				if(!org.is_usable() || org.is_dislocated())
 					status += "бесполезно болтается"
 				if(status.len)
-					src.show_message("[org.name] <span class='warning'> [english_list(status)].</span>",1)
+					src.show_message("[org.name]:<span class='warning'> [english_list(status)].</span>",1)
 				else
-					src.show_message("[org.name] в <span class='notice'>порядке.</span>",1)
+					src.show_message("[org.name]:<span class='notice'> в норме.</span>",1)
 
 			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
@@ -206,7 +206,7 @@
 				"<span class='warning'>Вы пытаетесь потушить пламя [src] но безрезультатно! Убирайтесь оттуда!</span>")
 			else
 				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src]!</span>",
-				"<span class='warning'>Вы пытаетесь потушить пламя [src]! Горячс!</span>")
+				"<span class='warning'>Вы пытаетесь погасить пламя [src]! Горячс!</span>")
 				if(do_mob(M, src, 15))
 					src.adjust_fire_stacks(-0.5)
 					if (prob(10) && (M.fire_stacks <= 0))
@@ -214,7 +214,7 @@
 					M.IgniteMob()
 					if (M.on_fire)
 						M.visible_message("<span class='danger'>Огонь распространяется от [src] до [M]!</span>",
-						"<span class='danger'>Огонь распространяется и на тебя!</span>")
+						"<span class='danger'>Огонь распространяется и на вас!</span>")
 					else
 						src.adjust_fire_stacks(-0.5) //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
 						if (src.fire_stacks <= 0)
@@ -229,7 +229,7 @@
 
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			//var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
 			if(istype(H)) show_ssd = H.species.show_ssd
 			if(show_ssd && !client && !teleop)
 				M.visible_message("<span class='notice'>[M] трясет [src] пытаясь разбудить!</span>", \
@@ -243,7 +243,7 @@
 									"<span class='notice'>Вы трясете и пытаетесь разбудить [src]!</span>")
 			else
 				var/mob/living/carbon/human/hugger = M
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				//var/datum/gender/TM = gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
 					M.visible_message("<span class='notice'>[M] хватается и тянет вверх [src]</span>", \
 							"<span class='notice'>Вы хватаете и тянете [src] вверх, помогая встать с земли!</span>")

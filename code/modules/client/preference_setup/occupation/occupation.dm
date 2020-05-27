@@ -75,7 +75,7 @@
 
 	. = list()
 	. += "<tt><center>"
-	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
+	. += "<b>Вы берите интересующую вас профессию, назначив уровень важности</b><br>Недоступные профессии перечеркнуты.<br>"
 	. += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%' valign='top'>" // Table within a table for alignment, also allows you to easily add more columns.
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
@@ -190,11 +190,11 @@
 
 	switch(pref.alternate_option)
 		if(GET_RANDOM_JOB)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Получите случайную работу, если професии недоступны</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Получите случайную работу, если профессии недоступны</a></u>"
 		if(BE_ASSISTANT)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Будьте ассистентом, если професии недоступны</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Станьте ассистентом, если профессии недоступны</a></u>"
 		if(RETURN_TO_LOBBY)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Вернитесь в лобби, если професии недоступны</a></u>"
+			. += "<u><a href='?src=\ref[src];job_alternative=1'>Вернитесь в лобби, если профессии недоступны</a></u>"
 
 	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Сброс\]</a></center>"
 	. += "</tt>"
@@ -216,7 +216,7 @@
 		var/datum/job/job = locate(href_list["select_alt_title"])
 		if (job)
 			var/choices = list(job.title) + job.alt_titles
-			var/choice = input("Choose a title for [job.title].", "Choose Title", pref.GetPlayerAltTitle(job)) as anything in choices|null
+			var/choice = input("Выберите подтип для [job.title].", "Choose Title", pref.GetPlayerAltTitle(job)) as anything in choices|null
 			if(choice && CanUseTopic(user))
 				SetPlayerAltTitle(job, choice)
 				return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
@@ -240,7 +240,7 @@
 			if(LAZYLEN(job.departments_managed))
 				dat += "Вы руководите отделом: [english_list(job.departments_managed)]"
 
-		dat += "You answer to <b>[job.supervisors]</b> normally."
+		dat += "Вы отвечаете перед <b>[job.supervisors]</b>."
 
 		dat += "<hr style='clear:left;'>"
 		if(config.wikiurl)

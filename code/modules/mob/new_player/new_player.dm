@@ -29,19 +29,19 @@
 /mob/new_player/proc/new_player_panel_proc()
 	var/output = "<div align='center'>"
 	output +="<hr>"
-	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Настроить персонажа</A></p>"
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
-			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
+			output += "<p>\[ <span class='linkOn'><b>Готов</b></span> | <a href='byond://?src=\ref[src];ready=0'>Не готов</a> \]</p>"
 		else
-			output += "<p>\[ <a href='byond://?src=\ref[src];ready=1'>Ready</a> | <span class='linkOn'><b>Not Ready</b></span> \]</p>"
+			output += "<p>\[ <a href='byond://?src=\ref[src];ready=1'>Готов</a> | <span class='linkOn'><b>не готов</b></span> \]</p>"
 
 	else
-		output += "<a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</A><br><br>"
-		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A></p>"
+		output += "<a href='byond://?src=\ref[src];manifest=1'>Посмотреть экипаж</A><br><br>"
+		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Вступить в игру!</A></p>"
 
-	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];observe=1'>Наблюдать</A></p>"
 
 	if(!IsGuestKey(src.key))
 		establish_db_connection()
@@ -164,7 +164,7 @@
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
-		
+
 		var/time_till_respawn = time_till_respawn()
 		if(time_till_respawn == -1) // Special case, never allowed to respawn
 			to_chat(usr, "<span class='warning'>Respawning is not allowed!</span>")
@@ -206,7 +206,7 @@
 			return 0
 
 		var/datum/species/S = GLOB.all_species[client.prefs.species]
-		
+
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 			alert(src,"Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
@@ -352,7 +352,7 @@
 /mob/new_player/proc/time_till_respawn()
 	if(!ckey)
 		return -1 // What?
-		
+
 	var/timer = GLOB.respawn_timers[ckey]
 	// No timer at all
 	if(!timer)
@@ -451,14 +451,14 @@
 		character.buckled.set_dir(character.dir)
 
 	ticker.mode.latespawn(character)
-	
+
 	if(J.mob_type & JOB_SILICON)
 		AnnounceCyborg(character, rank, join_message, announce_channel, character.z)
 	else
 		AnnounceArrival(character, rank, join_message, announce_channel, character.z)
 		data_core.manifest_inject(character)
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
-		
+
 	qdel(src) // Delete new_player mob
 
 /mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message, var/channel, var/zlevel)

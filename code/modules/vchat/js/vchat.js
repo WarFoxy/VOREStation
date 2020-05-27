@@ -293,9 +293,9 @@ function start_vue() {
 		watch: {
 			reconnecting: function(newSetting, oldSetting) {
 				if(newSetting == true && oldSetting == false) {
-					this.internal_message("Your client has lost connection to the server, or there is severe lag. Your client will reconnect if possible.");
+					this.internal_message("Ваш клиент потерял соединение с сервером или имеет серьезную задержку. Ваш клиент снова подключится, когда это будет возможно.");
 				} else if (newSetting == false && oldSetting == true) {
-					this.internal_message("Your client has reconnected to the server.");
+					this.internal_message("Ваш клиент снова подключился к серверу.");
 				}
 			},
 			//Save the inverted setting to LS
@@ -413,12 +413,12 @@ function start_vue() {
 				var loadfile = JSON.parse(loadstring);
 				//Malformed somehow.
 				if(!loadfile.version || !loadfile.tabs) {
-					this.internal_message("There was a problem loading your tabs. Any new ones you make will be saved, however.");
+					this.internal_message("Возникла проблема с загрузкой ваших вкладок. Однако все новые, которые вы создадите, будут сохранены.");
 					return;
 				}
 				//Version is old? Sorry.
 				if(!loadfile.version == vchat_opts.vchatTabsVer) {
-					this.internal_message("Your saved tabs are for an older version of VChat and must be recreated, sorry.");
+					this.internal_message("Ваши сохраненные вкладки предназначены для более старой версии VChat и должны быть воссозданы снова, извините.");
 					return;
 				}
 
