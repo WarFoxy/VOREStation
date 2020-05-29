@@ -52,11 +52,11 @@ var/list/_client_preferences_by_type
 *********************/
 
 /datum/client_preference/play_admin_midis
-	description ="Play admin midis"
+	description ="Проигрывать Админские MIDI"
 	key = "SOUND_MIDI"
 
 /datum/client_preference/play_lobby_music
-	description ="Play lobby music"
+	description ="Проигрывать музыку в лобби"
 	key = "SOUND_LOBBY"
 
 /datum/client_preference/play_lobby_music/toggled(var/mob/preference_mob, var/enabled)
@@ -69,7 +69,7 @@ var/list/_client_preferences_by_type
 		preference_mob.client.media.stop_music()
 
 /datum/client_preference/play_ambiance
-	description ="Play ambience"
+	description ="Звуки окружения"
 	key = "SOUND_AMBIENCE"
 
 /datum/client_preference/play_ambiance/toggled(var/mob/preference_mob, var/enabled)
@@ -78,7 +78,7 @@ var/list/_client_preferences_by_type
 		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)
 //VOREStation Add - Need to put it here because it should be ordered riiiight here.
 /datum/client_preference/play_jukebox
-	description ="Play jukebox music"
+	description ="Проигрывать музыку из проигрывателя"
 	key = "SOUND_JUKEBOX"
 
 /datum/client_preference/play_jukebox/toggled(var/mob/preference_mob, var/enabled)
@@ -88,113 +88,113 @@ var/list/_client_preferences_by_type
 		preference_mob.update_music()
 
 /datum/client_preference/eating_noises
-	description = "Eating Noises"
+	description = "Звук поедания"
 	key = "EATING_NOISES"
-	enabled_description = "Noisy"
-	disabled_description = "Silent"
+	enabled_description = "Слышно"
+	disabled_description = "Тишина"
 
 /datum/client_preference/digestion_noises
-	description = "Digestion Noises"
+	description = "Звук пищеварения"
 	key = "DIGEST_NOISES"
-	enabled_description = "Noisy"
-	disabled_description = "Silent"
+	enabled_description = "Слышно"
+	disabled_description = "Тишина"
 
 /datum/client_preference/emote_noises
-	description = "Emote Noises" //MERP
+	description = "Звуки эмоций" //MERP
 	key = "EMOTE_NOISES"
-	enabled_description = "Noisy"
-	disabled_description = "Silent"
+	enabled_description = "Слышно"
+	disabled_description = "Тишнина"
 /datum/client_preference/whisubtle_vis
-	description = "Whi/Subtles Ghost Visible" 
+	description = "Whi/Subtles Ghost Visible"
 	key = "WHISUBTLE_VIS"
-	enabled_description = "Visible"
-	disabled_description = "Hidden"
+	enabled_description = "Видно"
+	disabled_description = "Скрыто"
 	enabled_by_default = FALSE
 //VOREStation Add End
 /datum/client_preference/weather_sounds
-	description ="Weather sounds"
+	description ="Звуки погоды"
 	key = "SOUND_WEATHER"
-	enabled_description = "Audible"
-	disabled_description = "Silent"
+	enabled_description = "Слышно"
+	disabled_description = "Тишина"
 
 /datum/client_preference/supermatter_hum
-	description ="Supermatter hum"
+	description ="Гул Суперматерии"
 	key = "SOUND_SUPERMATTER"
-	enabled_description = "Audible"
-	disabled_description = "Silent"
+	enabled_description = "Слышно"
+	disabled_description = "Тишина"
 
 /datum/client_preference/ghost_ears
-	description ="Ghost ears"
+	description ="Уши призрака"
 	key = "CHAT_GHOSTEARS"
-	enabled_description = "All Speech"
-	disabled_description = "Nearby"
+	enabled_description = "Все разговоры"
+	disabled_description = "Поблтзости"
 
 /datum/client_preference/ghost_sight
-	description ="Ghost sight"
+	description ="Призрачный взгляд"
 	key = "CHAT_GHOSTSIGHT"
-	enabled_description = "All Emotes"
-	disabled_description = "Nearby"
+	enabled_description = "Все эмоции"
+	disabled_description = "Рядом"
 
 /datum/client_preference/ghost_radio
-	description ="Ghost radio"
+	description ="Призрач. радио"
 	key = "CHAT_GHOSTRADIO"
-	enabled_description = "All Chatter"
-	disabled_description = "Nearby"
+	enabled_description = "Все разговоры"
+	disabled_description = "Рядом"
 
 /datum/client_preference/chat_tags
-	description ="Chat tags"
+	description ="Тэги в чате"
 	key = "CHAT_SHOWICONS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
+	enabled_description = "Показ."
+	disabled_description = "Скрыть"
 
 /datum/client_preference/air_pump_noise
-	description ="Air Pump Ambient Noise"
+	description ="Шум воздушного насоса"
 	key = "SOUND_AIRPUMP"
-	enabled_description = "Audible"
-	disabled_description = "Silent"
+	enabled_description = "Слышно"
+	disabled_description = "Тишина"
 
 /datum/client_preference/drop_sounds
-	description = "Dropped Item Sounds"
+	description = "Звуки упавшего предмета"
 	key = "SOUND_DROPPED"
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
+	enabled_description = "Вкл"
+	disabled_description = "Выкл"
 
 /datum/client_preference/mob_tooltips
-	description ="Mob tooltips"
+	description ="Подсказки для существ"
 	key = "MOB_TOOLTIPS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
+	enabled_description = "Показ."
+	disabled_description = "Скрыть"
 
 /datum/client_preference/inv_tooltips
-	description ="Inventory tooltips"
+	description ="Подсказки инвентаря"
 	key = "INV_TOOLTIPS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
+	enabled_description = "Показ."
+	disabled_description = "Скрыть"
 
 /datum/client_preference/attack_icons
-	description ="Attack icons"
+	description ="Иконки атаки "
 	key = "ATTACK_ICONS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
+	enabled_description = "Показ."
+	disabled_description = "Скрыть"
 
 /datum/client_preference/precision_placement
-	description ="Precision Placement"
+	description ="Точное Размещение"
 	key = "PRECISE_PLACEMENT"
-	enabled_description = "Active"
-	disabled_description = "Inactive"
+	enabled_description = "Вкл"
+	disabled_description = "Выкл"
 
 /datum/client_preference/hotkeys_default
-	description ="Hotkeys Default"
+	description ="Хоткеи по умолчанию"
 	key = "HUD_HOTKEYS"
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
+	enabled_description = "Вкл"
+	disabled_description = "Выкл"
 	enabled_by_default = FALSE // Backwards compatibility
 
 /datum/client_preference/show_typing_indicator
-	description ="Typing indicator"
+	description ="Индикатор печати"
 	key = "SHOW_TYPING"
-	enabled_description = "Show"
-	disabled_description = "Hide"
+	enabled_description = "Показ."
+	disabled_description = "Скрыть"
 
 /datum/client_preference/show_typing_indicator/toggled(var/mob/preference_mob, var/enabled)
 	if(!enabled)

@@ -107,11 +107,11 @@
 					log_and_message_admins("[key_name_admin(src)] attempted to devour [key_name_admin(G.affecting)] against their prefs ([G.affecting ? ADMIN_JMP(G.affecting) : "null"])")
 					return FALSE
 
-				if(feed_grabbed_to_self(src, G.affecting))
-					qdel(G)
-					return TRUE
-				else
-					log_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed.")
+				//if(feed_grabbed_to_self(src, G.affecting))
+				//	qdel(G)
+				//	return TRUE
+				//else
+				//	log_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed.")
 
 			///// If user clicked on their grabbed target
 			else if((src == G.affecting) && (attacker.a_intent == I_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
@@ -120,11 +120,11 @@
 					log_and_message_admins("[key_name_admin(src)] attempted to feed themselves to [key_name_admin(G.affecting)] against their prefs ([G.affecting ? ADMIN_JMP(G.affecting) : "null"])")
 					return FALSE
 
-				if(attacker.feed_self_to_grabbed(attacker, G.affecting))
-					qdel(G)
-					return TRUE
-				else
-					log_debug("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting ? G.affecting.type : "null"]) but it failed.")
+				//if(attacker.feed_self_to_grabbed(attacker, G.affecting))
+				//	qdel(G)
+				//	return TRUE
+				//else
+				//	log_debug("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting ? G.affecting.type : "null"]) but it failed.")
 
 			///// If user clicked on anyone else but their grabbed target
 			else if((src != G.affecting) && (src != G.assailant) && (is_vore_predator(src)))

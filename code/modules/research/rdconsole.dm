@@ -125,7 +125,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	//Loading a disk into it.
 	if(istype(D, /obj/item/weapon/disk))
 		if(t_disk || d_disk)
-			to_chat(user, "A disk is already loaded into the machine.")
+			to_chat(user, "Диск уже загружен в машину.")
 			return
 
 		if(istype(D, /obj/item/weapon/disk/tech_disk))
@@ -133,11 +133,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		else if (istype(D, /obj/item/weapon/disk/design_disk))
 			d_disk = D
 		else
-			to_chat(user, "<span class='notice'>Machine cannot accept disks in that format.</span>")
+			to_chat(user, "<span class='notice'>Машина не может принимать диски в этом формате.</span>")
 			return
 		user.drop_item()
 		D.loc = src
-		to_chat(user, "<span class='notice'>You add \the [D] to the machine.</span>")
+		to_chat(user, "<span class='notice'>Вы добавляете [D] в машину.</span>")
 	else
 		//The construction/deconstruction of the console code.
 		..()
@@ -149,7 +149,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	if(!emagged)
 		playsound(src, 'sound/effects/sparks4.ogg', 75, 1)
 		emagged = 1
-		to_chat(user, "<span class='notice'>You you disable the security protocols.</span>")
+		to_chat(user, "<span class='notice'>Вы отключаете протоколы безопасности.</span>")
 		return 1
 
 /obj/machinery/computer/rdconsole/Topic(href, href_list)
@@ -160,7 +160,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 	usr.set_machine(src)
 	if((screen < 1 || (screen == 1.6 && href_list["menu"] != "1.0")) && (!allowed(usr) && !emagged)) //Stops people from HREF exploiting out of the lock screen, but allow it if they have the access.
-		to_chat(usr, "Unauthorized Access")
+		to_chat(usr, "Не авторизованный доступ")
 		return
 
 	if(href_list["menu"]) //Switches menu screens. Converts a sent text string into a number. Saves a LOT of code.
@@ -168,7 +168,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		if(temp_screen <= 1.1 || (3 <= temp_screen && 4.9 >= temp_screen) || allowed(usr) || emagged) //Unless you are making something, you need access.
 			screen = temp_screen
 		else
-			to_chat(usr, "Unauthorized Access.")
+			to_chat(usr, "Не авторизованный доступ.")
 
 	else if(href_list["updt_tech"]) //Update the research holder with information from the technology disk.
 		screen = 0.0
@@ -219,7 +219,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	else if(href_list["eject_item"]) //Eject the item inside the destructive analyzer.
 		if(linked_destroy)
 			if(linked_destroy.busy)
-				to_chat(usr, "<span class='notice'>The destructive analyzer is busy at the moment.</span>")
+				to_chat(usr, "<span class='notice'>Деструктивный анализатор в данный момент занят.</span>")
 
 			else if(linked_destroy.loaded_item)
 				linked_destroy.loaded_item.loc = linked_destroy.loc
@@ -230,9 +230,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	else if(href_list["deconstruct"]) //Deconstruct the item in the destructive analyzer and update the research holder.
 		if(linked_destroy)
 			if(linked_destroy.busy)
-				to_chat(usr, "<span class='notice'>The destructive analyzer is busy at the moment.</span>")
+				to_chat(usr, "<span class='notice'>Деструктивный анализатор в данный момент занят.</span>")
 			else
-				if(alert("Proceeding will destroy loaded item. Continue?", "Destructive analyzer confirmation", "Yes", "No") == "No" || !linked_destroy)
+				if(alert("Продолжение уничтожит загруженный предмет. Продолжить?", "Destructive analyzer confirmation", "Да", "Нет") == "Нет" || !linked_destroy)
 					return
 				linked_destroy.busy = 1
 				screen = 0.1
@@ -242,7 +242,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					if(linked_destroy)
 						linked_destroy.busy = 0
 						if(!linked_destroy.loaded_item)
-							to_chat(usr, "<span class='notice'>The destructive analyzer appears to be empty.</span>")
+							to_chat(usr, "<span class='notice'>Деструктивный анализатор пуст.</span>")
 							screen = 1.0
 							return
 
@@ -278,12 +278,12 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		if(allowed(usr))
 			screen = text2num(href_list["lock"])
 		else
-			to_chat(usr, "Unauthorized Access.")
+			to_chat(usr, "Не авторизованный доступ.")
 
 	else if(href_list["sync"]) //Sync the research holder with all the R&D consoles in the game that aren't sync protected.
 		screen = 0.0
 		if(!sync)
-			to_chat(usr, "<span class='notice'>You must connect to the network first.</span>")
+			to_chat(usr, "<span class='notice'>Сначала вы должны подключиться к сети.</span>")
 		else
 			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(3 SECONDS)
@@ -336,7 +336,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		screen = 3.1
 
 	else if(href_list["protofilter"])
-		var/filterstring = input(usr, "Input a filter string, or blank to not filter:", "Design Filter", protofilter) as null|text
+		var/filterstring = input(usr, "Введите строку фильтра или оставьте пустым, чтобы не фильтровать:", "Design Filter", protofilter) as null|text
 		if(!Adjacent(usr))
 			return
 		if(isnull(filterstring)) //Clicked Cancel
@@ -346,7 +346,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		protofilter = sanitize(filterstring, 25)
 
 	else if(href_list["circuitfilter"])
-		var/filterstring = input(usr, "Input a filter string, or blank to not filter:", "Design Filter", circuitfilter) as null|text
+		var/filterstring = input(usr, "Введите строку фильтра или оставьте пустым, чтобы не фильтровать:", "Design Filter", circuitfilter) as null|text
 		if(!Adjacent(usr))
 			return
 		if(isnull(filterstring)) //Clicked Cancel
@@ -411,8 +411,8 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 	else if(href_list["reset"]) //Reset the R&D console's database.
 		griefProtection()
-		var/choice = alert("R&D Console Database Reset", "Are you sure you want to reset the R&D console's database? Data lost cannot be recovered.", "Continue", "Cancel")
-		if(choice == "Continue")
+		var/choice = alert("Сброс базы данных консоли R&D", "Вы уверены, что хотите сбросить базу данных консоли R&D? Потерянные данные не могут быть восстановлены.", "Продолжить", "Отмена")
+		if(choice == "Продолжить")
 			screen = 0.0
 			qdel(files)
 			files = new /datum/research(src)
@@ -424,10 +424,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		screen = 0.5
 		spawn(20)
 			var/obj/item/weapon/paper/PR = new/obj/item/weapon/paper
-			PR.name = "list of researched technologies"
-			PR.info = "<center><b>[station_name()] Science Laboratories</b>"
-			PR.info += "<h2>[ (text2num(href_list["print"]) == 2) ? "Detailed" : null] Research Progress Report</h2>"
-			PR.info += "<i>report prepared at [stationtime2text()] station time</i></center><br>"
+			PR.name = "список исследованных технологий"
+			PR.info = "<meta charset=\"utf-8\"><center><b>[station_name()] Научные лаборатории</b>"
+			PR.info += "<h2>[ (text2num(href_list["print"]) == 2) ? "Подробный" : null] отчет о проделанной работе</h2>"
+			PR.info += "<i>отчет составлен в [stationtime2text()] от времени станции</i></center><br>"
 			if(text2num(href_list["print"]) == 2)
 				PR.info += GetResearchListInfo()
 			else
@@ -444,15 +444,15 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 /obj/machinery/computer/rdconsole/proc/GetResearchLevelsInfo()
 	var/list/dat = list()
-	dat += "<UL>"
+	dat += "<meta charset=\"utf-8\"><UL>"
 	for(var/datum/tech/T in files.known_tech)
 		if(T.level < 1)
 			continue
 		dat += "<LI>"
 		dat += "[T.name]"
 		dat += "<UL>"
-		dat +=  "<LI>Level: [T.level]"
-		dat +=  "<LI>Summary: [T.desc]"
+		dat +=  "<LI>Уровень: [T.level]"
+		dat +=  "<LI>Сводка: [T.desc]"
 		dat += "</UL>"
 	return dat.Join()
 
@@ -491,186 +491,186 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 		//////////////////////R&D CONSOLE SCREENS//////////////////
 		if(0.0)
-			dat += "Updating Database..."
+			dat += "Обновление Базы Данных..."
 
 		if(0.1)
-			dat += "Processing and Updating Database..."
+			dat += "Обработка и обновление базы данных..."
 
 		if(0.2)
-			dat += "SYSTEM LOCKED<BR><BR>"
-			dat += "<A href='?src=\ref[src];lock=1.6'>Unlock</A>"
+			dat += "СИСТЕМА ЗАБЛОКИРОВАНА<BR><BR>"
+			dat += "<A href='?src=\ref[src];lock=1.6'>Разблокировать</A>"
 
 		if(0.3)
-			dat += "Constructing Prototype. Please Wait..."
+			dat += "Построение прототипа. Пожалуйста подождите..."
 
 		if(0.4)
-			dat += "Imprinting Circuit. Please Wait..."
+			dat += "Печать схемы. Пожалуйста подождите..."
 
 		if(0.5)
-			dat += "Printing Research Information. Please Wait..."
+			dat += "Печать исследовательской информации. Пожалуйста подождите..."
 
 		if(1.0) //Main Menu
-			dat += "Main Menu:<BR><BR>"
-			dat += "Loaded disk: "
-			dat += (t_disk || d_disk) ? (t_disk ? "technology storage disk" : "design storage disk") : "none"
+			dat += "Главное меню:<BR><BR>"
+			dat += "Загруженный диск: "
+			dat += (t_disk || d_disk) ? (t_disk ? "technology storage disk" : "design storage disk") : "нет"
 			dat += "<HR><UL>"
-			dat += "<LI><A href='?src=\ref[src];menu=1.1'>Current Research Levels</A>"
-			dat += "<LI><A href='?src=\ref[src];menu=5.0'>View Researched Technologies</A>"
+			dat += "<LI><A href='?src=\ref[src];menu=1.1'>Текущие Уровни Исследований</A>"
+			dat += "<LI><A href='?src=\ref[src];menu=5.0'>Просмотр Исследованных Технологий</A>"
 			if(t_disk)
-				dat += "<LI><A href='?src=\ref[src];menu=1.2'>Disk Operations</A>"
+				dat += "<LI><A href='?src=\ref[src];menu=1.2'>Дисковые операции</A>"
 			else if(d_disk)
-				dat += "<LI><A href='?src=\ref[src];menu=1.4'>Disk Operations</A>"
+				dat += "<LI><A href='?src=\ref[src];menu=1.4'>Дисковые операции</A>"
 			else
-				dat += "<LI><span class='linkOff'>Disk Operations</span>"
+				dat += "<LI><span class='linkOff'>Дисковые операции</span>"
 			if(linked_destroy)
-				dat += "<LI><A href='?src=\ref[src];menu=2.2'>Destructive Analyzer Menu</A>"
+				dat += "<LI><A href='?src=\ref[src];menu=2.2'>Меню Деструктивного Анализатора</A>"
 			if(linked_lathe)
-				dat += "<LI><A href='?src=\ref[src];menu=3.1'>Protolathe Construction Menu</A>"
+				dat += "<LI><A href='?src=\ref[src];menu=3.1'>Меню конструкций Протолата</A>"
 			if(linked_imprinter)
-				dat += "<LI><A href='?src=\ref[src];menu=4.1'>Circuit Construction Menu</A>"
-			dat += "<LI><A href='?src=\ref[src];menu=1.6'>Settings</A>"
+				dat += "<LI><A href='?src=\ref[src];menu=4.1'>Меню печати схем</A>"
+			dat += "<LI><A href='?src=\ref[src];menu=1.6'>Настройки</A>"
 			dat += "</UL>"
 
 		if(1.1) //Research viewer
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];print=1'>Print This Page</A><HR>"
-			dat += "Current Research Levels:<BR><BR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];print=1'>Печать страницы</A><HR>"
+			dat += "Текущие Уровни Исследований:<BR><BR>"
 			dat += GetResearchLevelsInfo()
 			dat += "</UL>"
 
 		if(1.2) //Technology Disk Menu
 
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "Disk Contents: (Technology Data Disk)<BR><BR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
+			dat += "Содержимое Диска: (Диск с технологическими данными)<BR><BR>"
 			if(t_disk.stored == null)
-				dat += "The disk has no data stored on it.<HR>"
-				dat += "Operations: "
-				dat += "<A href='?src=\ref[src];menu=1.3'>Load Tech to Disk</A> || "
+				dat += "На диске нет данных.<HR>"
+				dat += "Операции: "
+				dat += "<A href='?src=\ref[src];menu=1.3'>Загрузить технологию на диск</A> || "
 			else
-				dat += "Name: [t_disk.stored.name]<BR>"
-				dat += "Level: [t_disk.stored.level]<BR>"
-				dat += "Description: [t_disk.stored.desc]<HR>"
-				dat += "Operations: "
-				dat += "<A href='?src=\ref[src];updt_tech=1'>Upload to Database</A> || "
-				dat += "<A href='?src=\ref[src];clear_tech=1'>Clear Disk</A> || "
-			dat += "<A href='?src=\ref[src];eject_tech=1'>Eject Disk</A>"
+				dat += "Имя: [t_disk.stored.name]<BR>"
+				dat += "Уровень: [t_disk.stored.level]<BR>"
+				dat += "Пояснение: [t_disk.stored.desc]<HR>"
+				dat += "Операции: "
+				dat += "<A href='?src=\ref[src];updt_tech=1'>Загрузка в базу данных</A> || "
+				dat += "<A href='?src=\ref[src];clear_tech=1'>Очистить диск</A> || "
+			dat += "<A href='?src=\ref[src];eject_tech=1'>Извлечь диск</A>"
 
 		if(1.3) //Technology Disk submenu
-			dat += "<BR><A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=1.2'>Return to Disk Operations</A><HR>"
-			dat += "Load Technology to Disk:<BR><BR>"
+			dat += "<BR><A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=1.2'>Вернуться к дисковым операциям</A><HR>"
+			dat += "Загрузить технологию на диск:<BR><BR>"
 			dat += "<UL>"
 			for(var/datum/tech/T in files.known_tech)
 				dat += "<LI>[T.name] "
-				dat += "\[<A href='?src=\ref[src];copy_tech=1;copy_tech_ID=[T.id]'>copy to disk</A>\]"
+				dat += "\[<A href='?src=\ref[src];copy_tech=1;copy_tech_ID=[T.id]'>копирование на диск</A>\]"
 			dat += "</UL>"
 
 		if(1.4) //Design Disk menu.
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
 			if(d_disk.blueprint == null)
-				dat += "The disk has no data stored on it.<HR>"
-				dat += "Operations: "
-				dat += "<A href='?src=\ref[src];menu=1.5'>Load Design to Disk</A> || "
+				dat += "На диске нет никаких данных.<HR>"
+				dat += "Операции: "
+				dat += "<A href='?src=\ref[src];menu=1.5'>Загрузить конструкцию на диск</A> || "
 			else
-				dat += "Name: [d_disk.blueprint.name]<BR>"
+				dat += "Название: [d_disk.blueprint.name]<BR>"
 				switch(d_disk.blueprint.build_type)
-					if(IMPRINTER) dat += "Lathe Type: Circuit Imprinter<BR>"
-					if(PROTOLATHE) dat += "Lathe Type: Proto-lathe<BR>"
-				dat += "Required Materials:<BR>"
+					if(IMPRINTER) dat += "Тип станка: Аппарат печати схем<BR>"
+					if(PROTOLATHE) dat += "Тип станка: Протолат<BR>"
+				dat += "Требуемые материалы:<BR>"
 				for(var/M in d_disk.blueprint.materials)
 					if(copytext_char(M, 1, 2) == "$") dat += "* [copytext_char(M, 2)] x [d_disk.blueprint.materials[M]]<BR>"
 					else dat += "* [M] x [d_disk.blueprint.materials[M]]<BR>"
-				dat += "<HR>Operations: "
-				dat += "<A href='?src=\ref[src];updt_design=1'>Upload to Database</A> || "
-				dat += "<A href='?src=\ref[src];clear_design=1'>Clear Disk</A> || "
-			dat += "<A href='?src=\ref[src];eject_design=1'>Eject Disk</A>"
+				dat += "<HR>Операции: "
+				dat += "<A href='?src=\ref[src];updt_design=1'>Загрузить в БД</A> || "
+				dat += "<A href='?src=\ref[src];clear_design=1'>Очистить диск</A> || "
+			dat += "<A href='?src=\ref[src];eject_design=1'>Извлечь диск</A>"
 
 		if(1.5) //Technology disk submenu
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=1.4'>Return to Disk Operations</A><HR>"
-			dat += "Load Design to Disk:<BR><BR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=1.4'>Вернуться к дисковым операциям</A><HR>"
+			dat += "Загрузить конструкцию на диск:<BR><BR>"
 			dat += "<UL>"
 			for(var/datum/design/D in files.known_designs)
 				if(D.build_path)
 					dat += "<LI>[D.name] "
-					dat += "<A href='?src=\ref[src];copy_design=1;copy_design_ID=[D.id]'>\[copy to disk\]</A>"
+					dat += "<A href='?src=\ref[src];copy_design=1;copy_design_ID=[D.id]'>\[скопировать на диск\]</A>"
 			dat += "</UL>"
 
 		if(1.6) //R&D console settings
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
 			dat += "R&D Console Setting:<HR>"
 			dat += "<UL>"
 			if(sync)
-				dat += "<LI><A href='?src=\ref[src];sync=1'>Sync Database with Network</A><BR>"
-				dat += "<LI><A href='?src=\ref[src];togglesync=1'>Disconnect from Research Network</A><BR>"
+				dat += "<LI><A href='?src=\ref[src];sync=1'>Синхронизировать БД с сетью</A><BR>"
+				dat += "<LI><A href='?src=\ref[src];togglesync=1'>Отключиться от исследовательской сети</A><BR>"
 			else
-				dat += "<LI><A href='?src=\ref[src];togglesync=1'>Connect to Research Network</A><BR>"
-			dat += "<LI><A href='?src=\ref[src];menu=1.7'>Device Linkage Menu</A><BR>"
-			dat += "<LI><A href='?src=\ref[src];lock=0.2'>Lock Console</A><BR>"
-			dat += "<LI><A href='?src=\ref[src];reset=1'>Reset R&D Database</A><BR>"
+				dat += "<LI><A href='?src=\ref[src];togglesync=1'>Подключиться от исследовательской сети</A><BR>"
+			dat += "<LI><A href='?src=\ref[src];menu=1.7'>Меню устройства связи</A><BR>"
+			dat += "<LI><A href='?src=\ref[src];lock=0.2'>Блокировка консоли</A><BR>"
+			dat += "<LI><A href='?src=\ref[src];reset=1'>Сброс БД R&D</A><BR>"
 			dat += "<UL>"
 
 		if(1.7) //R&D device linkage
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=1.6'>Settings Menu</A><HR>"
-			dat += "R&D Console Device Linkage Menu:<BR><BR>"
-			dat += "<A href='?src=\ref[src];find_device=1'>Re-sync with Nearby Devices</A><HR>"
-			dat += "Linked Devices:"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=1.6'>Настройки</A><HR>"
+			dat += "R&D Меню привязки консольного устройства:<BR><BR>"
+			dat += "<A href='?src=\ref[src];find_device=1'>Повторная синхронизация с соседними устройствами</A><HR>"
+			dat += "Связанные устройства:"
 			dat += "<UL>"
 			if(linked_destroy)
-				dat += "<LI>Destructive Analyzer <A href='?src=\ref[src];disconnect=destroy'>(Disconnect)</A>"
+				dat += "<LI>Деструктивный анализатор <A href='?src=\ref[src];disconnect=destroy'>(Отключен)</A>"
 			else
-				dat += "<LI>(No Destructive Analyzer Linked)"
+				dat += "<LI>(Нет связанного Деструктивного анализатора)"
 			if(linked_lathe)
-				dat += "<LI>Protolathe <A href='?src=\ref[src];disconnect=lathe'>(Disconnect)</A>"
+				dat += "<LI>Протолат <A href='?src=\ref[src];disconnect=lathe'>(Отключен)</A>"
 			else
-				dat += "<LI>(No Protolathe Linked)"
+				dat += "<LI>(Нет связанного Протолата)"
 			if(linked_imprinter)
-				dat += "<LI>Circuit Imprinter <A href='?src=\ref[src];disconnect=imprinter'>(Disconnect)</A>"
+				dat += "<LI>Аппарат печати схем <A href='?src=\ref[src];disconnect=imprinter'>(Отключен)</A>"
 			else
-				dat += "<LI>(No Circuit Imprinter Linked)"
+				dat += "<LI>(Нет связанного Аппарата печати схем)"
 			dat += "</UL>"
 
 		////////////////////DESTRUCTIVE ANALYZER SCREENS////////////////////////////
 		if(2.0)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "NO DESTRUCTIVE ANALYZER LINKED TO CONSOLE<BR><BR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
+			dat += "ДЕСТРУКТИВНЫЙ АНАЛИЗАТОР НЕ СВЯЗАН С КОНСОЛЬЮ<BR><BR>"
 
 		if(2.1)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "No Item Loaded. Standing-by...<BR><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
+			dat += "Предмет не загружен. Ожидайте...<BR><HR>"
 
 		if(2.2)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "Deconstruction Menu<HR>"
-			dat += "Name: [linked_destroy.loaded_item.name]<BR>"
-			dat += "Origin Tech:"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
+			dat += "Меню деконструкции<HR>"
+			dat += "Название: [linked_destroy.loaded_item.name]<BR>"
+			dat += "Исходник:"
 			dat += "<UL>"
 			for(var/T in linked_destroy.loaded_item.origin_tech)
 				dat += "<LI>[CallTechName(T)] [linked_destroy.loaded_item.origin_tech[T]]"
 				for(var/datum/tech/F in files.known_tech)
 					if(F.name == CallTechName(T))
-						dat += " (Current: [F.level])"
+						dat += " (Текущий: [F.level])"
 						break
 			dat += "</UL>"
-			dat += "<HR><A href='?src=\ref[src];deconstruct=1'>Deconstruct Item</A> || "
-			dat += "<A href='?src=\ref[src];eject_item=1'>Eject Item</A> || "
+			dat += "<HR><A href='?src=\ref[src];deconstruct=1'>Деконструировать</A> || "
+			dat += "<A href='?src=\ref[src];eject_item=1'>Извлечь предмет</A> || "
 
 		/////////////////////PROTOLATHE SCREENS/////////////////////////
 		if(3.0)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "NO PROTOLATHE LINKED TO CONSOLE<BR><BR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
+			dat += "ПРОТОЛАТ НЕ СВЯЗАН С КОНСОЛЬЮ<BR><BR>"
 
 		if(3.1)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.4'>View Queue</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.2'>Material Storage</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.3'>Chemical Storage</A><HR>"
-			dat += "Protolathe Menu:<BR><BR>"
-			dat += "<B>Material Amount:</B> [linked_lathe.TotalMaterials()] cm<sup>3</sup> (MAX: [linked_lathe.max_material_storage])<BR>"
-			dat += "<B>Chemical Volume:</B> [linked_lathe.reagents.total_volume] (MAX: [linked_lathe.reagents.maximum_volume])<HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=3.4'>Просмотр очереди</A> || "
+			dat += "<A href='?src=\ref[src];menu=3.2'>Хранилище материалов</A> || "
+			dat += "<A href='?src=\ref[src];menu=3.3'>Хранилище химикатов</A><HR>"
+			dat += "Меню Протолата:<BR><BR>"
+			dat += "<B>Кол-во материалов:</B> [linked_lathe.TotalMaterials()] cm<sup>3</sup> (MAX: [linked_lathe.max_material_storage])<BR>"
+			dat += "<B>Кол-во химикатов:</B> [linked_lathe.reagents.total_volume] (MAX: [linked_lathe.reagents.maximum_volume])<HR>"
 			dat += "<UL>"
-			dat += "<B>Filter:</B> <A href='?src=\ref[src];protofilter=1'>[protofilter ? protofilter : "None Set"]</A>"
+			dat += "<B>Фильтр:</B> <A href='?src=\ref[src];protofilter=1'>[protofilter ? protofilter : "None Set"]</A>"
 			for(var/datum/design/D in files.known_designs)
 				if(!D.build_path || !(D.build_type & PROTOLATHE))
 					continue
@@ -690,9 +690,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			dat += "</UL>"
 
 		if(3.2) //Protolathe Material Storage Sub-menu
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.1'>Protolathe Menu</A><HR>"
-			dat += "Material Storage<BR><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=3.1'>Меню Протолата</A><HR>"
+			dat += "Хранилище материалов<BR><HR>"
 			dat += "<UL>"
 			for(var/M in linked_lathe.materials)
 				var/amount = linked_lathe.materials[M]
@@ -705,31 +705,31 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					continue
 				dat += "<LI><B>[capitalize(M)]</B>: [amount] cm<sup>3</sup>"
 				if(amount >= SHEET_MATERIAL_AMOUNT)
-					dat += " || Eject "
+					dat += " || Извлечь "
 					for (var/C in list(1, 3, 5, 10, 15, 20, 25, 30, 40))
 						if(amount < C * SHEET_MATERIAL_AMOUNT)
 							break
 						dat += "[C > 1 ? ", " : ""]<A href='?src=\ref[src];lathe_ejectsheet=[M];amount=[C]'>[C]</A> "
 
-					dat += " or <A href='?src=\ref[src];lathe_ejectsheet=[M];amount=50'>max</A> sheets"
+					dat += " or <A href='?src=\ref[src];lathe_ejectsheet=[M];amount=50'>макс</A> sheets"
 				dat += ""
 			dat += "</UL>"
 
 		if(3.3) //Protolathe Chemical Storage Submenu
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.1'>Protolathe Menu</A><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=3.1'>Меню Протолата</A><HR>"
 			dat += "Chemical Storage:<BR><HR>"
 			for(var/datum/reagent/R in linked_lathe.reagents.reagent_list)
-				dat += "Name: [R.name] | Units: [R.volume] "
-				dat += "<A href='?src=\ref[src];disposeP=[R.id]'>(Purge)</A><BR>"
-				dat += "<A href='?src=\ref[src];disposeallP=1'><U>Disposal All Chemicals in Storage</U></A><BR>"
+				dat += "Название: [R.name] | Кол-во: [R.volume] "
+				dat += "<A href='?src=\ref[src];disposeP=[R.id]'>(Очистка)</A><BR>"
+				dat += "<A href='?src=\ref[src];disposeallP=1'><U>Утилизировать все химикаты</U></A><BR>"
 
 		if(3.4) // Protolathe queue
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=3.1'>Protolathe Menu</A><HR>"
-			dat += "Protolathe Construction Queue:<BR><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=3.1'>Меню Протолата</A><HR>"
+			dat += "Очередь Протолата:<BR><HR>"
 			if(!linked_lathe.queue.len)
-				dat += "Empty"
+				dat += "Пусто"
 			else
 				var/tmp = 1
 				for(var/datum/design/D in linked_lathe.queue)
@@ -737,26 +737,26 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 						if(linked_lathe.busy)
 							dat += "<B>1: [D.name]</B><BR>"
 						else
-							dat += "<B>1: [D.name]</B> (Awaiting materials) <A href='?src=\ref[src];removeP=[tmp]'>(Remove)</A><BR>"
+							dat += "<B>1: [D.name]</B> (Необх. материалы) <A href='?src=\ref[src];removeP=[tmp]'>(Удалить)</A><BR>"
 					else
-						dat += "[tmp]: [D.name] <A href='?src=\ref[src];removeP=[tmp]'>(Remove)</A><BR>"
+						dat += "[tmp]: [D.name] <A href='?src=\ref[src];removeP=[tmp]'>(Удалить)</A><BR>"
 					++tmp
 
 		///////////////////CIRCUIT IMPRINTER SCREENS////////////////////
 		if(4.0)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "NO CIRCUIT IMPRINTER LINKED TO CONSOLE<BR><BR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A><HR>"
+			dat += "АППАРАТ ПЕЧАТИ СХЕМ НЕ СВЯЗАН С КОНСОЛЬЮ<BR><BR>"
 
 		if(4.1)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=4.4'>View Queue</A> || "
-			dat += "<A href='?src=\ref[src];menu=4.3'>Material Storage</A> || "
-			dat += "<A href='?src=\ref[src];menu=4.2'>Chemical Storage</A><HR>"
-			dat += "Circuit Imprinter Menu:<BR><BR>"
-			dat += "Material Amount: [linked_imprinter.TotalMaterials()] cm<sup>3</sup><BR>"
-			dat += "Chemical Volume: [linked_imprinter.reagents.total_volume]<HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=4.4'>Просмотреть очередь</A> || "
+			dat += "<A href='?src=\ref[src];menu=4.3'>Хранилище материалов</A> || "
+			dat += "<A href='?src=\ref[src];menu=4.2'>Хранилище химикатов</A><HR>"
+			dat += "Меню печати схем:<BR><BR>"
+			dat += "Кол-во материалов: [linked_imprinter.TotalMaterials()] cm<sup>3</sup><BR>"
+			dat += "Кол-во химикатов: [linked_imprinter.reagents.total_volume]<HR>"
 			dat += "<UL>"
-			dat += "<B>Filter:</B> <A href='?src=\ref[src];circuitfilter=1'>[circuitfilter ? circuitfilter : "None Set"]</A>"
+			dat += "<B>Фильтр:</B> <A href='?src=\ref[src];circuitfilter=1'>[circuitfilter ? circuitfilter : "Не установлен"]</A>"
 			for(var/datum/design/D in files.known_designs)
 				if(!D.build_path || !(D.build_type & IMPRINTER))
 					continue
@@ -776,18 +776,18 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			dat += "</UL>"
 
 		if(4.2)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=4.1'>Imprinter Menu</A><HR>"
-			dat += "Chemical Storage<BR><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=4.1'>Меню печати схем</A><HR>"
+			dat += "Хранилище химикатов<BR><HR>"
 			for(var/datum/reagent/R in linked_imprinter.reagents.reagent_list)
-				dat += "Name: [R.name] | Units: [R.volume] "
-				dat += "<A href='?src=\ref[src];disposeI=[R.id]'>(Purge)</A><BR>"
-				dat += "<A href='?src=\ref[src];disposeallI=1'><U>Disposal All Chemicals in Storage</U></A><BR>"
+				dat += "Название: [R.name] | Кол-во: [R.volume] "
+				dat += "<A href='?src=\ref[src];disposeI=[R.id]'>(Очистка)</A><BR>"
+				dat += "<A href='?src=\ref[src];disposeallI=1'><U>Утилизировать все химикаты</U></A><BR>"
 
 		if(4.3)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=4.1'>Circuit Imprinter Menu</A><HR>"
-			dat += "Material Storage<BR><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=4.1'>Меню печати плат</A><HR>"
+			dat += "Хранилище материала<BR><HR>"
 			dat += "<UL>"
 			for(var/M in linked_imprinter.materials)
 				var/amount = linked_imprinter.materials[M]
@@ -800,19 +800,19 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					continue
 				dat += "<LI><B>[capitalize(M)]</B>: [amount] cm<sup>3</sup>"
 				if(amount >= SHEET_MATERIAL_AMOUNT)
-					dat += " || Eject: "
+					dat += " || Извлечь: "
 					for (var/C in list(1, 3, 5, 10, 15, 20, 25, 30, 40))
 						if(amount < C * SHEET_MATERIAL_AMOUNT)
 							break
 						dat += "[C > 1 ? ", " : ""]<A href='?src=\ref[src];imprinter_ejectsheet=[M];amount=[C]'>[C]</A> "
 
-					dat += " or <A href='?src=\ref[src];imprinter_ejectsheet=[M];amount=50'>max</A> sheets"
+					dat += " or <A href='?src=\ref[src];imprinter_ejectsheet=[M];amount=50'>макс</A> sheets"
 				dat += ""
 			dat += "</UL>"
 
 		if(4.4)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];menu=4.1'>Circuit Imprinter Menu</A><HR>"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];menu=4.1'>Меню печати плат</A><HR>"
 			dat += "Queue<BR><HR>"
 			if(linked_imprinter.queue.len == 0)
 				dat += "Empty"
@@ -822,14 +822,14 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					if(tmp == 1)
 						dat += "<B>1: [D.name]</B><BR>"
 					else
-						dat += "[tmp]: [D.name] <A href='?src=\ref[src];removeI=[tmp]'>(Remove)</A><BR>"
+						dat += "[tmp]: [D.name] <A href='?src=\ref[src];removeI=[tmp]'>(Удалить)</A><BR>"
 					++tmp
 
 		///////////////////Research Information Browser////////////////////
 		if(5.0)
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A> || "
-			dat += "<A href='?src=\ref[src];print=2'>Print This Page</A><HR>"
-			dat += "List of Researched Technologies and Designs:"
+			dat += "<A href='?src=\ref[src];menu=1.0'>Главное меню</A> || "
+			dat += "<A href='?src=\ref[src];print=2'>Печать страницы</A><HR>"
+			dat += "Перечень исследованных технологий и конструкций:"
 			dat += GetResearchListInfo()
 
 	dat = jointext(dat, null)

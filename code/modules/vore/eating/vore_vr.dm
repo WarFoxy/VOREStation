@@ -43,15 +43,15 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 
 /datum/vore_preferences
 	//Actual preferences
-	var/digestable = TRUE
-	var/devourable = TRUE
-	var/feeding = TRUE
+	var/digestable = FALSE
+	var/devourable = FALSE
+	var/feeding = FALSE
 	var/absorbable = TRUE	//TFF 14/12/19 - choose whether allowing absorbing
 	var/digest_leave_remains = FALSE
-	var/allowmobvore = TRUE
+	var/allowmobvore = FALSE
 	var/list/belly_prefs = list()
 	var/vore_taste = "nothing in particular"
-	var/permit_healbelly = TRUE
+	var/permit_healbelly = FALSE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = FALSE
 

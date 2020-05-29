@@ -45,6 +45,7 @@ var/list/flooring_types
 	var/can_paint
 	var/list/footstep_sounds = list() // key=species name, value = list of sounds, 
 									  // For instance, footstep_sounds = list("key" = list(sound.ogg))
+	var/is_plating = FALSE
 
 /decl/flooring/grass
 	name = "grass"
@@ -53,7 +54,7 @@ var/list/flooring_types
 	icon_base = "grass"
 	has_base_range = 1
 	damage_temperature = T0C+80
-	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_SHOVEL
 	build_type = /obj/item/stack/tile/grass
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/grass1.ogg',

@@ -25,7 +25,7 @@
 	if(!can_climb(user))
 		return
 
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[user] начинает подниматься на [src]!</span>")
 	climbers |= user
 
 	if(!do_after(user,(issmall(user) ? 20 : 34)))
@@ -41,7 +41,7 @@
 	else
 		usr.forceMove(get_turf(src))
 
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[user] перелезает через [src]!</span>")
 	climbers -= user
 
 /obj/structure/fitness/boxing_ropes/can_climb(var/mob/living/user, post_climb_check=0) //Sets it to keep people from climbing over into the next turf if it is occupied.
@@ -83,7 +83,7 @@
 	if(!can_climb(user))
 		return
 
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[user] начинает подниматься на [src]!</span>")
 	climbers |= user
 
 	if(!do_after(user,(issmall(user) ? 20 : 34)))
@@ -99,7 +99,7 @@
 	else
 		usr.forceMove(get_turf(src))
 
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[user] перелезает через [src]!</span>")
 	climbers -= user
 
 /obj/structure/fitness/boxing_ropes_bottom/can_climb(var/mob/living/user, post_climb_check=0)
@@ -142,7 +142,7 @@
 	if(!can_climb(user))
 		return
 
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[user] начинает подниматься на [src]!</span>")
 	climbers |= user
 
 	if(!do_after(user,(issmall(user) ? 20 : 34)))
@@ -158,7 +158,7 @@
 	else
 		usr.forceMove(get_turf(src))
 
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
+	usr.visible_message("<span class='warning'>[user] перелезает через [src]!</span>")
 	climbers -= user
 
 /obj/structure/fitness/boxing_turnbuckle/can_climb(var/mob/living/user, post_climb_check=0)

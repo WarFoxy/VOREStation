@@ -16,7 +16,7 @@ log transactions
 
 /obj/machinery/atm
 	name = "Automatic Teller Machine"
-	desc = "For all your monetary needs!"
+	desc = "Для всех ваших денежных потребностей!"
 	icon = 'icons/obj/terminals_vr.dmi' //VOREStation Edit
 	icon_state = "atm"
 	anchored = 1
@@ -75,7 +75,7 @@ log transactions
 	release_held_id(user)
 
 	//display a message to the user
-	var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
+	var/response = pick("Инициирование выдачи. Хорошего дня!", "CRITICAL ERROR: Activating cash chamber panic siphon.","ПИН-код принят! Очистка баланса аккаунта.", "Джепот!")
 	to_chat(user, "<span class='warning'>[bicon(src)] The [src] beeps: \"[response]\"</span>")
 	return 1
 
@@ -85,7 +85,7 @@ log transactions
 	if(istype(I, /obj/item/weapon/card))
 		if(emagged > 0)
 			//prevent inserting id into an emagged ATM
-			to_chat(user, "<font color='red'>[bicon(src)] CARD READER ERROR. This system has been compromised!</font>")
+			to_chat(user, "<font color='red'>[bicon(src)] ОШИБКА СЧИТЫВАТЕЛЯ КАРТЫ. Эта система была взломана!</font>")
 			return
 		else if(istype(I,/obj/item/weapon/card/emag))
 			I.resolve_attackby(src, user)
@@ -117,7 +117,7 @@ log transactions
 			T.time = stationtime2text()
 			authenticated_account.transaction_log.Add(T)
 
-			to_chat(user, "<span class='info'>You insert [I] into [src].</span>")
+			to_chat(user, "<span class='info'>Вы вставляете [I] в [src].</span>")
 			src.attack_hand(user)
 			qdel(I)
 	else
@@ -125,53 +125,53 @@ log transactions
 
 /obj/machinery/atm/attack_hand(mob/user as mob)
 	if(istype(user, /mob/living/silicon))
-		to_chat (user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")
+		to_chat (user, "<span class='warning'>Брандмауэр не позволяет вам взаимодействовать с этим устройством!</span>")
 		return
 	if(get_dist(src,user) <= 1)
 
 		//js replicated from obj/machinery/computer/card
-		var/dat = "<h1>Automatic Teller Machine</h1>"
-		dat += "For all your monetary needs!<br>"
-		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting IT Support</i><br/>"
+		var/dat = "<meta charset=\"utf-8\"><h1>Банкомат</h1>"
+		dat += "Для всех ваших денежных потребностей!<br>"
+		dat += "<i>Это терминал:</i> [machine_id]. <i>Сообщите этот код при обращении в службу поддержки</i><br/>"
 
 		if(emagged > 0)
-			dat += "Card: <span style='color: red;'>LOCKED</span><br><br><span style='color: red;'>Unauthorized terminal access detected! This ATM has been locked. Please contact IT Support.</span>"
+			dat += "Карта: <span style='color: red;'>БЛОК</span><br><br><span style='color: red;'>Обнаружен несанкционированный доступ к терминалу! Этот банкомат был заблокирован. Пожалуйста, свяжитесь с ИТ-поддержкой.</span>"
 		else
-			dat += "Card: <a href='?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br>"
+			dat += "Карта: <a href='?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br>"
 
 			if(ticks_left_locked_down > 0)
-				dat += "<span class='alert'>Maximum number of pin attempts exceeded! Access to this ATM has been temporarily disabled.</span>"
+				dat += "<span class='alert'>Превышено максимальное количество попыток ввода пин-кода! Доступ к этому банкомату был временно отключен.</span>"
 			else if(authenticated_account)
 				if(authenticated_account.suspended)
-					dat += "<font color='red'><b>Access to this account has been suspended, and the funds within frozen.</b></font>"
+					dat += "<font color='red'><b>Доступ к этому аккаунту был приостановлен, а средства заморожены.</b></font>"
 				else
 					switch(view_screen)
 						if(CHANGE_SECURITY_LEVEL)
-							dat += "Select a new security level for this account:<br><hr>"
-							var/text = "Zero - Either the account number or card is required to access this account. EFTPOS transactions will require a card and ask for a pin, but not verify the pin is correct."
+							dat += "Выберите новый уровень безопасности для этого аккаута:<br><hr>"
+							var/text = "Ноль - для доступа к этому аккаунту требуется либо номер счета, либо карта. Для транзакций EFTPOS потребуется карта и ввод пин-кода, но не для проверки правильности пин-кода."
 							if(authenticated_account.security_level != 0)
 								text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=0'>[text]</a>"
 							dat += "[text]<hr>"
-							text = "One - An account number and pin must be manually entered to access this account and process transactions."
+							text = "Первый - номер счета и пин-код должны быть введены вручную для доступа к этому аккауту и обработки транзакций."
 							if(authenticated_account.security_level != 1)
 								text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=1'>[text]</a>"
 							dat += "[text]<hr>"
-							text = "Two - In addition to account number and pin, a card is required to access this account and process transactions."
+							text = "Второй - В дополнение к номеру счета и пин-коду, для доступа к аккауту и обработки транзакций требуется карта."
 							if(authenticated_account.security_level != 2)
 								text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=2'>[text]</a>"
 							dat += "[text]<hr><br>"
 							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a>"
 						if(VIEW_TRANSACTION_LOGS)
-							dat += "<b>Transaction logs</b><br>"
+							dat += "<b>Журналы транзакций</b><br>"
 							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a>"
 							dat += "<table border=1 style='width:100%'>"
 							dat += "<tr>"
-							dat += "<td><b>Date</b></td>"
-							dat += "<td><b>Time</b></td>"
-							dat += "<td><b>Target</b></td>"
-							dat += "<td><b>Purpose</b></td>"
-							dat += "<td><b>Value</b></td>"
-							dat += "<td><b>Source terminal ID</b></td>"
+							dat += "<td><b>Дата</b></td>"
+							dat += "<td><b>Время</b></td>"
+							dat += "<td><b>Цель</b></td>"
+							dat += "<td><b>Задача</b></td>"
+							dat += "<td><b>Количество</b></td>"
+							dat += "<td><b>ID Терминала</b></td>"
 							dat += "</tr>"
 							for(var/datum/transaction/T in authenticated_account.transaction_log)
 								dat += "<tr>"
@@ -183,38 +183,38 @@ log transactions
 								dat += "<td>[T.source_terminal]</td>"
 								dat += "</tr>"
 							dat += "</table>"
-							dat += "<A href='?src=\ref[src];choice=print_transaction'>Print</a><br>"
+							dat += "<A href='?src=\ref[src];choice=print_transaction'>Печать</a><br>"
 						if(TRANSFER_FUNDS)
-							dat += "<b>Account balance:</b> $[authenticated_account.money]<br>"
-							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a><br><br>"
+							dat += "<b>Баланс:</b> $[authenticated_account.money]<br>"
+							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Назад</a><br><br>"
 							dat += "<form name='transfer' action='?src=\ref[src]' method='get'>"
 							dat += "<input type='hidden' name='src' value='\ref[src]'>"
 							dat += "<input type='hidden' name='choice' value='transfer'>"
-							dat += "Target account number: <input type='text' name='target_acc_number' value='' style='width:200px; background-color:white;'><br>"
-							dat += "Funds to transfer: <input type='text' name='funds_amount' value='' style='width:200px; background-color:white;'><br>"
-							dat += "Transaction purpose: <input type='text' name='purpose' value='Funds transfer' style='width:200px; background-color:white;'><br>"
-							dat += "<input type='submit' value='Transfer funds'><br>"
+							dat += "Номер счета для перевода: <input type='text' name='target_acc_number' value='' style='width:200px; background-color:white;'><br>"
+							dat += "Количество для перевода: <input type='text' name='funds_amount' value='' style='width:200px; background-color:white;'><br>"
+							dat += "Цель сделки: <input type='text' name='purpose' value='Перевод средств' style='width:200px; background-color:white;'><br>"
+							dat += "<input type='submit' value='Перевод средств'><br>"
 							dat += "</form>"
 						else
-							dat += "Welcome, <b>[authenticated_account.owner_name].</b><br/>"
-							dat += "<b>Account balance:</b> $[authenticated_account.money]"
+							dat += "Приветствуем, <b>[authenticated_account.owner_name].</b><br/>"
+							dat += "<b>Баланс:</b> $[authenticated_account.money]"
 							dat += "<form name='withdrawal' action='?src=\ref[src]' method='get'>"
 							dat += "<input type='hidden' name='src' value='\ref[src]'>"
-							dat += "<input type='radio' name='choice' value='withdrawal' checked> Cash  <input type='radio' name='choice' value='e_withdrawal'> Chargecard<br>"
-							dat += "<input type='text' name='funds_amount' value='' style='width:200px; background-color:white;'><input type='submit' value='Withdraw'>"
+							dat += "<input type='radio' name='choice' value='withdrawal' checked> Наличка  <input type='radio' name='choice' value='e_withdrawal'> Карточка<br>"
+							dat += "<input type='text' name='funds_amount' value='' style='width:200px; background-color:white;'><input type='submit' value='Выдать'>"
 							dat += "</form>"
-							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=1'>Change account security level</a><br>"
-							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=2'>Make transfer</a><br>"
-							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=3'>View transaction log</a><br>"
-							dat += "<A href='?src=\ref[src];choice=balance_statement'>Print balance statement</a><br>"
-							dat += "<A href='?src=\ref[src];choice=logout'>Logout</a><br>"
+							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=1'>Изменить уровень безопасности</a><br>"
+							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=2'>Совершить перевод</a><br>"
+							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=3'>Посмотреть журнал транзакций</a><br>"
+							dat += "<A href='?src=\ref[src];choice=balance_statement'>Распечатать информацию о счете</a><br>"
+							dat += "<A href='?src=\ref[src];choice=logout'>Выйти</a><br>"
 			else
 				dat += "<form name='atm_auth' action='?src=\ref[src]' method='get'>"
 				dat += "<input type='hidden' name='src' value='\ref[src]'>"
 				dat += "<input type='hidden' name='choice' value='attempt_auth'>"
-				dat += "<b>Account:</b> <input type='text' id='account_num' name='account_num' style='width:250px; background-color:white;'><br>"
-				dat += "<b>PIN:</b> <input type='text' id='account_pin' name='account_pin' style='width:250px; background-color:white;'><br>"
-				dat += "<input type='submit' value='Submit'><br>"
+				dat += "<b>Аккаунт:</b> <input type='text' id='account_num' name='account_num' style='width:250px; background-color:white;'><br>"
+				dat += "<b>ПИН:</b> <input type='text' id='account_pin' name='account_pin' style='width:250px; background-color:white;'><br>"
+				dat += "<input type='submit' value='Подтвердить'><br>"
 				dat += "</form>"
 
 		user << browse(dat,"window=atm;size=550x650")
@@ -229,12 +229,12 @@ log transactions
 					var/transfer_amount = text2num(href_list["funds_amount"])
 					transfer_amount = round(transfer_amount, 0.01)
 					if(transfer_amount <= 0)
-						alert("That is not a valid amount.")
+						alert("Это не действительная сумма.")
 					else if(transfer_amount <= authenticated_account.money)
 						var/target_account_number = text2num(href_list["target_acc_number"])
 						var/transfer_purpose = href_list["purpose"]
 						if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
-							to_chat(usr, "[bicon(src)]<span class='info'>Funds transfer successful.</span>")
+							to_chat(usr, "[bicon(src)]<span class='info'>Средства успешно отправлены.</span>")
 							authenticated_account.money -= transfer_amount
 
 							//create an entry in the account transaction log
@@ -247,10 +247,10 @@ log transactions
 							T.amount = "([transfer_amount])"
 							authenticated_account.transaction_log.Add(T)
 						else
-							to_chat(usr, "[bicon(src)]<span class='warning'>Funds transfer failed.</span>")
+							to_chat(usr, "[bicon(src)]<span class='warning'>Ошибка отправки средств.</span>")
 
 					else
-						to_chat(usr, "[bicon(src)]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[bicon(src)]<span class='warning'>У вас недостаточно средств для этого!</span>")
 			if("view_screen")
 				view_screen = text2num(href_list["view_screen"])
 			if("change_security_level")
@@ -288,11 +288,11 @@ log transactions
 									T.time = stationtime2text()
 									failed_account.transaction_log.Add(T)
 							else
-								to_chat(usr, "<font color='red'>[bicon(src)] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining.</font>")
+								to_chat(usr, "<font color='red'>[bicon(src)] Введена неправильная комбинация пин-код/аккаунт, осталось попыток [max_pin_attempts - number_incorrect_tries].</font>")
 								previous_account_number = tried_account_num
 								playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 						else
-							to_chat(usr, "<font color='red'>[bicon(src)] incorrect pin/account combination entered.</font>")
+							to_chat(usr, "<font color='red'>[bicon(src)] введена неправильная комбинация пин-код/аккаунт.</font>")
 							number_incorrect_tries = 0
 					else
 						playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
@@ -308,14 +308,14 @@ log transactions
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, "<font color='blue'>[bicon(src)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
+						to_chat(usr, "<font color='blue'>[bicon(src)] Доступ разрешен. Добро пожаловать, '[authenticated_account.owner_name].</font>'")
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
 				if(amount <= 0)
-					alert("That is not a valid amount.")
+					alert("Это не действительная сумма.")
 				else if(authenticated_account && amount > 0)
 					if(amount <= authenticated_account.money)
 						playsound(src, 'sound/machines/chime.ogg', 50, 1)
@@ -336,12 +336,12 @@ log transactions
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "[bicon(src)]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[bicon(src)]<span class='warning'>У вас недостаточно средств для этого!</span>")
 			if("withdrawal")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
 				if(amount <= 0)
-					alert("That is not a valid amount.")
+					alert("Это не действительная сумма.")
 				else if(authenticated_account && amount > 0)
 					if(amount <= authenticated_account.money)
 						playsound(src, 'sound/machines/chime.ogg', 50, 1)
@@ -361,17 +361,17 @@ log transactions
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "[bicon(src)]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[bicon(src)]<span class='warning'>У вас недостаточно средств для этого!</span>")
 			if("balance_statement")
 				if(authenticated_account)
 					var/obj/item/weapon/paper/R = new(src.loc)
-					R.name = "Account balance: [authenticated_account.owner_name]"
-					R.info = "<b>NT Automated Teller Account Statement</b><br><br>"
-					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
-					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Balance:</i> $[authenticated_account.money]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
-					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
+					R.name = "<meta charset=\"utf-8\">Баланс: [authenticated_account.owner_name]"
+					R.info = "<meta charset=\"utf-8\"><b>Выписка по счету автоматизированной касcы NT</b><br><br>"
+					R.info += "<i>Владелец:</i> [authenticated_account.owner_name]<br>"
+					R.info += "<i>Номер счета:</i> [authenticated_account.account_number]<br>"
+					R.info += "<i>Баланс:</i> $[authenticated_account.money]<br>"
+					R.info += "<i>Дата и время:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>ID Терминала:</i> [machine_id]<br>"
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
@@ -380,7 +380,7 @@ log transactions
 						R.stamped = new
 					R.stamped += /obj/item/weapon/stamp
 					R.overlays += stampoverlay
-					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
+					R.stamps += "<HR><i>Этот документ был напечатан автоматизированной кассой NT.</i>"
 
 				if(prob(50))
 					playsound(src, 'sound/items/polaroid1.ogg', 50, 1)
@@ -389,23 +389,23 @@ log transactions
 			if ("print_transaction")
 				if(authenticated_account)
 					var/obj/item/weapon/paper/R = new(src.loc)
-					R.name = "Transaction logs: [authenticated_account.owner_name]"
-					R.info = "<b>Transaction logs</b><br>"
-					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
-					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
-					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
+					R.name = "<meta charset=\"utf-8\">Журналы транзакций: [authenticated_account.owner_name]"
+					R.info = "<meta charset=\"utf-8\"><b>Журналы транзакций</b><br>"
+					R.info += "<i>Владелец:</i> [authenticated_account.owner_name]<br>"
+					R.info += "<i>Номер счета:</i> [authenticated_account.account_number]<br>"
+					R.info += "<i>Дата и время:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>ID Терминала:</i> [machine_id]<br>"
 					R.info += "<table border=1 style='width:100%'>"
 					R.info += "<tr>"
-					R.info += "<td><b>Date</b></td>"
-					R.info += "<td><b>Time</b></td>"
-					R.info += "<td><b>Target</b></td>"
-					R.info += "<td><b>Purpose</b></td>"
-					R.info += "<td><b>Value</b></td>"
-					R.info += "<td><b>Source terminal ID</b></td>"
+					R.info += "<td><b>Дата</b></td>"
+					R.info += "<td><b>Время</b></td>"
+					R.info += "<td><b>Цель</b></td>"
+					R.info += "<td><b>Задача</b></td>"
+					R.info += "<td><b>Количество</b></td>"
+					R.info += "<td><b>ID Терминала</b></td>"
 					R.info += "</tr>"
 					for(var/datum/transaction/T in authenticated_account.transaction_log)
-						R.info += "<tr>"
+						R.info += "<meta charset=\"utf-8\"><tr>"
 						R.info += "<td>[T.date]</td>"
 						R.info += "<td>[T.time]</td>"
 						R.info += "<td>[T.target_name]</td>"
@@ -422,7 +422,7 @@ log transactions
 						R.stamped = new
 					R.stamped += /obj/item/weapon/stamp
 					R.overlays += stampoverlay
-					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
+					R.stamps += "<HR><i>Этот документ был напечатан автоматизированной кассой NT.</i>"
 
 				if(prob(50))
 					playsound(src, 'sound/items/polaroid1.ogg', 50, 1)
@@ -433,7 +433,7 @@ log transactions
 				if(!held_card)
 					//this might happen if the user had the browser window open when somebody emagged it
 					if(emagged > 0)
-						to_chat(usr, "<font color='red'>[bicon(src)] The ATM card reader rejected your ID because this machine has been sabotaged!</font>")
+						to_chat(usr, "<font color='red'>[bicon(src)] Считыватель карт банкомата отклонил ваше удостоверение личности, потому что эта машина была саботирована!</font>")
 					else
 						var/obj/item/I = usr.get_active_hand()
 						if (istype(I, /obj/item/weapon/card/id))
@@ -461,7 +461,7 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					to_chat(human_user, "<font color='blue'>[bicon(src)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
+					to_chat(human_user, "<font color='blue'>[bicon(src)] Доступ получен. Добро пожаловать, '[authenticated_account.owner_name].</font>'")
 
 					//create a transaction log entry
 					var/datum/transaction/T = new()

@@ -50,9 +50,9 @@
 		message += "is well... missing some inventory. "
 	else
 		message += "has a warehouse full of empty crates! "
-	message += "We have to fill that gap quick before anyone starts asking questions. "
-	message += "You'd better have this stuff here by [worldtime2stationtime(end_time)]<br>"
-	message += "The requested items are as follows"
+	message += "Мы должны быстро заполнить эту пустоту, прежде чем кто-то начнет задавать вопросы. "
+	message += "Вам бы лучше найти эти вещи до [worldtime2stationtime(end_time)]<br>"
+	message += "Запрашиваемые предметы следующие"
 	message += "<hr>"
 	for (var/datum/supply_demand_order/req in required_items)
 		message += req.describe() + "<br>"
@@ -75,14 +75,14 @@
 	if(required_items.len == 0)
 		// Success!
 		SSsupply.points += 100 * severity
-		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
+		var/msg = "Отличная работа! С теми предметами, которые вы доставили, все наши уровни запасов совпадают. "
 		msg += "[capitalize(pick(first_names_female))] from accounting will have nothing to complain about. "
-		msg += "I think you'll find a little something in your supply account."
+		msg += "Я думаю, что вы найдете кое-что в своем счете поставок."
 		command_announcement.Announce(msg, my_department)
 	else
 		// Fail!
 		var/datum/supply_demand_order/random = pick(required_items)
-		command_announcement.Announce("What happened? Accounting is here right now and they're already asking where that [random.name] is. Damn, I gotta go", my_department)
+		command_announcement.Announce("Что случилось? Бухгалтерия сейчас здесь, и они спрашивают, где [random.name]. Черт, мне надо идти в", my_department)
 		var/message = "The delivery deadline was reached with the following needs outstanding:<hr>"
 		for (var/datum/supply_demand_order/req in required_items)
 			message += req.describe() + "<br>"

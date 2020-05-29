@@ -8,18 +8,18 @@
 
 	//VORESTATION Edit - added machine speeches here for better fixing of the event.
 
-	var/list/rampant_speeches = list("Try our aggressive new marketing strategies!", \
-									 "You should buy products to feed your lifestyle obession!", \
-									 "Consume!", \
-									 "Your money can buy happiness!", \
-									 "Engage direct marketing!", \
-									 "Advertising is legalized lying! But don't let that put you off our great deals!", \
-									 "You don't want to buy anything? Yeah, well I didn't want to buy your mom either.")
+	var/list/rampant_speeches = list("Попробуйте наши новые агрессивные маркетинговые стратегии!", \
+									 "Вы должны покупать продукты, чтобы насытить свой образ жизни навязчивыми идеями!", \
+									 "Потребляйте!", \
+									 "Ваши деньги могут купить счастье!", \
+									 "Займитесь прямым маркетингом!", \
+									 "Реклама это узаконенная ложь! Но не позволяйте этому сбить вас с наших великих сделок!", \
+									 "Вы не хотите ничего покупать? Да, я твоя мамка тоже тот еще товар.")
 	//VORESTATION Edit End
 
 /datum/event/brand_intelligence/announce()
-	command_announcement.Announce("An ongoing mass upload of malware for vendors has been detected onboard  [station_name()], which appears to transmit \
-	to other nearby vendors.  The original infected machine is believed to be \a [originMachine.name].", "Vendor Service Alert")
+	command_announcement.Announce("На [station_name()], была обнаружена постоянная массовая загрузка \
+	вредоносного ПО для поставщиков, которое, похоже, передается другим ближайшим поставщикам.  Предполагается, что первая зараженная машина была: [originMachine.name].", "Vendor Service Alert")
 
 
 /datum/event/brand_intelligence/start()
@@ -43,8 +43,8 @@
 		for(var/obj/machinery/vending/saved in infectedVendingMachines)
 			saved.shoot_inventory = 0
 		if(originMachine)
-			originMachine.speak("I am... vanquished. My people will remem...ber...meeee.")
-			originMachine.visible_message("[originMachine] beeps and seems lifeless.")
+			originMachine.speak("Я ... побежден. Мои люди будут помнить ... меня.")
+			originMachine.visible_message("[originMachine] пищит и отключается.")
 		//VORESTATION Add End
 		end()
 		kill()

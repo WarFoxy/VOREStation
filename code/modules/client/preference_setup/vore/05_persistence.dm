@@ -27,26 +27,26 @@
 
 /datum/category_item/player_setup_item/vore/persistence/content(var/mob/user)
 	. = list()
-	. += "<b>Round-to-Round Persistence</b><br>"
+	. += "<b>Запоминание событий на след. раунд</b><br>"
 	. += "<table>"
 
-	. += "<tr><td title=\"Set spawn location based on where you cryo'd out.\">Save Spawn Location: </td>"
+	. += "<tr><td title=\"Установите местоположение спавна в зависимости от того, где вы легли в крио.\">Сохранить Место Появления: </td>"
 	. += make_yesno(PERSIST_SPAWN)
 	. += "</tr>"
 
-	. += "<tr><td title=\"Save your character's weight until next round.\">Save Weight: </td>"
+	. += "<tr><td title=\"Сохранить вес персонажа до следующего раунда.\">Сохранить вес: </td>"
 	. += make_yesno(PERSIST_WEIGHT)
 	. += "</tr>"
 
-	. += "<tr><td title=\"Update organ preferences (normal/amputated/robotic/etc) and model (for robotic) based on what you have at round end.\">Save Organs: </td>"
+	. += "<tr><td title=\"Обновить состояние частей тела и органов (нормальный/ампутированный/роботизированный/и т. д.) на основе того, что у вас есть на в конце раунда.\">Запомнить части тела: </td>"
 	. += make_yesno(PERSIST_ORGANS)
 	. += "</tr>"
 
-	. += "<tr><td title=\"Update marking preferences (type and color) based on what you have at round end.\">Save Markings: </td>"
+	. += "<tr><td title=\"Обновить настройки маркировки (тип и цвет) на основе того, что у вас есть в конце раунда.\">Сохранить маркировки: </td>"
 	. += make_yesno(PERSIST_MARKINGS)
 	. += "</tr>"
 
-	. += "<tr><td title=\"Update character scale based on what you were at round end.\">Save Scale: </td>"
+	. += "<tr><td title=\"Обновить масштаб персонажа, основываясь на том, что вы были в конце раунда.\">Сохранить размер: </td>"
 	. += make_yesno(PERSIST_SIZE)
 	. += "</tr>"
 
@@ -55,9 +55,9 @@
 
 /datum/category_item/player_setup_item/vore/persistence/proc/make_yesno(var/bit)
 	if(pref.persistence_settings & bit)
-		return "<td><span class='linkOn'><b>Yes</b></span></td> <td><a href='?src=\ref[src];toggle_off=[bit]'>No</a></td>"
+		return "<td><span class='linkOn'><b>Да</b></span></td> <td><a href='?src=\ref[src];toggle_off=[bit]'>Нет</a></td>"
 	else
-		return "<td><a href='?src=\ref[src];toggle_on=[bit]'>Yes</a></td> <td><span class='linkOn'><b>No</b></span></td>"
+		return "<td><a href='?src=\ref[src];toggle_on=[bit]'>Да</a></td> <td><span class='linkOn'><b>Нет</b></span></td>"
 
 /datum/category_item/player_setup_item/vore/persistence/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_on"])

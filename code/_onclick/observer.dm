@@ -6,9 +6,9 @@
 	if(!client) return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
-		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
+		to_chat(src, "<span class='notice'>Теперь вы будете изучать все, что вы нажимаете.</span>")
 	else
-		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
+		to_chat(src, "<span class='notice'>Вы больше не будете изучать то, на что нажимаете.</span>")
 
 /mob/observer/dead/DblClickOn(var/atom/A, var/params)
 	if(client.buildmode)

@@ -342,8 +342,8 @@
 					pin_down(affecting, assailant)
 
 	//clicking on yourself while grabbing them
-	if(M == assailant && state >= GRAB_AGGRESSIVE)
-		devour(affecting, assailant)
+	//if(M == assailant && state >= GRAB_AGGRESSIVE)
+	//	devour(affecting, assailant)
 
 /obj/item/weapon/grab/dropped()
 	loc = null

@@ -97,7 +97,7 @@
 
 /datum/trait/trashcan/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/proc/eat_trash
+	H.verbs |=/mob/living/proc/eat_trash
 
 /datum/trait/gem_eater
 	name = "Expensive Taste"
