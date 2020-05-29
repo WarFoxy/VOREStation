@@ -56,7 +56,7 @@
 	if(shocked)
 		shock(user, 50)
 	var/list/dat = list()
-	dat += "<center><h1>Autolathe Control Panel</h1><hr/>"
+	dat += "<center><meta charset=\"utf-8\"><h1>Панель Управления Автолатом</h1><hr/>"
 
 	if(!disabled)
 		dat += "<table width = '100%'>"
@@ -68,8 +68,8 @@
 			material_bottom += "<td width = '25%' align = center>[stored_material[material]]<b>/[storage_capacity[material]]</b></td>"
 
 		dat += "[material_top.Join()]</tr>[material_bottom.Join()]</tr></table><hr>"
-		dat += "<b>Filter:</b> <a href='?src=\ref[src];setfilter=1'>[filtertext ? filtertext : "None Set"]</a><br>"
-		dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
+		dat += "<b>Фильтр:</b> <a href='?src=\ref[src];setfilter=1'>[filtertext ? filtertext : "Не установлен"]</a><br>"
+		dat += "<h2>Печатные Конструкции</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
 
 		for(var/datum/category_item/autolathe/R in current_category.items)
 			if(R.hidden && !hacked)
@@ -82,7 +82,7 @@
 			var/max_sheets
 			var/comma
 			if(!R.resources || !R.resources.len)
-				material_string += "No resources required.</td>"
+				material_string += "Ресурсов не требуется.</td>"
 			else
 				//Make sure it's buildable and list requires resources.
 				for(var/material in R.resources)
@@ -112,13 +112,13 @@
 		dat += "</table><hr>"
 
 	dat = jointext(dat, null)
-	var/datum/browser/popup = new(user, "autolathe", "Autolathe Production Menu", 550, 700)
+	var/datum/browser/popup = new(user, "autolathe", "Меню Производства Автолата", 550, 700)
 	popup.set_content(dat)
 	popup.open()
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, "<span class='notice'>[src] занят. Пожалуйста, дождитесь завершения предыдущей операции..</span>")
 		return
 
 	if(default_deconstruction_screwdriver(user, O))
@@ -163,7 +163,7 @@
 	//Resources are being loaded.
 	var/obj/item/eating = O
 	if(!eating.matter)
-		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
+		to_chat(user, "[eating] не содержит значительного количества полезных материалов и не может быть принята.")
 		return
 
 	var/filltype = 0       // Used to determine message.
@@ -196,7 +196,7 @@
 		mass_per_sheet += eating.matter[material]
 
 	if(!filltype)
-		to_chat(user, "<span class='notice'>\The [src] is full. Please remove material from the autolathe in order to insert more.</span>")
+		to_chat(user, "<span class='notice'>[src] заполнен. Пожалуйста, удалите материал с автолата, чтобы вставить больше.</span>")
 		return
 	else if(filltype == 1)
 		to_chat(user, "You fill \the [src] to capacity with \the [eating].")
@@ -227,11 +227,11 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		to_chat(usr, "<span class='notice'>The autolathe is busy. Please wait for completion of previous operation.</span>")
+		to_chat(usr, "<span class='notice'>Автолат занят. Пожалуйста, дождитесь завершения предыдущей операции.</span>")
 		return
 
 	else if(href_list["setfilter"])
-		var/filterstring = input(usr, "Input a filter string, or blank to not filter:", "Design Filter", filtertext) as null|text
+		var/filterstring = input(usr, "Введите строку фильтра или оставьте пустым, чтобы не фильтровать:", "Design Filter", filtertext) as null|text
 		if(!Adjacent(usr))
 			return
 		if(isnull(filterstring)) //Clicked Cancel
@@ -242,7 +242,7 @@
 
 	if(href_list["change_category"])
 
-		var/choice = input("Which category do you wish to display?") as null|anything in machine_recipes.categories
+		var/choice = input("Какую категорию вы хотите отобразить?") as null|anything in machine_recipes.categories
 		if(!choice) return
 		current_category = choice
 

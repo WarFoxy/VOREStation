@@ -9,14 +9,14 @@
 	var/postStartTicks 		= 0
 
 /datum/event/radiation_storm/announce()
-	command_announcement.Announce("High levels of radiation detected near \the [station_name()]. Please evacuate into one of the shielded maintenance tunnels or dorms.", "Anomaly Alert", new_sound = 'sound/AI/radiation.ogg') //VOREStation Edit - Dorms ref
+	command_announcement.Announce("Вблизи [station_name()] обнаружен высокий уровень радиации. Пожалуйста, эвакуируйтесь в технические тоннели или дормы.", "Anomaly Alert", new_sound = 'sound/AI/radiation.ogg') //VOREStation Edit - Dorms ref
 
 /datum/event/radiation_storm/start()
 	make_maint_all_access()
 
 /datum/event/radiation_storm/tick()
 	if(activeFor == enterBelt)
-		command_announcement.Announce("The station has entered the radiation belt. Please remain in a sheltered area until we have passed the radiation belt.", "Anomaly Alert")
+		command_announcement.Announce("Станция вошла в радиационный пояс. Пожалуйста, оставайтесь в защищенном месте, пока мы не пройдем радиационный пояс.", "Anomaly Alert")
 		radiate()
 
 	if(activeFor >= enterBelt && activeFor <= leaveBelt)
@@ -27,7 +27,7 @@
 		radiate()
 
 	else if(activeFor == leaveBelt)
-		command_announcement.Announce("The station has passed the radiation belt. Please allow for up to one minute while radiation levels dissipate, and report to medbay if you experience any unusual symptoms. Maintenance will lose all access again shortly.", "Anomaly Alert")
+		command_announcement.Announce("Станция прошла радиационный пояс. Пожалуйста, подождите одну минуту, пока уровень радиации снизится, и сообщите в медпункт, если у вас возникнут какие-либо необычные симптомы. Maintenance потеряет весь доступ в ближайшее время.", "Anomaly Alert")
 /datum/event/radiation_storm/proc/radiate()
 	var/radiation_level = rand(15, 35)
 	for(var/z in using_map.station_levels)

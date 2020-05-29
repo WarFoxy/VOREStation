@@ -36,11 +36,11 @@
 /mob/living/bot/medbot/handleIdle()
 	if(vocal && prob(1))
 		var/message_options = list(
-			"Radar, put a mask on!" = 'sound/voice/medbot/mradar.ogg',
-			"There's always a catch, and it's the best there is." = 'sound/voice/medbot/mcatch.ogg',
-			"I knew it, I should've been a plastic surgeon." = 'sound/voice/medbot/msurgeon.ogg',
-			"What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/medbot/mflies.ogg',
-			"Delicious!" = 'sound/voice/medbot/mdelicious.ogg'
+			"Радар, надень маску!" = 'sound/voice/medbot/mradar.ogg',
+			"Всегда есть подвох, и это самое лучшее, что есть." = 'sound/voice/medbot/mcatch.ogg',
+			"Я так и знал, что должен был стать пластическим хирургом." = 'sound/voice/medbot/msurgeon.ogg',
+			"Что это за медбей такой? Все падают, как мухи." = 'sound/voice/medbot/mflies.ogg',
+			"Восхитительно!" = 'sound/voice/medbot/mdelicious.ogg'
 			)
 		var/message = pick(message_options)
 		say(message)
@@ -82,14 +82,14 @@
 			if(last_newpatient_speak + 30 SECONDS < world.time)
 				if(vocal)
 					var/message_options = list(
-						"Hey, [H.name]! Hold on, I'm coming." = 'sound/voice/medbot/mcoming.ogg',
-						"Wait [H.name]! I want to help!" = 'sound/voice/medbot/mhelp.ogg',
-						"[H.name], you appear to be injured!" = 'sound/voice/medbot/minjured.ogg'
+						"Эй, [H.name]! Погоди, я иду." = 'sound/voice/medbot/mcoming.ogg',
+						"Подожди [H.name]! Я хочу помочь!" = 'sound/voice/medbot/mhelp.ogg',
+						"[H.name], вы кажется ранены!" = 'sound/voice/medbot/minjured.ogg'
 						)
 					var/message = pick(message_options)
 					say(message)
 					playsound(src, message_options[message], 50, 0)
-				custom_emote(1, "points at [H.name].")
+				custom_emote(1, "указывает на [H.name].")
 				last_newpatient_speak = world.time
 			break
 
@@ -110,10 +110,10 @@
 	if(!t)
 		return
 
-	visible_message("<span class='warning'>[src] is trying to inject [H]!</span>")
+	visible_message("<span class='warning'>[src] пытается ввести [H]!</span>")
 	if(declare_treatment)
 		var/area/location = get_area(src)
-		global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
+		global_announcer.autosay("[src] лечит <b>[H]</b> в <b>[location]</b>", "[src]", "Medical")
 	busy = 1
 	update_icons()
 	if(do_mob(src, H, 30))
@@ -121,15 +121,15 @@
 			reagent_glass.reagents.trans_to_mob(H, injection_amount, CHEM_BLOOD)
 		else
 			H.reagents.add_reagent(t, injection_amount)
-		visible_message("<span class='warning'>[src] injects [H] with the syringe!</span>")
+		visible_message("<span class='warning'>[src] вводит [H] с помощью шприца!</span>")
 
 	if(H.stat == DEAD) // This is down here because this proc won't be called again due to losing a target because of parent AI loop.
 		target = null
 		if(vocal)
 			var/death_messages = list(
-				"No! Stay with me!" = 'sound/voice/medbot/mno.ogg',
-				"Live, damnit! LIVE!" = 'sound/voice/medbot/mlive.ogg',
-				"I... I've never lost a patient before. Not today, I mean." = 'sound/voice/medbot/mlost.ogg'
+				"Нет! Останься со мной!" = 'sound/voice/medbot/mno.ogg',
+				"Живи, блин! ЖИВИ!" = 'sound/voice/medbot/mlive.ogg',
+				"Я ... Я никогда не терял пациента раньше. Я имею в виду до этого дня." = 'sound/voice/medbot/mlost.ogg'
 				)
 			var/message = pick(death_messages)
 			say(message)
@@ -142,9 +142,9 @@
 			target = null
 			if(vocal)
 				var/possible_messages = list(
-					"All patched up!" = 'sound/voice/medbot/mpatchedup.ogg',
-					"An apple a day keeps me away." = 'sound/voice/medbot/mapple.ogg',
-					"Feel better soon!" = 'sound/voice/medbot/mfeelbetter.ogg'
+					"Все исправлено!" = 'sound/voice/medbot/mpatchedup.ogg',
+					"Ешь яблоки каждый день, и тогда тебе не понадобится помощь" = 'sound/voice/medbot/mapple.ogg',
+					"Скоро почувствуешь себя лучше!" = 'sound/voice/medbot/mfeelbetter.ogg'
 					)
 				var/message = pick(possible_messages)
 				say(message)
@@ -164,12 +164,12 @@
 
 /mob/living/bot/medbot/attack_hand(var/mob/user)
 	var/dat
-	dat += "<TT><B>Automatic Medical Unit v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel is [open ? "opened" : "closed"]<BR>"
-	dat += "Beaker: "
+	dat += "<meta charset=\"utf-8\"><TT><B>Автоматический Медицинский Юнит v1.0</B></TT><BR><BR>"
+	dat += "Статус: <A href='?src=\ref[src];power=1'>[on ? "Вкл" : "Выкл"]</A><BR>"
+	dat += "Панель технического обслуживания [open ? "открыта" : "закрыта"]<BR>"
+	dat += "Мензурка: "
 	if (reagent_glass)
-		dat += "<A href='?src=\ref[src];eject=1'>Loaded \[[reagent_glass.reagents.total_volume]/[reagent_glass.reagents.maximum_volume]\]</a>"
+		dat += "<A href='?src=\ref[src];eject=1'>Загружена \[[reagent_glass.reagents.total_volume]/[reagent_glass.reagents.maximum_volume]\]</a>"
 	else
 		dat += "None Loaded"
 	dat += "<br>Behaviour controls are [locked ? "locked" : "unlocked"]<hr>"

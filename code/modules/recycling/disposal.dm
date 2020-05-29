@@ -31,7 +31,7 @@
 // find the attached trunk (if present) and init gas resvr.
 /obj/machinery/disposal/Initialize()
 	. = ..()
-	
+
 	trunk = locate() in loc
 	if(!trunk)
 		mode = 0
@@ -58,30 +58,30 @@
 	if(mode<=0) // It's off
 		if(I.is_screwdriver())
 			if(contents.len > 0)
-				to_chat(user, "Eject the items first!")
+				to_chat(user, "Сначала извлеките предметы!")
 				return
 			if(mode==0) // It's off but still not unscrewed
 				mode=-1 // Set it to doubleoff l0l
 				playsound(src, I.usesound, 50, 1)
-				to_chat(user, "You remove the screws around the power connection.")
+				to_chat(user, "Вы снимаете винты вокруг подключения питания.")
 				return
 			else if(mode==-1)
 				mode=0
 				playsound(src, I.usesound, 50, 1)
-				to_chat(user, "You attach the screws around the power connection.")
+				to_chat(user, "Вы прикрепляете винты вокруг подключения питания.")
 				return
 		else if(istype(I, /obj/item/weapon/weldingtool) && mode==-1)
 			if(contents.len > 0)
-				to_chat(user, "Eject the items first!")
+				to_chat(user, "Сначала извлеките предметы!")
 				return
 			var/obj/item/weapon/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 100, 1)
-				to_chat(user, "You start slicing the floorweld off the disposal unit.")
+				to_chat(user, "Вы начинаете отрезать пол от блока утилизации.")
 
 				if(do_after(user,20 * W.toolspeed))
 					if(!src || !W.isOn()) return
-					to_chat(user, "You sliced the floorweld off the disposal unit.")
+					to_chat(user, "Вы срезали пол с блока утилизации.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
 					src.transfer_fingerprints_to(C)
 					C.ptype = 6 // 6 = disposal unit
@@ -250,26 +250,26 @@
 		user.unset_machine()
 		return
 
-	var/dat = "<head><title>Waste Disposal Unit</title></head><body><TT><B>Waste Disposal Unit</B><HR>"
+	var/dat = "<head><meta charset=\"utf-8\"><title>Блок Утилизации Отходов</title></head><body><TT><B>Блок Утилизации Отходов</B><HR>"
 
 	if(!ai)  // AI can't pull flush handle
 		if(flush)
-			dat += "Disposal handle: <A href='?src=\ref[src];handle=0'>Disengage</A> <B>Engaged</B>"
+			dat += "Утилизация: <A href='?src=\ref[src];handle=0'>Отключена</A> <B>Включена</B>"
 		else
-			dat += "Disposal handle: <B>Disengaged</B> <A href='?src=\ref[src];handle=1'>Engage</A>"
+			dat += "Утилизация: <B>Отключена</B> <A href='?src=\ref[src];handle=1'>Включена</A>"
 
-		dat += "<BR><HR><A href='?src=\ref[src];eject=1'>Eject contents</A><HR>"
+		dat += "<BR><HR><A href='?src=\ref[src];eject=1'>Извлечь содержимое</A><HR>"
 
 	if(mode <= 0)
-		dat += "Pump: <B>Off</B> <A href='?src=\ref[src];pump=1'>On</A><BR>"
+		dat += "Помпа: <B>Выкл</B> <A href='?src=\ref[src];pump=1'>Вкл</A><BR>"
 	else if(mode == 1)
-		dat += "Pump: <A href='?src=\ref[src];pump=0'>Off</A> <B>On</B> (pressurizing)<BR>"
+		dat += "Помпа: <A href='?src=\ref[src];pump=0'>Выкл</A> <B>Вкл</B> (pressurizing)<BR>"
 	else
-		dat += "Pump: <A href='?src=\ref[src];pump=0'>Off</A> <B>On</B> (idle)<BR>"
+		dat += "Помпа: <A href='?src=\ref[src];pump=0'>Выкл</A> <B>Вкл</B> (idle)<BR>"
 
 	var/per = 100* air_contents.return_pressure() / (SEND_PRESSURE)
 
-	dat += "Pressure: [round(per, 1)]%<BR></body>"
+	dat += "Давление: [round(per, 1)]%<BR></body>"
 
 
 	user.set_machine(src)

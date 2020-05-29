@@ -1,6 +1,6 @@
 /obj/item/weapon/spacecash
 	name = "0 Thaler"
-	desc = "It's worth 0 Thalers."
+	desc = "Тут 0 Талеров."
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
@@ -30,7 +30,7 @@
 			h_user.drop_from_inventory(src)
 			h_user.drop_from_inventory(SC)
 			h_user.put_in_hands(SC)
-		to_chat(user, "<span class='notice'>You combine the Thalers to a bundle of [SC.worth] Thalers.</span>")
+		to_chat(user, "<span class='notice'>Вы объединяете Талеры в связку [SC.worth] Талеров.</span>")
 		qdel(src)
 
 /obj/item/weapon/spacecash/update_icon()
@@ -38,7 +38,7 @@
 	name = "[worth] Thaler\s"
 	if(worth in list(1000,500,200,100,50,20,10,1))
 		icon_state = "spacecash[worth]"
-		desc = "It's worth [worth] Thalers."
+		desc = "Тут [worth] Талеров."
 		return
 	var/sum = src.worth
 	var/num = 0
@@ -59,7 +59,7 @@
 		M.Turn(pick(-45, -27.5, 0, 0, 0, 0, 0, 0, 0, 27.5, 45))
 		banknote.transform = M
 		src.overlays += banknote
-	src.desc = "They are worth [worth] Thalers."
+	src.desc = "Это стоит [worth] Талеров."
 
 /obj/item/weapon/spacecash/proc/adjust_worth(var/adjust_worth = 0, var/update = 1)
 	worth += adjust_worth
@@ -78,7 +78,7 @@
 	return worth
 
 /obj/item/weapon/spacecash/attack_self()
-	var/amount = input(usr, "How many Thalers do you want to take? (0 to [src.worth])", "Take Money", 20) as num
+	var/amount = input(usr, "Сколько талеров вы хотите взять? (0 to [src.worth])", "Take Money", 20) as num
 	if(!src || QDELETED(src))
 		return
 	amount = round(CLAMP(amount, 0, src.worth))

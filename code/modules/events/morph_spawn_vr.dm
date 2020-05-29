@@ -29,12 +29,12 @@
 		var/mob/observer/dead/D = winner[1]
 		if(D.mind)
 			D.mind.transfer_to(newMorph)
-		to_chat(D, "<span class='notice'>You are a <b>Morph</b>, somehow having gotten aboard the station in your wandering. \
-		You are wary of environment around you, but your primal hunger still calls for you to find prey. Seek a convincing disguise, \
-		using your amorphous form to traverse vents to find and consume weak prey.</span>")
-		to_chat(D, "<span class='notice'>You can use shift + click on objects to disguise yourself as them, but your strikes are nearly useless when you are disguised. \
-		You can undisguise yourself by shift + clicking yourself, but disguise being switched, or turned on and off has a short cooldown. You can also ventcrawl, \
-		by using alt + click on the vent or scrubber.</span>")
+		to_chat(D, "<span class='notice'>Вы <b>Морф</b>, и каким то образом вы попали на станцию. \
+		Вы остерегаетесь окружающей среды, но ваш первобытный голод все еще требует от вас найти добычу. Используйте убедительную маскировку, \
+		используя свою аморфную форму, чтобы пройти через вентиляционные отверстия, чтобы найти и поглотить слабую жертву.</span>")
+		to_chat(D, "<span class='notice'>Вы можете использовать shift+ЛКМ на объектах, чтобы замаскироваться под них, но ваши атаки почти бесполезны, когда вы замаскированы. \
+		Вы можете не маскироваться, щелкнув shift+ЛКМ по себе, но маскировка при переключении или включении имеет короткое время перезарядки. Вы можете залезать в вентиляцию, \
+		используя alt+ЛКМ по вентиляции.</span>")
 		newMorph.ckey = D.ckey
 		newMorph.visible_message("<span class='warning'>A morph appears to crawl out of somewhere.</span>")
 	else
@@ -44,4 +44,4 @@
 
 /datum/event/morph_spawn/announce()
 	if(prob(announceProb))
-		command_announcement.Announce("Unknown entitity detected boarding [station_name()]. Exercise extra caution.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
+		command_announcement.Announce("Неизвестная форма жизни была обнаружена на [station_name()]. Всему персоналу следует действовать с особой осторожностью.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
