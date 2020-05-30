@@ -135,31 +135,31 @@ FIRE ALARM
 		A = A.loc
 
 		if(A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>Reset - Lockdown</A>", src)
+			d1 = text("<meta charset=\"utf-8\"><A href='?src=\ref[];reset=1'>Сброс - Блокировка</A>", src)
 		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>Alarm - Lockdown</A>", src)
+			d1 = text("<A href='?src=\ref[];alarm=1'>Тревога - Блокировка</A>", src)
 		if(timing)
-			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
+			d2 = text("<meta charset=\"utf-8\"><A href='?src=\ref[];time=0'>Остановить таймер</A>", src)
 		else
-			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
+			d2 = text("<A href='?src=\ref[];time=1'>Включить таймер</A>", src)
 		var/second = round(time) % 60
 		var/minute = (round(time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>Fire alarm</B> [d1]\n<HR>The current alert level is: <b>[get_security_level()]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+		var/dat = "<HTML><meta charset=\"utf-8\"><HEAD></HEAD><BODY><TT><B>Пожарная сигнализация</B> [d1]\n<HR>Текущий уровень опасности: <b>[get_security_level()]</b><br><br>\nТаймер: [d2]<BR>\nОсталось: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
 		user << browse(dat, "window=firealarm")
 		onclose(user, "firealarm")
 	else
 		A = A.loc
 		if(A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Reset - Lockdown"))
+			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Сброс - Блокировка"))
 		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Alarm - Lockdown"))
+			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Тревога - Блокировка"))
 		if(timing)
-			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
+			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Остановить таймер"))
 		else
-			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
+			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Включить таймер"))
 		var/second = round(time) % 60
 		var/minute = (round(time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Fire alarm")]</B> [d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Fire alarm")]</B> [d1]\n<HR><b>Текущий уровень опасности: [stars(get_security_level())]</b><br><br>\nТаймер: [d2]<BR>\nОсталось: [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
 		user << browse(dat, "window=firealarm")
 		onclose(user, "firealarm")
 	return

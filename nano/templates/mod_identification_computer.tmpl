@@ -1,16 +1,16 @@
 {{if data.have_id_slot}}
-	{{:helper.link('Access Modification', 'home', {'action' : 'switchm', 'target' : 'mod'}, data.mmode ? 'disabled' : null)}}
+	{{:helper.link('Модификация доступа', 'home', {'action' : 'switchm', 'target' : 'mod'}, data.mmode ? 'disabled' : null)}}
 {{/if}}
 
-{{:helper.link('Crew Manifest', 'folder-open', {'action' : 'switchm', 'target' : 'manifest'}, !data.mmode ? 'disabled' : null)}}
+{{:helper.link('Журнал экипажа', 'folder-open', {'action' : 'switchm', 'target' : 'manifest'}, !data.mmode ? 'disabled' : null)}}
 
 {{if data.have_printer}}
-	{{:helper.link('Print', 'print', {'action' : 'print'}, (!data.mmode || data.has_id) ? null : 'disabled')}}
+	{{:helper.link('Печать', 'print', {'action' : 'print'}, (!data.mmode || data.has_id) ? null : 'disabled')}}
 {{/if}}
 
 {{if !data.mmode}}
 	<div class='item'>
-		<h2>Crew Manifest</h2>
+		<h2>Журнал экипажа</h2>
 	</div>
 	
 	<div class='item'>
@@ -19,16 +19,16 @@
 	
 {{else}}
 	<div class='item'>
-		<h2>Access Modification</h2>
+		<h2>Модификация доступа</h2>
 	</div>
 
 	{{if !data.has_id}}
-		<span class='alert'><i>Please insert the ID into the terminal to proceed.</i></span><br>
+		<span class='alert'><i>Пожалуйста, вставьте ID карту в терминал, чтобы продолжить.</i></span><br>
 	{{/if}}
 
 	<div class='item'>
 		<div class='itemLabel'>
-			Target Identity:
+			Цель авторизации:
 		</div>
 		<div class='itemContent'>
 			{{:helper.link(data.id_name, 'eject', {'action' : 'eject'})}}
@@ -39,12 +39,12 @@
 	{{if data.authenticated}}
 		{{if data.has_id}}
 			<div class='item'>
-				<h2>Details</h2>
+				<h2>Детали</h2>
 			</div>
 			
 			<div class='item'>
 				<div class='itemLabel'>
-					Registered Name:
+					Зарегистрированное имя:
 				</div>
 				
 				<div class='itemContent'>
@@ -54,7 +54,7 @@
 			
 			<div class='item'>
 				<div class='itemLabel'>
-					Account Number:
+					Номер аккаунта:
 				</div>
 				
 				<div class='itemContent'>
@@ -65,7 +65,7 @@
 			<div class='item'>
 				<!-- VOREStation Edit Start -->
 				<div class='itemLabel'>
-					Dismissals:
+					Увольнения:
 				</div>
 				
 				<div class='itemContent'>
@@ -75,10 +75,10 @@
 			</div>
 			
 			<div class='item'>
-				<h2>Assignment</h2>
+				<h2>Назначение</h2>
 			</div>
 			
-			{{:helper.link(data.assignments ? "Hide assignments" : "Show assignments", 'gear', {'action' : 'togglea'})}}
+			{{:helper.link(data.assignments ? "Скрыть назначения" : "Показ. назначения", 'gear', {'action' : 'togglea'})}}
 			
 			<div class='item'>
 				<span id='allvalue.jobsslot'>
@@ -113,7 +113,7 @@
 			
 			{{if data.centcom_access}}
 				<div class='item'>
-					<h2>Central Command</h2>
+					<h2>Цент. комманд.</h2>
 				</div>
 				<div class='item' style='width: 100%'>
 					{{for data.all_centcom_access}}

@@ -1,10 +1,10 @@
 {{if data.printing}}
-	<h5 class='average'>The computer is currently busy.</h5>
+	<h5 class='average'>В данный момент компьютер занят.</h5>
 	<div class='notice'>
-		<center><span class='bad'>Printing...</span></center>
+		<center><span class='bad'>Печать...</span></center>
 	</div>
 	<p>
-		Thank you for your patience!
+		Спасибо Вам за ваше терпение!
 	</p>
 {{else}}
 	{{:helper.link('Access Modification', 'home', {'choice' : 'mode', 'mode_target' : 0}, !data.mode ? 'disabled' : null)}}
