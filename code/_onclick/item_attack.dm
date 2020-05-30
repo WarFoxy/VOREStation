@@ -46,7 +46,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		return 0
 	if(can_operate(src) && I.do_surgery(src,user))
 		return 1
-	if (user.a_intent == I_HELP || user.a_intent == I_GRAB) return
+	//if (user.a_intent == I_HELP || user.a_intent == I_GRAB) return
 	if(attempt_vr(src,"vore_attackby",args)) return //VOREStation Add - The vore, of course.
 	return I.attack(src, user, user.zone_sel.selecting, attack_modifier)
 

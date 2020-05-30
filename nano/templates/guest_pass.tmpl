@@ -6,9 +6,9 @@
 {{if data.mode == 1}}
 	<div class='item'>
 		<div class='itemContent'>
-			<b>Activity Log</b>
+			<b>Журнал активности</b>
 		</div> 
-		{{:helper.link('Print', 'print', {'print' : 1})}} {{:helper.link('Back', 'arrowreturn-1-w', {'mode' : 0})}}
+		{{:helper.link('Печать', 'print', {'print' : 1})}} {{:helper.link('Назад', 'arrowreturn-1-w', {'mode' : 0})}}
 	</div>
 	<hr>
 	{{for data.log}}
@@ -17,38 +17,38 @@
 		</div>
 	{{/for}}
 {{else}}
-	<h3>Guest pass terminal #{{:data.uid}}</h3>
+	<h3>Гостевой пропускной терминал #{{:data.uid}}</h3>
 	<div class='item'>
-		{{:helper.link('View activity log', 'list', {'mode' : 1})}} {{:helper.link('Issue Pass', 'eject', {'action' : 'issue'})}}
+		{{:helper.link('Посмотреть журнал активности', 'list', {'mode' : 1})}} {{:helper.link('Выдать пропуск', 'eject', {'action' : 'issue'})}}
 	</div>
 	<hr>
 	<div class='item'>
 		<div class='itemLabelWide'>
-			Issuing ID: 
+			Выдает: 
 		</div>
 		{{:helper.link(data.giver ? data.giver : 'Insert ID', 'person', {'action' : 'id'})}}
 	</div>
 	<div class='item'>
 		<div class='itemLabelWide'>
-			Issued to: 
+			Кому выдано: 
 		</div>
 		{{:helper.link(data.giveName, 'pencil', {'choice' : 'giv_name'})}}
 	</div>
 	<div class='item'>
 		<div class='itemLabelWide'>
-			Reason: 
+			Причина: 
 		</div>
 		{{:helper.link(data.reason, 'pencil', {'choice' : 'reason'})}}
 	</div>
 	<div class='item'>
 		<div class='itemLabelWide'>
-			Duration (minutes): 
+			Длительность (минуты): 
 		</div>
 		{{:helper.link(data.duration, 'clock', {'choice' : 'duration'})}}
 	</div>
 	<div class='item'>
 		<div class='itemLabelWide'>
-			Access to areas: 
+			Доступ в зоны: 
 		</div>
 	</div>
 	{{for data.area}}
