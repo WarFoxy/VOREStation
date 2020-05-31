@@ -1,16 +1,16 @@
-<H2>Supply Records</H2>
+<H2>Отчеты о поставках</H2>
 
 <!-- Supply points and shuttle status -->
 <div class='statusDisplay'>
 	<!-- List points -->
-	Supply points: {{:data.supply_points}}<br>
+	Очки поставок: {{:data.supply_points}}<br>
 	
 	<!-- Shuttle status -->
 	<div class='item'>
-		<H4>Supply Shuttle</H4>
+		<H4>Шаттл поставок</H4>
 		<div class='itemLabelNarrow'>
-			Location:<br>
-			Engines:
+			Расположение:<br>
+			Двигатели:
 		</div>
 		<div class='itemContent'>
 			{{:data.shuttle.location}}<br>
@@ -18,23 +18,23 @@
 		</div>
 		{{if data.shuttle.mode == 4}}
 			<div class='itemLabelNarrow'>
-				ETA:
+				Время прибытия:
 			</div>
 			<div class='itemContent'>
-				{{:data.shuttle.time}} minutes
+				{{:data.shuttle.time}} минут
 			</div>
 		{{/if}}
 		{{if data.shuttle_auth}}
 			<!-- Shuttle control -->
 			{{if data.shuttle.launch == 1 && data.shuttle.mode == 0}} <!-- Shuttle must be docked -->
-				{{:helper.link('Send away', 'suitcase', {'send_shuttle' : 'send_away'})}}
+				{{:helper.link('Отослать', 'suitcase', {'send_shuttle' : 'send_away'})}}
 			{{else data.shuttle.launch == 2 && (data.shuttle.mode == 3 || data.shuttle.mode == 1)}} <!-- Shuttle must be departing, but not have left yet -->
-				{{:helper.link('Cancel launch', 'stop', {'send_shuttle' : 'cancel_shuttle'})}}
+				{{:helper.link('Отменить запуск', 'stop', {'send_shuttle' : 'cancel_shuttle'})}}
 			{{else data.shuttle.launch == 1 && data.shuttle.mode == 5}} <!-- Shuttle has reached the other destination, and can be sent back to station -->
-				{{:helper.link('Send shuttle', 'suitcase', {'send_shuttle' : 'send_to_station'})}}
+				{{:helper.link('Отправить шаттл', 'suitcase', {'send_shuttle' : 'send_to_station'})}}
 			{{/if}}
 			{{if data.shuttle.force}}
-				{{:helper.link('Force launch', 'alert', {'send_shuttle' : 'force_shuttle'})}}
+				{{:helper.link('Принудительный запуск', 'alert', {'send_shuttle' : 'force_shuttle'})}}
 			{{/if}}
 		{{/if}}
 	</div>
@@ -45,30 +45,30 @@
 	<div>	
 		<!-- List supply packs -->
 		<div class='item'>
-			{{:helper.link('Request items', 'note', {'switch_tab' : 1})}}
+			{{:helper.link('Запросить товары', 'note', {'switch_tab' : 1})}}
 		</div>
 		
 		<!-- Accepted orders -->
 		<div class='item'>
-			{{:helper.link('View accepted orders', 'cart', {'switch_tab' : "Approved"})}}
+			{{:helper.link('Принятые заказы', 'cart', {'switch_tab' : "Approved"})}}
 		</div>
 		
 		<!-- Pending orders -->
 		<div class='item'>
-			{{:helper.link('View pending requests', 'cart', {'switch_tab' : "Requested"})}}
+			{{:helper.link('Ожидающие заказы', 'cart', {'switch_tab' : "Requested"})}}
 		</div>
 		
 		<!-- Order history -->
-		{{:helper.link('View order history', 'document', {'switch_tab' : "All"})}}
+		{{:helper.link('История заказов', 'document', {'switch_tab' : "All"})}}
 		
 		<!-- Receipt history -->
 		<div class='item'>
-			{{:helper.link('View export history', 'document', {'switch_tab' : "Export"})}}
+			{{:helper.link('История экспорта', 'document', {'switch_tab' : "Export"})}}
 		</div>
 	</div>
 	
 {{else}}
-	{{:helper.link('Back to menu', 'arrowreturn-1-w', {'switch_tab' : 0})}}
+	{{:helper.link('Назад в меню', 'arrowreturn-1-w', {'switch_tab' : 0})}}
 
 	
 	<!-- List supply pack categories -->
@@ -80,8 +80,8 @@
 		{{/for}}
 	
 	<!-- List exported crates, their contents, and their values -->
-	{{else data.currentTab == "Export"}}
-		<H3>Exported Crates</H3>
+	{{else data.currentTab == "Экспорт"}}
+		<H3>Экспортируемые Ящики</H3>
 		{{for data.receipts}}
 			<hr>
 			<div class='item'>
@@ -93,7 +93,7 @@
 						{{:titleVal.entry}}
 						{{if data.order_auth}}
 							<span style='float:right; width:64px;'>
-								{{:helper.link('Edit', 'wrench', {'order_ref' : value.ref, 'edit' : titleVal.field, 'default' : titleVal.entry, 'user' : data.user})}}
+								{{:helper.link('Изменить', 'wrench', {'order_ref' : value.ref, 'edit' : titleVal.field, 'default' : titleVal.entry, 'user' : data.user})}}
 							</span>
 						{{/if}}
 					</div>
@@ -115,30 +115,30 @@
 						</div>
 						{{if data.order_auth}}
 							<div class='itemContent'>
-								{{:helper.link('Edit Quantity','wrench', {'export_ref' : value.ref, 'edit' : 1, 'default' : contentVal.quantity, 'index' : contentIndex, 'user' : data.user})}}
-								{{:helper.link('Delete Entry', 'trash', {'export_ref' : value.ref, 'delete' : 1, 'index' : contentIndex, 'user' : data.user})}}
+								{{:helper.link('Изменить Кол-во','wrench', {'export_ref' : value.ref, 'edit' : 1, 'default' : contentVal.quantity, 'index' : contentIndex, 'user' : data.user})}}
+								{{:helper.link('Удалить Запись', 'trash', {'export_ref' : value.ref, 'delete' : 1, 'index' : contentIndex, 'user' : data.user})}}
 							</div>
 						{{/if}}
 					{{/for}}
 				{{/if}}
 				
 				{{if data.order_auth}}
-					<br>{{:helper.link('Add item to record', 'plus', {'export_ref' : value.ref, 'add_item' : 1, 'user' : data.user})}}
-					<br>{{:helper.link('Delete record', 'trash', {'export_ref' : value.ref, 'delete' : 1, 'user' : data.user})}}
+					<br>{{:helper.link('Добавить предмет в запись', 'plus', {'export_ref' : value.ref, 'add_item' : 1, 'user' : data.user})}}
+					<br>{{:helper.link('Удалить Запись', 'trash', {'export_ref' : value.ref, 'delete' : 1, 'user' : data.user})}}
 				{{/if}}
 			</div>
 		{{empty}}
-			<div class='average'>No receipts on record!</div>
+			<div class='average'>Запросов нет!</div>
 		{{/for}}
 	
 	<!-- Browse orders -->
-	<!-- currentTab == "Approved": Orders waiting to be shipped -->
-	<!-- currentTab == "Requested": Orders waiting to be accepted -->
-	<!-- currentTab == "All": All orders -->	
-	{{else data.currentTab == "Approved" || data.currentTab == "Requested" || data.currentTab == "All"}}
+	<!-- currentTab == "Одобрено": Orders waiting to be shipped -->
+	<!-- currentTab == "Запрошено": Orders waiting to be accepted -->
+	<!-- currentTab == "Все": All orders -->	
+	{{else data.currentTab == "Одобрено" || data.currentTab == "Запрошено" || data.currentTab == "Все"}}
 		<H3>{{:data.currentTab}} Orders</H3>
 		{{for data.orders}}
-			{{if (value.status == data.currentTab) || (data.currentTab == "All")}}
+			{{if (value.status == data.currentTab) || (data.currentTab == "Все")}}
 				<hr>
 				<div class='item'>
 					{{for value.entries :entryVal:entryIndex}}
@@ -151,14 +151,14 @@
 								{{:entryVal.entry}}
 								{{if data.order_auth}}
 									<span style='float:right; width:64px;'>
-										{{:helper.link('Edit', 'wrench', {'order_ref' : value.ref, 'edit' : entryVal.field, 'default' : entryVal.entry, 'user' : data.user})}}
+										{{:helper.link('Изменить', 'wrench', {'order_ref' : value.ref, 'edit' : entryVal.field, 'default' : entryVal.entry, 'user' : data.user})}}
 									</span>
 								{{/if}}
 							</div>
 						{{/if}}
 					{{/for}}
 					
-					{{if data.currentTab == "All"}}
+					{{if data.currentTab == "Все"}}
 						<div class='itemLabelNarrow'>
 							Status
 						</div>
@@ -166,21 +166,21 @@
 							{{:value.status}}
 						</div>
 						{{if data.order_auth}}
-							<br>{{:helper.link('Delete record', 'trash', {'order_ref' : value.ref, 'delete' : 1, 'user' : data.user})}}
+							<br>{{:helper.link('Удалить запись', 'trash', {'order_ref' : value.ref, 'delete' : 1, 'user' : data.user})}}
 						{{/if}}
 					{{/if}}
 					
-					{{if data.order_auth && data.currentTab == "Requested"}}
-						{{:helper.link('Approve', 'check', {'order_ref' : value.ref, 'approve' : 1, 'user' : data.user})}}
-						{{:helper.link('Deny',   'cancel', {'order_ref' : value.ref, 'deny' : 1,    'user' : data.user})}}
+					{{if data.order_auth && data.currentTab == "Запрошено"}}
+						{{:helper.link('Одобрить', 'check', {'order_ref' : value.ref, 'approve' : 1, 'user' : data.user})}}
+						{{:helper.link('Отклонить',   'cancel', {'order_ref' : value.ref, 'deny' : 1,    'user' : data.user})}}
 					{{/if}}
 				</div>
 			{{/if}}
 		{{empty}}
-			<div class='average'>No orders on record!</div>
+			<div class='average'>Заказов нет!</div>
 		{{/for}}
 		
-		{{if data.currentTab == "Requested" && data.order_auth}}
+		{{if data.currentTab == "Запрошено" && data.order_auth}}
 			{{:helper.link('Clear all requests', 'trash', {'clear_all_requests' : 1, 'user' : data.user})}}
 		{{/if}}
 	
@@ -188,7 +188,7 @@
 	<!-- currentTab will be set to the category name -->
 	{{else}}
 		<div class='item'>
-			{{:helper.link('Back to categories', 'arrow-return-1-w', {'switch_tab' : 1})}}
+			{{:helper.link('Вернуться к категориям', 'arrow-return-1-w', {'switch_tab' : 1})}}
 		</div>
 		
 		<h4>
@@ -215,7 +215,7 @@
 						</div>
 							
 						<div class='itemContent'>
-							{{:helper.link('Request', 'cart', {'cartridge_topic' : 1, 'pack_ref' : packValue.ref, 'request' : 1, 'user' : data.user})}}
+							{{:helper.link('Запрос', 'cart', {'cartridge_topic' : 1, 'pack_ref' : packValue.ref, 'request' : 1, 'user' : data.user})}}
 						</div>
 					</div>
 					<hr>

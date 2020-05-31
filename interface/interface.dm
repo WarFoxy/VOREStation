@@ -29,10 +29,22 @@
 		return
 */
 
+/client/verb/discordurl()
+	set name = "discordurl"
+	set desc = "Посетить сервер Discorf."
+	set hidden = 1
+	if( config.discordurl )
+		if(alert("Это откроет приглашение на серве Discord FURRYStation в вашем браузере. Вы уверены, что хотите продолжить?",,"Да","Нет")=="Нет")
+			return
+		src << link(config.discordurl)
+	else
+		to_chat(src, "<span class='warning'>Сервер Discord не задан в конфигурации.</span>")
+		return
+
 #define RULES_FILE "config/rules.html"
 /client/verb/rules()
 	set name = "Rules"
-	set desc = "Show Server Rules."
+	set desc = "Показать правила сервера."
 	set hidden = 1
 	show_browser(src, file(RULES_FILE), "window=rules;size=1270x720")
 #undef RULES_FILE

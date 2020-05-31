@@ -881,20 +881,6 @@ menu "menu"
 		can-check = true
 		saved-params = "is-checked"
 	elem 
-		name = "&Help"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "&Admin help\tF1"
-		command = "adminhelp"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem 
-		name = "&Hotkeys"
-		command = "hotkeys-help"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem 
 		name = "Scaling"
 		command = ""
 		saved-params = "is-checked"
@@ -918,6 +904,20 @@ menu "menu"
 		category = "Scaling"
 		can-check = true
 		group = "scale"
+		saved-params = "is-checked"
+	elem 
+		name = "&Help"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Admin help\tF1"
+		command = "adminhelp"
+		category = "&Help"
+		saved-params = "is-checked"
+	elem 
+		name = "&Hotkeys"
+		command = "hotkeys-help"
+		category = "&Help"
 		saved-params = "is-checked"
 
 
@@ -1133,7 +1133,7 @@ window "mainwindow"
 		anchor2 = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "VOREStation"
+		title = "FURRYStation"
 		is-maximized = true
 		icon = 'icons\\virgoicon.png'
 		macro = "macro"
@@ -1229,6 +1229,7 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1236,6 +1237,7 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "chatloadlabel"
 		type = LABEL
 		pos = 0,0
@@ -1247,6 +1249,7 @@ window "outputwindow"
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #222222
+		is-visible = true
 		saved-params = ""
 		text = "Chat is loading.\nIf nothing happens after 20s,\nuse OOC > \"Reload VChat\"."
 	elem "htmloutput"
@@ -1255,20 +1258,25 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		saved-params = ""
+		auto-format = false
 	elem "oldoutput"
 		type = OUTPUT
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
+		text-color = #000000
+		background-color = #ffffff
 		is-visible = false
 		is-default = true
-		saved-params = ""
 		style = ".system {color:#FF0000;}"
-		enable-http-images = true
 		max-lines = 0
+		saved-params = ""
+		enable-http-images = true
 
 window "rpane"
 	elem "rpane"
@@ -1288,9 +1296,19 @@ window "rpane"
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
+	elem "discordurl"
+		type = BUTTON
+		pos = 424,-4
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		saved-params = "is-checked"
+		text = "Discord"
+		command = "discordurl"
+		group = "rpanemode"
 	elem "github"
 		type = BUTTON
-		pos = 392,0
+		pos = 356,0
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
@@ -1300,7 +1318,7 @@ window "rpane"
 		group = "rpanemode"
 	elem "mapb"
 		type = BUTTON
-		pos = 332,0
+		pos = 288,0
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
@@ -1310,33 +1328,13 @@ window "rpane"
 		group = "rpanemode"
 	elem "rulesb"
 		type = BUTTON
-		pos = 272,0
+		pos = 220,0
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
-		group = "rpanemode"
-	elem "changelog"
-		type = BUTTON
-		pos = 488,0
-		size = 67x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Changelog"
-		command = "Changelog"
-		group = "rpanemode"
-	elem "forumb"
-		type = BUTTON
-		pos = 212,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
 		group = "rpanemode"
 	elem "wikib"
 		type = BUTTON
@@ -1440,7 +1438,6 @@ window "preferences_window"
 		anchor1 = 80,0
 		anchor2 = 100,100
 		right-click = true
-		saved-params = "zoom;letterbox;zoom-mode"
 
 window "infowindow"
 	elem "infowindow"
@@ -1513,4 +1510,3 @@ window "text_editor"
 		border = line
 		saved-params = ""
 		multi-line = true
-

@@ -34,7 +34,7 @@ var/XENOMORPH_EGG 	= "Xenomorph"
 
 /datum/category_item/player_setup_item/vore/egg/content(var/mob/user)
 	. += "<br>"
-	. += " Egg Type: <a href='?src=\ref[src];vore_egg_type=1'>[pref.vore_egg_type]</a><br>"
+	. += " Стиль яйца: <a href='?src=\ref[src];vore_egg_type=1'>[pref.vore_egg_type]</a><br>"
 
 /datum/category_item/player_setup_item/vore/egg/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))
@@ -42,7 +42,7 @@ var/XENOMORPH_EGG 	= "Xenomorph"
 
 	else if(href_list["vore_egg_type"])
 		var/list/vore_egg_types = global_vore_egg_types
-		var/selection = input(user, "Choose your character's egg type:", "Character Preference", pref.vore_egg_type) as null|anything in vore_egg_types
+		var/selection = input(user, "Выберите тип яйца вашего персонажа:", "Настройка персонажа", pref.vore_egg_type) as null|anything in vore_egg_types
 		if(selection)
 			pref.vore_egg_type = vore_egg_types[selection]
 			return TOPIC_REFRESH

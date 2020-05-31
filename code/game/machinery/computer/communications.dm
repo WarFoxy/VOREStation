@@ -320,7 +320,7 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Информация дисплеев</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Войти</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Соощения</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Сообщения</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Вкл" : "Выкл"] ATC Relay</A> \]"
 		if(STATE_CALLSHUTTLE)
 			dat += "Вы уверены, что хотите вызвать шаттл? \[ <A HREF='?src=\ref[src];operation=callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=main'>Отмена</A> \]"
