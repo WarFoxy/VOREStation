@@ -53,7 +53,7 @@
 	if(..())
 		return 1
 	if (using_map && !(src.z in using_map.contact_levels))
-		to_chat(usr, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
+		to_chat(usr, "<font color='red'><b>Не удается установить соединение:</b></font> <font color='black'>Вы слишком далеко от станции!</font>")
 		return
 	usr.set_machine(src)
 
@@ -85,8 +85,8 @@
 				set_security_level(tmp_alertlevel)
 				if(security_level != old_level)
 					//Only notify the admins if an actual change happened
-					log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-					message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
+					log_game("[key_name(usr)] изменил уровень безопасности на [get_security_level()].")
+					message_admins("[key_name_admin(usr)] изменил уровень безопасности на [get_security_level()].")
 					switch(security_level)
 						if(SEC_LEVEL_GREEN)
 							feedback_inc("alert_comms_green",1)
@@ -104,9 +104,9 @@
 		if("announce")
 			if(src.authenticated==2)
 				if(message_cooldown)
-					to_chat(usr, "Please allow at least one minute to pass between announcements")
+					to_chat(usr, "Пожалуйста подождите минуту между объявлениями")
 					return
-				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement") as null|message
+				var/input = input(usr, "Пожалуйста, напишите сообщение, чтобы сообщить об этом персоналу.", "Priority Announcement") as null|message
 				if(!input || !(usr in view(1,src)))
 					return
 				crew_announcement.Announce(input)
@@ -173,26 +173,26 @@
 					post_status(href_list["statdisp"])
 
 		if("setmsg1")
-			stat_msg1 = reject_bad_text(sanitize(input("Line 1", "Enter Message Text", stat_msg1) as text|null, 40), 40)
+			stat_msg1 = reject_bad_text(sanitize(input("Строка 1", "Введите Текст Сообщения", stat_msg1) as text|null, 40), 40)
 			src.updateDialog()
 		if("setmsg2")
-			stat_msg2 = reject_bad_text(sanitize(input("Line 2", "Enter Message Text", stat_msg2) as text|null, 40), 40)
+			stat_msg2 = reject_bad_text(sanitize(input("Строка 2", "Введите Текст Сообщения", stat_msg2) as text|null, 40), 40)
 			src.updateDialog()
 
 		// OMG CENTCOMM LETTERHEAD
 		if("MessageCentCom")
 			if(src.authenticated==2)
 				if(centcomm_message_cooldown)
-					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
+					to_chat(usr, "<font color='red'>Переработка массивов. Подождите, пожалуйста.</font>")
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [using_map.boss_short] via quantum entanglement. \
-				Please be aware that this process is very expensive, and abuse will lead to... termination.  \
-				Transmission does not guarantee a response. \
-				There is a 30 second delay before you may send another message, be clear, full and concise.", "Central Command Quantum Messaging") as null|message)
+				var/input = sanitize(input("Пожалуйста, выберите сообщение для передачи в [using_map.boss_short] через квантовую запутанность. \
+				Пожалуйста, имейте в виду, что этот процесс очень дорогой, и злоупотребление приведет к ... терминации.  \
+				Передача не гарантирует ответа. \
+				Существует 30-секундная задержка, прежде чем вы сможете отправить еще одно сообщение, пишите ясно, кратно м понятно.", "Central Command Quantum Messaging") as null|message)
 				if(!input || !(usr in view(1,src)))
 					return
 				CentCom_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, "<font color='blue'>Сообщение передано.</font>")
 				log_game("[key_name(usr)] has made an IA [using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
@@ -203,20 +203,20 @@
 		if("MessageSyndicate")
 			if((src.authenticated==2) && (src.emagged))
 				if(centcomm_message_cooldown)
-					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
+					to_chat(usr, "<font color='red'>Переработка массивов. Подождите, пожалуйста.</font>")
 					return
-				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = sanitize(input(usr, "Пожалуйста, выберите сообщение для передачи в \[АНОМАЛЬНЫЕ МАРШРУТНЫЕ КОРДИНАТЫ через квантовую запутанность\].  Пожалуйста, имейте в виду, что этот процесс очень дорогой, и злоупотребление приведет к ... терминации. Передача не гарантирует ответ. Перед отправкой другого сообщения существует 30-секундная задержка, пишите ясно, кратно м понятно.", "Чтобы прерваться, отправьте пустое сообщение.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
 				Syndicate_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, "<font color='blue'>Сообщение передано.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
 					centcomm_message_cooldown = 0
 
 		if("RestoreBackup")
-			to_chat(usr, "Backup routing data restored!")
+			to_chat(usr, "Резервное копирование данных восстановлено!")
 			src.emagged = 0
 			src.updateDialog()
 
@@ -271,7 +271,7 @@
 /obj/machinery/computer/communications/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		src.emagged = 1
-		to_chat(user, "You scramble the communication routing circuits!")
+		to_chat(user, "Вы шифруете схемы маршрутизации связи!")
 		return 1
 
 /obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
@@ -281,14 +281,14 @@
 	if(..())
 		return
 	if (using_map && !(src.z in using_map.contact_levels))
-		to_chat(user, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
+		to_chat(user, "<font color='red'><b>Невозможно установить соединение:</b></font> <font color='black'>Вы слишком далеко от станции!</font>")
 		return
 
 	user.set_machine(src)
-	var/dat = "<head><title>Communications Console</title></head><body>"
+	var/dat = "<meta charset=\"utf-8\"><head><title>Консоль связи</title></head><body>"
 	if (emergency_shuttle.has_eta())
 		var/timeleft = emergency_shuttle.estimate_arrival_time()
-		dat += "<B>Emergency shuttle</B>\n<BR>\nETA: [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]<BR>"
+		dat += "<B>Аварийный шаттл</B>\n<BR>\nETA: [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]<BR>"
 
 	if (istype(user, /mob/living/silicon))
 		var/dat2 = src.interact_ai(user) // give the AI a different interact proc to limit its access
@@ -301,31 +301,31 @@
 	switch(src.state)
 		if(STATE_DEFAULT)
 			if (src.authenticated)
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>Log Out</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>Выйти</A> \]"
 				if (src.authenticated==2)
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make An Announcement</A> \]"
+					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Сделать объявление</A> \]"
 					if(src.emagged == 0)
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [using_map.boss_short]</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Отправить экстренное сообщение [using_map.boss_short]</A> \]"
 					else
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageSyndicate'>Send an emergency message to \[UNKNOWN\]</A> \]"
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=RestoreBackup'>Restore Backup Routing Data</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageSyndicate'>Отправить экстренное сообщение \[UNKNOWN\]</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=RestoreBackup'>Вос. резервные данные маршрутиз.</A> \]"
 
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=changeseclevel'>Change alert level</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=changeseclevel'>Изменить уровень безопасности</A> \]"
 				if(emergency_shuttle.location())
 					if (emergency_shuttle.online())
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=cancelshuttle'>Cancel Shuttle Call</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=cancelshuttle'>Отменить вызов шаттла</A> \]"
 					else
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Call Emergency Shuttle</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Вызвать аварийный шаттл</A> \]"
 
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set Status Display</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Информация дисплеев</A> \]"
 			else
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Log In</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Войти</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Сообщения</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Вкл" : "Выкл"] ATC Relay</A> \]"
 		if(STATE_CALLSHUTTLE)
-			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=main'>Cancel</A> \]"
+			dat += "Вы уверены, что хотите вызвать шаттл? \[ <A HREF='?src=\ref[src];operation=callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=main'>Отмена</A> \]"
 		if(STATE_CANCELSHUTTLE)
-			dat += "Are you sure you want to cancel the shuttle? \[ <A HREF='?src=\ref[src];operation=cancelshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=main'>Cancel</A> \]"
+			dat += "Вы уверены, что хотите отменить вызов шаттла? \[ <A HREF='?src=\ref[src];operation=cancelshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=main'>Отмена</A> \]"
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
 			for(var/i = 1; i<=src.messagetitle.len; i++)
@@ -334,46 +334,46 @@
 			if (src.currmsg)
 				dat += "<B>[src.messagetitle[src.currmsg]]</B><BR><BR>[src.messagetext[src.currmsg]]"
 				if (src.authenticated)
-					dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Delete \]"
+					dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Удалить \]"
 			else
 				src.state = STATE_MESSAGELIST
 				src.attack_hand(user)
 				return
 		if(STATE_DELMESSAGE)
 			if (src.currmsg)
-				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=delmessage2'>OK</A> | <A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
+				dat += "Вы уверены, что хотите удалить это сообщение? \[ <A HREF='?src=\ref[src];operation=delmessage2'>OK</A> | <A HREF='?src=\ref[src];operation=viewmessage'>Отмена</A> \]"
 			else
 				src.state = STATE_MESSAGELIST
 				src.attack_hand(user)
 				return
 		if(STATE_STATUSDISPLAY)
-			dat += "Set Status Displays<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A> \]"
-			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
-			dat += "<li> Line 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
-			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>None</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
+			dat += "Информация дисплеев<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Очистить</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Время на станции</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Прибытие шаттла</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Сообщение</A> \]"
+			dat += "<ul><li> Строка 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
+			dat += "<li> Строка 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
+			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>Нет</A> |"
+			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Красная тревога</A> |"
+			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Карантин</A> |"
+			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Био. опасность</A> \]<BR><HR>"
 		if(STATE_ALERT_LEVEL)
-			dat += "Current alert level: [get_security_level()]<BR>"
+			dat += "Текущий уровень безопасности: [get_security_level()]<BR>"
 			if(security_level == SEC_LEVEL_DELTA)
-				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
+				dat += "<font color='red'><b>Механизм самоуничтожения активен. Найдите способ отключить механизм, чтобы понизить уровень тревоги или эвакуироваться.</b></font>"
 			else
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_VIOLET]'>Violet</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_YELLOW]'>Yellow</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Голубой</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Оранжевый</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_VIOLET]'>Фиолетовый</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_YELLOW]'>Желтый</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Зеленый</A>"
 		if(STATE_CONFIRM_LEVEL)
-			dat += "Current alert level: [get_security_level()]<BR>"
-			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
-			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>OK</A> to confirm change.<BR>"
+			dat += "Текущий уровень безопасности: [get_security_level()]<BR>"
+			dat += "Подтвердите изменение на: [num2seclevel(tmp_alertlevel)]<BR>"
+			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>OK</A> чтобы подтвердить изменение.<BR>"
 
-	dat += "<BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+	dat += "<BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Закрыть</A> \]"
 	user << browse(dat, "window=communications;size=400x500")
 	onclose(user, "communications")
 
@@ -385,47 +385,47 @@
 	switch(src.aistate)
 		if(STATE_DEFAULT)
 			if(emergency_shuttle.location() && !emergency_shuttle.online())
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+				dat += "<meta charset=\"utf-8\"><BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Вызов аварийного шаттла</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Сообщения</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Информация дисплеев</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Вкл" : "Выкл"] ATC Relay</A> \]"
 		if(STATE_CALLSHUTTLE)
-			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-main'>Cancel</A> \]"
+			dat += "Вы уверены, что хотите вызвать шаттл? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-main'>Отмена</A> \]"
 		if(STATE_MESSAGELIST)
-			dat += "Messages:"
+			dat += "Сообщения:"
 			for(var/i = 1; i<=src.messagetitle.len; i++)
 				dat += "<BR><A HREF='?src=\ref[src];operation=ai-viewmessage;message-num=[i]'>[src.messagetitle[i]]</A>"
 		if(STATE_VIEWMESSAGE)
 			if (src.aicurrmsg)
 				dat += "<B>[src.messagetitle[src.aicurrmsg]]</B><BR><BR>[src.messagetext[src.aicurrmsg]]"
-				dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=ai-delmessage'>Delete</A> \]"
+				dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=ai-delmessage'>Удалить</A> \]"
 			else
 				src.aistate = STATE_MESSAGELIST
 				src.attack_hand(user)
 				return null
 		if(STATE_DELMESSAGE)
 			if(src.aicurrmsg)
-				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=ai-delmessage2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
+				dat += "Вы уверены, что хотите удалить это сообщение? \[ <A HREF='?src=\ref[src];operation=ai-delmessage2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-viewmessage'>Отмена</A> \]"
 			else
 				src.aistate = STATE_MESSAGELIST
 				src.attack_hand(user)
 				return
 
 		if(STATE_STATUSDISPLAY)
-			dat += "Set Status Displays<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A> \]"
-			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
-			dat += "<li> Line 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
-			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>None</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
+			dat += "Информация дисплеев<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Очистить</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Время на станции</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Прибытие шаттла</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Сообщение</A> \]"
+			dat += "<ul><li> Строка 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
+			dat += "<li> Строка 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
+			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>Нет</A> |"
+			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Красная тревога</A> |"
+			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Карантин</A> |"
+			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Био. опасность</A> \]<BR><HR>"
 
 
-	dat += "<BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+	dat += "<BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Главное меню</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Закрыть</A> \]"
 	return dat
 
 /proc/enable_prison_shuttle(var/mob/user)
@@ -437,37 +437,37 @@
 		return
 
 	if(!universe.OnShuttleCall(usr))
-		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
+		to_chat(user, "<span class='notice'>Не удается установить соединение с блюспейс.</span>")
 		return
 
 	if(deathsquad.deployed)
-		to_chat(user, "[using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+		to_chat(user, "[using_map.boss_short] не позволит вызвать шаттл. Считайте, что все контракты расторгнуты.")
 		return
 
 	if(emergency_shuttle.deny_shuttle)
-		to_chat(user, "The emergency shuttle may not be sent at this time. Please try again later.")
+		to_chat(user, "Аварийный трансфер не может быть отправлен в это время. Пожалуйста, попробуйте позже.")
 		return
 
 	if(world.time < 6000) // Ten minute grace period to let the game get going without lolmetagaming. -- TLE
-		to_chat(user, "The emergency shuttle is refueling. Please wait another [round((6000-world.time)/600)] minute\s before trying again.")
+		to_chat(user, "Аварийный челнок заправляется. Пожалуйста, подождите еще [round((6000-world.time)/600)] минут, прежде чем пытаться снова.")
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The emergency shuttle may not be called while returning to [using_map.boss_short].")
+		to_chat(user, "Аварийный шаттл не может быть вызван при возвращении на [using_map.boss_short].")
 		return
 
 	if(emergency_shuttle.online())
-		to_chat(user, "The emergency shuttle is already on its way.")
+		to_chat(user, "Аварийный шаттл уже в пути.")
 		return
 
 	if(ticker.mode.name == "blob")
-		to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
+		to_chat(user, "Согласно директиве 7-10, [station_name()] помещается на карантин до дальнейшего уведомления.")
 		return
 
 	emergency_shuttle.call_evac()
-	log_game("[key_name(user)] has called the shuttle.")
-	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
-	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222") //VOREStation Add
+	log_game("[key_name(user)] вызывает шаттл.")
+	message_admins("[key_name_admin(user)] вызывает шаттл.", 1)
+	admin_chat_message(message = "Начало аварийной эвакуации! Вызов совершает [key_name(user)]!", color = "#CC2222") //VOREStation Add
 
 
 	return
@@ -477,25 +477,25 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The shuttle may not be called while returning to [using_map.boss_short].")
+		to_chat(user, "Шаттл не может быть вызван при возвращении на [using_map.boss_short].")
 		return
 
 	if(emergency_shuttle.online())
-		to_chat(user, "The shuttle is already on its way.")
+		to_chat(user, "Шаттл уже в пути.")
 		return
 
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
 		if(emergency_shuttle.deny_shuttle)
-			to_chat(user, "[using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
+			to_chat(user, "В настоящее время у [using_map.boss_short] нет шаттла, доступного в вашем секторе. Пожалуйста, повторите попытку позже.")
 			return
 
 		if(deathsquad.deployed == 1)
-			to_chat(user, "[using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+			to_chat(user, "[using_map.boss_short] не позволит вызвать шаттл. Считайте, что все контракты расторгнуты.")
 			return
 
 		if(world.time < 54000) // 30 minute grace period to let the game get going
-			to_chat(user, "The shuttle is refueling. Please wait another [round((54000-world.time)/60)] minutes before trying again.")
+			to_chat(user, "Аварийный челнок заправляется. Пожалуйста, подождите еще [round((54000-world.time)/60)] минут, прежде чем пытаться снова.")
 			return
 
 		if(ticker.mode.auto_recall_shuttle)
@@ -503,7 +503,7 @@
 			emergency_shuttle.auto_recall = 1
 
 		if(ticker.mode.name == "blob" || ticker.mode.name == "epidemic")
-			to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
+			to_chat(user, "Согласно директиве 7-10, [station_name()] помещается на карантин до дальнейшего уведомления.")
 			return
 
 	emergency_shuttle.call_transfer()
@@ -513,9 +513,9 @@
 		SSevents.delay_events(EVENT_LEVEL_MODERATE, 9000) //15 minutes
 		SSevents.delay_events(EVENT_LEVEL_MAJOR, 9000)
 
-	log_game("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
-	message_admins("[user? key_name_admin(user) : "Autotransfer"] has called the shuttle.", 1)
-	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB") //VOREStation Add
+	log_game("[user? key_name(user) : "Autotransfer"] вызывает шаттл.")
+	message_admins("[user? key_name_admin(user) : "Autotransfer"] вызывает шаттл.", 1)
+	admin_chat_message(message = "Автовозвратный шаттл отправлен, смена скоро закончится.", color = "#2277BB") //VOREStation Add
 
 	return
 
@@ -553,7 +553,7 @@
 		if("message")
 			status_signal.data["msg1"] = data1
 			status_signal.data["msg2"] = data2
-			log_admin("STATUS: [src.fingerprintslast] set status screen message with [src]: [data1] [data2]")
+			log_admin("СТАТУС: [src.fingerprintslast] уставливает статус сообщения с помощью [src]: [data1] [data2]")
 			//message_admins("STATUS: [user] set status screen with [PDA]. Message: [data1] [data2]")
 		if("alert")
 			status_signal.data["picture_state"] = data1

@@ -27,8 +27,8 @@
 
 /datum/category_item/player_setup_item/vore/vantag/content(var/mob/user)
 	. += "<br>"
-	. += "<b>Event Volunteer:</b> <a [pref.vantag_volunteer ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_vantag_volunteer=1'><b>[pref.vantag_volunteer ? "Yes" : "No"]</b></a><br>"
-	. += "<b>Event Pref:</b> <a href='?src=\ref[src];change_vantag=1'><b>[vantag_choices_list[pref.vantag_preference]]</b></a><br>"
+	//. += "<b>Участие в ивентах:</b> <a [pref.vantag_volunteer ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_vantag_volunteer=1'><b>[pref.vantag_volunteer ? "Да" : "Нет"]</b></a><br>"
+	//. += "<b>Предпочтения в ивентах:</b> <a href='?src=\ref[src];change_vantag=1'><b>[vantag_choices_list[pref.vantag_preference]]</b></a><br>"
 
 /datum/category_item/player_setup_item/vore/vantag/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_vantag_volunteer"])
@@ -40,7 +40,7 @@
 		for(var/C in vantag_choices_list)
 			names_list[vantag_choices_list[C]] = C
 
-		var/selection = input(user, "How do you want to be involved with VS Event Characters, ERP-wise? They will see this choice on you in a HUD. Event characters are admin-selected and spawned players, possibly with assigned objectives, who are obligated to respect ERP prefs and RP their actions like any other player, though it may be a slightly shorter RP if they are pressed for time or being caught.", "Event Preference") as null|anything in names_list
+		var/selection = input(user, "Как вы хотите быть вовлечены в работу с \"Персонажами Событий\", с точки зрения ERP? Они увидят этот выбор на вашем HUD. \"Персонажи событий\" - это выбранные администратором или появившиеся игроки, возможно, с назначенными целями, которые обязаны уважать предпочтения ERP и RP, как и любой другой игрок, хотя это может быть немного короткое RP, если они захвачены на время или пойманы.", "Предпочтения в ивентах") as null|anything in names_list
 		if(selection && selection != "Normal")
 			pref.vantag_preference = names_list[selection]
 

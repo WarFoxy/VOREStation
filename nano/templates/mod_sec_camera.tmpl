@@ -1,19 +1,19 @@
 <div class='item'>
-    {{:helper.link('Show Map', 'pin-s', {'showMap' : 1})}}
-    {{:helper.link('Reset', 'refresh', {'reset' : 1})}}
+    {{:helper.link('Показ. карту', 'pin-s', {'showMap' : 1})}}
+    {{:helper.link('Сброс', 'refresh', {'reset' : 1})}}
 </div>
 
 <div class='item'>
-    <div class='itemLabel'>Current Camera:</div>
+    <div class='itemLabel'>Текущая камера:</div>
     {{if data.current_camera}}
         <div class='itemContentWide'><b>{{:data.current_camera.name}}</b></div>
     {{else}}
-        <div class='itemContentWide'>None</div>
+        <div class='itemContentWide'>Нет</div>
     {{/if}}
 </div>
 
 <div class='item'>
-	<div class='itemLabel'>Networks:</div>
+	<div class='itemLabel'>Сеть:</div>
 </div>
 {{for data.networks}}
 	{{if value.has_access}}
@@ -23,7 +23,7 @@
 	{{/if}}
 {{/for}}
 <div class='item'>
-	<div class='itemLabel'>Cameras:</div>
+	<div class='itemLabel'>Камеры:</div>
 </div>
 {{for data.cameras}}
 	{{if data.current_camera && value.name == data.current_camera.name}}

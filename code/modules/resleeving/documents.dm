@@ -2,8 +2,8 @@
 	name = "Resleeving, the New Cloning?"
 	icon_state = "stasis"
 	author = "Dnar Koshi"
-	title = "Resleeving, the New Cloning?"
-	dat = {"<html>
+	title = "Ресливинг, новое слово в клонировании??"
+	dat = {"<meta charset=\"utf-8\"><html>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -16,29 +16,29 @@
 				</head>
 				<body>
 
-				<h1><a name="Contents">Contents</a></h1>
+				<h1><a name="Contents">Содержание</a></h1>
 				<ol>
-					<li><a href="#Foreword">Foreword: A Licensed Technology</a></li>
-					<li><a href="#Implant">The Mindstate Backup Implant</a></li>
-					<li><a href="#Usage">How to Perform Resleeving</a></li>
-					<li><a href="#Cards">How to Utilize Sleevecards</a></li>
-					<li><a href="#Considerations">Special Considerations</a></li>
+					<li><a href="#Foreword">Предисловие: Лицензии технологии</a></li>
+					<li><a href="#Implant">Резервный имплант состояние сознания</a></li>
+					<li><a href="#Usage">Как выполнить ресливеринг</a></li>
+					<li><a href="#Cards">Как использовать Sleevecards</a></li>
+					<li><a href="#Considerations">Особые соображения</a></li>
 				</ol>
 				<br>
-				<h1><a name="Foreword">Foreword: A Licensed Technology</a></h1>
+				<h1><a name="Foreword">Предисловие: Лицензии технологии</a></h1>
 				This message must remain attached to all documentation regarding Nanotrasen Resleeving Technology.<br>
 				All Nanotrasen Resleeving Technology (NRT) is licensed to Nanotrasen by Kitsuhana Heavy Industries. It should only be used in the ways set forth in this guide.
 				Special consideration to the moral and ethical use of this technology should be undertaken before applying it in the field. Make sure you understand the technology fully before using the machinery.<br>
 				<a href="#Contents">Contents</a>
 
-				<h1><a name="Implant">The Mindstate Backup Implant</a></h1>
+				<h1><a name="Implant">Резервный имплант состояние сознания</a></h1>
 				Anyone wishing to enjoy the benefits of resleeving must have been implanted with a Mindstate Backup implant. These implants use advanced (licensed) technology to
 				perform backups of the whole mindstate at periodic intervals. The backups are not constant, however, and being resleeved after death may result in memory loss for
 				the time since the last backup until the demise of the body. Generally this can encompass anywhere from 5 to 50 minutes, though it has been known to be longer or shorter, depending
 				on the timing of the backups, when the person expired, and when the resleeving was started.<br>
 				<a href="#Contents">Contents</a>
 
-				<h1><a name="Usage">How to Perform Resleeving</a></h1>
+				<h1><a name="Usage">Как выполнить ресливермнг</a></h1>
 				The Nanotrasen Resleeving Technology consists of four machines:
 				<ul>
 					<li>The Growpod - For growing organic bodies.</li>

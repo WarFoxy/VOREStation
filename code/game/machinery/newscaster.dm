@@ -59,7 +59,7 @@
 	var/datum/feed_message/wanted_issue
 
 /datum/feed_network/New()
-	CreateFeedChannel("Station Announcements", "SS13", 1, 1, "New Station Announcement Available")
+	CreateFeedChannel("Объявления станции", "SS13", 1, 1, "Доступные новые объявления")
 
 /datum/feed_network/proc/CreateFeedChannel(var/channel_name, var/author, var/locked, var/adminChannel = 0, var/announcement_message)
 	var/datum/feed_channel/newChannel = new /datum/feed_channel
@@ -70,7 +70,7 @@
 	if(announcement_message)
 		newChannel.announcement = announcement_message
 	else
-		newChannel.announcement = "Breaking news from [channel_name]!"
+		newChannel.announcement = "Последние новости от [channel_name]!"
 	network_channels += newChannel
 
 /datum/feed_network/proc/SubmitArticle(var/msg, var/author, var/channel_name, var/obj/item/weapon/photo/photo, var/adminMessage = 0, var/message_type = "")
@@ -257,8 +257,7 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 		node = get_exonet_node()
 
 	if(!node || !node.on || !node.allow_external_newscasters)
-		to_chat(user, "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
-		contact the system administrator.</span>")
+		to_chat(user, "<span class='danger'>Ошибка: не удается подключиться к внешнему контенту. Пожалуйста, повторите попытку через несколько минут. Если эта ошибка повторится, обратитесь к системному администратору.</span>")
 		return 0
 
 	if(!user.IsAdvancedToolUser())
@@ -267,95 +266,95 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon))
 		var/mob/living/human_or_robot_user = user
 		var/dat
-		dat = text("<HEAD><TITLE>Newscaster</TITLE></HEAD><H3>Newscaster Unit #[unit_no]</H3>")
+		dat = text("<meta charset=\"utf-8\"><HEAD><TITLE>Новостник</TITLE></HEAD><H3>Новостник #[unit_no]</H3>")
 
 		scan_user(human_or_robot_user) //Newscaster scans you
 
 		switch(screen)
 			if(0)
-				dat += "Welcome to Newscasting Unit #[unit_no].<BR> Interface & News networks Operational."
+				dat += "Приветсвтует в системе новостник #[unit_no].<BR> Интерфейс & Новостные сети функционируют."
 				dat += "<BR><FONT SIZE=1>Property of NanoTrasen Inc</FONT>"
 				if(news_network.wanted_issue)
-					dat+= "<HR><A href='?src=\ref[src];view_wanted=1'>Read Wanted Issue</A>"
-				dat+= "<HR><BR><A href='?src=\ref[src];create_channel=1'>Create Feed Channel</A>"
-				dat+= "<BR><A href='?src=\ref[src];view=1'>View Feed Channels</A>"
-				dat+= "<BR><A href='?src=\ref[src];create_feed_story=1'>Submit new Feed story</A>"
-				dat+= "<BR><A href='?src=\ref[src];menu_paper=1'>Print newspaper</A>"
+					dat+= "<HR><A href='?src=\ref[src];view_wanted=1'>Списки розысков</A>"
+				dat+= "<HR><BR><A href='?src=\ref[src];create_channel=1'>Создать канал новостей</A>"
+				dat+= "<BR><A href='?src=\ref[src];view=1'>Посмотреть каналы новостей</A>"
+				dat+= "<BR><A href='?src=\ref[src];create_feed_story=1'>Добавить новую новость</A>"
+				dat+= "<BR><A href='?src=\ref[src];menu_paper=1'>Распечатать газету</A>"
 				dat+= "<BR><A href='?src=\ref[src];refresh=1'>Re-scan User</A>"
-				dat+= "<BR><BR><A href='?src=\ref[human_or_robot_user];mach_close=newscaster_main'>Exit</A>"
+				dat+= "<BR><BR><A href='?src=\ref[human_or_robot_user];mach_close=newscaster_main'>Выйти</A>"
 				if(securityCaster)
 					var/wanted_already = 0
 					if(news_network.wanted_issue)
 						wanted_already = 1
 
-					dat+="<HR><B>Feed Security functions:</B><BR>"
-					dat+="<BR><A href='?src=\ref[src];menu_wanted=1'>[(wanted_already) ? ("Manage") : ("Publish")] \"Wanted\" Issue</A>"
+					dat+="<HR><B>Новости СБ:</B><BR>"
+					dat+="<BR><A href='?src=\ref[src];menu_wanted=1'>[(wanted_already) ? ("Управление списком") : ("Публикация списка")] \"Розыска\"</A>"
 					dat+="<BR><A href='?src=\ref[src];menu_censor_story=1'>Censor Feed Stories</A>"
 					dat+="<BR><A href='?src=\ref[src];menu_censor_channel=1'>Mark Feed Channel with [using_map.company_name] D-Notice</A>"
 				dat+="<BR><HR>The newscaster recognises you as: <FONT COLOR='green'>[scanned_user]</FONT>"
 			if(1)
-				dat+= "Station Feed Channels<HR>"
+				dat+= "Новостной канал станции<HR>"
 				if(isemptylist(news_network.network_channels))
-					dat+="<I>No active channels found...</I>"
+					dat+="<I>Нет активных каналов...</I>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
 						if(CHANNEL.is_admin_channel)
 							dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen '><A href='?src=\ref[src];show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 						else
 							dat+="<B><A href='?src=\ref[src];show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR></B>"
-				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Back</A>"
+				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Обновить</A>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Назад</A>"
 			if(2)
-				dat+="Creating new Feed Channel..."
-				dat+="<HR><B><A href='?src=\ref[src];set_channel_name=1'>Channel Name</A>:</B> [channel_name]<BR>"
-				dat+="<B>Channel Author:</B> <FONT COLOR='green'>[scanned_user]</FONT><BR>"
-				dat+="<B><A href='?src=\ref[src];set_channel_lock=1'>Will Accept Public Feeds</A>:</B> [(c_locked) ? ("NO") : ("YES")]<BR><BR>"
-				dat+="<BR><A href='?src=\ref[src];submit_new_channel=1'>Submit</A><BR><BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A><BR>"
+				dat+="Создание новостного канала..."
+				dat+="<HR><B><A href='?src=\ref[src];set_channel_name=1'>Имя канала</A>:</B> [channel_name]<BR>"
+				dat+="<B>Автор канала:</B> <FONT COLOR='green'>[scanned_user]</FONT><BR>"
+				dat+="<B><A href='?src=\ref[src];set_channel_lock=1'>Will Accept Public Feeds</A>:</B> [(c_locked) ? ("НЕТ") : ("ДА")]<BR><BR>"
+				dat+="<BR><A href='?src=\ref[src];submit_new_channel=1'>Разместить</A><BR><BR><A href='?src=\ref[src];setScreen=[0]'>Отмена</A><BR>"
 			if(3)
-				dat+="Creating new Feed Message..."
-				dat+="<HR><B><A href='?src=\ref[src];set_channel_receiving=1'>Receiving Channel</A>:</B> [channel_name]<BR>" //MARK
-				dat+="<B>Message Author:</B> <FONT COLOR='green'>[scanned_user]</FONT><BR>"
-				dat+="<B><A href='?src=\ref[src];set_new_message=1'>Message Body</A>:</B> [msg] <BR>"
-				dat+="<B><A href='?src=\ref[src];set_attachment=1'>Attach Photo</A>:</B>  [(photo_data ? "Photo Attached" : "No Photo")]</BR>"
-				dat+="<BR><A href='?src=\ref[src];submit_new_message=1'>Submit</A><BR><BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A><BR>"
+				dat+="Создание новой новости..."
+				dat+="<HR><B><A href='?src=\ref[src];set_channel_receiving=1'>Куда разместить</A>:</B> [channel_name]<BR>" //MARK
+				dat+="<B>Автор:</B> <FONT COLOR='green'>[scanned_user]</FONT><BR>"
+				dat+="<B><A href='?src=\ref[src];set_new_message=1'>Содержание</A>:</B> [msg] <BR>"
+				dat+="<B><A href='?src=\ref[src];set_attachment=1'>Фото</A>:</B>  [(photo_data ? "Фото прилагается" : "Без фото")]</BR>"
+				dat+="<BR><A href='?src=\ref[src];submit_new_message=1'>Разместить</A><BR><BR><A href='?src=\ref[src];setScreen=[0]'>Отмена</A><BR>"
 			if(4)
-				dat+="Feed story successfully submitted to [channel_name].<BR><BR>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Return</A><BR>"
+				dat+="Новость успешно опубликована в [channel_name].<BR><BR>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Вернуться</A><BR>"
 			if(5)
-				dat+="Feed Channel [channel_name] created successfully.<BR><BR>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Return</A><BR>"
+				dat+="Новостной канал [channel_name] успешно создан.<BR><BR>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Вернуться</A><BR>"
 			if(6)
-				dat+="<B><FONT COLOR='maroon'>ERROR: Could not submit Feed story to Network.</B></FONT><HR><BR>"
+				dat+="<B><FONT COLOR='maroon'>ОШИБКА: не удалось отправит новость в сеть.</B></FONT><HR><BR>"
 				if(channel_name=="")
-					dat+="<FONT COLOR='maroon'>Invalid receiving channel name.</FONT><BR>"
+					dat+="<FONT COLOR='maroon'>Неверное имя канала.</FONT><BR>"
 				if(scanned_user=="Unknown")
-					dat+="<FONT COLOR='maroon'>Channel author unverified.</FONT><BR>"
-				if(msg == "" || msg == "\[REDACTED\]")
-					dat+="<FONT COLOR='maroon'>Invalid message body.</FONT><BR>"
+					dat+="<FONT COLOR='maroon'>Автор канала не проверен.</FONT><BR>"
+				if(msg == "" || msg == "\[ОТРЕДАКТИРОВАНО\]")
+					dat+="<FONT COLOR='maroon'>Ошибка содержания.</FONT><BR>"
 
-				dat+="<BR><A href='?src=\ref[src];setScreen=[3]'>Return</A><BR>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[3]'>Вернться</A><BR>"
 			if(7)
-				dat+="<B><FONT COLOR='maroon'>ERROR: Could not submit Feed Channel to Network.</B></FONT><HR><BR>"
+				dat+="<B><FONT COLOR='maroon'>ОШИБКА: не удалось разместить новостной канал в сети.</B></FONT><HR><BR>"
 				var/list/existing_authors = list()
 				for(var/datum/feed_channel/FC in news_network.network_channels)
-					if(FC.author == "\[REDACTED\]")
+					if(FC.author == "\[ОТРЕДАКТИРОВАНО\]")
 						existing_authors += FC.backup_author
 					else
 						existing_authors += FC.author
 				if(scanned_user in existing_authors)
-					dat+="<FONT COLOR='maroon'>There already exists a Feed channel under your name.</FONT><BR>"
-				if(channel_name=="" || channel_name == "\[REDACTED\]")
-					dat+="<FONT COLOR='maroon'>Invalid channel name.</FONT><BR>"
+					dat+="<FONT COLOR='maroon'>Новостной канал от вашего имения уже существует</FONT><BR>"
+				if(channel_name=="" || channel_name == "\[ОТРЕДАКТИРОВАНО\]")
+					dat+="<FONT COLOR='maroon'>Неверное название канала</FONT><BR>"
 				var/check = 0
 				for(var/datum/feed_channel/FC in news_network.network_channels)
 					if(FC.channel_name == channel_name)
 						check = 1
 						break
 				if(check)
-					dat+="<FONT COLOR='maroon'>Channel name already in use.</FONT><BR>"
+					dat+="<FONT COLOR='maroon'>Имя канала уже используется</FONT><BR>"
 				if(scanned_user=="Unknown")
-					dat+="<FONT COLOR='maroon'>Channel author unverified.</FONT><BR>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[2]'>Return</A><BR>"
+					dat+="<FONT COLOR='maroon'>Автор канала не проверен.</FONT><BR>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[2]'>Вернуться</A><BR>"
 			if(8)
 				var/total_num=length(news_network.network_channels)
 				var/active_num=total_num
@@ -365,18 +364,18 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 						message_num += length(FC.messages)    //Dont forget, datum/feed_channel's var messages is a list of datum/feed_message
 					else
 						active_num--
-				dat+="Network currently serves a total of [total_num] Feed channels, [active_num] of which are active, and a total of [message_num] Feed Stories." //TODO: CONTINUE
-				dat+="<BR><BR><B>Liquid Paper remaining:</B> [(paper_remaining) *100 ] cm^3"
-				dat+="<BR><BR><A href='?src=\ref[src];print_paper=[0]'>Print Paper</A>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
+				dat+="В настоящее время сеть обслуживает новостных каналов: [total_num], среди которых работает: [active_num], и в общей сложности уже существует новостей: [message_num]." //TODO: CONTINUE
+				dat+="<BR><BR><B>Оставшаяся жидкая бумага:</B> [(paper_remaining) *100 ] cm^3"
+				dat+="<BR><BR><A href='?src=\ref[src];print_paper=[0]'>Распечатать бумагу</A>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Отмена</A>"
 			if(9)
-				dat+="<B>[viewing_channel.channel_name]: </B><FONT SIZE=1>\[created by: <FONT COLOR='maroon'>[viewing_channel.author]</FONT>\]</FONT><HR>"
+				dat+="<B>[viewing_channel.channel_name]: </B><FONT SIZE=1>\[создано: <FONT COLOR='maroon'>[viewing_channel.author]</FONT>\]</FONT><HR>"
 				if(viewing_channel.censored)
-					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [using_map.company_name] D-Notice.<BR>"
-					dat+="No further feed story additions are allowed while the D-Notice is in effect.</FONT><BR><BR>"
+					dat+="<FONT COLOR='red'><B>ВНИМАНИЕ: </B></FONT>Этот канал был признан угрожающим благополучию станции и помечен D-уведомлением [using_map.company_name].<BR>"
+					dat+="Дальнейшее добавление истории рассылки не допускается, пока действует D-Notice.</FONT><BR><BR>"
 				else
 					if(isemptylist(viewing_channel.messages))
-						dat+="<I>No feed messages found in channel...</I><BR>"
+						dat+="<I>В канале не найдено ни одного сообщения...</I><BR>"
 					else
 						var/i = 0
 						for(var/datum/feed_message/MESSAGE in viewing_channel.messages)
@@ -388,39 +387,39 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 								if(MESSAGE.caption)
 									dat+="<FONT SIZE=1><B>[MESSAGE.caption]</B></FONT><BR>"
 								dat+="<BR>"
-							dat+="<FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[MESSAGE.author] - [MESSAGE.time_stamp]</FONT>\]</FONT><BR>"
-				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[1]'>Back</A>"
+							dat+="<FONT SIZE=1>\[История от <FONT COLOR='maroon'>[MESSAGE.author] - [MESSAGE.time_stamp]</FONT>\]</FONT><BR>"
+				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Обновить</A>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[1]'>Назад</A>"
 			if(10)
-				dat+="<B>[using_map.company_name] Feed Censorship Tool</B><BR>"
-				dat+="<FONT SIZE=1>NOTE: Due to the nature of news Feeds, total deletion of a Feed Story is not possible.<BR>"
-				dat+="Keep in mind that users attempting to view a censored feed will instead see the \[REDACTED\] tag above it.</FONT>"
-				dat+="<HR>Select Feed channel to get Stories from:<BR>"
+				dat+="<B>Инструмент цензуры [using_map.company_name]</B><BR>"
+				dat+="<FONT SIZE=1>Примечание: из-за характера новостных лент полное удаление сюжета ленты невозможно.<BR>"
+				dat+="Имейте в виду, что пользователи, пытающиеся просмотреть цензурированный канал, вместо этого увидят тэг \[ОТРЕДАКТИРОВАНО\].</FONT>"
+				dat+="<HR>Выберите канал для получения новостей:<BR>"
 				if(isemptylist(news_network.network_channels))
-					dat+="<I>No feed channels found active...</I><BR>"
+					dat+="<I>Активных новостных каналов не найдено...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
 						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Отмена</A>"
 			if(11)
 				dat+="<B>[using_map.company_name] D-Notice Handler</B><HR>"
-				dat+="<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the station's"
-				dat+="morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed"
-				dat+="stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>"
+				dat+="<FONT SIZE=1>D-уведомление должно быть вручено каналу, если регулирующий орган сочтет его вредным для морального духа,"
+				dat+="добросовестности или дисциплинарного поведения станции. D-уведомление сделает канал неспособным быть обновленным кем-либо, не удаляя никаких сюжетов"
+				dat+="ленты, которые он мог бы содержать в то время. Если у вас есть необходимый доступ в любое время, вы можете снять уведомление D-типа.</FONT><HR>"
 				if(isemptylist(news_network.network_channels))
-					dat+="<I>No feed channels found active...</I><BR>"
+					dat+="<I>Активных новостных каналов не найдено...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
 						dat+="<A href='?src=\ref[src];pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
 
-				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Back</A>"
+				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Назад</A>"
 			if(12)
 				dat+="<B>[viewing_channel.channel_name]: </B><FONT SIZE=1>\[ created by: <FONT COLOR='maroon'>[viewing_channel.author]</FONT> \]</FONT><BR>"
-				dat+="<FONT SIZE=2><A href='?src=\ref[src];censor_channel_author=\ref[viewing_channel]'>[(viewing_channel.author=="\[REDACTED\]") ? ("Undo Author censorship") : ("Censor channel Author")]</A></FONT><HR>"
+				dat+="<FONT SIZE=2><A href='?src=\ref[src];censor_channel_author=\ref[viewing_channel]'>[(viewing_channel.author=="\[ОТРЕДАКТИРОВАНО\]") ? ("Отменить авторскую цензуру") : ("Ввести авторскую цензуру")]</A></FONT><HR>"
 
 
 				if(isemptylist(viewing_channel.messages))
-					dat+="<I>No feed messages found in channel...</I><BR>"
+					dat+="<I>В канале не найдено ни одного сообщения...</I><BR>"
 				else
 					for(var/datum/feed_message/MESSAGE in viewing_channel.messages)
 						dat+="-[MESSAGE.body] <BR><FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>"

@@ -24,7 +24,7 @@
 	var/list/_admin_logs = list() // _ so it shows first in VV
 
 	var/storage_type = "crewmembers"
-	var/storage_name = "Cryogenic Oversight Control"
+	var/storage_name = "Панель Управления Криоподами"
 	var/allow_items = 1
 
 	req_one_access = list(access_heads) //VOREStation Add
@@ -89,11 +89,11 @@
 	if(!(ticker))
 		return
 
-	dat += "<hr/><br/><b>[storage_name]</b><br/>"
-	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<meta charset=\"utf-8\"><hr/><br/><b>[storage_name]</b><br/>"
+	dat += "<i>Добро пожаловать, [user.real_name].</i><br/><br/><hr/>"
+	dat += "<a href='?src=\ref[src];log=1'>Посмотреть журнал хранения</a>.<br>"
 	if(allow_items)
-		dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
+		dat += "<a href='?src=\ref[src];view=1'>Посмотреть объекты</a>.<br>"
 		//dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>" //VOREStation Removal - Just log them.
 		//dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>" //VOREStation Removal
 
@@ -111,7 +111,7 @@
 
 	if(href_list["log"])
 
-		var/dat = "<b>Recently stored [storage_type]</b><br/><hr/><br/>"
+		var/dat = "<b>Недавно сохраненные [storage_type]</b><br/><hr/><br/>"
 		for(var/person in frozen_crew)
 			dat += "[person]<br/>"
 		dat += "<hr/>"
@@ -121,7 +121,7 @@
 	if(href_list["view"])
 		if(!allow_items) return
 
-		var/dat = "<b>Recently stored objects</b><br/><hr/><br/>"
+		var/dat = "<b>Недавно сохраненные объекты</b><br/><hr/><br/>"
 		//VOREStation Edit Start
 		for(var/I in frozen_items)
 			dat += "[I]<br/>"
@@ -134,7 +134,7 @@
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			to_chat(user, "<span class='notice'>There is nothing to recover from storage.</span>")
+			to_chat(user, "<span class='notice'>Нечего восстанавливать из хранилища.</span>")
 			return
 
 		var/obj/item/I = input(usr, "Please choose which object to retrieve.","Object recovery",null) as null|anything in frozen_items

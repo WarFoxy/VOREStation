@@ -3,11 +3,11 @@
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
-	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
-	While the central Sol government maintains control of its far-flung people, powerful corporate \
-	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
-	worlds tumultous at best."
+	blurb = "Человечество зародилось в Солнечной системе, и за последние пять столетий распространило \
+	свои колонии по некоторой части космоса. Они придерживаются широкого спектра форм и вероучений.<br/><br/> \
+	В то время как ЦПСС сохраняет контроль над своими далеко раскинувшимся народом, могучие корпорации потыкают своим интересам, \
+	и безудержные кибернетические и биологические усиления, делают жизнь большей части людей \
+	на других мирах куда лучше."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 	num_alternate_languages = 3
 	species_language = LANGUAGE_SOL_COMMON
@@ -77,11 +77,11 @@
 
 	economic_modifier = 7
 
-	blurb = "A heavily reptillian species, Unathi hail from the \
-	Uuosa-Eso system, which roughly translates to 'burning mother'.<br/><br/>Coming from a harsh, inhospitable \
-	planet, they mostly hold ideals of honesty, virtue, proficiency and bravery above all \
-	else, frequently even their own lives. They prefer warmer temperatures than most species and \
-	their native tongue is a heavy hissing laungage called Sinta'Unathi."
+	blurb = "Сильно похожая на реплитий раса, Унати родом из \
+	системы Ууоса-Эсо, что примерно переводится как \"горящая мать\".<br/><br/>Они выходцы с суровой, негостеприимной планеты, \
+	они в основном придерживаются идеалов честности, добродетели, мастерства и храбрости превыше всего, часто придерживаясь идеалам даже вопреки собственной жизни. \
+	Они предпочитают более теплую температуру, чем большинство рас \
+	, и их родной язык это тяжелое шипящее наречие под названием Синта'Унати."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
 	cold_level_1 = 280 //Default 260 - Lower is better
@@ -143,16 +143,16 @@
 
 	heat_discomfort_level = 295
 	heat_discomfort_strings = list(
-		"You feel soothingly warm.",
-		"You feel the heat sink into your bones.",
-		"You feel warm enough to take a nap."
+		"Вы чувствуете успокаивающее тепло.",
+		"Вы чувствуете, как тепло пронизывает ваши кости.",
+		"Вы чувствуете, что это тепло медленно усыпляет вас"
 		)
 
 	cold_discomfort_level = 292
 	cold_discomfort_strings = list(
-		"You feel chilly.",
-		"You feel sluggish and cold.",
-		"Your scales bristle against the cold."
+		"Вам холодно",
+		"Вы замерзли и чувствуете слабость",
+		"Ваша чешуя покрылась инием."
 		)
 
 	descriptors = list(
@@ -191,11 +191,11 @@
 
 	economic_modifier = 7
 
-	blurb = "The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system. \
-	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact \
-	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious \
-	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their \
-	home worlds and speak a variety of languages, especially Siik and Akhani."
+	blurb = "Таяры это млекопитающие, напоминающие кошачьих, родом из Мералара в системе Раркаджар. \
+	Достигнув звезд независимо от внешнего давления, люди вовлекли их в мирные торговые караваны и \
+	ускорили развитие молодой культуры к межзвездной эпохе. Их история полна войн и крайне неприятных правителей, которых припоминают даже в настроящем времени. \
+	Они предпочитают более холодный, похожий на тундру климат, \
+	который очень похож на климат их родных миров, они говорят на самых разных языках, особенно на Сиике и Акхани."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 
 	body_temperature = 320.15	//Even more cold resistant, even more flammable
@@ -230,9 +230,9 @@
 
 	heat_discomfort_level = 292
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
-		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
+		"Ваш мех начинает покалывать от жары.",
+		"Вы чувствуете себя не очень уютно.",
+		"Ваша нагретая кожа зудит."
 		)
 
 	cold_discomfort_level = 275
@@ -260,11 +260,17 @@
 	deform = 'icons/mob/human_races/r_def_skrell.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/punch)
-	blurb = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
-	the royals' or 'Light of the Crown'.<br/><br/>Skrell are a highly advanced and logical race who live under the rule \
-	of the Qerr'Katish, a caste within their society which keeps the empire of the Skrell running smoothly. Skrell are \
-	herbivores on the whole and tend to be co-operative with the other species of the galaxy, although they rarely reveal \
-	the secrets of their empire to their allies."
+	blurb = "Считающиеся лидерами скреллов, Кверр-Кэтиш являются лицом и сердцем своего общества. \
+	Управляющие, дипломаты, адвокаты - они единственные, кто может выполнять роль Кверр-Скриа, а также \
+	единственные, кто не может являться частью Ксаку Моглар. Будучи международными представителями скреллов, \
+	Кверр-Кэтиш крайне социальные, утонченные, культурные и организованные скреллы. Будучи защитниками \
+	общественных ценностей, они склонны к консерватизму. Однако, невзирая на это, прогрессивные идеи нередко \
+	назревают в этой касте, так как общество в стагнации - это погибающее общество, и последние события лишь \
+	это подтверждают. Благодаря своей роли в обществе, Кверр-Катиш - самые богатые жители городов-государств, \
+	но большая часть их денег обычно инвестирована в различные проекты как внутри, так и за пределами общества \
+	скреллов. Семьи этой касты, обычно, довольно малы и состоят не более чем из одной-двух Связей. Кверр-Катиш \
+	предпочитают мягчайшие, сиятельные, длинные и ниспадающие одежды, которые человеческие исследователи часто \
+	сравнивают с одеждой древнекитайской знати. Кожа представителей этой касты обычно имеет светло-зеленый оттенок."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)

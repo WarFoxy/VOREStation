@@ -113,15 +113,15 @@
 	playsound(src, "sparks", 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(
-			"<span class='warning'>[src] ударило током[source ? " от [source]" : ""]!</span>", \
-			"<span class='danger'>Вы чувствуете мощный удар шоком по всему телу!</span>", \
-			"<span class='warning'>Вы слышите тяжелый электрический треск.</span>" \
+			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
+			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
+			"<span class='warning'>You hear a heavy electrical crack.</span>" \
 		)
 	else
 		src.visible_message(
-			"<span class='warning'>[src] шокировало [source ? " от [source]" : ""].</span>", \
-			"<span class='warning'>Вы чувствуете, как шок проходит по всему телу.</span>", \
-			"<span class='warning'>Вы слышите какой-то треск.</span>" \
+			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
+			"<span class='warning'>You feel a shock course through your body.</span>", \
+			"<span class='warning'>You hear a zapping sound.</span>" \
 		)
 
 	if(stun)
@@ -145,10 +145,10 @@
 	if (src.health >= config.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = src
-			//var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			var/datum/gender/T = gender_datums[H.get_visible_gender()]
 			src.visible_message( \
-				"<span class='notice'>[src] проверяет себя.</span>", \
-				"<span class='notice'>Вы проверяете себя на наличие травм.</span>" \
+				"<span class='notice'>[src] examines [T.himself].</span>", \
+				"<span class='notice'>You check yourself for injuries.</span>" \
 				)
 
 			for(var/obj/item/organ/external/org in H.organs)
@@ -164,60 +164,60 @@
 				*/
 				switch(brutedamage)
 					if(1 to 20)
-						status += "в синяках"
+						status += "bruised"
 					if(20 to 40)
-						status += "имеет ранение"
+						status += "wounded"
 					if(40 to INFINITY)
-						status += "искалечена"
+						status += "mangled"
 
 				switch(burndamage)
 					if(1 to 10)
-						status += "онемела"
+						status += "numb"
 					if(10 to 40)
-						status += "покрыта волдырями"
+						status += "blistered"
 					if(40 to INFINITY)
-						status += "отслаивается"
+						status += "peeling away"
 
 				if(org.is_stump())
-					status += "ОТСУТСТВУЕТ"
+					status += "MISSING"
 				if(org.status & ORGAN_MUTATED)
-					status += "имеет странную форму"
+					status += "weirdly shapen"
 				if(org.dislocated == 2)
-					status += "вывихнута"
+					status += "dislocated"
 				if(org.status & ORGAN_BROKEN)
-					status += "болит при касании"
+					status += "hurts when touched"
 				if(org.status & ORGAN_DEAD)
-					status += "покрыта синяками и омертвела"
+					status += "is bruised and necrotic"
 				if(!org.is_usable() || org.is_dislocated())
-					status += "бесполезно болтается"
+					status += "dangling uselessly"
 				if(status.len)
-					src.show_message("[org.name]:<span class='warning'> [english_list(status)].</span>",1)
+					src.show_message("My [org.name] is <span class='warning'> [english_list(status)].</span>",1)
 				else
-					src.show_message("[org.name]:<span class='notice'> в норме.</span>",1)
+					src.show_message("My [org.name] is <span class='notice'> OK.</span>",1)
 
 			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if (on_fire)
 			playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			if (M.on_fire)
-				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src], но безрезультатно!</span>",
-				"<span class='warning'>Вы пытаетесь потушить пламя [src] но безрезультатно! Убирайтесь оттуда!</span>")
+				M.visible_message("<span class='warning'>[M] tries to pat out [src]'s flames, but to no avail!</span>",
+				"<span class='warning'>You try to pat out [src]'s flames, but to no avail! Put yourself out first!</span>")
 			else
-				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src]!</span>",
-				"<span class='warning'>Вы пытаетесь погасить пламя [src]! Горячс!</span>")
+				M.visible_message("<span class='warning'>[M] tries to pat out [src]'s flames!</span>",
+				"<span class='warning'>You try to pat out [src]'s flames! Hot!</span>")
 				if(do_mob(M, src, 15))
 					src.adjust_fire_stacks(-0.5)
 					if (prob(10) && (M.fire_stacks <= 0))
 						M.adjust_fire_stacks(1)
 					M.IgniteMob()
 					if (M.on_fire)
-						M.visible_message("<span class='danger'>Огонь распространяется от [src] до [M]!</span>",
-						"<span class='danger'>Огонь распространяется и на вас!</span>")
+						M.visible_message("<span class='danger'>The fire spreads from [src] to [M]!</span>",
+						"<span class='danger'>The fire spreads to you as well!</span>")
 					else
 						src.adjust_fire_stacks(-0.5) //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
 						if (src.fire_stacks <= 0)
-							M.visible_message("<span class='warning'>[M] успешно гасит пламя [src].</span>",
-							"<span class='warning'>Вы успешно погасили пламя [src].</span>")
+							M.visible_message("<span class='warning'>[M] successfully pats out [src]'s flames.</span>",
+							"<span class='warning'>You successfully pat out [src]'s flames.</span>")
 							src.ExtinguishMob()
 							src.fire_stacks = 0
 		else
@@ -227,24 +227,24 @@
 
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			//var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
 			if(istype(H)) show_ssd = H.species.show_ssd
 			if(show_ssd && !client && !teleop)
-				M.visible_message("<span class='notice'>[M] трясет [src] пытаясь разбудить!</span>", \
-				"<span class='notice'>Вы трясете [src], но реакции ноль... Может не стоит тогда?</span>")
+				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
+				"<span class='notice'>You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?</span>")
 			else if(lying || src.sleeping)
 				src.sleeping = max(0,src.sleeping-5)
 				if(src.sleeping == 0)
 					src.resting = 0
 				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
-				M.visible_message("<span class='notice'>[M] трясет и пытается разбудить [src]!</span>", \
-									"<span class='notice'>Вы трясете и пытаетесь разбудить [src]!</span>")
+				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
+									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
 			else
 				var/mob/living/carbon/human/hugger = M
-				//var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
-					M.visible_message("<span class='notice'>[M] хватается и тянет вверх [src]</span>", \
-							"<span class='notice'>Вы хватаете и тянете [src] вверх, помогая встать с земли!</span>")
+					M.visible_message("<span class='notice'>[M] grabs onto [src] and pulls [TM.himself] up</span>", \
+							"<span class='notice'>You grip onto [src] and pull yourself up off the ground!</span>")
 					if(M.fire_stacks >= (src.fire_stacks + 3)) //Fire checks.
 						src.adjust_fire_stacks(1)
 						M.adjust_fire_stacks(-1)
@@ -255,8 +255,8 @@
 				else if(istype(hugger))
 					hugger.species.hug(hugger,src)
 				else
-					M.visible_message("<span class='notice'>[M] обнимает [src]!</span>", \
-								"<span class='notice'>Вы обнимаете [src]!</span>")
+					M.visible_message("<span class='notice'>[M] hugs [src] to make [T.him] feel better!</span>", \
+								"<span class='notice'>You hug [src] to make [T.him] feel better!</span>")
 				if(M.fire_stacks >= (src.fire_stacks + 3))
 					src.adjust_fire_stacks(1)
 					M.adjust_fire_stacks(-1)
@@ -346,9 +346,9 @@
 	set category = "IC"
 
 	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>Вы уже спите</font>")
+		to_chat(usr, "<font color='red'>You are already sleeping</font>")
 		return
-	if(alert(src,"Вы уверены, что хотите немного поспать?","Sleep","Да","Нет") == "Да")
+	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		usr.sleeping = 20 //Short nap
 
 /mob/living/carbon/Bump(atom/A)

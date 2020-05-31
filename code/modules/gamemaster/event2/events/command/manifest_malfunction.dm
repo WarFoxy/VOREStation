@@ -35,14 +35,14 @@
 		var/rng = rand(1, 2)
 		switch(rng)
 			if(1)
-				author = "Data Breach Alert"
-				message = "The [record_class_to_delete] record database has suffered from an attack by one or more hackers. \
-				They appear to have wiped several records, before disconnecting."
+				author = "Оповещение о нарушении данных"
+				message = "База данных записей [record_class_to_delete] пострадала от атаки одного или нескольких хакеров. \
+				Они, кажется, стерли несколько записей, прежде чем отключиться."
 			if(2)
-				author = "Downtime Alert"
-				message = "The [record_class_to_delete] record database server has suffered a hardware failure, and is no longer functional. \
-				A temporary replacement server has been activated, containing recovered data from the main server. \
-				A few records became corrupted, and could not be transferred."
+				author = "Предупреждение о времени оростоя"
+				message = "Сервер базы данных записей [record_class_to_delete] потерпел аппаратный сбой и больше не функционирует. \
+				Был активирован временный сменный сервер, содержащий восстановленные данные с основного сервера.  \
+				Некоторые записи были повреждены и не могут быть переданы."
 		command_announcement.Announce(message, author)
 
 /datum/event2/event/manifest_malfunction/start()
