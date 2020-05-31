@@ -1,19 +1,19 @@
 <div class='item'>
-	{{:helper.link('Show Camera List', 'script', {'showMap' : 0})}}
-	{{:helper.link('Reset', 'refresh', {'reset' : 1})}}
+	{{:helper.link('Показ. список камер', 'script', {'showMap' : 0})}}
+	{{:helper.link('Сброс', 'refresh', {'reset' : 1})}}
 </div>
 <div class='item'>
-	<div class='itemLabel'>Current Camera:</div>
+	<div class='itemLabel'>Текущая камера:</div>
 	{{if data.current_camera}}
 		<div class='itemContentWide'><b>{{:data.current_camera.name}}</b></div>
 	{{else}}
-		<div class='itemContentWide'>None</div>
+		<div class='itemContentWide'>Нет</div>
 	{{/if}}
 </div>
 
 <div class='item'>
 	<div class='itemLabel'>
-		Z-Level:
+		Z-уровни:
 	</div>
 	<div class='itemContentWide'>
 	{{for config.mapZLevels :zValue:zIndex}}
@@ -23,7 +23,7 @@
 </div>
 <div class='item'>
 	<div class='itemLabel'>
-		Zoom Level:
+		Приближение:
 	</div>
 	<div class='itemContentWide'>
 		<div unselectable="on" class="link zoomLink" data-zoom-level="4">x1.0</div>
@@ -33,7 +33,7 @@
 	</div>
 </div>
 <div class='item'>
-	<div class='itemLabel'>Networks:</div>
+	<div class='itemLabel'>Сеть:</div>
 </div>
 {{for data.networks}}
 	{{if value.has_access}}

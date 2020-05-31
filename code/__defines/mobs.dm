@@ -132,11 +132,11 @@
 #define INV_LCUFF_DEF_ICON 'icons/mob/mob.dmi'
 
 // Character's economic class
-#define CLASS_UPPER 		"Wealthy"
-#define CLASS_UPMID			"Well-off"
-#define CLASS_MIDDLE 		"Average"
-#define CLASS_LOWMID		"Underpaid"
-#define CLASS_LOWER			"Poor"
+#define CLASS_UPPER 		"Богатей"
+#define CLASS_UPMID			"Высокое"
+#define CLASS_MIDDLE 		"Среднее"
+#define CLASS_LOWMID		"Низкое"
+#define CLASS_LOWER			"Нищий"
 
 #define ECONOMIC_CLASS		list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
 

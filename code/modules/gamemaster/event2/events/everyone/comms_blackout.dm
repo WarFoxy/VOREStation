@@ -12,11 +12,11 @@
 
 
 /datum/event2/event/comms_blackout/announce()
-	var/alert = pick("Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you*%fj00)`5vc-BZZT", \
-					"Ionospheric anomalies detected. Temporary telecommunication failu*3mga;b4;'1v¬-BZZZT", \
-					"Ionospheric anomalies detected. Temporary telec#MCi46:5.;@63-BZZZZT", \
-					"Ionospheric anomalies dete'fZ\\kg5_0-BZZZZZT", \
-					"Ionospheri:%£ MCayj^j<.3-BZZZZZZT", \
+	var/alert = pick("Обнаружены ионосферные аномалии. Временный сбой связи неизбежен. Пожалуйста, свяжитесь с ваши*%fj00)`5vc-BZZT", \
+					"Обнаружены ионосферные аномалии. Временный сбой связи неизбе*3mga;b4;'1v¬-BZZZT", \
+					"Обнаружены ионосферные аномалии. Временный сбо#MCi46:5.;@63-BZZZZT", \
+					"Обнаружены ионосферные аномалии. В'fZ\\kg5_0-BZZZZZT", \
+					"Обнаружены ио:%£ MCayj^j<.3-BZZZZZZT", \
 					"#4nd%;f4y6,>£%-BZZZZZZZT")
 	if(prob(33))
 		command_announcement.Announce(alert, new_sound = 'sound/misc/interference.ogg')

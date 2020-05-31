@@ -18,7 +18,7 @@
 	var/list/generators = list()
 
 /datum/event2/event/gravity/announce()
-	command_announcement.Announce("Feedback surge detected in mass-distributions systems. Artificial gravity has been disabled. Please wait for the system to reinitialize, or contact your engineering department.", "Gravity Failure")
+	command_announcement.Announce("Скачок обратной связи обнаружен в системах распределения массы. Искусственная гравитация была отключена. Пожалуйста, подождите, пока система повторно инициализируется, или свяжитесь с вашим техническим отделом.", "Ошибка гравитации")
 
 /datum/event2/event/gravity/start()
 	gravity_is_on = 0
@@ -32,7 +32,7 @@
 
 /datum/event2/event/gravity/end()
 	gravity_is_on = 1
-	
+
 	var/did_anything = FALSE
 	for(var/obj/machinery/gravity_generator/main/GG in generators)
 		if(!GG.on)
@@ -42,4 +42,4 @@
 			did_anything = TRUE
 
 	if(did_anything)
-		command_announcement.Announce("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.", "Gravity Restored")
+		command_announcement.Announce("Гравитационные генераторы снова функционируют в пределах нормальных параметров. Приносим извинения за доставленные неудобства.", "Гравитация восстановлена")

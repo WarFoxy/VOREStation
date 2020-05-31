@@ -1,30 +1,30 @@
 <!--
-Title: Security Camera Console (Main content)
+Title: Управление камерами СБ (Main content)
 Used In File(s): \code\game\machinery\computer\camera.dm
  -->
 {{if data.map_levels.length}}
-	{{:helper.link('Show Map', 'pin-s', {'showMap' : 1})}}
+	{{:helper.link('Показ. карту', 'pin-s', {'showMap' : 1})}}
 {{/if}}
-{{:helper.link('Reset', 'refresh', {'reset' : 1})}}
+{{:helper.link('Сброс', 'refresh', {'reset' : 1})}}
 <div style="float:left;">
     <div class='item'>
-        <div class='itemLabel'>Current&nbsp;Camera:&nbsp;</div>
+        <div class='itemLabel'>Текущая&nbsp;Camera:&nbsp;</div>
         <br>
         {{if data.current_camera}}
             <div class='itemContent'><b>{{:data.current_camera.name}}</b></div>
         {{else}}
-            <div class='itemContent'>None</div>
+            <div class='itemContent'>Нет</div>
         {{/if}}
     </div>
 </div>
 <div class='item'>
-	<div class='itemLabel'>Networks:</div>
+	<div class='itemLabel'>Сеть:</div>
 </div>
 {{for data.networks}}
 	{{:helper.link(value, '', {'switch_network' : value}, null, data.current_network == value ? 'selected' : null)}}
 {{/for}}
 <div class='item'>
-	<div class='itemLabel'>Cameras:</div>
+	<div class='itemLabel'>Камеры:</div>
 </div>
 {{for data.cameras}}
 	{{if data.current_camera && value.name == data.current_camera.name}}
