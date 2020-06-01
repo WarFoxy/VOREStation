@@ -2,11 +2,11 @@
 	var/datum/unarmed_attack/default_attack
 
 /mob/living/carbon/human/verb/check_attacks()
-	set name = "Check Attacks"
+	set name = "Проверка Атак"
 	set category = "IC"
 	set src = usr
 
-	var/dat = "<b><font size = 5>Known Attacks</font></b><br/><br/>"
+	var/dat = "<meta charset=\"utf-8\"><b><font size = 5>Известные атаки</font></b><br/><br/>"
 
 	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		dat += "<b>Primarily [u_attack.attack_name] </b><br/><br/><br/>"
@@ -15,16 +15,16 @@
 	return
 
 /mob/living/carbon/human/check_attacks()
-	var/dat = "<b><font size = 5>Known Attacks</font></b><br/><br/>"
+	var/dat = "<meta charset=\"utf-8\"><b><font size = 5>Известные атаки</font></b><br/><br/>"
 
 	if(default_attack)
-		dat += "Current default attack: [default_attack.attack_name] - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/>"
+		dat += "Текущая атака по умолчанию: [default_attack.attack_name] - <a href='byond://?src=\ref[src];default_attk=reset_attk'>сбросить</a><br/><br/>"
 
 	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		if(u_attack == default_attack)
-			dat += "<b>Primarily [u_attack.attack_name]</b> - default - <a href='byond://?src=\ref[src];default_attk=reset_attk'>reset</a><br/><br/><br/>"
+			dat += "<b>Primarily [u_attack.attack_name]</b> - default - <a href='byond://?src=\ref[src];default_attk=reset_attk'>сбросить</a><br/><br/><br/>"
 		else
-			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=\ref[src];default_attk=\ref[u_attack]'>set default</a><br/><br/><br/>"
+			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=\ref[src];default_attk=\ref[u_attack]'>сделать по умолчанию</a><br/><br/><br/>"
 
 	src << browse(dat, "window=checkattack")
 

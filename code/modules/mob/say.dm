@@ -2,24 +2,24 @@
 	return
 
 /mob/verb/whisper(message as text)
-	set name = "Whisper"
+	set name = "Шепнуть"
 	set category = "IC"
 
 	usr.say(message,whispering=1)
 
 /mob/verb/say_verb(message as text)
-	set name = "Say"
+	set name = "Сказать"
 	set category = "IC"
 
 	set_typing_indicator(FALSE)
 	usr.say(message)
 
 /mob/verb/me_verb(message as text)
-	set name = "Me"
+	set name = "Эмоция"
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
+		to_chat(usr, "<font color='red'>Речь в настоящее время отключена администратором.</font>")
 		return
 
 	//VOREStation Edit Start
@@ -36,7 +36,7 @@
 
 /mob/proc/say_dead(var/message)
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Речь в настоящее время отключена администратором.</span>")
 		return
 
 	if(!client)
@@ -44,11 +44,11 @@
 
 	if(!client.holder)
 		if(!config.dsay_allowed)
-			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
+			to_chat(src, "<span class='danger'>Чат мертвецов гробально приглушен</span>")
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(usr, "<span class='danger'>Вы приглушили чат мертвецов</span>")
 		return
 
 	message = encode_html_emphasis(message)

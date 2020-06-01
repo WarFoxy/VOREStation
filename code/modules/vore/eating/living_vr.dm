@@ -320,9 +320,9 @@
 // Clearly super important. Obviously.
 //
 /mob/living/proc/lick(mob/living/tasted in living_mobs(1))
-	set name = "Lick"
+	set name = "Лизнуть"
 	set category = "IC"
-	set desc = "Lick someone nearby!"
+	set desc = "Облизать кого-нибудь поблизости!"
 	set popup_menu = FALSE // Stop licking by accident!
 
 	if(!istype(tasted))
@@ -333,7 +333,7 @@
 
 	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
-	visible_message("<span class='warning'>[src] licks [tasted]!</span>","<span class='notice'>You lick [tasted]. They taste rather like [tasted.get_taste_message()].</span>","<b>Slurp!</b>")
+	visible_message("<span class='warning'>[src] licks [tasted]!</span>","<span class='notice'>Вы лизнули [tasted]. На вкус как [tasted.get_taste_message()].</span>","<b>Хлюп!</b>")
 
 
 /mob/living/proc/get_taste_message(allow_generic = 1)
@@ -537,26 +537,26 @@
 		glow_color = new_color
 
 /mob/living/proc/eat_trash()
-	set name = "Eat Trash"
+	set name = "Есть мусор"
 	set category = "Abilities"
-	set desc = "Consume held garbage."
+	set desc = "Съесть мусор в руке"
 
 	if(!vore_selected)
-		to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+		to_chat(src,"<span class='warning'>У вас либо нет выбранного желудка, либо нет желудка!</span>")
 		return
 
 	var/obj/item/I = get_active_hand()
 	if(!I)
-		to_chat(src, "<span class='notice'>You are not holding anything.</span>")
+		to_chat(src, "<span class='notice'>Вы ничего не держите в руках.</span>")
 		return
 
 	if(is_type_in_list(I,item_vore_blacklist))
-		to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
+		to_chat(src, "<span class='warning'>Вам нельзя это есть.</span>")
 		return
 
 	if(is_type_in_list(I,edible_trash) | adminbus_trash)
 		if(I.hidden_uplink)
-			to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+			to_chat(src, "<span class='warning'>Вам действительно не следует это есть.</span>")
 			message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? ADMIN_JMP(src) : "null"])")
 			return
 		if(istype(I,/obj/item/device/pda))
@@ -572,8 +572,8 @@
 				else
 					visible_message("<span class='warning'>[src] is threatening to make [P] disappear!</span>")
 					if(P.id)
-						var/confirm = alert(src, "The PDA you're holding contains a vulnerable ID card. Will you risk it?", "Confirmation", "Definitely", "Cancel")
-						if(confirm != "Definitely")
+						var/confirm = alert(src, "ПДА, который вы держите, содержит уязвимую ID карту. Вы готовы рискнуть этим?", "Confirmation", "Определенно", "Отмена")
+						if(confirm != "Определенно")
 							return
 					if(!do_after(src, 100, P))
 						return

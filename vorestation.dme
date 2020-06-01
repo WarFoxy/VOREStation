@@ -3587,6 +3587,7 @@
 #include "code\ZAS\Turf.dm"
 #include "code\ZAS\Variable Settings.dm"
 #include "code\ZAS\Zone.dm"
+#include "furryosity\code\game\verbs\emote.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\RandomZLevels\blackmarketpackers.dm"

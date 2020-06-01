@@ -208,7 +208,7 @@
 	return 1
 
 /mob/living/carbon/human/verb/toggle_gender_identity_vr()
-	set name = "Set Gender Identity"
+	set name = "Установить гендер"
 	set desc = "Sets the pronouns when examined and performing an emote."
 	set category = "IC"
 	var/new_gender_identity = input("Please select a gender Identity.") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
@@ -218,7 +218,7 @@
 	return 1
 
 /mob/living/carbon/human/verb/switch_tail_layer()
-	set name = "Switch tail layer"
+	set name = "Переключить хвостовой слой"
 	set category = "IC"
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
