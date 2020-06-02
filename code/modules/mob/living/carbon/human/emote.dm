@@ -31,7 +31,7 @@
 		if("ping", "beep", "buzz", "yes", "ye", "dwoop", "no", "rcough", "rsneeze")
 
 			if(!isSynthetic())
-				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+				to_chat(src, "<span class='warning'>Вы не синтетик.</span>")
 				return
 
 			var/M = null
@@ -673,12 +673,11 @@
 				if(!muzzled)
 					message = "[species.scream_verb]!"
 					m_type = 2
-					/* Removed, pending the location of some actually good, properly licensed sounds.
+					//Removed, pending the location of some actually good, properly licensed sounds.
 					if(get_gender() == FEMALE)
 						playsound(src, "[species.female_scream_sound]", 80, 1)
 					else
 						playsound(src, "[species.male_scream_sound]", 80, 1) //default to male screams if no gender is present.
-					*/
 				else
 					message = "makes a very loud noise."
 					m_type = 2
