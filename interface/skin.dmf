@@ -1183,7 +1183,7 @@ window "mainwindow"
 		anchor2 = none
 		saved-params = "is-checked"
 		text = "Чат"
-		command = ".winset \"saybutton.is-checked=true?input.command=\"сказать\" macrobutton.is-checked=false:input.command=\"\""
+		command = ".winset \"saybutton.is-checked=true?input.command=\"Сказать\" macrobutton.is-checked=false:input.command=\"\""
 		button-type = pushbox
 	elem "tooltip"
 		type = BROWSER

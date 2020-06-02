@@ -1,6 +1,8 @@
 /mob/living/var/emoteCooldown = (5 SECONDS)
 /mob/living/var/emoteLastUse = -1000
 
+var/list/sounded_species = null
+
 /mob/living/proc/emoteCooldownCheck()
 	if(emoteLastUse <= (world.time - emoteCooldown))
 		emoteLastUse = world.time
@@ -12,6 +14,7 @@
 /mob/living/verb/laugh1()
 	set name = "Нья~"
 	set category = "Emote"
+	sounded_species = null
 	emote("nya")
 
 /mob/living/verb/laugh2()
@@ -97,6 +100,7 @@
 mob/living/verb/laugh18()
 	set name = "Шипеть"
 	set category = "Emote"
+	sounded_species = list(SPECIES_UNATHI)
 	emote("hiss")
 
 mob/living/verb/laugh19()

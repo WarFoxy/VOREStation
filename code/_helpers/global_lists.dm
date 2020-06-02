@@ -18,7 +18,7 @@ var/global/list/mechas_list = list()				//list of all mechs. Used by hostile mob
 var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM) //VOREStaton Edit
-#define all_genders_text_list list("Male","Female","Plural","Neuter","Herm") //VOREStation Edit
+#define all_genders_text_list list("Муж.","Жен.","Множ. число","Небинар.","Герм.") //VOREStation Edit
 
 var/list/mannequins_
 
