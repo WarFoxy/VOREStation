@@ -4,7 +4,7 @@
 	path = /obj/item/clothing/gloves/black
 	cost = 2
 	slot = slot_gloves
-	sort_category = "Gloves and Handwear"
+	sort_category = "Перчатки"
 
 /datum/gear/gloves/blue
 	display_name = "gloves, blue"

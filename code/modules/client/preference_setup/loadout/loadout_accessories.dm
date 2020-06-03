@@ -1,7 +1,7 @@
 /datum/gear/accessory
 	display_name = "accessory"
 	slot = slot_tie
-	sort_category = "Accessories"
+	sort_category = "Аксессуары"
 	type_category = /datum/gear/accessory
 	path = /obj/item/clothing/accessory
 	cost = 1

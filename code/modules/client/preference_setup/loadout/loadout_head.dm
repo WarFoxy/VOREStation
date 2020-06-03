@@ -2,7 +2,7 @@
 	display_name = "bandana, pirate-red"
 	path = /obj/item/clothing/head/bandana
 	slot = slot_head
-	sort_category = "Hats and Headwear"
+	sort_category = "Головные уборы"
 
 /datum/gear/head/bandana_green
 	display_name = "bandana, green"

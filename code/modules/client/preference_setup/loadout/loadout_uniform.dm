@@ -3,7 +3,7 @@
 	display_name = "blazer, blue"
 	path = /obj/item/clothing/under/blazer
 	slot = slot_w_uniform
-	sort_category = "Uniforms and Casual Dress"
+	sort_category = "Униформа и одежда"
 
 /datum/gear/uniform/blazerskirt
 	display_name = "blazer, blue with skirt"

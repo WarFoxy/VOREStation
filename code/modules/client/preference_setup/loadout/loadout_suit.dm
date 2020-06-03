@@ -3,7 +3,7 @@
 	display_name = "apron, blue"
 	path = /obj/item/clothing/suit/storage/apron
 	slot = slot_wear_suit
-	sort_category = "Suits and Overwear"
+	sort_category = "Верхняя одежда"
 	cost = 2
 
 /datum/gear/suit/apron_white
@@ -77,7 +77,7 @@
 /datum/gear/suit/mil
 	display_name = "military jacket selection"
 	path = /obj/item/clothing/suit/storage/miljacket
-	
+
 /datum/gear/suit/mil/New()
 	..()
 	var/list/mil_jackets = list()

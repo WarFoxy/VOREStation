@@ -3,7 +3,7 @@
 	display_name = "bandana, blue"
 	path = /obj/item/clothing/mask/bandana/blue
 	slot = slot_wear_mask
-	sort_category = "Masks and Facewear"
+	sort_category = "Лицо"
 
 /datum/gear/mask/gold
 	display_name = "bandana, gold"

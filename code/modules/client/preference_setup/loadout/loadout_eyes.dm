@@ -3,7 +3,7 @@
 	display_name = "eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 	slot = slot_glasses
-	sort_category = "Glasses and Eyewear"
+	sort_category = "Очки"
 
 /datum/gear/eyes/glasses
 	display_name = "Glasses, prescription"

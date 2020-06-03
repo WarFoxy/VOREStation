@@ -46,9 +46,9 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		for (var/i in special_roles)
 			if(special_roles[i]) //if mode is available on the server
 				if(jobban_isbanned(user, i) || (i == "positronic brain" && jobban_isbanned(user, "AI") && jobban_isbanned(user, "Cyborg")) || (i == "pAI candidate" && jobban_isbanned(user, "pAI")))
-					. += "<b>Be [i]:</b> <font color=red><b> \[БЛОК]</b></font><br>"
+					. += "<b>Быть [i]:</b> <font color=red><b> \[БЛОК]</b></font><br>"
 				else
-					. += "<b>Be [i]:</b> <a href='?src=\ref[src];be_special=[n]'><b>[pref.be_special&(1<<n) ? "Да" : "Нет"]</b></a><br>"
+					. += "<b>Быть [i]:</b> <a href='?src=\ref[src];be_special=[n]'><b>[pref.be_special&(1<<n) ? "Да" : "Нет"]</b></a><br>"
 			n++
 
 /datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(var/href,var/list/href_list, var/mob/user)

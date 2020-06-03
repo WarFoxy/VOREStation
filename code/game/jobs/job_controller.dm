@@ -19,7 +19,7 @@ var/global/datum/controller/occupations/job_master
 		//var/list/all_jobs = typesof(/datum/job)
 		var/list/all_jobs = list(/datum/job/assistant) | using_map.allowed_jobs
 		if(!all_jobs.len)
-			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
+			to_world("<span class='warning'>Ошибка настройки профессий, данные профессий не найдены!</span>")
 			return 0
 		for(var/J in all_jobs)
 			var/datum/job/job = new J()
@@ -374,7 +374,7 @@ var/global/datum/controller/occupations/job_master
 				var/list/spawn_props = LateSpawn(H.client, rank)
 				var/turf/T = spawn_props["turf"]
 				if(!T)
-					to_chat(H, "<span class='critical'>You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one.</span>")
+					to_chat(H, "<span class='critical'>Вы не смогли появиться в выбранной вами точке позднего присоединения. Пожалуйста, проверьте, что ваша комбинация профессии/точки появления указана правильно, или попробуйте другую.</span>")
 					return
 				else
 					H.forceMove(T)
@@ -410,7 +410,7 @@ var/global/datum/controller/occupations/job_master
 
 					// If they aren't, tell them
 					if(!permitted)
-						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
+						to_chat(H, "<span class='warning'>Ваша текущая раса или профессия не позволяют вам появиться с [thing]!</span>")
 						continue
 
 					// Implants get special treatment
@@ -491,7 +491,7 @@ var/global/datum/controller/occupations/job_master
 			// TWEET PEEP
 			if(rank == "Colony Director")
 				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
-				captain_announcement.Announce("All hands, [alt_title ? alt_title : "Colony Director"] [H.real_name] on deck!", new_sound = announce_sound, zlevel = H.z)
+				captain_announcement.Announce("Всему персоналу, [alt_title ? alt_title : "Директор Колонии"] [H.real_name] вновь на станцииk!", new_sound = announce_sound, zlevel = H.z)
 
 			//Deferred item spawning.
 			if(spawn_in_storage && spawn_in_storage.len)
@@ -550,8 +550,8 @@ var/global/datum/controller/occupations/job_master
 
 		// If even fallback login generation failed, just don't give them an email. The chance of this happening is astronomically low.
 		if(ntnet_global.does_email_exist(complete_login))
-			to_chat(H, "You were not assigned an email address.")
-			H.mind.store_memory("You were not assigned an email address.")
+			to_chat(H, "Вам не был назначен адрес электронной почты.")
+			H.mind.store_memory("Вам не был назначен адрес электронной почты.")
 		else
 			var/datum/computer_file/data/email_account/EA = new/datum/computer_file/data/email_account()
 			EA.password = GenerateKey()
@@ -676,8 +676,8 @@ var/global/datum/controller/occupations/job_master
 			to_chat(C, "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
 			var/spawning = pick(latejoin)
 			.["turf"] = get_turf(spawning)
-			.["msg"] = "will arrive at the station shortly"  //VOREStation Edit - Grammar but mostly 'shuttle' reference removal, and this also applies to notified spawn-character verb use
+			.["msg"] = "прибудет на станцию в ближайшее время"  //VOREStation Edit - Grammar but mostly 'shuttle' reference removal, and this also applies to notified spawn-character verb use
 	else if(!fail_deadly)
 		var/spawning = pick(latejoin)
 		.["turf"] = get_turf(spawning)
-		.["msg"] = "has arrived on the station"
+		.["msg"] = "прибывает на станцию"

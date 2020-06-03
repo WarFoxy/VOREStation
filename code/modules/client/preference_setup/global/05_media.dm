@@ -19,12 +19,12 @@
 	pref.media_player = sanitize_inlist(pref.media_player, list(0, 1, 2), initial(pref.media_player))
 
 /datum/category_item/player_setup_item/player_global/media/content(var/mob/user)
-	. += "<b>Jukebox Volume:</b>"
+	. += "<b>Громкость музыки в автомате:</b>"
 	. += "<a href='?src=\ref[src];change_media_volume=1'><b>[round(pref.media_volume * 100)]%</b></a><br>"
-	. += "<b>Media Player Type:</b> Depending on you operating system, one of these might work better. "
-	. += "Use HTML5 if it works for you. If neither HTML5 nor WMP work, you'll have to fall back to using VLC, "
-	. += "but this requires you have the VLC client installed on your comptuer."
-	. += "Try the others if you want but you'll probably just get no music.<br>"
+	. += "<b>Тип плеера:</b> В зависимости от вашей операционной системы, один из них может работать лучше. "
+	. += "Используйте HTML5, если он работает у вас. Если ни HTML5, ни WMP не работают, вам придется вернуться к использованию VLC, "
+	. += "но для этого необходимо, чтобы на вашем компьютере был установлен сам VLC."
+	. += "Попробуйте другие проигрыватели, если хотите, но вы, вероятно, перестанете слышать музыку.<br>"
 	. += (pref.media_player == 2) ? "<span class='linkOn'><b>HTML5</b></span> " : "<a href='?src=\ref[src];set_media_player=2'>HTML5</a> "
 	. += (pref.media_player == 1) ? "<span class='linkOn'><b>WMP</b></span> " : "<a href='?src=\ref[src];set_media_player=1'>WMP</a> "
 	. += (pref.media_player == 0) ? "<span class='linkOn'><b>VLC</b></span> " : "<a href='?src=\ref[src];set_media_player=0'>VLC</a> "
@@ -33,7 +33,7 @@
 /datum/category_item/player_setup_item/player_global/media/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["change_media_volume"])
 		if(CanUseTopic(user))
-			var/value = input("Choose your Jukebox volume (0-100%)", "Jukebox volume", round(pref.media_volume * 100))
+			var/value = input("Выберите громность музыкального автомата (0-100%)", "Громкость", round(pref.media_volume * 100))
 			if(isnum(value))
 				value = CLAMP(value, 0, 100)
 				pref.media_volume = value/100.0

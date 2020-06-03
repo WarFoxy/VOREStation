@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(vote)
 			to_world("<font color='red'><b>The round will start soon.</b></font>")
 
 	if(restart)
-		to_world("World restarting due to vote...")
+		to_world("Объявлен рестарт по результатам голосования...")
 		feedback_set_details("end_error", "restart vote")
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
@@ -221,8 +221,8 @@ SUBSYSTEM_DEF(vote)
 					if(ticker.current_state <= GAME_STATE_SETTING_UP)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
-				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
-				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
+				question = "Ваш КПК подает звуковой сигнал с сообщением из Центра. Вы хотели бы получить дополнительный час, чтобы закончить текущие проекты?" //VOREStation Edit
+				choices.Add("Иниц. передачу экипажа", "Продлить смену")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
@@ -232,11 +232,11 @@ SUBSYSTEM_DEF(vote)
 						choices.Add(antag.role_text)
 				choices.Add("None")
 			if(VOTE_CUSTOM)
-				question = sanitizeSafe(input(usr, "What is the vote for?") as text|null)
+				question = sanitizeSafe(input(usr, "За что голосуем?") as text|null)
 				if(!question)
 					return 0
 				for(var/i = 1 to 10)
-					var/option = capitalize(sanitize(input(usr, "Please enter an option or hit cancel to finish") as text|null))
+					var/option = capitalize(sanitize(input(usr, "Пожалуйста, введите опцию или нажмите \"Отмена\", чтобы закончить") as text|null))
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
@@ -253,7 +253,7 @@ SUBSYSTEM_DEF(vote)
 
 		log_vote(text)
 
-		to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period / 10] seconds to vote.</font>")
+		to_world("<font color='purple'><b>[text]</b>\nДля <b>голосования</b> нажмите <a href='?src=\ref[src]'>сюда</a>.\nУ вас есть [config.vote_period / 10] секунд.</font>")
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
 			world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3)
 
@@ -305,7 +305,7 @@ SUBSYSTEM_DEF(vote)
 		if(admin)
 			. += "(<a href='?src=\ref[src];vote=cancel'>Отменить голосование</a>) "
 	else
-		. += "<h2>Start a vote:</h2><hr><ul><li>"
+		. += "<h2>Начать голосование:</h2><hr><ul><li>"
 		if(admin || config.allow_vote_restart)
 			. += "<a href='?src=\ref[src];vote=restart'>Рестарт</a>"
 		else
@@ -331,9 +331,9 @@ SUBSYSTEM_DEF(vote)
 		. += "</li><li>"
 
 		if(!antag_add_failed && config.allow_extra_antags)
-			. += "<a href='?src=\ref[src];vote=add_antagonist'>Добавить антагониста</a>"
+			. += "<a href='?src=\ref[src];vote=add_antagonist'>Добавить антага</a>"
 		else
-			. += "<font color='grey'>Добавить антагониста (Запрещено)</font>"
+			. += "<font color='grey'>Добавить антага. (Запрещено)</font>"
 		. += "</li>"
 
 		if(admin)
@@ -352,7 +352,7 @@ SUBSYSTEM_DEF(vote)
 
 		if("cancel")
 			if(usr.client.holder)
-				if("Да" == alert(usr, "Вы собираетесь отменить это голосование. Вы уверены?", "Cancel Vote", "Нет", "Да"))
+				if("Да" == alert(usr, "Вы собираетесь отменить это голосование. Вы уверены?", "Отмена голосования", "Нет", "Да"))
 					reset()
 		if("toggle_restart")
 			if(usr.client.holder)

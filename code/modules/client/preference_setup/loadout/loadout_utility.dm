@@ -2,7 +2,7 @@
 /datum/gear/utility
 	display_name = "briefcase"
 	path = /obj/item/weapon/storage/briefcase
-	sort_category = "Utility"
+	sort_category = "Полезности"
 
 /datum/gear/utility/clipboard
 	display_name = "clipboard"
