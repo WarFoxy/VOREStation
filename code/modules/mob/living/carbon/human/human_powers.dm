@@ -2,19 +2,19 @@
 // species.dm's inherent_verbs ~ Z
 
 /mob/living/carbon/human/proc/tie_hair()
-	set name = "Tie Hair"
+	set name = "Сменить прическу"
 	set desc = "Style your hair."
 	set category = "IC"
 
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
+		to_chat(src, "<span class='warning'>Вы сейчас не можете возиться со своими волосами!</span>")
 		return
 
 	if(h_style)
 		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
 		var/selected_string
 		if(!(hair_style.flags & HAIR_TIEABLE))
-			to_chat(src, "<span class ='warning'>Your hair isn't long enough to tie.</span>")
+			to_chat(src, "<span class ='warning'>Ваши волосы недостаточно длинные чтобы из завязать.</span>")
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
@@ -22,7 +22,7 @@
 				var/list/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
 				if(test.flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
-			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
+			selected_string = input("Выберите новую прическу", "Ваша прическа", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
 			to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
 			return
@@ -31,7 +31,7 @@
 			regenerate_icons()
 			visible_message("<span class='notice'>[src] pauses a moment to style their hair.</span>")
 		else
-			to_chat(src, "<span class ='notice'>You're already using that style.</span>")
+			to_chat(src, "<span class ='notice'>Вы уже используете этот стиль.</span>")
 
 /mob/living/carbon/human/proc/tackle()
 	set category = "Abilities"
@@ -42,7 +42,7 @@
 		return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
-		to_chat(src, "You cannot tackle someone in your current state.")
+		to_chat(src, "Вы не можете бороться с кем-то в вашем текущем состоянии.")
 		return
 
 	var/list/choices = list()
@@ -51,7 +51,7 @@
 			choices += M
 	choices -= src
 
-	var/mob/living/T = input(src,"Who do you wish to tackle?") as null|anything in choices
+	var/mob/living/T = input(src,"С кем вы хотите сразиться?") as null|anything in choices
 
 	if(!T || !src || src.stat) return
 
@@ -61,7 +61,7 @@
 		return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
-		to_chat(src, "You cannot tackle in your current state.")
+		to_chat(src, "Вы не можете сражаться в своем нынешнем состоянии.")
 		return
 
 	last_special = world.time + 50
@@ -82,19 +82,19 @@
 
 /mob/living/carbon/human/proc/commune()
 	set category = "Abilities"
-	set name = "Commune with creature"
-	set desc = "Send a telepathic message to an unlucky recipient."
+	set name = "Общаться с существом"
+	set desc = "Отправьте телепатическое сообщение незадачливому получателю."
 
 	var/list/targets = list()
 	var/target = null
 	var/text = null
 
 	targets += getmobs() //Fill list, prompt user with list
-	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
+	target = input("Выберите существо!", "Общаться с существом", null, null) as null|anything in targets
 
 	if(!target) return
 
-	text = input("What would you like to say?", "Speak to creature", null, null)
+	text = input("Что бы вы хотели сказать?", "Общаться с существом", null, null)
 
 	text = sanitize(text)
 
@@ -103,21 +103,21 @@
 	var/mob/M = targets[target]
 
 	if(istype(M, /mob/observer/dead) || M.stat == DEAD)
-		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
+		to_chat(src, "Даже [src.species.name] не может говорить с мертвецами.")
 		return
 
 	log_say("(COMMUNE to [key_name(M)]) [text]",src)
 
-	to_chat(M, "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
+	to_chat(M, "<font color='blue'>Подобно свинцовым плитам, падающим в океан, чужие мысли падают в ваш разум: [text]</font>")
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
-		to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
+		to_chat(H, "<font color='red'>У вас начинает течь кровь из носа ...</font>")
 		H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
-	set name = "Regurgitate"
+	set name = "Блевануть"
 	set desc = "Empties the contents of your stomach"
 	set category = "Abilities"
 
@@ -126,23 +126,23 @@
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
 				M.loc = loc
-		src.visible_message("<font color='red'><B>[src] hurls out the contents of their stomach!</B></font>")
+		src.visible_message("<font color='red'><B>[src] извергает содержимое желудка!</B></font>")
 	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
-	set name = "Psychic Whisper"
+	set name = "Пси Шепот"
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
+	var/msg = sanitize(input("Сообщение:", "Пси Шепот") as text|null)
 	if(msg)
 		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		to_chat(M, "<font color='green'>You hear a strange, alien voice in your head... <i>[msg]</i></font>")
-		to_chat(src, "<font color='green'>You said: \"[msg]\" to [M]</font>")
+		to_chat(M, "<font color='green'>Вы слышите странный, инопланетный голос в вашей голове ... <i>[msg]</i></font>")
+		to_chat(src, "<font color='green'>Вы говорите: \"[msg]\" , [M]</font>")
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
-	set name = "Split"
+	set name = "Разорваться"
 	set desc = "Split your humanoid form into its constituent nymphs."
 	set category = "Abilities"
 	diona_split_into_nymphs(5)	// Separate proc to void argments being supplied when used as a verb
@@ -181,7 +181,7 @@
 	var/obj/item/organ/external/Chest = organs_by_name[BP_TORSO]
 
 	if(Chest.robotic >= 2)
-		visible_message("<span class='warning'>\The [src] shudders slightly, then ejects a cluster of nymphs with a wet slithering noise.</span>")
+		visible_message("<span class='warning'>[src] слегка вздрагивает, затем выбрасывает своих нимф с мокрым скользящим шумом.</span>")
 		species = GLOB.all_species[SPECIES_HUMAN] // This is hard-set to default the body to a normal FBP, without changing anything.
 
 		// Bust it
@@ -198,39 +198,39 @@
 			E.droplimb(TRUE)
 
 	else
-		visible_message("<span class='warning'>\The [src] quivers slightly, then splits apart with a wet slithering noise.</span>")
+		visible_message("<span class='warning'>[src] слегка дрожит, затем распадается на части с мокрым скользящим шумом.</span>")
 		qdel(src)
 
 /mob/living/carbon/human/proc/self_diagnostics()
-	set name = "Self-Diagnostics"
+	set name = "Самодиагностика"
 	set desc = "Run an internal self-diagnostic to check for damage."
 	set category = "IC"
 
 	if(stat == DEAD) return
 
-	to_chat(src, "<span class='notice'>Performing self-diagnostic, please wait...</span>")
+	to_chat(src, "<span class='notice'>Выполняется самодиагностика, пожалуйста, подождите...</span>")
 	sleep(50)
-	var/output = "<span class='notice'>Self-Diagnostic Results:\n</span>"
+	var/output = "<meta charset=\"utf-8\"><span class='notice'>Результаты самодиагностики:\n</span>"
 
-	output += "Internal Temperature: [convert_k2c(bodytemperature)] Degrees Celsius\n"
+	output += "Внутренняя Температура: [convert_k2c(bodytemperature)] Градусов Цельсия\n"
 
-	output += "Current Battery Charge: [nutrition]\n"
+	output += "Текущий Заряд Батареи: [nutrition]\n"
 
 	var/toxDam = getToxLoss()
 	if(toxDam)
-		output += "System Instability: <span class='warning'>[toxDam > 25 ? "Severe" : "Moderate"]</span>. Seek charging station for cleanup.\n"
+		output += "Нестабильность Системы: <span class='warning'>[toxDam > 25 ? "Серьезная" : "Умеренная"]</span>. Ищите зарядную станцию для очистки.\n"
 	else
-		output += "System Instability: <span style='color:green;'>OK</span>\n"
+		output += "Нестабильность Системы: <span style='color:green;'>OK</span>\n"
 
 	for(var/obj/item/organ/external/EO in organs)
 		if(EO.brute_dam || EO.burn_dam)
-			output += "[EO.name] - <span class='warning'>[EO.burn_dam + EO.brute_dam > EO.min_broken_damage ? "Heavy Damage" : "Light Damage"]</span>\n" //VOREStation Edit - Makes robotic limb damage scalable
+			output += "[EO.name] - <span class='warning'>[EO.burn_dam + EO.brute_dam > EO.min_broken_damage ? "Тяжелый урон" : "Легкий урон"]</span>\n" //VOREStation Edit - Makes robotic limb damage scalable
 		else
 			output += "[EO.name] - <span style='color:green;'>OK</span>\n"
 
 	for(var/obj/item/organ/IO in internal_organs)
 		if(IO.damage)
-			output += "[IO.name] - <span class='warning'>[IO.damage > 10 ? "Heavy Damage" : "Light Damage"]</span>\n"
+			output += "[IO.name] - <span class='warning'>[IO.damage > 10 ? "Тяжелый урон" : "Легкий урон"]</span>\n"
 		else
 			output += "[IO.name] - <span style='color:green;'>OK</span>\n"
 
@@ -240,65 +240,65 @@
 	var/next_sonar_ping = 0
 
 /mob/living/carbon/human/proc/sonar_ping()
-	set name = "Listen In"
+	set name = "Прислушаться"
 	set desc = "Allows you to listen in to movement and noises around you."
 	set category = "Abilities"
 
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You need to recover before you can use this ability.</span>")
+		to_chat(src, "<span class='warning'>Вам нужно восстановиться, прежде чем вы сможете использовать эту способность.</span>")
 		return
 	if(world.time < next_sonar_ping)
-		to_chat(src, "<span class='warning'>You need another moment to focus.</span>")
+		to_chat(src, "<span class='warning'>Вам нужен еще один момент, чтобы сосредоточиться.</span>")
 		return
 	if(is_deaf() || is_below_sound_pressure(get_turf(src)))
-		to_chat(src, "<span class='warning'>You are for all intents and purposes currently deaf!</span>")
+		to_chat(src, "<span class='warning'>Вы во всех смыслах в настоящее время глухи!</span>")
 		return
 	next_sonar_ping += 10 SECONDS
 	var/heard_something = FALSE
-	to_chat(src, "<span class='notice'>You take a moment to listen in to your environment...</span>")
+	to_chat(src, "<span class='notice'>Вы уделяете некоторое время тому, чтобы прислушаться к своему окружению...</span>")
 	for(var/mob/living/L in range(client.view, src))
 		var/turf/T = get_turf(L)
 		if(!T || L == src || L.stat == DEAD || is_below_sound_pressure(T))
 			continue
 		heard_something = TRUE
 		var/feedback = list()
-		feedback += "<span class='notice'>There are noises of movement "
+		feedback += "<span class='notice'>Слышно движение: "
 		var/direction = get_dir(src, L)
 		if(direction)
 			feedback += "towards the [dir2text(direction)], "
 			switch(get_dist(src, L) / client.view)
 				if(0 to 0.2)
-					feedback += "very close by."
+					feedback += "Совсем рядом."
 				if(0.2 to 0.4)
-					feedback += "close by."
+					feedback += "Рядом."
 				if(0.4 to 0.6)
-					feedback += "some distance away."
+					feedback += "Неподалеку."
 				if(0.6 to 0.8)
-					feedback += "further away."
+					feedback += "Далеко."
 				else
-					feedback += "far away."
+					feedback += "Издалека."
 		else // No need to check distance if they're standing right on-top of us
-			feedback += "right on top of you."
+			feedback += "Прямо над вами."
 		feedback += "</span>"
 		to_chat(src,jointext(feedback,null))
 	if(!heard_something)
-		to_chat(src, "<span class='notice'>You hear no movement but your own.</span>")
+		to_chat(src, "<span class='notice'>Вы не слышите никакого движения, кроме своего собственного.</span>")
 
 /mob/living/carbon/human/proc/regenerate()
-	set name = "Regenerate"
+	set name = "Регенерация"
 	set desc = "Allows you to regrow limbs and heal organs after a period of rest."
 	set category = "Abilities"
 
 	if(nutrition < 250)
-		to_chat(src, "<span class='warning'>You lack the biomass to begin regeneration!</span>")
+		to_chat(src, "<span class='warning'>Вам не хватает биомассы, чтобы начать регенерацию!</span>")
 		return
 
 	if(active_regen)
-		to_chat(src, "<span class='warning'>You are already regenerating tissue!</span>")
+		to_chat(src, "<span class='warning'>Вы уже регенерируете!</span>")
 		return
 	else
 		active_regen = TRUE
-		src.visible_message("<B>[src]</B>'s flesh begins to mend...")
+		src.visible_message("Плоть <B>[src]</B>'s начинает восстанавливаться...")
 
 	var/delay_length = round(active_regen_delay * species.active_regen_mult)
 	if(do_after(src,delay_length))

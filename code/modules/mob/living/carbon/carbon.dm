@@ -342,13 +342,13 @@
 //			output for machines^	^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
-	set name = "Sleep"
+	set name = "Спать"
 	set category = "IC"
 
 	if(usr.sleeping)
 		to_chat(usr, "<font color='red'>Вы уже спите</font>")
 		return
-	if(alert(src,"Вы уверены, что хотите немного поспать?","Sleep","Да","Нет") == "Да")
+	if(alert(src,"Вы уверены, что хотите немного поспать?","Спать","Да","Нет") == "Да")
 		usr.sleeping = 20 //Short nap
 
 /mob/living/carbon/Bump(atom/A)
