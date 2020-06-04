@@ -66,8 +66,8 @@ GLOBAL_LIST_INIT(digest_modes, list())
 		B.absorb_living(L)
 		return list("to_update" = TRUE)
 
-/datum/digest_mode/unabsorb
-	id = DM_UNABSORB
+//datum/digest_mode/unabsorb
+	//id = DM_UNABSORB
 
 /datum/digest_mode/unabsorb/process_mob(obj/belly/B, mob/living/L)
 	if(L.absorbed && B.owner.nutrition >= 100)
@@ -77,31 +77,31 @@ GLOBAL_LIST_INIT(digest_modes, list())
 		B.owner.adjust_nutrition(-100)
 		return list("to_update" = TRUE)
 
-/datum/digest_mode/drain
-	id = DM_DRAIN
-	noise_chance = 10
+//datum/digest_mode/drain
+	//id = DM_DRAIN
+	//noise_chance = 10
 
 /datum/digest_mode/drain/process_mob(obj/belly/B, mob/living/L)
 	B.steal_nutrition(L)
 
-/datum/digest_mode/drain/shrink
-	id = DM_SHRINK
+//datum/digest_mode/drain/shrink
+	//id = DM_SHRINK
 
 /datum/digest_mode/drain/shrink/process_mob(obj/belly/B, mob/living/L)
 	if(L.size_multiplier > B.shrink_grow_size)
 		L.resize(L.size_multiplier - 0.01) // Shrink by 1% per tick
 		. = ..()
 
-/datum/digest_mode/grow
-	id = DM_GROW
-	noise_chance = 10
+//datum/digest_mode/grow
+//	id = DM_GROW
+//	noise_chance = 10
 
 /datum/digest_mode/grow/process_mob(obj/belly/B, mob/living/L)
 	if(L.size_multiplier < B.shrink_grow_size)
 		L.resize(L.size_multiplier + 0.01) // Shrink by 1% per tick
 
-/datum/digest_mode/drain/sizesteal
-	id = DM_SIZE_STEAL
+//datum/digest_mode/drain/sizesteal
+	//id = DM_SIZE_STEAL
 
 /datum/digest_mode/drain/sizesteal/process_mob(obj/belly/B, mob/living/L)
 	if(L.size_multiplier > B.shrink_grow_size && B.owner.size_multiplier < 2) //Grow until either pred is large or prey is small.
@@ -109,9 +109,9 @@ GLOBAL_LIST_INIT(digest_modes, list())
 		L.resize(L.size_multiplier - 0.01) //Shrink by 1% per tick
 		. = ..()
 
-/datum/digest_mode/heal
-	id = DM_HEAL
-	noise_chance = 50 //Wet heals! The secret is you can leave this on for gurgle noises for fun.
+//datum/digest_mode/heal
+//	id = DM_HEAL
+//	noise_chance = 50 //Wet heals! The secret is you can leave this on for gurgle noises for fun.
 
 /datum/digest_mode/heal/process_mob(obj/belly/B, mob/living/L)
 	if(L.stat == DEAD)
@@ -218,9 +218,9 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	changes_ears_tail_wing_color = TRUE
 
 // E G G
-/datum/digest_mode/transform/egg
-	id = DM_EGG
-	eggs = TRUE
+///datum/digest_mode/transform/egg
+//	id = DM_EGG
+//	eggs = TRUE
 
 /datum/digest_mode/transform/egg/gender
 	id = DM_TRANSFORM_FEMALE_EGG

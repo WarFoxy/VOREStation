@@ -12,7 +12,7 @@
 	var/datum/vore_look/vorePanel
 
 /mob/living/proc/insidePanel()
-	set name = "Vore Panel"
+	set name = "Панель желудка"
 	set category = "IC"
 
 	if(!vorePanel)
@@ -66,13 +66,13 @@
 		var/obj/belly/inside_belly = userloc
 		var/mob/living/eater = inside_belly.owner
 
-		dat += "<font color='green'>You are currently [user.absorbed ? "absorbed into " : "inside "]</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[inside_belly.name]</font>!<br><br>"
+		dat += "<font color='green'>Вас [user.absorbed ? "absorbed into " : "inside "]</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[inside_belly.name]</font>!<br><br>"
 
 		if(inside_belly.desc)
 			dat += "[inside_belly.desc]<br><br>" //Extra br
 
 		if(inside_belly.contents.len > 1)
-			dat += "You can see the following around you: <br>"
+			dat += "Вы можете видеть вокруг себя следующее: <br>"
 			var/list/belly_contents = list()
 			for (var/atom/movable/O in inside_belly)
 				if(istype(O,/mob/living))
@@ -97,7 +97,7 @@
 
 			dat += jointext(belly_contents, null) //Add in belly contents to main running list
 	else
-		dat += "You aren't inside anyone."
+		dat += "Вы ни в ком не находитесь"
 
 	var/list/belly_list = list("<HR><ol style='list-style: none; padding: 0; overflow: auto;'>")
 	for(var/belly in user.vore_organs)
@@ -115,16 +115,16 @@
 				spanstyle = "color:red;"
 			if(DM_ABSORB)
 				spanstyle = "color:purple;"
-			if(DM_DRAIN)
-				spanstyle = "color:purple;"
-			if(DM_HEAL)
-				spanstyle = "color:green;"
-			if(DM_SHRINK)
-				spanstyle = "color:purple;"
-			if(DM_GROW)
-				spanstyle = "color:purple;"
-			if(DM_SIZE_STEAL)
-				spanstyle = "color:purple;"
+			//if(DM_DRAIN)
+			//	spanstyle = "color:purple;"
+			//if(DM_HEAL)
+			//	spanstyle = "color:green;"
+			//if(DM_SHRINK)
+			//	spanstyle = "color:purple;"
+			//if(DM_GROW)
+			//	spanstyle = "color:purple;"
+			//if(DM_SIZE_STEAL)
+			//	spanstyle = "color:purple;"
 			if(DM_TRANSFORM_MALE)
 				spanstyle = "color:purple;"
 			if(DM_TRANSFORM_HAIR_AND_EYES)
@@ -147,14 +147,14 @@
 				spanstyle = "color:purple;"
 			if(DM_TRANSFORM_FEMALE_EGG)
 				spanstyle = "color:purple;"
-			if(DM_EGG)
-				spanstyle = "color:purple;"
+			//if(DM_EGG)
+			//	spanstyle = "color:purple;"
 
 		belly_list += "<span style='[spanstyle]'> ([B.contents.len])</span></a></li>"
 
-	if(user.vore_organs.len < BELLIES_MAX)
-		belly_list += "<li style='float: left'><a href='?src=\ref[src];newbelly=1'>New+</a></li>"
-	belly_list += "</ol><HR>"
+	//if(user.vore_organs.len < BELLIES_MAX)
+	//	belly_list += "<li style='float: left'><a href='?src=\ref[src];newbelly=1'>New+</a></li>"
+	//belly_list += "</ol><HR>"
 
 	dat += jointext(belly_list, null) //Add in belly list to main running list
 
@@ -192,16 +192,16 @@
 			dat += jointext(belly_contents, null)
 
 		//Belly Name Button
-		dat += "<br><a href='?src=\ref[src];b_name=\ref[selected]'>Name:</a> '[selected.name]'"
+		dat += "<br><a href='?src=\ref[src];b_name=\ref[selected]'>Название:</a> '[selected.name]'"
 
 		//Belly Type button
-		dat += "<br><a href='?src=\ref[src];b_wetness=\ref[selected]'>Is this belly fleshy:</a> [selected.is_wet ? "Yes" : "No"]"
-		if(selected.is_wet)
-			dat += "<br><a href='?src=\ref[src];b_wetloop=\ref[selected]'>Internal loop for prey?:</a> [selected.wet_loop ? "Yes" : "No"]"
+		//dat += "<br><a href='?src=\ref[src];b_wetness=\ref[selected]'>Is this belly fleshy:</a> [selected.is_wet ? "Yes" : "No"]"
+		//if(selected.is_wet)
+		//	dat += "<br><a href='?src=\ref[src];b_wetloop=\ref[selected]'>Internal loop for prey?:</a> [selected.wet_loop ? "Yes" : "No"]"
 
 		//Digest Mode Button
 		var/mode = selected.digest_mode
-		dat += "<br><a href='?src=\ref[src];b_mode=\ref[selected]'>Belly Mode:</a> [mode]"
+		dat += "<br><a href='?src=\ref[src];b_mode=\ref[selected]'>Режим желудка:</a> [mode]"
 
 		//Mode addons button
 		var/list/flag_list = list()
@@ -226,54 +226,54 @@
 			dat += "<br><a href='?src=\ref[src];b_contamination_color=\ref[selected]'>Contamination Color:</a> [selected.contamination_color]"
 
 		//Belly verb
-		dat += "<br><a href='?src=\ref[src];b_verb=\ref[selected]'>Vore Verb:</a> '[selected.vore_verb]'"
+		//dat += "<br><a href='?src=\ref[src];b_verb=\ref[selected]'>Vore Verb:</a> '[selected.vore_verb]'"
 
 		//Inside flavortext
-		dat += "<br><a href='?src=\ref[src];b_desc=\ref[selected]'>Flavor Text:</a> '[selected.desc]'"
+		//dat += "<br><a href='?src=\ref[src];b_desc=\ref[selected]'>Flavor Text:</a> '[selected.desc]'"
 
 		//Belly Sound Fanciness
-		dat += "<br><a href='?src=\ref[src];b_fancy_sound=\ref[selected]'>Use Fancy Sounds:</a> [selected.fancy_vore ? "Yes" : "No"]"
+		//dat += "<br><a href='?src=\ref[src];b_fancy_sound=\ref[selected]'>Use Fancy Sounds:</a> [selected.fancy_vore ? "Yes" : "No"]"
 
 		//Belly sound
-		dat += "<br><a href='?src=\ref[src];b_sound=\ref[selected]'>Vore Sound: [selected.vore_sound]</a> <a href='?src=\ref[src];b_soundtest=\ref[selected]'>Test</a>"
+		//dat += "<br><a href='?src=\ref[src];b_sound=\ref[selected]'>Vore Sound: [selected.vore_sound]</a> <a href='?src=\ref[src];b_soundtest=\ref[selected]'>Test</a>"
 
 		//Release sound
-		dat += "<br><a href='?src=\ref[src];b_release=\ref[selected]'>Release Sound: [selected.release_sound]</a> <a href='?src=\ref[src];b_releasesoundtest=\ref[selected]'>Test</a>"
+		//dat += "<br><a href='?src=\ref[src];b_release=\ref[selected]'>Release Sound: [selected.release_sound]</a> <a href='?src=\ref[src];b_releasesoundtest=\ref[selected]'>Test</a>"
 
 		//Belly messages
-		dat += "<br><a href='?src=\ref[src];b_msgs=\ref[selected]'>Belly Messages</a>"
+		//dat += "<br><a href='?src=\ref[src];b_msgs=\ref[selected]'>Belly Messages</a>"
 
 		//Can belly taste?
 		dat += "<br><a href='?src=\ref[src];b_tastes=\ref[selected]'>Can Taste:</a> [selected.can_taste ? "Yes" : "No"]"
 
 		//Nutritional percentage
-		dat += "<br><a href='?src=\ref[src];b_nutritionpercent=\ref[selected]'>Nutritional Gain:</a> [selected.nutrition_percent]%"
+		dat += "<br><a href='?src=\ref[src];b_nutritionpercent=\ref[selected]'>Пищевая ценность:</a> [selected.nutrition_percent]%"
 
 		//How much brute damage
-		dat += "<br><a href='?src=\ref[src];b_brute_dmg=\ref[selected]'>Digest Brute Damage:</a> [selected.digest_brute]"
+		dat += "<br><a href='?src=\ref[src];b_brute_dmg=\ref[selected]'>Груб. урон от перевар.:</a> [selected.digest_brute]"
 
 		//How much burn damage
-		dat += "<br><a href='?src=\ref[src];b_burn_dmg=\ref[selected]'>Digest Burn Damage:</a> [selected.digest_burn]"
+		dat += "<br><a href='?src=\ref[src];b_burn_dmg=\ref[selected]'>Огн. урон от перевар.:</a> [selected.digest_burn]"
 
 		//Minimum size prey must be to show up.
-		dat += "<br><a href='?src=\ref[src];b_bulge_size=\ref[selected]'>Required examine size:</a> [selected.bulge_size*100]%"
+		//dat += "<br><a href='?src=\ref[src];b_bulge_size=\ref[selected]'>Required examine size:</a> [selected.bulge_size*100]%"
 
 		//Size that prey will be grown/shrunk to.
-		dat += "<br><a href='?src=\ref[src];b_grow_shrink=\ref[selected]'>Shrink/Grow size:</a> [selected.shrink_grow_size*100]%"
+		//dat += "<br><a href='?src=\ref[src];b_grow_shrink=\ref[selected]'>Shrink/Grow size:</a> [selected.shrink_grow_size*100]%"
 
 		//Belly escapability
 		dat += "<br><a href='?src=\ref[src];b_escapable=\ref[selected]'>Belly Interactions ([selected.escapable ? "On" : "Off"])</a>"
 		if(selected.escapable)
-			dat += "<a href='?src=\ref[src];show_int=\ref[selected]'>[show_interacts ? "Hide" : "Show"]</a>"
+			dat += "<a href='?src=\ref[src];show_int=\ref[selected]'>[show_interacts ? "Скрыть" : "Показ."]</a>"
 
 		if(show_interacts && selected.escapable)
 			var/list/interacts = list()
 			interacts += "<HR>"
-			interacts += "Interaction Settings <a href='?src=\ref[src];int_help=\ref[selected]'>?</a>"
-			interacts += "<br><a href='?src=\ref[src];b_escapechance=\ref[selected]'>Set Belly Escape Chance</a>"
+			interacts += "Настройки взаимодействия <a href='?src=\ref[src];int_help=\ref[selected]'>?</a>"
+			interacts += "<br><a href='?src=\ref[src];b_escapechance=\ref[selected]'>Шанс побега</a>"
 			interacts += " [selected.escapechance]%"
 
-			interacts += "<br><a href='?src=\ref[src];b_escapetime=\ref[selected]'>Set Belly Escape Time</a>"
+			interacts += "<br><a href='?src=\ref[src];b_escapetime=\ref[selected]'>Время побега</a>"
 			interacts += " [selected.escapetime/10]s"
 
 			//Special <br> here to add a gap
@@ -583,19 +583,19 @@
 	if(href_list["b_mode"])
 		var/list/menu_list = selected.digest_modes.Copy()
 		if(istype(usr,/mob/living/carbon/human))
-			menu_list += DM_TRANSFORM
+			menu_list += DM_DIGEST
 
 		var/new_mode = input("Choose Mode (currently [selected.digest_mode])") as null|anything in menu_list
 		if(!new_mode)
 			return FALSE
 
-		if(new_mode == DM_TRANSFORM) //Snowflek submenu
-			var/list/tf_list = selected.transform_modes
-			var/new_tf_mode = input("Choose TF Mode (currently [selected.digest_mode])") as null|anything in tf_list
-			if(!new_tf_mode)
-				return FALSE
-			selected.digest_mode = new_tf_mode
-			return
+	//	if(new_mode == DM_TRANSFORM) //Snowflek submenu
+	//		var/list/tf_list = selected.transform_modes
+	//		var/new_tf_mode = input("Choose TF Mode (currently [selected.digest_mode])") as null|anything in tf_list
+	//		if(!new_tf_mode)
+	//			return FALSE
+	//		selected.digest_mode = new_tf_mode
+	//		return
 
 		selected.digest_mode = new_mode
 		//selected.items_preserved.Cut() //Re-evaltuate all items in belly on belly-mode change	//Handled with item modes now

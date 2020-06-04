@@ -55,7 +55,7 @@
 	//stop_when_pulled = TRUE
 	//specific_targets = TRUE //For finding injured people
 	//destroy_surroundings = FALSE
-	vore_default_mode = DM_HEAL
+	//vore_default_mode = DM_HEAL
 	vore_escape_chance = 75
 	vore_standing_too = 1
 	vore_pounce_chance = 100
@@ -163,7 +163,7 @@
 	//animal = TRUE
 	//stop_when_pulled = FALSE
 	//destroy_surroundings = TRUE
-	vore_default_mode = DM_DRAIN
+	vore_default_mode = DM_ABSORB
 	vore_digest_chance = 5
 	vore_ignores_undigestable = FALSE
 	armor = list(
@@ -223,7 +223,7 @@
 	//animal = TRUE
 	//stop_when_pulled = FALSE
 	//destroy_surroundings = TRUE
-	vore_default_mode = DM_DRAIN
+	vore_default_mode = DM_ABSORB
 	vore_digest_chance = 0
 	vore_ignores_undigestable = FALSE
 	armor = list(

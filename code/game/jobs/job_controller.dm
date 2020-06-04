@@ -491,7 +491,7 @@ var/global/datum/controller/occupations/job_master
 			// TWEET PEEP
 			if(rank == "Colony Director")
 				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
-				captain_announcement.Announce("Всему персоналу, [alt_title ? alt_title : "Директор Колонии"] [H.real_name] вновь на станцииk!", new_sound = announce_sound, zlevel = H.z)
+				captain_announcement.Announce("Всему персоналу, [alt_title ? alt_title : "Директор Колонии"] [H.real_name] вновь на станции!", new_sound = announce_sound, zlevel = H.z)
 
 			//Deferred item spawning.
 			if(spawn_in_storage && spawn_in_storage.len)
@@ -654,10 +654,10 @@ var/global/datum/controller/occupations/job_master
 	if(C && C.prefs.spawnpoint)
 		if(!(C.prefs.spawnpoint in using_map.allowed_spawns))
 			if(fail_deadly)
-				to_chat(C, "<span class='warning'>Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint. Please correct your spawn point choice.</span>")
+				to_chat(C, "<span class='warning'>Выбранная вами точка спавна недоступна для этой карты или ваша профессия требует определенной точки спавна. Пожалуйста, исправьте свой выбор точки спавна.</span>")
 				return
 			else
-				to_chat(C, "<span class='warning'>Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead.</span>")
+				to_chat(C, "<span class='warning'>Выбранная вами точка спавна ([C.prefs.spawnpoint]) недоступна для текущей карты. Вместо этого вы начнете игру в одной из включенных точек спавна.</span>")
 				spawnpos = null
 		else
 			spawnpos = spawntypes[C.prefs.spawnpoint]
@@ -671,9 +671,9 @@ var/global/datum/controller/occupations/job_master
 			.["channel"] = spawnpos.announce_channel
 		else
 			if(fail_deadly)
-				to_chat(C, "<span class='warning'>Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Please correct your spawn point choice.</span>")
+				to_chat(C, "<span class='warning'>Выбранная вами точка спавна ([spawnpos.display_name]) недоступна для выбранной вами профессии. Пожалуйста, исправьте свой выбор точки спавна.</span>")
 				return
-			to_chat(C, "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
+			to_chat(C, "Выбранная вами точка спавна ([spawnpos.display_name]) недоступна для выбранной вами профессии. Вместо этого вас заставнят в шаттле прибытия.")
 			var/spawning = pick(latejoin)
 			.["turf"] = get_turf(spawning)
 			.["msg"] = "прибудет на станцию в ближайшее время"  //VOREStation Edit - Grammar but mostly 'shuttle' reference removal, and this also applies to notified spawn-character verb use

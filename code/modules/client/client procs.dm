@@ -82,7 +82,7 @@
 					return
 				sane = TRUE
 				break
-		
+
 		if(!sane)
 			to_chat(src, "<span class='warning'>Sorry, that link doesn't appear to be valid. Please try again.</span>")
 			return
@@ -212,7 +212,7 @@
 	screen += void
 
 	if((prefs.lastchangelog != changelog_hash) && isnewplayer(src.mob)) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+		to_chat(src, "<span class='info'>Вы можете прочитать об обновлениях на Github проекта.</span>")
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config.aggressive_changelog)
 			src.changes()

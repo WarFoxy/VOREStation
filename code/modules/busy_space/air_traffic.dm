@@ -35,11 +35,11 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 /datum/lore/atc_controller/proc/reroute_traffic(var/yes = 1)
 	if(yes)
 		if(!squelched)
-			msg("Rerouting traffic away from [using_map.station_name].")
+			msg("Перенаправление движения в сторону от [using_map.station_name].")
 		squelched = 1
 	else
 		if(squelched)
-			msg("Resuming normal traffic routing around [using_map.station_name].")
+			msg("Возобновление нормальной маршрутизации трафика вокруг [using_map.station_name].")
 		squelched = 0
 
 /datum/lore/atc_controller/proc/shift_ending(var/evac = 0)
@@ -103,7 +103,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	switch(chatter_type)
 		if("wrong_freq")
 			callname = pick(wrong_atc_names)
-			full_request = "[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
+			full_request = "[callname], это [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
 			full_response = "[combined_name], this is [using_map.station_short] TraCon, wrong frequency. Switch to [rand(700,999)].[rand(1,9)]."
 			full_closure = "[using_map.station_short] TraCon, understood, apologies."
 		if("wrong_lang")
@@ -116,7 +116,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 		else
 			full_request = "[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
 			full_response = "[combined_name], this is [using_map.station_short] TraCon, [response]." //Station TraCon always calls themselves TraCon
-			full_closure = "[using_map.station_short] TraCon, [yes ? "thank you" : "understood"], good day." //They always copy what TraCon called themselves in the end when they realize they said it wrong
+			full_closure = "[using_map.station_short] TraCon, [yes ? "спасибо" : "принято"], хорошего дня." //They always copy what TraCon called themselves in the end when they realize they said it wrong
 
 	//Ship sends request to ATC
 	msg(full_request,"[prefix] [shipname]")
