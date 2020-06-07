@@ -159,7 +159,7 @@
 					status_message = "This machine is currently unable to process payments due to problems with the associated account."
 					status_error = 1
 				else
-					status_message = "[initial(path.desc)]<br><br><b>Please swipe a card or insert cash to pay for the item.</b>"
+					status_message = "[initial(path.desc)]<br><br><b>Пожалуйста, проведите ID картой или вставьте наличку, чтобы оплатить товар.</b>"
 					status_error = 0
 
 		else if(href_list["cancelpurchase"])

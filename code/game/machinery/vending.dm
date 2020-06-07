@@ -451,7 +451,7 @@
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
 				else
-					status_message = "Please swipe a card or insert cash to pay for the item."
+					status_message = "Пожалуйста, проведите ID картой или вставьте наличку, чтобы оплатить товар."
 					status_error = 0
 
 		else if(href_list["cancelpurchase"])
@@ -787,7 +787,7 @@
 	prices = list(/obj/item/weapon/reagent_containers/food/snacks/candy = 1,/obj/item/weapon/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/weapon/reagent_containers/food/snacks/chips = 1,
 					/obj/item/weapon/reagent_containers/food/snacks/sosjerky = 2,/obj/item/weapon/reagent_containers/food/snacks/no_raisin = 1,/obj/item/weapon/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/weapon/reagent_containers/food/snacks/tastybread = 2, /obj/item/weapon/reagent_containers/food/snacks/skrellsnacks = 2)
-					
+
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
@@ -835,7 +835,7 @@
 	//VOREStation Edit End
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4, /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteanshake = 2) // VOREStation Add - Slurpable blobs.
-	
+
 
 /obj/machinery/vending/cart
 	name = "PTech"
