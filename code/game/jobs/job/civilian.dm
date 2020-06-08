@@ -103,17 +103,17 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
 	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
-	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
+	alt_titles = list("Начальник снабжения" = /datum/alt_title/supply_chief)
 
 // Quartermaster Alt Titles
 /datum/alt_title/supply_chief
-	title = "Supply Chief"
+	title = "Начальник снабжения"
 
 //////////////////////////////////
 //			Cargo Tech
 //////////////////////////////////
 /datum/job/cargo_tech
-	title = "Cargo Technician"
+	title = "Грузчик"
 	flag = CARGOTECH
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN

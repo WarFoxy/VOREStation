@@ -34,7 +34,7 @@
 	set desc = "Посетить сервер Discorf."
 	set hidden = 1
 	if( config.discordurl )
-		if(alert("Это откроет приглашение на серве Discord FURRYStation в вашем браузере. Вы уверены, что хотите продолжить?",,"Да","Нет")=="Нет")
+		if(alert("Данное действие откроет приглашение на сервер Discord XenosStation в вашем браузере. Вы уверены, что хотите продолжить?",,"Да","Нет")=="Нет")
 			return
 		src << link(config.discordurl)
 	else

@@ -204,7 +204,7 @@
 /datum/gear/uniform/dept/undercoat/cargo
 	display_name = "cargo undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/cargo
-	allowed_roles = list("Cargo Technician","Интендант","Shaft Miner")
+	allowed_roles = list("Грузчик","Интендант","Shaft Miner")
 
 /datum/gear/uniform/dept/undercoat/mining
 	display_name = "mining undercoat (Teshari)"
@@ -293,7 +293,7 @@
 /datum/gear/suit/dept/cloak/cargo
 	display_name = "cargo cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/cargo
-	allowed_roles = list("Cargo Technician","Интендант","Shaft Miner")
+	allowed_roles = list("Грузчик","Интендант","Shaft Miner")
 
 /datum/gear/suit/dept/cloak/mining
 	display_name = "mining cloak (Teshari)"
