@@ -317,7 +317,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	for(var/path in common_dirs)
 		var/list/filenames = flist(path)
 		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) != "/") // Ignore directories.
+			if(copytext_char(filename, length(filename)) != "/") // Ignore directories.
 				if(fexists(path + filename))
 					common[filename] = fcopy_rsc(path + filename)
 					register_asset(filename, common[filename])
@@ -326,7 +326,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	for(var/path in template_dirs)
 		var/list/filenames = flist(path)
 		for(var/filename in filenames)
-			if(copytext(filename, length(filename) - 4) == ".tmpl") // Ignore directories.
+			if(copytext_char(filename, length(filename) - 4) == ".tmpl") // Ignore directories.
 				template_data[filename] = file2text(path + filename)
 	var/template_bundle = "function nanouiTemplateBundle(){return [json_encode(template_data)];}"
 	var/fname = "data/nano_templates_bundle.js"
