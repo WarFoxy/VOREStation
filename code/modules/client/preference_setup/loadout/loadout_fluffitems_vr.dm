@@ -420,7 +420,7 @@
 	display_name = "Ace's Holster"
 	ckeywhitelist = list("jertheace")
 	character_name = list("Jeremiah Acacius")
-	allowed_roles = list("Colony Director", "Warden", "Head of Security")
+	allowed_roles = list("Директор колонии", "Warden", "Head of Security")
 
 /datum/gear/fluff/jeremiah_boots
 	path = /obj/item/clothing/shoes/boots/combat
@@ -448,7 +448,7 @@
 	display_name = "Katarina's Backpack"
 	ckeywhitelist = list("joanrisu")
 	character_name = list("Katarina Eine")
-	allowed_roles = list("Colony Director", "Warden", "Head of Security")
+	allowed_roles = list("Директор колонии", "Warden", "Head of Security")
 
 /datum/gear/fluff/emoticon_box
 	path = /obj/item/weapon/storage/box/fluff/emoticon
@@ -774,7 +774,7 @@
 	slot = slot_wear_suit
 	ckeywhitelist = list("samanthafyre")
 	character_name = list("Kateryna Petrovitch")
-	allowed_roles = list("Security Officer", "Warden", "Head of Security", "Colony Director", "Head of Personnel")
+	allowed_roles = list("Security Officer", "Warden", "Head of Security", "Директор колонии", "Глава персонала")
 
 /datum/gear/fluff/viktor_flask
 	path = /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask/fluff/viktor
@@ -807,14 +807,14 @@
 	display_name = "NT-HASD 556's Modkit"
 	ckeywhitelist = list("silencedmp5a5")
 	character_name = list("NT-HASD #556")
-	allowed_roles = list("Colony Director", "Head of Personnel", "Security Officer", "Warden", "Head of Security","Detective")
+	allowed_roles = list("Директор колонии", "Глава персонала", "Security Officer", "Warden", "Head of Security","Detective")
 
 /datum/gear/fluff/serdykov_modkit //Also converts a Security suit's sprite
 	path = /obj/item/device/modkit_conversion/fluff/serdykit
 	display_name = "Serdykov Antoz's Modkit"
 	ckeywhitelist = list("silencedmp5a5")
 	character_name = list("Serdykov Antoz")
-	allowed_roles = list("Colony Director", "Head of Personnel", "Security Officer", "Warden", "Head of Security","Detective")
+	allowed_roles = list("Директор колонии", "Глава персонала", "Security Officer", "Warden", "Head of Security","Detective")
 
 /datum/gear/fluff/tasy_clownuniform
 	path = /obj/item/clothing/under/sexyclown

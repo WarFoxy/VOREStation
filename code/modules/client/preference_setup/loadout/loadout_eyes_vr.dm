@@ -32,7 +32,7 @@
 	display_name = "AR-B glasses (CD, HoP)"
 	path = /obj/item/clothing/glasses/omnihud/all
 	cost = 2
-	allowed_roles = list("Colony Director","Head of Personnel")
+	allowed_roles = list("Директор колонии","Глава персонала")
 
 /datum/gear/eyes/spiffygogs
 	display_name = "slick orange goggles"

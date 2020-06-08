@@ -127,7 +127,7 @@
 /var/const/access_captain = 20
 /datum/access/captain
 	id = access_captain
-	desc = "Colony Director"
+	desc = "Директор колонии"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_all_personal_lockers = 21
@@ -253,7 +253,7 @@
 /var/const/access_qm = 41
 /datum/access/qm
 	id = access_qm
-	desc = "Quartermaster"
+	desc = "Интендант"
 	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_network = 42
@@ -327,7 +327,7 @@
 /var/const/access_hop = 57
 /datum/access/hop
 	id = access_hop
-	desc = "Head of Personnel"
+	desc = "Глава персонала"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_hos = 58

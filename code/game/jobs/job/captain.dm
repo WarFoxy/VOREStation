@@ -5,7 +5,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 //////////////////////////////////
 
 /datum/job/captain
-	title = "Colony Director"
+	title = "Директор колонии"
 	flag = CAPTAIN
 	departments = list(DEPARTMENT_COMMAND)
 	sorting_order = 3 // Above everyone.
@@ -30,7 +30,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Colony Director is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
 	alt_titles = list("Site Manager" = /datum/alt_title/site_manager,
-						"Overseer" = /datum/alt_title/overseer)
+						"Надзиратель" = /datum/alt_title/overseer)
 
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
@@ -48,13 +48,13 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	title = "Site Manager"
 
 /datum/alt_title/overseer
-	title = "Overseer"
+	title = "Надзиратель"
 
 //////////////////////////////////
 //		Head of Personnel
 //////////////////////////////////
 /datum/job/hop
-	title = "Head of Personnel"
+	title = "Глава персонала"
 	flag = HOP
 	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
 	sorting_order = 2 // Above the QM, below captain.
@@ -76,7 +76,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	job_description = "The Head of Personnel manages the Service department, the Exploration team, and most other civilians. They also \
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
-	alt_titles = list("Crew Resources Officer" = /datum/alt_title/cro)
+	alt_titles = list("Старший офицер" = /datum/alt_title/cro)
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
@@ -93,14 +93,14 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 // HOP Alt Titles
 /datum/alt_title/cro
-	title = "Crew Resources Officer"
+	title = "Старший офицер"
 
 //////////////////////////////////
 //		Command Secretary
 //////////////////////////////////
 
 /datum/job/secretary
-	title = "Command Secretary"
+	title = "Секретарь"
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)
 	department_accounts = list(DEPARTMENT_COMMAND)

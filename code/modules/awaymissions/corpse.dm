@@ -124,7 +124,7 @@
 ///////////Civilians//////////////////////
 
 /obj/effect/landmark/corpse/chef
-	name = "Chef"
+	name = "Шеф-повар"
 	corpseuniform = /obj/item/clothing/under/rank/chef
 	corpsesuit = /obj/item/clothing/suit/chef/classic
 	corpseshoes = /obj/item/clothing/shoes/black
@@ -132,8 +132,8 @@
 	corpseback = /obj/item/weapon/storage/backpack
 	corpseradio = /obj/item/device/radio/headset
 	corpseid = 1
-	corpseidjob = "Chef"
-	corpseidaccess = "Chef"
+	corpseidjob = "Шеф-повар"
+	corpseidaccess = "Шеф-повар"
 
 
 /obj/effect/landmark/corpse/doctor

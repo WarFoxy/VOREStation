@@ -195,7 +195,7 @@
 /datum/gear/shoes/boots/winter/command
 	display_name = "colony director's winter boots"
 	path = /obj/item/clothing/shoes/boots/winter/command
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Директор колонии")
 
 /datum/gear/shoes/boots/winter/engineering
 	display_name = "engineering winter boots"

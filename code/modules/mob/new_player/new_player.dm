@@ -498,7 +498,7 @@
 			if(!(client.prefs.GetJobDepartment(job, 1) & job.flag))
 				if(!(client.prefs.GetJobDepartment(job, 2) & job.flag))
 					if(!(client.prefs.GetJobDepartment(job, 3) & job.flag))
-						if(!show_hidden_jobs && job.title != "Assistant")	// Assistant is always an option
+						if(!show_hidden_jobs && job.title != "Ассистент")	// Assistant is always an option
 							continue
 			var/active = 0
 			// Only players with the job assigned and AFK for less than 10 minutes count as active

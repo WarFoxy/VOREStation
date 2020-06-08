@@ -3,7 +3,7 @@
 //////////////////////////////////
 
 /datum/job/intern
-	title = "Intern"
+	title = "Интерн"
 	flag = INTERN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = ENGSEC // Ran out of bits
@@ -16,53 +16,51 @@
 	access = list()			//See /datum/job/intern/get_access()
 	minimal_access = list()	//See /datum/job/intern/get_access()
 	outfit_type = /decl/hierarchy/outfit/job/assistant/intern
-	alt_titles = list("Intern" = /datum/alt_title/intern,
-					  "Apprentice Engineer" = /datum/alt_title/intern_eng,
-					  "Medical Intern" = /datum/alt_title/intern_med,
-					  "Lab Assistant" = /datum/alt_title/intern_sci,
-					  "Security Cadet" = /datum/alt_title/intern_sec,
-					  "Jr. Cargo Tech" = /datum/alt_title/intern_crg,
-					  "Jr. Explorer" = /datum/alt_title/intern_exp,
+	alt_titles = list("Интерн" = /datum/alt_title/intern,
+					  "Ученик Инженера" = /datum/alt_title/intern_eng,
+					  "Медицинский Интерн" = /datum/alt_title/intern_med,
+					  "Лаборант" = /datum/alt_title/intern_sci,
+					  "Кадет СБ" = /datum/alt_title/intern_sec,
+					  "Млад. Карготехник" = /datum/alt_title/intern_crg,
+					  "Млад. Исследователь" = /datum/alt_title/intern_exp,
 					  "Server" = /datum/alt_title/server)
-	job_description = "An Intern does whatever is requested of them, often doing so in process of learning \
-						another job. Though they are part of the crew, they have no real authority."
+	job_description = "Интерн делает все, что от него требуется, выполняя работу в процессе изучения другой профессии. Хотя они и являются частью экипажа, у них нет реальной власти."
 	timeoff_factor = 0 // Interns, noh
 
 /datum/alt_title/intern
-	title = "Intern"
+	title = "Интерн"
 
 /datum/alt_title/intern_eng
-	title = "Apprentice Engineer"
-	title_blurb = "An Apprentice Engineer attempts to provide whatever the Engineering department needs. They are not proper Engineers, and are \
-					often in training to become an Engineer. A Technical Assistant has no real authority."
+	title = "Ученик Инженера"
+	title_blurb = "Ученик Инженера пытается выполнять все, что нужно инженерному отделу. Он не является настоящим инженером и часто проходит подготовку, чтобы стать инженером. Ученик инженера не имеет никаких реальных полномочий."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/engineer
 
 /datum/alt_title/intern_med
-	title = "Medical Intern"
+	title = "Медицинский Интерн"
 	title_blurb = "A Medical Intern attempts to provide whatever the Medical department needs. They are not proper Doctors, and are \
 					often in training to become a Doctor. A Medical Intern has no real authority."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/medic
 
 /datum/alt_title/intern_sci
-	title = "Lab Assistant"
+	title = "Лаборант"
 	title_blurb = "A Lab Assistant attempts to provide whatever the Research department needs. They are not proper Scientists, and are \
 					often in training to become a Scientist. A Lab Assistant has no real authority."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/scientist
 
 /datum/alt_title/intern_sec
-	title = "Security Cadet"
+	title = "Кадет СБ"
 	title_blurb = "A Security Cadet attempts to provide whatever the Security department needs. They are not proper Officers, and are \
 					often in training to become an Officer. A Security Cadet has no real authority."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/officer
 
 /datum/alt_title/intern_crg
-	title = "Jr. Cargo Tech"
+	title = "Млад. Карготехник"
 	title_blurb = "A Jr. Cargo Tech attempts to provide whatever the Cargo department needs. They are not proper Cargo Technicians, and are \
 					often in training to become a Cargo Technician. A Jr. Cargo Tech has no real authority."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/cargo
 
 /datum/alt_title/intern_exp
-	title = "Jr. Explorer"
+	title = "Млад. Исследователь"
 	title_blurb = "A Jr. Explorer attempts to provide whatever the Exploration department needs. They are not proper Explorers, and are \
 					often in training to become an Explorer. A Jr. Explorer has no real authority."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/explorer

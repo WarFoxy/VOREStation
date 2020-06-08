@@ -184,17 +184,17 @@
 /datum/gear/uniform/dept/undercoat/qm
 	display_name = "quartermaster undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/qm
-	allowed_roles = list("Quartermaster")
+	allowed_roles = list("Интендант")
 
 /datum/gear/uniform/dept/undercoat/command
 	display_name = "command undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/uniform/dept/undercoat/command_g
 	display_name = "command undercoat - gold buttons (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command_g
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/uniform/dept/undercoat/cmo
 	display_name = "chief medical officer undercoat (Teshari)"
@@ -204,12 +204,12 @@
 /datum/gear/uniform/dept/undercoat/cargo
 	display_name = "cargo undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/cargo
-	allowed_roles = list("Cargo Technician","Quartermaster","Shaft Miner")
+	allowed_roles = list("Cargo Technician","Интендант","Shaft Miner")
 
 /datum/gear/uniform/dept/undercoat/mining
 	display_name = "mining undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/mining
-	allowed_roles = list("Quartermaster","Shaft Miner")
+	allowed_roles = list("Интендант","Shaft Miner")
 
 /datum/gear/uniform/dept/undercoat/security
 	display_name = "security undercoat (Teshari)"
@@ -219,7 +219,7 @@
 /datum/gear/uniform/dept/undercoat/service
 	display_name = "service undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/service
-	allowed_roles = list("Head of Personnel","Bartender","Botanist","Janitor","Chef","Librarian")
+	allowed_roles = list("Глава персонала","Бармен","Ботаник","Janitor","Шеф-повар","Librarian")
 
 /datum/gear/uniform/dept/undercoat/engineer
 	display_name = "engineering undercoat (Teshari)"
@@ -278,12 +278,12 @@
 /datum/gear/suit/dept/cloak/qm
 	display_name = "quartermaster cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/qm
-	allowed_roles = list("Quartermaster")
+	allowed_roles = list("Интендант")
 
 /datum/gear/suit/dept/cloak/command
 	display_name = "command cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/command
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/suit/dept/cloak/cmo
 	display_name = "chief medical officer cloak (Teshari)"
@@ -293,12 +293,12 @@
 /datum/gear/suit/dept/cloak/cargo
 	display_name = "cargo cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/cargo
-	allowed_roles = list("Cargo Technician","Quartermaster","Shaft Miner")
+	allowed_roles = list("Cargo Technician","Интендант","Shaft Miner")
 
 /datum/gear/suit/dept/cloak/mining
 	display_name = "mining cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/mining
-	allowed_roles = list("Quartermaster","Shaft Miner")
+	allowed_roles = list("Интендант","Shaft Miner")
 
 /datum/gear/suit/dept/cloak/security
 	display_name = "security cloak (Teshari)"
@@ -308,7 +308,7 @@
 /datum/gear/suit/dept/cloak/service
 	display_name = "service cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/service
-	allowed_roles = list("Head of Personnel","Bartender","Botanist","Janitor","Chef","Librarian")
+	allowed_roles = list("Глава персонала","Бармен","Ботаник","Janitor","Шеф-повар","Librarian")
 
 /datum/gear/suit/dept/cloak/engineer
 	display_name = "engineering cloak (Teshari)"

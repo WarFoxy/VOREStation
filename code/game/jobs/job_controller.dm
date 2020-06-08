@@ -426,7 +426,7 @@ var/global/datum/controller/occupations/job_master
 						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 							custom_equip_leftovers += thing
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-							to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
+							to_chat(H, "<span class='notice'>[thing] была одета на вас!</span>")
 							custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers.Add(thing)
@@ -454,7 +454,7 @@ var/global/datum/controller/occupations/job_master
 				else
 					var/metadata = H.client.prefs.gear[G.display_name]
 					if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-						to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
+						to_chat(H, "<span class='notice'>[thing] была одета на вас!</span>")
 						custom_equip_slots.Add(G.slot)
 					else
 						spawn_in_storage += thing
@@ -471,9 +471,9 @@ var/global/datum/controller/occupations/job_master
 			for(var/D in job.department_accounts)
 				var/datum/money_account/department_account = department_accounts[D]
 				if(department_account)
-					remembered_info += "<b>Department account number ([D]):</b> #[department_account.account_number]<br>"
-					remembered_info += "<b>Department account pin ([D]):</b> [department_account.remote_access_pin]<br>"
-					remembered_info += "<b>Department account funds ([D]):</b> $[department_account.money]<br>"
+					remembered_info += "<b>Номер профиля отдела ([D]):</b> #[department_account.account_number]<br>"
+					remembered_info += "<b>Пароль профиля отдела ([D]):</b> [department_account.remote_access_pin]<br>"
+					remembered_info += "<b>Денег у отдела ([D]):</b> $[department_account.money]<br>"
 
 			H.mind.store_memory(remembered_info)
 
@@ -489,7 +489,7 @@ var/global/datum/controller/occupations/job_master
 				return H
 
 			// TWEET PEEP
-			if(rank == "Colony Director")
+			if(rank == "Директор колонии")
 				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
 				captain_announcement.Announce("Всему персоналу, [alt_title ? alt_title : "Директор Колонии"] [H.real_name] вновь на станции!", new_sound = announce_sound, zlevel = H.z)
 
@@ -502,7 +502,7 @@ var/global/datum/controller/occupations/job_master
 
 				if(!isnull(B))
 					for(var/thing in spawn_in_storage)
-						to_chat(H, "<span class='notice'>Placing \the [thing] in your [B.name]!</span>")
+						to_chat(H, "<span class='notice'>[thing] теперь лежит в [B.name]!</span>")
 						var/datum/gear/G = gear_datums[thing]
 						var/metadata = H.client.prefs.gear[G.display_name]
 						G.spawn_item(B, metadata)

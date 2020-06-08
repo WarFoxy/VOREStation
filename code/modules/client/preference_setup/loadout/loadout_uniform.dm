@@ -143,12 +143,12 @@
 /datum/gear/uniform/job_skirt/cargo
 	display_name = "skirt, cargo"
 	path = /obj/item/clothing/under/rank/cargotech/skirt
-	allowed_roles = list("Quartermaster","Cargo Technician")
+	allowed_roles = list("Интендант","Cargo Technician")
 
 /datum/gear/uniform/job_skirt/qm
 	display_name = "skirt, QM"
 	path = /obj/item/clothing/under/rank/cargo/skirt
-	allowed_roles = list("Quartermaster")
+	allowed_roles = list("Интендант")
 
 /datum/gear/uniform/job_skirt/warden
 	display_name = "skirt, warden"
@@ -188,22 +188,22 @@
 /datum/gear/uniform/jeans_qm
 	display_name = "jeans, QM"
 	path = /obj/item/clothing/under/rank/cargo/jeans
-	allowed_roles = list("Quartermaster")
+	allowed_roles = list("Интендант")
 
 /datum/gear/uniform/jeans_qmf
 	display_name = "female jeans, QM"
 	path = /obj/item/clothing/under/rank/cargo/jeans/female
-	allowed_roles = list("Quartermaster")
+	allowed_roles = list("Интендант")
 
 /datum/gear/uniform/jeans_cargo
 	display_name = "jeans, cargo"
 	path = /obj/item/clothing/under/rank/cargotech/jeans
-	allowed_roles = list("Quartermaster","Cargo Technician")
+	allowed_roles = list("Интендант","Cargo Technician")
 
 /datum/gear/uniform/jeans_cargof
 	display_name = "female jeans, cargo"
 	path = /obj/item/clothing/under/rank/cargotech/jeans/female
-	allowed_roles = list("Quartermaster","Cargo Technician")
+	allowed_roles = list("Интендант","Cargo Technician")
 
 /datum/gear/uniform/suit/lawyer
 	display_name = "suit, one-piece selection"
@@ -264,7 +264,7 @@
 /datum/gear/uniform/suit/bartenderskirt
 	display_name = "suit, bartender skirt (Bartender)"
 	path = /obj/item/clothing/under/rank/bartender/skirt
-	allowed_roles = list("Bartender")
+	allowed_roles = list("Бармен")
 
 /datum/gear/uniform/scrub
 	display_name = "scrubs selection"
@@ -297,7 +297,7 @@
 /datum/gear/uniform/uniform_captain
 	display_name = "uniform, colony director's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Директор колонии")
 
 /datum/gear/uniform/corpdetsuit
 	display_name = "uniform, corporate (Detective)"
@@ -322,13 +322,13 @@
 /datum/gear/uniform/uniform_hop
 	display_name = "uniform, HoP's dress"
 	path = /obj/item/clothing/under/dress/dress_hop
-	allowed_roles = list("Head of Personnel")
+	allowed_roles = list("Глава персонала")
 
 /datum/gear/uniform/uniform_hr
 	display_name = "uniform, HR director (HoP)"
 	path = /obj/item/clothing/under/dress/dress_hr
 
-	allowed_roles = list("Head of Personnel")
+	allowed_roles = list("Глава персонала")
 
 /datum/gear/uniform/navysecsuit
 	display_name = "uniform, navy blue (Security)"

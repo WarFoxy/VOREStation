@@ -139,13 +139,13 @@
 	preserve_item = 1
 
 /obj/item/weapon/card/id/gold/captain
-	assignment = "Colony Director"
-	rank = "Colony Director"
+	assignment = "Директор колонии"
+	rank = "Директор колонии"
 
 /obj/item/weapon/card/id/gold/captain/spare
 	name = "\improper Colony Director's spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Colony Director"
+	registered_name = "Директор колонии"
 
 /obj/item/weapon/card/id/synthetic
 	name = "\improper Synthetic ID"
@@ -260,8 +260,8 @@
 	icon_state = "cargoGold"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Quartermaster"
-	rank = "Quartermaster"
+	assignment = "Интендант"
+	rank = "Интендант"
 
 /obj/item/weapon/card/id/assistant
 	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
@@ -274,7 +274,7 @@
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(95,159,191)
 	assignment = "Civilian"
-	rank = "Assistant"
+	rank = "Ассистент"
 
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "identification card"

@@ -343,6 +343,9 @@ GLOBAL_DATUM(autospeaker, /mob/living/silicon/ai/announcer)
 	if(!radio_connection)
 		set_frequency(frequency)
 
+	if(loc == M)
+		playsound(loc, 'sound/effects/walkietalkie.ogg', 20, 0, -1)
+
 	/* Quick introduction:
 		This new radio system uses a very robust FTL signaling technology unoriginally
 		dubbed "subspace" which is somewhat similar to 'blue-space' but can't
@@ -495,7 +498,7 @@ GLOBAL_DATUM(autospeaker, /mob/living/silicon/ai/announcer)
 		else if(adhoc_fallback) //Less huzzah, we have to fallback
 			to_chat(loc, "<span class='warning'>\The [src] pings as it falls back to local radio transmission.</span>")
 			subspace_transmission = FALSE
-		
+
 		else //Oh well
 			return FALSE
 
@@ -583,7 +586,7 @@ GLOBAL_DATUM(autospeaker, /mob/living/silicon/ai/announcer)
 
 /obj/item/device/radio/examine(mob/user)
 	. = ..()
-	
+
 	if((in_range(src, user) || loc == user))
 		if(b_stat)
 			. += "<span class='notice'>\The [src] can be attached and modified!</span>"

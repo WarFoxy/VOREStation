@@ -39,7 +39,7 @@
 // Research Director Alt Titles
 /datum/alt_title/research_supervisor
 	title = "Research Supervisor"
-	
+
 //////////////////////////////////
 //			Scientist
 //////////////////////////////////

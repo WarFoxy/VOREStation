@@ -83,7 +83,7 @@
 /datum/gear/eyes/material
 	display_name = "Optical Material Scanners (Mining)"
 	path = /obj/item/clothing/glasses/material
-	allowed_roles = list("Shaft Miner","Quartermaster")
+	allowed_roles = list("Shaft Miner","Интендант")
 
 /datum/gear/eyes/material/prescription
 	display_name = "Prescription Optical Material Scanners (Mining)"
@@ -108,7 +108,7 @@
 /datum/gear/eyes/sun
 	display_name = "Sunglasses (Security/Command)"
 	path = /obj/item/clothing/glasses/sunglasses
-	allowed_roles = list("Security Officer","Head of Security","Warden","Colony Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
+	allowed_roles = list("Security Officer","Head of Security","Warden","Директор колонии","Глава персонала","Интендант","Internal Affairs Agent","Detective")
 
 /datum/gear/eyes/sun/shades
 	display_name = "Sunglasses, fat (Security/Command)"

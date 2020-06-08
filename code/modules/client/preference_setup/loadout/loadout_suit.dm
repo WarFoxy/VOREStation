@@ -240,17 +240,17 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/qm
 	display_name = "cloak, quartermaster"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/qm
-	allowed_roles = list("Quartermaster")
+	allowed_roles = list("Интендант")
 
 /datum/gear/suit/roles/poncho/cloak/captain
 	display_name = "cloak, colony director"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Директор колонии")
 
 /datum/gear/suit/roles/poncho/cloak/hop
 	display_name = "cloak, head of personnel"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hop
-	allowed_roles = list("Head of Personnel")
+	allowed_roles = list("Глава персонала")
 
 /datum/gear/suit/roles/poncho/cloak/cargo
 	display_name = "cloak, cargo"
@@ -340,7 +340,7 @@ datum/gear/suit/duster
 /datum/gear/suit/wintercoat/captain
 	display_name = "winter coat, colony director"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Директор колонии")
 
 /datum/gear/suit/wintercoat/security
 	display_name = "winter coat, security"
@@ -478,7 +478,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/command
 	display_name = "snowsuit, command"
 	path = /obj/item/clothing/suit/storage/snowsuit/command
-	allowed_roles = list("Colony Director","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
+	allowed_roles = list("Директор колонии","Research Director","Глава персонала","Head of Security","Chief Engineer","Секретарь")
 
 /datum/gear/suit/snowsuit/security
 	display_name = "snowsuit, security"
@@ -503,7 +503,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/cargo
 	display_name = "snowsuit, supply"
 	path = /obj/item/clothing/suit/storage/snowsuit/cargo
-	allowed_roles = list("Quartermaster","Shaft Miner","Cargo Technician","Head of Personnel")
+	allowed_roles = list("Интендант","Shaft Miner","Cargo Technician","Глава персонала")
 
 /datum/gear/suit/miscellaneous/cardigan
 	display_name = "cardigan"

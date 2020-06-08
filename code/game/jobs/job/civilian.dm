@@ -5,27 +5,26 @@
 //////////////////////////////////
 
 /datum/job/bartender
-	title = "Bartender"
+	title = "Бармен"
 	flag = BARTENDER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Head of Personnel"
+	supervisors = "Главе персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
-	job_description = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
-	alt_titles = list("Barista" = /datum/alt_title/barista)
+	job_description = "Бармен смешивает напитки для экипажа. Как правило, у него есть разрешение взимать плату за напитки или отказывать в обслуживании непослушным посетителям."
+	alt_titles = list("Бариста" = /datum/alt_title/barista)
 
 // Bartender Alt Titles
 /datum/alt_title/barista
-	title = "Barista"
-	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
-					or deny service to unruly patrons."
+	title = "Бариста"
+	title_blurb = "В кафе работает Бариста, который подает экипажу в основном безалкогольные напитки. Как правило, у него есть разрешение взимать плату за напитки или отказывать в обслуживании непослушным посетителям."
 	title_outfit = /decl/hierarchy/outfit/job/service/bartender/barista
 
 //////////////////////////////////
@@ -33,59 +32,59 @@
 //////////////////////////////////
 
 /datum/job/chef
-	title = "Chef"
+	title = "Шеф-повар"
 	flag = CHEF
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Head of Personnel"
+	supervisors = "Главе персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
-	job_description = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
-	alt_titles = list("Cook" = /datum/alt_title/cook)
+	job_description = "Шеф-повар готовит еду для экипажа. Он обычно имеет разрешение взимать плату за еду или отказывать в обслуживании непослушным посетителям."
+	alt_titles = list("Повар" = /datum/alt_title/cook)
 
 // Chef Alt Titles
 /datum/alt_title/cook
-	title = "Cook"
-	title_blurb = "A Cook has the same duties, though they may be less experienced."
+	title = "Повар"
+	title_blurb = "У Повара есть же обязанности, хотя он может быть менее опытным."
 
 //////////////////////////////////
 //			Botanist
 //////////////////////////////////
 
 /datum/job/hydro
-	title = "Botanist"
+	title = "Ботаник"
 	flag = BOTANIST
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главе персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
-	job_description = "A Botanist grows plants for the Chef and Bartender."
-	alt_titles = list("Gardener" = /datum/alt_title/gardener)
+	job_description = "Ботаник выращивает растения для шеф-повара и бармена."
+	alt_titles = list("Садовник" = /datum/alt_title/gardener)
 
 //Botanist Alt Titles
 /datum/alt_title/gardener
-	title = "Gardener"
-	title_blurb = "A Gardener may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
+	title = "Садовник"
+	title_blurb = "Садовник может быть менее профессионален, чем его коллеги, и с большей вероятностью будет ухаживать за отделом гидропоники, если он не нужен в другом месте."
 
 //Cargo
 //////////////////////////////////
 //			Quartermaster
 //////////////////////////////////
 /datum/job/qm
-	title = "Quartermaster"
+	title = "Интендант"
 	flag = QUARTERMASTER
 	departments = list(DEPARTMENT_CARGO)
 	sorting_order = 1 // QM is above the cargo techs, but below the HoP.
