@@ -3,7 +3,7 @@
 #define ASSIGNMENT_CYBORG "Cyborg"
 #define ASSIGNMENT_ENGINEER "Engineer"
 #define ASSIGNMENT_GARDENER "Садовник"
-#define ASSIGNMENT_JANITOR "Janitor"
+#define ASSIGNMENT_JANITOR "Уборщик"
 #define ASSIGNMENT_MEDICAL "Medical"
 #define ASSIGNMENT_SCIENTIST "Scientist"
 #define ASSIGNMENT_SECURITY "Security"

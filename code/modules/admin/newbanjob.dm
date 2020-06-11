@@ -65,9 +65,9 @@ var/savefile/Banlistjob
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Глава персонала")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Директор колонии")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Head of Security")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главный инженер")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
 		return 1
 	if(rank == "Security")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Head of Security")
@@ -77,49 +77,49 @@ var/savefile/Banlistjob
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
 		return 1
 	if(rank == "Engineering")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Station Engineer")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Atmospheric Technician")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Инженер")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Атмосферный техник")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главный инженер")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
 		return 1
 	if(rank == "Research")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Scientist")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Geneticist")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		return 1
 	if(rank == "Medical")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Geneticist")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Medical Doctor")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chemist")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Медик")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Химик")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
 		return 1
 	if(rank == "CE_Station_Engineer")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Station Engineer")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Инженер")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главный инженер")
 		return 1
 	if(rank == "CE_Atmospheric_Tech")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Atmospheric Technician")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Атмосферный техник")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главный инженер")
 		return 1
 	if(rank == "CE_Shaft_Miner")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Shaft Miner")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Шахтер")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главный инженер")
 		return 1
 	if(rank == "Chemist_RD_CMO")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chemist")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Химик")
 		return 1
 	if(rank == "Geneticist_RD_CMO")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Geneticist")
 		return 1
 	if(rank == "MD_CMO")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Medical Doctor")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Медик")
 		return 1
 	if(rank == "Scientist_RD")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
@@ -134,9 +134,9 @@ var/savefile/Banlistjob
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Head of Security")
 		return 1
 	if(rank == "Virologist_RD_CMO")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Главврач")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
-		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Virologist")
+		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Вирусолог")
 		return 1
 
 	Banlistjob.cd = "/base"

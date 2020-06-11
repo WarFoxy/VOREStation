@@ -247,7 +247,7 @@
 /var/const/access_cmo = 40
 /datum/access/cmo
 	id = access_cmo
-	desc = "Chief Medical Officer"
+	desc = "Главврач"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_qm = 41
@@ -321,7 +321,7 @@
 /var/const/access_ce = 56
 /datum/access/ce
 	id = access_ce
-	desc = "Chief Engineer"
+	desc = "Главный инженер"
 	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_hop = 57

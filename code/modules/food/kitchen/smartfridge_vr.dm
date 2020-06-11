@@ -5,11 +5,11 @@
 /obj/machinery/smartfridge/secure/extract
 	expert_job = "Xenobiologist"
 /obj/machinery/smartfridge/secure/medbay
-	expert_job = "Chemist"
+	expert_job = "Химик"
 /obj/machinery/smartfridge/secure/virology
-	expert_job = "Medical Doctor" //Virologist is an alt-title unfortunately
+	expert_job = "Медик" //Virologist is an alt-title unfortunately
 /obj/machinery/smartfridge/chemistry
-	expert_job = "Chemist" //Unsure what this one is used for, actually
+	expert_job = "Химик" //Unsure what this one is used for, actually
 /obj/machinery/smartfridge/drinks
 	expert_job = "Бармен"
 

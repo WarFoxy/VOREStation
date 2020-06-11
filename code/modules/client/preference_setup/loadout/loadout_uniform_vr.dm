@@ -11,7 +11,7 @@
 /datum/gear/uniform/job_khi/cmd
 	display_name = "khi uniform, cmd"
 	path = /obj/item/clothing/under/rank/khi/cmd
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director","Главврач")
 
 /datum/gear/uniform/job_khi/sec
 	display_name = "khi uniform, sec"
@@ -21,12 +21,12 @@
 /datum/gear/uniform/job_khi/med
 	display_name = "khi uniform, med"
 	path = /obj/item/clothing/under/rank/khi/med
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Field Medic")
 
 /datum/gear/uniform/job_khi/eng
 	display_name = "khi uniform, eng"
 	path = /obj/item/clothing/under/rank/khi/eng
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+	allowed_roles = list("Главный инженер","Атмосферный техник","Инженер")
 
 /datum/gear/uniform/job_khi/sci
 	display_name = "khi uniform, sci"
@@ -42,104 +42,104 @@
 /datum/gear/suit/job_fed/medsci
 	display_name = "fed uniform, med/sci"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/fedblue
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist","Pathfinder","Explorer","Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist","Pathfinder","Explorer","Field Medic")
 
 /datum/gear/suit/job_fed/eng
 	display_name = "fed uniform, eng"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/fedeng
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+	allowed_roles = list("Главный инженер","Атмосферный техник","Инженер")
 
 // Trekie things
 //TOS
 /datum/gear/uniform/job_trek/cmd/tos
 	display_name = "TOS uniform, cmd"
 	path = /obj/item/clothing/under/rank/trek/command
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director","Главврач")
 
 /datum/gear/uniform/job_trek/medsci/tos
 	display_name = "TOS uniform, med/sci"
 	path = /obj/item/clothing/under/rank/trek/medsci
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
 
 /datum/gear/uniform/job_trek/eng/tos
 	display_name = "TOS uniform, eng/sec"
 	path = /obj/item/clothing/under/rank/trek/engsec
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security")
+	allowed_roles = list("Главный инженер","Атмосферный техник","Инженер","Warden","Detective","Security Officer","Head of Security")
 
 //TNG
 /datum/gear/uniform/job_trek/cmd/tng
 	display_name = "TNG uniform, cmd"
 	path = /obj/item/clothing/under/rank/trek/command/next
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director","Главврач")
 
 /datum/gear/uniform/job_trek/medsci/tng
 	display_name = "TNG uniform, med/sci"
 	path = /obj/item/clothing/under/rank/trek/medsci/next
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
 
 /datum/gear/uniform/job_trek/eng/tng
 	display_name = "TNG uniform, eng/sec"
 	path = /obj/item/clothing/under/rank/trek/engsec/next
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security")
+	allowed_roles = list("Главный инженер","Атмосферный техник","Инженер","Warden","Detective","Security Officer","Head of Security")
 
 //VOY
 /datum/gear/uniform/job_trek/cmd/voy
 	display_name = "VOY uniform, cmd"
 	path = /obj/item/clothing/under/rank/trek/command/voy
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director","Главврач")
 
 /datum/gear/uniform/job_trek/medsci/voy
 	display_name = "VOY uniform, med/sci"
 	path = /obj/item/clothing/under/rank/trek/medsci/voy
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
 
 /datum/gear/uniform/job_trek/eng/voy
 	display_name = "VOY uniform, eng/sec"
 	path = /obj/item/clothing/under/rank/trek/engsec/voy
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security")
+	allowed_roles = list("Главный инженер","Атмосферный техник","Инженер","Warden","Detective","Security Officer","Head of Security")
 
 //DS9
 
 /datum/gear/suit/job_trek/ds9_coat
 	display_name = "DS9 Overcoat (use uniform)"
 	path = /obj/item/clothing/suit/storage/trek/ds9
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director",
-						"Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist",
-						"Scientist","Roboticist","Xenobiologist","Atmospheric Technician",
-						"Station Engineer","Warden","Detective","Security Officer", "Pathfinder", "Explorer", "Field Medic")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director",
+						"Главврач","Медик","Химик","Paramedic","Geneticist",
+						"Scientist","Roboticist","Xenobiologist","Атмосферный техник",
+						"Инженер","Warden","Detective","Security Officer", "Pathfinder", "Explorer", "Field Medic")
 
 
 /datum/gear/uniform/job_trek/cmd/ds9
 	display_name = "DS9 uniform, cmd"
 	path = /obj/item/clothing/under/rank/trek/command/ds9
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director","Главврач")
 
 /datum/gear/uniform/job_trek/medsci/ds9
 	display_name = "DS9 uniform, med/sci"
 	path = /obj/item/clothing/under/rank/trek/medsci/ds9
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
 
 /datum/gear/uniform/job_trek/eng/ds9
 	display_name = "DS9 uniform, eng/sec"
 	path = /obj/item/clothing/under/rank/trek/engsec/ds9
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security")
+	allowed_roles = list("Главный инженер","Атмосферный техник"","Инженер","Warden","Detective","Security Officer","Head of Security")
 
 
 //ENT
 /datum/gear/uniform/job_trek/cmd/ent
 	display_name = "ENT uniform, cmd"
 	path = /obj/item/clothing/under/rank/trek/command/ent
-	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Директор колонии","Глава персонала","Главный инженер","Research Director","Главврач")
 
 /datum/gear/uniform/job_trek/medsci/ent
 	display_name = "ENT uniform, med/sci"
 	path = /obj/item/clothing/under/rank/trek/medsci/ent
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist", "Pathfinder", "Explorer", "Field Medic")
 
 /datum/gear/uniform/job_trek/eng/ent
 	display_name = "ENT uniform, eng/sec"
 	path = /obj/item/clothing/under/rank/trek/engsec/ent
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security")
+	allowed_roles = list("Главный инженер","Атмосферный техник","Инженер","Warden","Detective","Security Officer","Head of Security")
 /*
 Swimsuits
 */

@@ -196,8 +196,8 @@
 	icon_state = "medGold"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(255,223,127)
-	assignment = "Chief Medical Officer"
-	rank = "Chief Medical Officer"
+	assignment = "Главврач"
+	rank = "Главврач"
 
 /obj/item/weapon/card/id/security
 	name = "identification card"
@@ -228,8 +228,8 @@
 	icon_state = "engGold"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Chief Engineer"
-	rank = "Chief Engineer"
+	assignment = "Главный инженер"
+	rank = "Главный инженер"
 
 /obj/item/weapon/card/id/science
 	name = "identification card"

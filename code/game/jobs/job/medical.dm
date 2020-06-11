@@ -2,7 +2,7 @@
 //		Chief Medical Officer
 //////////////////////////////////
 /datum/job/cmo
-	title = "Chief Medical Officer"
+	title = "Главврач"
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_COMMAND)
@@ -36,7 +36,7 @@
 //		Medical Doctor
 //////////////////////////////////
 /datum/job/doctor
-	title = "Medical Doctor"
+	title = "Медик"
 	flag = DOCTOR
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -53,34 +53,34 @@
 						familiar with basic first aid, and a number of accompanying medications, and can generally save, if not cure, a majority of the \
 						patients they encounter."
 	alt_titles = list(
-					"Surgeon" = /datum/alt_title/surgeon,
-					"Emergency Physician" = /datum/alt_title/emergency_physician,
-					"Nurse" = /datum/alt_title/nurse,
-					"Virologist" = /datum/alt_title/virologist)
+					"Хирург" = /datum/alt_title/surgeon,
+					"Фельдшер" = /datum/alt_title/emergency_physician,
+					"Медсестра" = /datum/alt_title/nurse,
+					"Вирусолог" = /datum/alt_title/virologist)
 
 //Medical Doctor Alt Titles
 /datum/alt_title/surgeon
-	title = "Surgeon"
+	title = "Хирург"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/surgeon
 
 /datum/alt_title/emergency_physician
-	title = "Emergency Physician"
+	title = "Фельдшер"
 	title_blurb = "An Emergency Physician is a Medical professional trained for stabilizing and treating severely injured and/or dying patients. \
 					They are generally the first response for any such individual brought to the Medbay, and can sometimes be expected to help their patients \
 					make a full recovery."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician
 
 /datum/alt_title/nurse
-	title = "Nurse"
+	title = "Медсестра"
 	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/nurse
 
 /datum/alt_title/virologist
-	title = "Virologist"
+	title = "Вирусолог"
 	title_blurb = "A Virologist cures active diseases in the crew, and prepares antibodies for possible infections. They also have the skills \
 					to produce the various types of virus foods or mutagens."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/virologist
@@ -90,7 +90,7 @@
 //			Chemist
 //////////////////////////////////
 /datum/job/chemist
-	title = "Chemist"
+	title = "Химик"
 	flag = CHEMIST
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -107,11 +107,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/chemist
 	job_description = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
-	alt_titles = list("Pharmacist" = /datum/alt_title/pharmacist)
+	alt_titles = list("Фармацевт" = /datum/alt_title/pharmacist)
 
 // Chemist Alt Titles
 /datum/alt_title/pharmacist
-	title = "Pharmacist"
+	title = "Фармацевт"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
 
 /* I'm commenting out Geneticist so you can't actually see it in the job menu, given that you can't play as one - Jon.

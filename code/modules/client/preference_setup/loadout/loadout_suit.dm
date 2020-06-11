@@ -171,12 +171,12 @@ datum/gear/suit/duster
 /datum/gear/suit/labcoat/emt
 	display_name = "labcoat, EMT (Medical)"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/suit/roles/surgical_apron
 	display_name = "surgical apron"
 	path = /obj/item/clothing/suit/surgicalapron
-	allowed_roles = list("Medical Doctor","Chief Medical Officer")
+	allowed_roles = list("Медик","Главврач")
 
 /datum/gear/suit/overalls
 	display_name = "overalls"
@@ -225,12 +225,12 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/cmo
 	display_name = "cloak, chief medical officer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/cmo
-	allowed_roles = list("Chief Medical Officer")
+	allowed_roles = list("Главврач")
 
 /datum/gear/suit/roles/poncho/cloak/ce
 	display_name = "cloak, chief engineer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/ce
-	allowed_roles = list("Chief Engineer")
+	allowed_roles = list("Главный инженер")
 
 /datum/gear/suit/roles/poncho/cloak/rd
 	display_name = "cloak, research director"
@@ -478,7 +478,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/command
 	display_name = "snowsuit, command"
 	path = /obj/item/clothing/suit/storage/snowsuit/command
-	allowed_roles = list("Директор колонии","Research Director","Глава персонала","Head of Security","Chief Engineer","Секретарь")
+	allowed_roles = list("Директор колонии","Research Director","Глава персонала","Head of Security","Главный инженер","Секретарь")
 
 /datum/gear/suit/snowsuit/security
 	display_name = "snowsuit, security"
@@ -488,7 +488,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/medical
 	display_name = "snowsuit, medical"
 	path = /obj/item/clothing/suit/storage/snowsuit/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
+	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
 
 /datum/gear/suit/snowsuit/science
 	display_name = "snowsuit, science"
@@ -498,12 +498,12 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/engineering
 	display_name = "snowsuit, engineering"
 	path = /obj/item/clothing/suit/storage/snowsuit/engineering
-	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Station Engineer")
+	allowed_roles = list("Главный инженер","Атмосферный техник", "Инженер")
 
 /datum/gear/suit/snowsuit/cargo
 	display_name = "snowsuit, supply"
 	path = /obj/item/clothing/suit/storage/snowsuit/cargo
-	allowed_roles = list("Интендант","Shaft Miner","Грузчик","Глава персонала")
+	allowed_roles = list("Интендант","Шахтер","Грузчик","Глава персонала")
 
 /datum/gear/suit/miscellaneous/cardigan
 	display_name = "cardigan"

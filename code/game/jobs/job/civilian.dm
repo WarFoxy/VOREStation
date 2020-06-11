@@ -134,7 +134,7 @@
 //////////////////////////////////
 
 /datum/job/mining
-	title = "Shaft Miner"
+	title = "Шахтер"
 	flag = MINER
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
@@ -149,10 +149,10 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
 	job_description = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
-	alt_titles = list("Drill Technician" = /datum/alt_title/drill_tech)
+	alt_titles = list("Бурильщик" = /datum/alt_title/drill_tech)
 
 /datum/alt_title/drill_tech
-	title = "Drill Technician"
+	title = "Бурильщик"
 	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
 //Service
@@ -160,7 +160,7 @@
 //			Janitor
 //////////////////////////////////
 /datum/job/janitor
-	title = "Janitor"
+	title = "Уборщик"
 	flag = JANITOR
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
@@ -174,18 +174,18 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 	job_description = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
-	alt_titles = list("Custodian" = /datum/alt_title/custodian)
+	alt_titles = list("Дворник" = /datum/alt_title/custodian)
 
 // Janitor Alt Titles
 /datum/alt_title/custodian
-	title = "Custodian"
+	title = "Дворник"
 
 //More or less assistants
 //////////////////////////////////
 //			Librarian
 //////////////////////////////////
 /datum/job/librarian
-	title = "Librarian"
+	title = "Библиотекарь"
 	flag = LIBRARIAN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
@@ -199,15 +199,15 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
 	job_description = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
-	alt_titles = list("Journalist" = /datum/alt_title/journalist, "Writer" = /datum/alt_title/writer)
+	alt_titles = list("Журналист" = /datum/alt_title/journalist, "Писатель" = /datum/alt_title/writer)
 
 // Librarian Alt Titles
 /datum/alt_title/journalist
-	title = "Journalist"
+	title = "Журналист"
 	title_blurb = "The Journalist uses the Library as a base of operations, from which they can report the news and goings-on on the station with their camera."
 
 /datum/alt_title/writer
-	title = "Writer"
+	title = "Писатель"
 	title_blurb = "The Writer uses the Library as a quiet place to write whatever it is they choose to write."
 
 //////////////////////////////////
@@ -216,7 +216,7 @@
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
-	title = "Internal Affairs Agent"
+	title = "Агент внутренних дел"
 	flag = LAWYER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN

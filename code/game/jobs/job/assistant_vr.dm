@@ -37,8 +37,7 @@
 
 /datum/alt_title/intern_med
 	title = "Медицинский Интерн"
-	title_blurb = "A Medical Intern attempts to provide whatever the Medical department needs. They are not proper Doctors, and are \
-					often in training to become a Doctor. A Medical Intern has no real authority."
+	title_blurb = "Медицинский Интерн пытается выполнять все, что необходимо медицинскому отделу. Он не является настоящими доктором. Медицинский Интерн не имеет реальной власти."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/medic
 
 /datum/alt_title/intern_sci

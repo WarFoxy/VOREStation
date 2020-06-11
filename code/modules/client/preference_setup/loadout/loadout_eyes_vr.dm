@@ -1,9 +1,9 @@
 /datum/gear/eyes/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/meson
 	display_name = "Optical Meson Scanners (Engineering, Science)"
-	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Explorer", "Pathfinder")
+	allowed_roles = list("Инженер","Главный инженер","Атмосферный техник", "Scientist", "Research Director", "Explorer", "Pathfinder")
 
 /datum/gear/eyes/arglasses
 	display_name = "AR glasses"
@@ -21,12 +21,12 @@
 /datum/gear/eyes/arglasses/eng
 	display_name = "AR-E glasses (Eng)"
 	path = /obj/item/clothing/glasses/omnihud/eng
-	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician")
+	allowed_roles = list("Инженер","Главный инженер","Атмосферный техник")
 
 /datum/gear/eyes/arglasses/med
 	display_name = "AR-M glasses (Medical)"
 	path = /obj/item/clothing/glasses/omnihud/med
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/arglasses/all
 	display_name = "AR-B glasses (CD, HoP)"

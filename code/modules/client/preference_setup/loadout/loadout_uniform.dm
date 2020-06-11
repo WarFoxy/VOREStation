@@ -98,17 +98,17 @@
 /datum/gear/uniform/job_skirt/ce
 	display_name = "skirt, ce"
 	path = /obj/item/clothing/under/rank/chief_engineer/skirt
-	allowed_roles = list("Chief Engineer")
+	allowed_roles = list("Главный инженер")
 
 /datum/gear/uniform/job_skirt/atmos
 	display_name = "skirt, atmos"
 	path = /obj/item/clothing/under/rank/atmospheric_technician/skirt
-	allowed_roles = list("Chief Engineer","Atmospheric Technician")
+	allowed_roles = list("Главный инженер","Атмосферный техник")
 
 /datum/gear/uniform/job_skirt/eng
 	display_name = "skirt, engineer"
 	path = /obj/item/clothing/under/rank/engineer/skirt
-	allowed_roles = list("Chief Engineer","Station Engineer")
+	allowed_roles = list("Главный инженер","Инженер")
 
 /datum/gear/uniform/job_skirt/roboticist
 	display_name = "skirt, roboticist"
@@ -118,22 +118,22 @@
 /datum/gear/uniform/job_skirt/cmo
 	display_name = "skirt, cmo"
 	path = /obj/item/clothing/under/rank/chief_medical_officer/skirt
-	allowed_roles = list("Chief Medical Officer")
+	allowed_roles = list("Главврач")
 
 /datum/gear/uniform/job_skirt/chem
 	display_name = "skirt, chemist"
 	path = /obj/item/clothing/under/rank/chemist/skirt
-	allowed_roles = list("Chief Medical Officer","Chemist")
+	allowed_roles = list("Главврач","Химик")
 
 /datum/gear/uniform/job_skirt/viro
 	display_name = "skirt, virologist"
 	path = /obj/item/clothing/under/rank/virologist/skirt
-	allowed_roles = list("Chief Medical Officer","Medical Doctor")
+	allowed_roles = list("Главврач","Медик")
 
 /datum/gear/uniform/job_skirt/med
 	display_name = "skirt, medical"
 	path = /obj/item/clothing/under/rank/medical/skirt
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic")
+	allowed_roles = list("Главврач","Медик","Химик","Psychiatrist","Paramedic")
 
 /datum/gear/uniform/job_skirt/sci
 	display_name = "skirt, scientist"
@@ -178,12 +178,12 @@
 /datum/gear/uniform/job_turtle/engineering
 	display_name = "turtleneck, engineering"
 	path = /obj/item/clothing/under/rank/engineer/turtleneck
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician", "Station Engineer")
+	allowed_roles = list("Главный инженер", "Атмосферный техник", "Инженер")
 
 /datum/gear/uniform/job_turtle/medical
 	display_name = "turtleneck, medical"
 	path = /obj/item/clothing/under/rank/medical/turtleneck
-	allowed_roles = list("Chief Medical Officer", "Paramedic", "Medical Doctor", "Psychiatrist", "Search and Rescue", "Chemist")
+	allowed_roles = list("Главврач", "Paramedic", "Медик", "Psychiatrist", "Search and Rescue", "Химик")
 
 /datum/gear/uniform/jeans_qm
 	display_name = "jeans, QM"
@@ -259,7 +259,7 @@
 /datum/gear/uniform/suit/iaskirt
 	display_name = "suit, Internal Affairs skirt (Internal Affairs)"
 	path = /obj/item/clothing/under/rank/internalaffairs/skirt
-	allowed_roles = list("Internal Affairs Agent")
+	allowed_roles = list("Агент внутренних дел")
 
 /datum/gear/uniform/suit/bartenderskirt
 	display_name = "suit, bartender skirt (Bartender)"
