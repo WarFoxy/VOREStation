@@ -171,7 +171,7 @@ datum/gear/suit/duster
 /datum/gear/suit/labcoat/emt
 	display_name = "labcoat, EMT (Medical)"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр")
 
 /datum/gear/suit/roles/surgical_apron
 	display_name = "surgical apron"
@@ -488,7 +488,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/medical
 	display_name = "snowsuit, medical"
 	path = /obj/item/clothing/suit/storage/snowsuit/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Search and Rescue")
 
 /datum/gear/suit/snowsuit/science
 	display_name = "snowsuit, science"

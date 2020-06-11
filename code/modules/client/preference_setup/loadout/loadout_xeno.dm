@@ -194,7 +194,7 @@
 /datum/gear/uniform/dept/undercoat/command_g
 	display_name = "command undercoat - gold buttons (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command_g
-	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Главный инженер","Главврач"","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Главный инженер","Главврач","Research Director")
 
 /datum/gear/uniform/dept/undercoat/cmo
 	display_name = "chief medical officer undercoat (Teshari)"
@@ -244,7 +244,7 @@
 /datum/gear/uniform/dept/undercoat/medical
 	display_name = "medical undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр")
 
 /datum/gear/uniform/dept/undercoat/chemistry
 	display_name = "chemist undercoat (Teshari)"
@@ -259,7 +259,7 @@
 /datum/gear/uniform/dept/undercoat/paramedic
 	display_name = "paramedic undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/para
-	allowed_roles = list("Paramedic")
+	allowed_roles = list("Парамедик")
 
 /datum/gear/uniform/dept/undercoat/iaa
 	display_name = "internal affairs undercoat (Teshari)"
@@ -333,7 +333,7 @@
 /datum/gear/suit/dept/cloak/medical
 	display_name = "medical cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр")
 
 /datum/gear/suit/dept/cloak/chemistry
 	display_name = "chemist cloak (Teshari)"
@@ -348,7 +348,7 @@
 /datum/gear/suit/dept/cloak/paramedic
 	display_name = "paramedic cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/para
-	allowed_roles = list("Paramedic")
+	allowed_roles = list("Парамедик")
 
 /datum/gear/suit/dept/cloak/iaa
 	display_name = "internal affairs cloak (Teshari)"

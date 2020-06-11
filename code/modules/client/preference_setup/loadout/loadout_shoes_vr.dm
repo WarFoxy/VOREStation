@@ -2,7 +2,7 @@
 	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
 
 /datum/gear/shoes/boots/winter/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Field Medic")
 
 /datum/gear/shoes/black/cuffs
 	display_name = "legwraps, black"

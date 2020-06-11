@@ -55,33 +55,33 @@
 
 /datum/gear/accessory/brown_vest
 	display_name = "webbing, brown (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Paramedic","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
 
 /datum/gear/accessory/black_vest
 	display_name = "webbing, black (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Paramedic","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
 
 /datum/gear/accessory/white_vest
 	display_name = "webbing, white (Medical)"
-	allowed_roles = list("Paramedic","Главврач","Медик","Химик","Field Medic")
+	allowed_roles = list("Парамедик","Главврач","Медик","Химик","Field Medic")
 
 /datum/gear/accessory/brown_drop_pouches
 	display_name = "drop pouches, brown (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Paramedic","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
 
 /datum/gear/accessory/black_drop_pouches
 	display_name = "drop pouches, black (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Paramedic","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
 
 /datum/gear/accessory/white_drop_pouches
 	display_name = "drop pouches, white (Medical)"
-	allowed_roles = list("Paramedic","Главврач","Медик","Химик","Field Medic")
+	allowed_roles = list("Парамедик","Главврач","Медик","Химик","Field Medic")
 
 /datum/gear/accessory/webbing
 	cost = 1
 
 /datum/gear/accessory/stethoscope
-	allowed_roles = list("Главврач","Медик","Химик","Psychiatrist","Paramedic", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Психиатр","Парамедик", "Field Medic")
 
 /datum/gear/accessory/khcrystal
 	display_name = "KH Life Crystal"

@@ -133,7 +133,7 @@
 /datum/gear/uniform/job_skirt/med
 	display_name = "skirt, medical"
 	path = /obj/item/clothing/under/rank/medical/skirt
-	allowed_roles = list("Главврач","Медик","Химик","Psychiatrist","Paramedic")
+	allowed_roles = list("Главврач","Медик","Химик","Психиатр","Парамедик")
 
 /datum/gear/uniform/job_skirt/sci
 	display_name = "skirt, scientist"
@@ -183,7 +183,7 @@
 /datum/gear/uniform/job_turtle/medical
 	display_name = "turtleneck, medical"
 	path = /obj/item/clothing/under/rank/medical/turtleneck
-	allowed_roles = list("Главврач", "Paramedic", "Медик", "Psychiatrist", "Search and Rescue", "Химик")
+	allowed_roles = list("Главврач", "Парамедик", "Медик", "Психиатр", "Search and Rescue", "Химик")
 
 /datum/gear/uniform/jeans_qm
 	display_name = "jeans, QM"

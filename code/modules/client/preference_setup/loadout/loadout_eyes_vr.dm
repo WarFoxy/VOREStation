@@ -1,5 +1,5 @@
 /datum/gear/eyes/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Field Medic")
 
 /datum/gear/eyes/meson
 	display_name = "Optical Meson Scanners (Engineering, Science)"
@@ -26,7 +26,7 @@
 /datum/gear/eyes/arglasses/med
 	display_name = "AR-M glasses (Medical)"
 	path = /obj/item/clothing/glasses/omnihud/med
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Field Medic")
 
 /datum/gear/eyes/arglasses/all
 	display_name = "AR-B glasses (CD, HoP)"

@@ -141,7 +141,7 @@
 //			Psychiatrist
 //////////////////////////////////
 /datum/job/psychiatrist
-	title = "Psychiatrist"
+	title = "Психиатр"
 	flag = PSYCHIATRIST
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -156,11 +156,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
 	job_description = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
-	alt_titles = list("Psychologist" = /datum/alt_title/psychologist)
+	alt_titles = list("Психолог" = /datum/alt_title/psychologist)
 
 //Psychiatrist Alt Titles
 /datum/alt_title/psychologist
-	title = "Psychologist"
+	title = "Психолог"
 	title_blurb =  "A Psychologist provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
 	title_outfit = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist
@@ -169,7 +169,7 @@
 //			Paramedic
 //////////////////////////////////
 /datum/job/paramedic
-	title = "Paramedic"
+	title = "Парамедик"
 	flag = PARAMEDIC
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI

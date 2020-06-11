@@ -1,11 +1,11 @@
 /datum/gear/suit/wintercoat/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Field Medic")
 
 /datum/gear/suit/wintercoat/science
 	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
 
 /datum/gear/suit/snowsuit/medical
-	allowed_roles = list("Медик","Главврач","Химик","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Field Medic")
 
 /datum/gear/suit/snowsuit/science
 	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
