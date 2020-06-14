@@ -212,8 +212,8 @@
 	icon_state = "secGold"
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Head of Security"
-	rank = "Head of Security"
+	assignment = "Глава безопасности"
+	rank = "Глава безопасности"
 
 /obj/item/weapon/card/id/engineering
 	name = "identification card"
@@ -244,8 +244,8 @@
 	icon_state = "sciGold"
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(255,223,127)
-	assignment = "Research Director"
-	rank = "Research Director"
+	assignment = "Директор исследований"
+	rank = "Директор исследований"
 
 /obj/item/weapon/card/id/cargo
 	name = "identification card"

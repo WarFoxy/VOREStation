@@ -1,5 +1,5 @@
 /mob/living/silicon/decoy
-	name = "AI"
+	name = "ИИ"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
 	anchored = 1 // -- TLE

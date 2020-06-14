@@ -220,7 +220,7 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/hos
 	display_name = "cloak, head of security"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hos
-	allowed_roles = list("Head of Security")
+	allowed_roles = list("Глава безопасности")
 
 /datum/gear/suit/roles/poncho/cloak/cmo
 	display_name = "cloak, chief medical officer"
@@ -235,7 +235,7 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/rd
 	display_name = "cloak, research director"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/rd
-	allowed_roles = list("Research Director")
+	allowed_roles = list("Директор исследований")
 
 /datum/gear/suit/roles/poncho/cloak/qm
 	display_name = "cloak, quartermaster"
@@ -316,22 +316,22 @@ datum/gear/suit/duster
 /datum/gear/suit/forensics
 	display_name = "forensics long, red"
 	path = /obj/item/clothing/suit/storage/forensics/red/long
-	allowed_roles = list("Detective")
+	allowed_roles = list("Детектив")
 
 /datum/gear/suit/forensics/blue
 	display_name = "forensics long, blue"
 	path = /obj/item/clothing/suit/storage/forensics/blue/long
-	allowed_roles = list("Detective")
+	allowed_roles = list("Детектив")
 
 /datum/gear/suit/forensics/blue/short
 	display_name = "forensics, blue"
 	path = /obj/item/clothing/suit/storage/forensics/blue
-	allowed_roles = list("Detective")
+	allowed_roles = list("Детектив")
 
 /datum/gear/suit/forensics/red/short
 	display_name = "forensics, red"
 	path = /obj/item/clothing/suit/storage/forensics/red
-	allowed_roles = list("Detective")
+	allowed_roles = list("Детектив")
 
 /datum/gear/suit/wintercoat
 	display_name = "winter coat"
@@ -345,7 +345,7 @@ datum/gear/suit/duster
 /datum/gear/suit/wintercoat/security
 	display_name = "winter coat, security"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Офицер безопасности", "Глава безопасности", "Надзиратель", "Детектив")
 
 /datum/gear/suit/wintercoat/medical
 	display_name = "winter coat, medical"
@@ -478,12 +478,12 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/command
 	display_name = "snowsuit, command"
 	path = /obj/item/clothing/suit/storage/snowsuit/command
-	allowed_roles = list("Директор колонии","Research Director","Глава персонала","Head of Security","Главный инженер","Секретарь")
+	allowed_roles = list("Директор колонии","Директор исследований","Глава персонала","Глава безопасности","Главный инженер","Секретарь")
 
 /datum/gear/suit/snowsuit/security
 	display_name = "snowsuit, security"
 	path = /obj/item/clothing/suit/storage/snowsuit/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Офицер безопасности", "Глава безопасности", "Надзиратель", "Детектив")
 
 /datum/gear/suit/snowsuit/medical
 	display_name = "snowsuit, medical"
@@ -493,7 +493,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/science
 	display_name = "snowsuit, science"
 	path = /obj/item/clothing/suit/storage/snowsuit/science
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
+	allowed_roles = list("Директор исследований","Ученый", "Роботехник", "Ксенобиолог")
 
 /datum/gear/suit/snowsuit/engineering
 	display_name = "snowsuit, engineering"

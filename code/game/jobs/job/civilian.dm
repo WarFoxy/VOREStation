@@ -12,7 +12,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главе персонала"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
@@ -39,7 +39,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главе персонала"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
@@ -65,7 +65,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "Главе персонала"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
@@ -93,7 +93,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#9b633e"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
@@ -120,7 +120,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Quartermaster and the Head of Personnel"
+	supervisors = "Интендантом и Главой Персонала"
 	selection_color = "#7a4f33"
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
@@ -141,7 +141,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Quartermaster and the Head of Personnel"
+	supervisors = "Интендантом и Главой Персонала"
 	selection_color = "#7a4f33"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
@@ -167,7 +167,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
@@ -192,7 +192,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
@@ -223,7 +223,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "company officials and Corporate Regulations"
+	supervisors = "должностными лицами компании NT и Корпоративными Правилами"
 	selection_color = "#515151"
 	economic_modifier = 7
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)

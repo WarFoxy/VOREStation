@@ -248,7 +248,7 @@
 /*
 /datum/lore/codex/category/drone
 	name = "Drones"
-	keywords = list("Drone")
+	keywords = list("Дрон")
 	data = "While low-level drone intelligences are as old as the oldest human colonies, research into higher-level systems was stymied in human space by precautionist \
 	politicians for hundreds of years. Tensions between the corporate rim and the highly conservative core worlds over drone proliferation led to what humans call the \
 	Third Cold War, which was defused by the introduction of the positronic brain. After the Icarus Front's loss of the majority in 2504, harsh laws \

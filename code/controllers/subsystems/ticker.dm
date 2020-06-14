@@ -180,7 +180,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		//Cleanup some stuff
 		for(var/obj/effect/landmark/start/S in landmarks_list)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
-			if (S.name != "AI")
+			if (S.name != "ИИ")
 				qdel(S)
 		to_world("<span class='boldannounce notice'><em>Enjoy the game!</em></span>")
 		world << sound('sound/AI/welcome.ogg') // Skie

@@ -1,5 +1,5 @@
 /decl/hierarchy/outfit/job/centcom_officer
-	name = OUTFIT_JOB_NAME("CentCom Officer")
+	name = OUTFIT_JOB_NAME("Офицер ЦентКома")
 	uniform = /obj/item/clothing/under/rank/centcom
 	gloves = /obj/item/clothing/gloves/white
 	shoes = /obj/item/clothing/shoes/laceup
@@ -10,7 +10,7 @@
 	pda_type = /obj/item/device/pda/centcom
 
 /decl/hierarchy/outfit/job/clown
-	name = OUTFIT_JOB_NAME("Clown")
+	name = OUTFIT_JOB_NAME("Клоун")
 	uniform = /obj/item/clothing/under/rank/clown
 	back = /obj/item/weapon/storage/backpack/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
@@ -20,14 +20,14 @@
 	flags = 0
 
 /decl/hierarchy/outfit/job/mime
-	name = OUTFIT_JOB_NAME("Mime")
+	name = OUTFIT_JOB_NAME("Мим")
 	uniform = /obj/item/clothing/under/mime
 	shoes = /obj/item/clothing/shoes/mime
 	head = /obj/item/clothing/head/soft/mime
 	mask = /obj/item/clothing/mask/gas/mime
 	backpack_contents = list(/obj/item/weapon/pen/crayon/mime = 1)
 	pda_type = /obj/item/device/pda/mime
-	
+
 	post_equip(var/mob/living/carbon/human/H)
 		..()
 		if(H.backbag == 1)

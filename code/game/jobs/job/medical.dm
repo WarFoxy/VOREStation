@@ -11,7 +11,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "Директором Колонии"
 	selection_color = "#026865"
 	req_admin_notify = 1
 	economic_modifier = 10
@@ -43,7 +43,7 @@
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	economic_modifier = 7
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
@@ -54,7 +54,7 @@
 						patients they encounter."
 	alt_titles = list(
 					"Хирург" = /datum/alt_title/surgeon,
-					"Фельдшер" = /datum/alt_title/emergency_physician,
+					"Старщий Фельдшер" = /datum/alt_title/emergency_physician,
 					"Медсестра" = /datum/alt_title/nurse,
 					"Вирусолог" = /datum/alt_title/virologist)
 
@@ -66,7 +66,7 @@
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/surgeon
 
 /datum/alt_title/emergency_physician
-	title = "Фельдшер"
+	title = "Старщий Фельдшер"
 	title_blurb = "An Emergency Physician is a Medical professional trained for stabilizing and treating severely injured and/or dying patients. \
 					They are generally the first response for any such individual brought to the Medbay, and can sometimes be expected to help their patients \
 					make a full recovery."
@@ -97,7 +97,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
@@ -149,7 +149,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	economic_modifier = 5
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
@@ -176,7 +176,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
@@ -184,11 +184,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	job_description = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
-	alt_titles = list("Emergency Medical Technician" = /datum/alt_title/emt)
+	alt_titles = list("Фельдшер" = /datum/alt_title/emt)
 
 // Paramedic Alt Titles
 /datum/alt_title/emt
-	title = "Emergency Medical Technician"
+	title = "Фельдшер"
 	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
 	title_outfit = /decl/hierarchy/outfit/job/medical/paramedic/emt

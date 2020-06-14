@@ -3,7 +3,7 @@
 /obj/machinery/smartfridge/seeds
 	expert_job = "Ботаник"
 /obj/machinery/smartfridge/secure/extract
-	expert_job = "Xenobiologist"
+	expert_job = "Ксенобиолог"
 /obj/machinery/smartfridge/secure/medbay
 	expert_job = "Химик"
 /obj/machinery/smartfridge/secure/virology

@@ -14,7 +14,7 @@
 	name = "Invisible wall"
 	desc = "Create an invisible wall on your location."
 	school = "mime"
-	panel = "Mime"
+	panel = "Мим"
 	summon_type = list(/obj/effect/forcefield/mime)
 	invocation_type = SpI_EMOTE
 	invocation = "mimes placing their hands on a flat surfacing, and pushing against it."

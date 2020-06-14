@@ -189,12 +189,12 @@
 /datum/gear/uniform/dept/undercoat/command
 	display_name = "command undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command
-	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Главный инженер","Главврач","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Глава безопасности","Главный инженер","Главврач","Директор исследований")
 
 /datum/gear/uniform/dept/undercoat/command_g
 	display_name = "command undercoat - gold buttons (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command_g
-	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Главный инженер","Главврач","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Глава безопасности","Главный инженер","Главврач","Директор исследований")
 
 /datum/gear/uniform/dept/undercoat/cmo
 	display_name = "chief medical officer undercoat (Teshari)"
@@ -214,7 +214,7 @@
 /datum/gear/uniform/dept/undercoat/security
 	display_name = "security undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/sec
-	allowed_roles = list("Head of Security","Detective","Warden","Security Officer",)
+	allowed_roles = list("Глава безопасности","Детектив","Надзиратель","Офицер безопасности",)
 
 /datum/gear/uniform/dept/undercoat/service
 	display_name = "service undercoat (Teshari)"
@@ -234,12 +234,12 @@
 /datum/gear/uniform/dept/undercoat/research
 	display_name = "scientist undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/sci
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
+	allowed_roles = list("Директор исследований","Ученый", "Роботехник", "Ксенобиолог")
 
 /datum/gear/uniform/dept/undercoat/robo
 	display_name = "roboticist undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/robo
-	allowed_roles = list("Roboticist")
+	allowed_roles = list("Роботехник")
 
 /datum/gear/uniform/dept/undercoat/medical
 	display_name = "medical undercoat (Teshari)"
@@ -283,7 +283,7 @@
 /datum/gear/suit/dept/cloak/command
 	display_name = "command cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/command
-	allowed_roles = list("Директор колонии","Глава персонала","Head of Security","Главный инженер","Главврач","Research Director")
+	allowed_roles = list("Директор колонии","Глава персонала","Глава безопасности","Главный инженер","Главврач","Директор исследований")
 
 /datum/gear/suit/dept/cloak/cmo
 	display_name = "chief medical officer cloak (Teshari)"
@@ -303,7 +303,7 @@
 /datum/gear/suit/dept/cloak/security
 	display_name = "security cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/sec
-	allowed_roles = list("Head of Security","Detective","Warden","Security Officer",)
+	allowed_roles = list("Глава безопасности","Детектив","Надзиратель","Офицер безопасности",)
 
 /datum/gear/suit/dept/cloak/service
 	display_name = "service cloak (Teshari)"
@@ -323,12 +323,12 @@
 /datum/gear/suit/dept/cloak/research
 	display_name = "scientist cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/sci
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
+	allowed_roles = list("Директор исследований","Ученый", "Роботехник", "Ксенобиолог")
 
 /datum/gear/suit/dept/cloak/robo
 	display_name = "roboticist cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/robo
-	allowed_roles = list("Roboticist")
+	allowed_roles = list("Роботехник")
 
 /datum/gear/suit/dept/cloak/medical
 	display_name = "medical cloak (Teshari)"

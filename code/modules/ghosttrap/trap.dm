@@ -16,7 +16,7 @@ proc/populate_ghost_traps()
 
 /datum/ghosttrap
 	var/object = "positronic brain"
-	var/list/ban_checks = list("AI","Cyborg")
+	var/list/ban_checks = list("ИИ","Киборг")
 	var/pref_check = BE_AI
 	var/ghost_trap_message = "They are occupying a positronic brain now."
 	var/ghost_trap_role = "Positronic Brain"

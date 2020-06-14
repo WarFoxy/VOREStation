@@ -11,7 +11,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "Директором Колонии"
 	selection_color = "#7F6E2C"
 	req_admin_notify = 1
 	economic_modifier = 10
@@ -46,7 +46,7 @@
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the Chief Engineer"
+	supervisors = "Главным Инженером"
 	selection_color = "#5B4D20"
 	economic_modifier = 5
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
@@ -87,7 +87,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the Chief Engineer"
+	supervisors = "Главным Инженером"
 	selection_color = "#5B4D20"
 	economic_modifier = 5
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_external_airlocks)

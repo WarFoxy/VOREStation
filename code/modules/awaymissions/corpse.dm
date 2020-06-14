@@ -175,8 +175,8 @@
 	corpsepocket1 = /obj/item/weapon/bikehorn
 	corpseback = /obj/item/weapon/storage/backpack/clown
 	corpseid = 1
-	corpseidjob = "Clown"
-	corpseidaccess = "Clown"
+	corpseidjob = "Клоун"
+	corpseidaccess = "Клоун"
 
 /obj/effect/landmark/corpse/scientist
 	name = "Scientist"
@@ -186,8 +186,8 @@
 	corpseback = /obj/item/weapon/storage/backpack
 	corpseshoes = /obj/item/clothing/shoes/white
 	corpseid = 1
-	corpseidjob = "Scientist"
-	corpseidaccess = "Scientist"
+	corpseidjob = "Ученый"
+	corpseidaccess = "Ученый"
 
 /obj/effect/landmark/corpse/miner
 	corpseradio = /obj/item/device/radio/headset/headset_cargo

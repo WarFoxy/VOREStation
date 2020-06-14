@@ -51,37 +51,37 @@
 
 /datum/gear/accessory/holster
 	display_name = "holster selection (Security, CD, HoP, Exploration)"
-	allowed_roles = list("Директор колонии", "Глава персонала", "Security Officer", "Warden", "Head of Security","Detective","Explorer","Pathfinder")
+	allowed_roles = list("Директор колонии", "Глава персонала", "Офицер безопасности", "Надзиратель", "Глава безопасности","Детектив","Искатель","Следопыт")
 
 /datum/gear/accessory/brown_vest
 	display_name = "webbing, brown (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Офицер безопасности","Детектив","Глава безопасности","Надзиратель","Парамедик","Главврач","Медик","Химик","Военврач","Искатель","Следопыт","Шахтер")
 
 /datum/gear/accessory/black_vest
 	display_name = "webbing, black (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Офицер безопасности","Детектив","Глава безопасности","Надзиратель","Парамедик","Главврач","Медик","Химик","Военврач","Искатель","Следопыт","Шахтер")
 
 /datum/gear/accessory/white_vest
 	display_name = "webbing, white (Medical)"
-	allowed_roles = list("Парамедик","Главврач","Медик","Химик","Field Medic")
+	allowed_roles = list("Парамедик","Главврач","Медик","Химик","Военврач")
 
 /datum/gear/accessory/brown_drop_pouches
 	display_name = "drop pouches, brown (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Офицер безопасности","Детектив","Глава безопасности","Надзиратель","Парамедик","Главврач","Медик","Химик","Военврач","Искатель","Следопыт","Шахтер")
 
 /datum/gear/accessory/black_drop_pouches
 	display_name = "drop pouches, black (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Security Officer","Detective","Head of Security","Warden","Парамедик","Главврач","Медик","Химик","Field Medic","Explorer","Pathfinder","Шахтер")
+	allowed_roles = list("Инженер","Атмосферный техник","Главный инженер","Офицер безопасности","Детектив","Глава безопасности","Надзиратель","Парамедик","Главврач","Медик","Химик","Военврач","Искатель","Следопыт","Шахтер")
 
 /datum/gear/accessory/white_drop_pouches
 	display_name = "drop pouches, white (Medical)"
-	allowed_roles = list("Парамедик","Главврач","Медик","Химик","Field Medic")
+	allowed_roles = list("Парамедик","Главврач","Медик","Химик","Военврач")
 
 /datum/gear/accessory/webbing
 	cost = 1
 
 /datum/gear/accessory/stethoscope
-	allowed_roles = list("Главврач","Медик","Химик","Психиатр","Парамедик", "Field Medic")
+	allowed_roles = list("Главврач","Медик","Химик","Психиатр","Парамедик", "Военврач")
 
 /datum/gear/accessory/khcrystal
 	display_name = "KH Life Crystal"
@@ -97,7 +97,7 @@
 	display_name = "pilot qualification pin"
 	description = "An iron pin denoting the qualification to fly SCG spacecraft."
 	path = /obj/item/clothing/accessory/solgov/specialty/pilot
-	allowed_roles = list("Pathfinder", "Pilot", "Field Medic")
+	allowed_roles = list("Следопыт", "Пилот", "Военврач")
 
 /datum/gear/accessory/flops
 	display_name = "drop straps"

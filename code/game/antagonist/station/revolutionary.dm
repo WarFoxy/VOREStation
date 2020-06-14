@@ -30,8 +30,8 @@ var/datum/antagonist/revolutionary/revs
 	faction_invisible = 1
 
 	avoid_silicons = TRUE
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Агент внутренних дел", "Директор колонии", "Глава персонала", "Head of Security", "Главный инженер", "Research Director", "Главврач")
-	roundstart_restricted = list("Агент внутренних дел", "Директор колонии", "Глава персонала", "Head of Security", "Главный инженер", "Research Director", "Главврач")
+	protected_jobs = list("Офицер безопасности", "Надзиратель", "Детектив", "Агент внутренних дел", "Директор колонии", "Глава персонала", "Глава безопасности", "Главный инженер", "Директор исследований", "Главврач")
+	roundstart_restricted = list("Агент внутренних дел", "Директор колонии", "Глава персонала", "Глава безопасности", "Главный инженер", "Директор исследований", "Главврач")
 
 /datum/antagonist/revolutionary/New()
 	..()

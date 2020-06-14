@@ -88,5 +88,5 @@
 
 /obj/machinery/requests_console/preset/ai
 	name = "AI RC"
-	department = "AI"
+	department = "ИИ"
 	departmentType = RC_ASSIST|RC_INFO

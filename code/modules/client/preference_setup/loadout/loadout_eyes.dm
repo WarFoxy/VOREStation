@@ -36,7 +36,7 @@
 /datum/gear/eyes/security
 	display_name = "Security HUD (Security)"
 	path = /obj/item/clothing/glasses/hud/security
-	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель", "Детектив")
 
 /datum/gear/eyes/security/prescriptionsec
 	display_name = "Security HUD, prescription (Security)"
@@ -74,7 +74,7 @@
 /datum/gear/eyes/meson
 	display_name = "Optical Meson Scanners (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/meson
-	allowed_roles = list("Инженер","Главный инженер","Атмосферный техник", "Scientist", "Research Director", "Шахтер")
+	allowed_roles = list("Инженер","Главный инженер","Атмосферный техник", "Ученый", "Директор исследований", "Шахтер")
 
 /datum/gear/eyes/meson/prescription
 	display_name = "Optical Meson Scanners, prescription (Engineering, Science, Mining)"
@@ -108,7 +108,7 @@
 /datum/gear/eyes/sun
 	display_name = "Sunglasses (Security/Command)"
 	path = /obj/item/clothing/glasses/sunglasses
-	allowed_roles = list("Security Officer","Head of Security","Warden","Директор колонии","Глава персонала","Интендант","Агент внутренних дел","Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель","Директор колонии","Глава персонала","Интендант","Агент внутренних дел","Детектив")
 
 /datum/gear/eyes/sun/shades
 	display_name = "Sunglasses, fat (Security/Command)"

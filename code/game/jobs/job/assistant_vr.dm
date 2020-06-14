@@ -10,7 +10,7 @@
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the staff from the department you're interning in"
+	supervisors = "всем персоналом станции и отделом в котором вы работаете"
 	selection_color = "#555555"
 	economic_modifier = 2
 	access = list()			//See /datum/job/intern/get_access()
@@ -21,7 +21,7 @@
 					  "Медицинский Интерн" = /datum/alt_title/intern_med,
 					  "Лаборант" = /datum/alt_title/intern_sci,
 					  "Кадет СБ" = /datum/alt_title/intern_sec,
-					  "Млад. Карготехник" = /datum/alt_title/intern_crg,
+					  "Млад. Грузчик" = /datum/alt_title/intern_crg,
 					  "Млад. Исследователь" = /datum/alt_title/intern_exp,
 					  "Server" = /datum/alt_title/server)
 	job_description = "Интерн делает все, что от него требуется, выполняя работу в процессе изучения другой профессии. Хотя они и являются частью экипажа, у них нет реальной власти."
@@ -53,7 +53,7 @@
 	title_outfit = /decl/hierarchy/outfit/job/assistant/officer
 
 /datum/alt_title/intern_crg
-	title = "Млад. Карготехник"
+	title = "Млад. Грузчик"
 	title_blurb = "A Jr. Cargo Tech attempts to provide whatever the Cargo department needs. They are not proper Cargo Technicians, and are \
 					often in training to become a Cargo Technician. A Jr. Cargo Tech has no real authority."
 	title_outfit = /decl/hierarchy/outfit/job/assistant/cargo
@@ -88,7 +88,7 @@
 
 /datum/job/assistant		// Visitor
 	title = USELESS_JOB
-	supervisors = "nobody! You don't work here"
+	supervisors = ", а перед кем? Вы тут не работаете."
 	job_description = "A Visitor is just there to visit the place. They have no real authority or responsibility."
 	timeoff_factor = 0
 

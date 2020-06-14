@@ -5,7 +5,7 @@ var/const/SAR 				=(1<<14)
 
 /obj/item/weapon/card/id/medical/sar
 	assignment = "Field Medic"
-	rank = "Field Medic"
+	rank = "Военврач"
 	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
@@ -30,7 +30,7 @@ var/const/SAR 				=(1<<14)
 	sorting_order = 2 // Same as cargo in importance.
 
 /datum/job/pathfinder
-	title = "Pathfinder"
+	title = "Следопыт"
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)
 	departments_managed = list(DEPARTMENT_PLANET)
@@ -39,7 +39,7 @@ var/const/SAR 				=(1<<14)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой персонала"
 	selection_color = "#d6d05c"
 	economic_modifier = 8
 	minimal_player_age = 7
@@ -52,17 +52,17 @@ var/const/SAR 				=(1<<14)
 	job_description = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
 
 /datum/alt_title/pathfinder
-	title = "Pathfinder"
+	title = "Следопыт"
 
 /datum/job/pilot
-	title = "Pilot"
+	title = "Пилот"
 	flag = PILOT
 	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the Pathfinder and the Head of Personnel"
+	supervisors = "Следопытом и Главой персонала"
 	selection_color = "#999440"
 	economic_modifier = 5
 	minimal_player_age = 3
@@ -73,17 +73,17 @@ var/const/SAR 				=(1<<14)
 	job_description = "A Pilot flies the various shuttles in the Virgo-Erigone System."
 
 /datum/alt_title/pilot
-	title = "Pilot"
+	title = "Пилот"
 
 /datum/job/explorer
-	title = "Explorer"
+	title = "Искатель"
 	flag = EXPLORER
 	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Pathfinder and the Head of Personnel"
+	supervisors = "Следопытом и Главой персонала"
 	selection_color = "#999440"
 	economic_modifier = 6
 	pto_type = PTO_EXPLORATION
@@ -93,10 +93,10 @@ var/const/SAR 				=(1<<14)
 	job_description = "An Explorer searches for interesting things, and returns them to the station."
 
 /datum/alt_title/explorer
-	title = "Explorer"
+	title = "Искатель"
 
 /datum/job/sar
-	title = "Field Medic"
+	title = "Военврач"
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -114,7 +114,7 @@ var/const/SAR 				=(1<<14)
 	job_description = "A Field medic works as the field doctor of expedition teams."
 
 /datum/alt_title/field_medic
-	title = "Field Medic"
+	title = "Военврач"
 
 /datum/job/offduty_exploration
 	title = "Off-duty Explorer"

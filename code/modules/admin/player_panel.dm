@@ -240,11 +240,11 @@
 
 				else if(issilicon(M)) //silicon
 					if(isAI(M))
-						M_job = "AI"
+						M_job = "ИИ"
 					else if(ispAI(M))
 						M_job = "pAI"
 					else if(isrobot(M))
-						M_job = "Cyborg"
+						M_job = "Киборг"
 					else
 						M_job = "Silicon-based"
 
@@ -384,7 +384,7 @@
 
 /datum/admins/proc/check_antagonists()
 	if (ticker && ticker.current_state >= GAME_STATE_PLAYING)
-		var/dat = "<html><head><title>Round Status</title></head><body><h1><B>Round Status</B></h1>"
+		var/dat = "<html><meta charset=\"utf-8\"><head><title>Round Status</title></head><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
 		dat += "Round Duration: <B>[roundduration2text()]</B><BR>"
 		dat += "<B>Emergency shuttle</B><BR>"

@@ -60,7 +60,7 @@
 					[pick("comedian","singer/songwright","artist","playwright","TV personality","model")] "
 				else
 					body += "[pick("successful","highly respected","ingenious","esteemed")] \
-					[pick("academic","Professor","Doctor","Scientist")] "
+					[pick("academic","Professor","Doctor","Ученый")] "
 
 				body += "[random_name(pick(MALE,FEMALE))] on [affected_dest.name] [pick("last week","yesterday","this morning","two days ago","three days ago")]\
 				[pick(". Assassination is suspected, but the perpetrators have not yet been brought to justice",\

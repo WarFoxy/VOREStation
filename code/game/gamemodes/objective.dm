@@ -640,7 +640,7 @@ datum/objective/heist
 
 datum/objective/heist/kidnap
 	choose_target()
-		var/list/roles = list("Главный инженер","Research Director","Roboticist","Химик","Инженер")
+		var/list/roles = list("Главный инженер","Директор исследований","Роботехник","Химик","Инженер")
 		var/list/possible_targets = list()
 		var/list/priority_targets = list()
 

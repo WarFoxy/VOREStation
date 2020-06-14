@@ -19,32 +19,32 @@
 /datum/gear/head/beret/bsec
 	display_name = "beret, navy (officer)"
 	path = /obj/item/clothing/head/beret/sec/navy/officer
-	allowed_roles = list("Security Officer","Head of Security","Warden")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель")
 
 /datum/gear/head/beret/bsec_warden
 	display_name = "beret, navy (warden)"
 	path = /obj/item/clothing/head/beret/sec/navy/warden
-	allowed_roles = list("Head of Security","Warden")
+	allowed_roles = list("Глава безопасности","Надзиратель")
 
 /datum/gear/head/beret/bsec_hos
 	display_name = "beret, navy (hos)"
 	path = /obj/item/clothing/head/beret/sec/navy/hos
-	allowed_roles = list("Head of Security")
+	allowed_roles = list("Глава безопасности")
 
 /datum/gear/head/beret/csec
 	display_name = "beret, corporate (officer)"
 	path = /obj/item/clothing/head/beret/sec/corporate/officer
-	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель", "Детектив")
 
 /datum/gear/head/beret/csec_warden
 	display_name = "beret, corporate (warden)"
 	path = /obj/item/clothing/head/beret/sec/corporate/warden
-	allowed_roles = list("Head of Security","Warden")
+	allowed_roles = list("Глава безопасности","Надзиратель")
 
 /datum/gear/head/beret/csec_hos
 	display_name = "beret, corporate (hos)"
 	path = /obj/item/clothing/head/beret/sec/corporate/hos
-	allowed_roles = list("Head of Security")
+	allowed_roles = list("Глава безопасности")
 
 /datum/gear/head/beret/eng
 	display_name = "beret, engie-orange"
@@ -57,7 +57,7 @@
 /datum/gear/head/beret/sec
 	display_name = "beret, red (security)"
 	path = /obj/item/clothing/head/beret/sec
-	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель", "Детектив")
 
 /datum/gear/head/cap
 	display_name = "cap, black"
@@ -78,7 +78,7 @@
 /datum/gear/head/cap/corp
 	display_name = "cap, corporate (Security)"
 	path = /obj/item/clothing/head/soft/sec/corp
-	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель", "Детектив")
 
 /datum/gear/head/cap/green
 	display_name = "cap, green"
@@ -107,7 +107,7 @@
 /datum/gear/head/cap/sec
 	display_name = "cap, security (Security)"
 	path = /obj/item/clothing/head/soft/sec
-	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель", "Детектив")
 
 /datum/gear/head/cap/yellow
 	display_name = "cap, yellow"
@@ -311,7 +311,7 @@
 	display_name = "welding, normal (engineering/robotics)"
 	path = /obj/item/clothing/head/welding
 	cost = 2
-	allowed_roles = list("Главный инженер","Инженер","Атмосферный техник","Research Director","Roboticist")
+	allowed_roles = list("Главный инженер","Инженер","Атмосферный техник","Директор исследований","Роботехник")
 
 /datum/gear/head/welding/demon
 	display_name = "welding, demon (engineering/robotics)"

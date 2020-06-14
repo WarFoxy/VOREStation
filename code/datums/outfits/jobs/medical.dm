@@ -28,7 +28,7 @@
 	id_type = /obj/item/weapon/card/id/medical
 
 /decl/hierarchy/outfit/job/medical/doctor/emergency_physician
-	name = OUTFIT_JOB_NAME("Фельдшер")
+	name = OUTFIT_JOB_NAME("Старший Фельдшер")
 	suit = /obj/item/clothing/suit/storage/toggle/fr_jacket
 
 /decl/hierarchy/outfit/job/medical/doctor/surgeon
@@ -101,6 +101,6 @@
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 
 /decl/hierarchy/outfit/job/medical/paramedic/emt
-	name = OUTFIT_JOB_NAME("Emergency Medical Technician")
+	name = OUTFIT_JOB_NAME("Фельдшер")
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/emt

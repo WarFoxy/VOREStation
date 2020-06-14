@@ -1,11 +1,11 @@
 #define ASSIGNMENT_ANY "Any"
-#define ASSIGNMENT_AI "AI"
-#define ASSIGNMENT_CYBORG "Cyborg"
-#define ASSIGNMENT_ENGINEER "Engineer"
+#define ASSIGNMENT_AI "ИИ"
+#define ASSIGNMENT_CYBORG "Киборг"
+#define ASSIGNMENT_ENGINEER "Инженер"
 #define ASSIGNMENT_GARDENER "Садовник"
 #define ASSIGNMENT_JANITOR "Уборщик"
 #define ASSIGNMENT_MEDICAL "Medical"
-#define ASSIGNMENT_SCIENTIST "Scientist"
+#define ASSIGNMENT_SCIENTIST "Ученый"
 #define ASSIGNMENT_SECURITY "Security"
 
 var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT_LEVEL_MODERATE = "Moderate", EVENT_LEVEL_MAJOR = "Major")

@@ -14,7 +14,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "company officials and Corporate Regulations"
+	supervisors = "должностными лицами компании NT и Корпоративными Правилами"
 	selection_color = "#2F2F7F"
 	req_admin_notify = 1
 	access = list() 			//See get_access()
@@ -63,7 +63,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "Директором Колонии"
 	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
@@ -108,7 +108,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "command staff"
+	supervisors = "должностными лицами компании NT"
 	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 	economic_modifier = 7

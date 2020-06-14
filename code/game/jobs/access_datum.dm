@@ -187,7 +187,7 @@
 /var/const/access_rd = 30
 /datum/access/rd
 	id = access_rd
-	desc = "Research Director"
+	desc = "Директор исследований"
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_cargo = 31
@@ -333,7 +333,7 @@
 /var/const/access_hos = 58
 /datum/access/hos
 	id = access_hos
-	desc = "Head of Security"
+	desc = "Глава безопасности"
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_RC_announce = 59 //Request console announcements
