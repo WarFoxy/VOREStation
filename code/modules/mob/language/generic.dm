@@ -19,8 +19,8 @@
 /datum/language/common
 	name = LANGUAGE_GALCOM
 	desc = "The common galactic tongue, engineered for cross-species communication."
-	speech_verb = "says"
-	whisper_verb = "whispers"
+	speech_verb = "говорит"
+	whisper_verb = "шепчет"
 	key = "0"
 	flags = RESTRICTED
 	syllables = list(
@@ -32,7 +32,7 @@
 /datum/language/common/get_spoken_verb(var/msg_end)
 	switch(msg_end)
 		if("!")
-			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
+			return pick("восклицает","shouts","кричит") //TODO: make the basic proc handle lists of verbs.
 		if("?")
 			return ask_verb
 	return speech_verb
@@ -41,7 +41,7 @@
 /datum/language/trader
 	name = LANGUAGE_TRADEBAND
 	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining." //VOREstation Edit
-	speech_verb = "enunciates"
+	speech_verb = "произносит"
 	colour = "say_quote"
 	key = "2"
 	syllables = list(
@@ -54,8 +54,8 @@
 /datum/language/terminus
 	name = LANGUAGE_TERMINUS
 	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation." // VOREstation edit. Original : A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region.
-	speech_verb = "mentions"
-	exclaim_verb = "insinuates"
+	speech_verb = "упоминает"
+	exclaim_verb = "намекает"
 	colour = "terminus"
 	key = "4"
 	// flags = WHITELISTED (VOREstation edit)
@@ -68,7 +68,7 @@
 /datum/language/gutter
 	name = LANGUAGE_GUTTER
 	desc = "Gutter originated as a Thieves' Cant of sorts during the early colonization era. The language eventually spread from the cartels and triads to the disenfranchised people of the Bowl."
-	speech_verb = "growls"
+	speech_verb = "рычит"
 	colour = "rough"
 	key = "3"
 	space_chance = 45
@@ -146,16 +146,16 @@
 /datum/language/sign/broadcast(var/mob/living/speaker, var/message, var/speaker_mask)
 	log_say("(SIGN) [message]", speaker)
 	speaker.say_signlang(message, pick(signlang_verb), src)
-	
+
 
 // Silly language for those times when you try to talk a languague you normally can't
 /datum/language/gibberish
 	name = LANGUAGE_GIBBERISH
 	desc = "A completely incomprehensible language."
 	signlang_verb = list("flails")
-	speech_verb = "spews"
-	whisper_verb = "mumbles"
-	exclaim_verb = "shrieks"
+	speech_verb = "изрыгает"
+	whisper_verb = "бормочет"
+	exclaim_verb = "визжит"
 	colour = "attack"
 	key = "r"	// Radda radda radda
 	flags = RESTRICTED|NONGLOBAL

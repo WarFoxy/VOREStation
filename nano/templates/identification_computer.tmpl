@@ -7,13 +7,13 @@
 		Спасибо Вам за ваше терпение!
 	</p>
 {{else}}
-	{{:helper.link('Access Modification', 'home', {'choice' : 'mode', 'mode_target' : 0}, !data.mode ? 'disabled' : null)}}
-	{{:helper.link('Crew Manifest', 'folder-open', {'choice' : 'mode', 'mode_target' : 1}, data.mode ? 'disabled' : null)}}
-	{{:helper.link('Print', 'print', {'choice' : 'print'}, (data.mode || data.has_modify) ? null : 'disabled')}}
+	{{:helper.link('Модификация Доступа', 'home', {'choice' : 'mode', 'mode_target' : 0}, !data.mode ? 'disabled' : null)}}
+	{{:helper.link('Манифест экипажа', 'folder-open', {'choice' : 'mode', 'mode_target' : 1}, data.mode ? 'disabled' : null)}}
+	{{:helper.link('Печать', 'print', {'choice' : 'print'}, (data.mode || data.has_modify) ? null : 'disabled')}}
 
 	{{if data.mode}}
 		<div class='item'>
-			<h2>Crew Manifest</h2>
+			<h2>Манифест экипажа</h2>
 		</div>
 		<div class='item'>
 			<center><table class="pmon"><tbody>
@@ -33,16 +33,16 @@
 		</div>
 	{{else}}
 		<div class='item'>
-			<h2>Access Modification</h2>
+			<h2>Модификация Доступа</h2>
 		</div>
 
 		{{if !data.authenticated}}
-			<span class='alert'><i>Please insert the IDs into the terminal to proceed.</i></span><br>
+			<span class='alert'><i>Пожалуйста, вставьте ID акарту в терминал, чтобы продолжить работу.</i></span><br>
 		{{/if}}
 
 		<div class='item'>
 			<div class='itemLabel'>
-				Target Identity:
+				Владелец карты:
 			</div>
 			<div class='itemContent'>
 				{{:helper.link(data.target_name, 'eject', {'choice' : 'modify'})}}
@@ -50,7 +50,7 @@
 		</div>
 		<div class='item'>
 			<div class='itemLabel'>
-				Authorized Identity:
+				Авторизатор:
 			</div>
 			<div class='itemContent'>
 				{{:helper.link(data.scan_name, 'eject', {'choice' : 'scan'})}}
@@ -61,7 +61,7 @@
 		{{if data.authenticated}}
 			{{if data.has_modify}}
 				<div class='item'>
-					<h2>Details</h2>
+					<h2>Детали</h2>
 				</div>
 
 				<form name='cardcomp' action='?src={{:data.src}}' method='get'>
@@ -69,11 +69,11 @@
 						<div class='itemLabel'>
 							<input type='hidden' name='src' value='{{:data.src}}'>
 							<input type='hidden' name='choice' value='reg'>
-							Registered Name:
+							Зарегистрированное имя:
 						</div>
 						<div class='itemContent'>
 							<input type='text' id='namefield' name='reg' value='{{:data.target_owner}}' onchange='markRed()'>
-							<input type='submit' value='Rename' onclick='markGreen()'>
+							<input type='submit' value='Изменить' onclick='markGreen()'>
 						</div>
 					</div>
 				</form>
@@ -83,11 +83,11 @@
 						<div class='itemLabel'>
 							<input type='hidden' name='src' value='{{:data.src}}'>
 							<input type='hidden' name='choice' value='account'>
-							Account Number:
+							Номер Аккаунта:
 						</div>
 						<div class='itemContent'>
 							<input type='text' id='accountfield' name='account' value='{{:data.account_number}}' onchange='markAccountRed()'>
-							<input type='submit' value='Modify' onclick='markAccountGreen()'>
+							<input type='submit' value='Изменить' onclick='markAccountGreen()'>
 						</div>
 					</div>
 				</form>
@@ -95,16 +95,16 @@
 				<div class='item'>
 					<!-- VOREStation Edit Start -->
 					<div class='itemLabel'>
-						Dismissals:
+						Разжалование:
 					</div>
 					<div class='itemContent'>
-						{{:helper.link('Dismiss ' + data.target_owner, 'gear', {'choice' : 'terminate'}, data.target_rank == "Dismissed" ? 'disabled' : null, data.target_rank == "Dismissed" ? 'disabled' : 'linkDanger')}}
+						{{:helper.link('Разжаловать ' + data.target_owner, 'gear', {'choice' : 'terminate'}, data.target_rank == "Разжалован" ? 'disabled' : null, data.target_rank == "Разжалован" ? 'disabled' : 'linkDanger')}}
 					</div>
 					<!-- VOREStation Edit End -->
 				</div>
 
 				<div class='item'>
-					<h2>Assignment</h2>
+					<h2>Профессия</h2>
 				</div>
 				
 				<div class='item'>
@@ -121,9 +121,9 @@
 								</tr>
 							{{/for}}
 							<tr>
-								<th>Special</th>
+								<th>Особое</th>
 								<td>
-									{{:helper.link("Custom", '', {'choice' : 'assign', 'assign_target' : 'Custom'})}}
+									{{:helper.link("Польз.", '', {'choice' : 'assign', 'assign_target' : 'Польз.'})}}
 								</td>
 							</tr>
 						</table>

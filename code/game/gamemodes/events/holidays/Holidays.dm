@@ -109,20 +109,16 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by SolGov, which guarantees the \
 					same protections humans are granted to all sapient, living species."
 				if(14)
-					Holiday["Blood Donor Day"] = "This holiday was created to raise awareness of the need for safe blood and blood products, \
-					and to thank blood donors for their voluntary, life-saving gifts of blood."
+					Holiday["Дня Донора"] = "Этот праздник был создан для того, чтобы повысить осведомленность о необходимости безопасной крови и продуктов крови и поблагодарить доноров крови за их добровольные, спасительные дары."
 				if(20)
-					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in SCG member states that honors civil servants everywhere,\
-+					(especially those who are members of the armed forces and the emergency services), or have been or have been civil servants in the past."
+					Holiday["Дня Гос. Служащего"] = "День государственного служащего - это праздник, отмечаемый в государствах ПСС, который чествует государственных служащих повсюду (особенно тех, кто является военнослужащими и аварийными службами) или был государственным служащим в прошлом."
 
 		if(7)	//Jul
 			switch(DD)
 				if(1)
-					Holiday["Doctors' Day"] = "A holiday that recognizes the services of physicians, commonly celebrated \
-					in healthcare organizations and facilities."
+					Holiday["Дня Доктора"] = "Праздник, который признает заслуги врачей, обычно отмечается в медицинских организациях и учреждениях."
 				if(30)
-					Holiday["Friendship Day"] = "An unoffical holiday that recognizes the value of friends and companionship.  Indeed, not having someone watch \
-					your back while in space can be dangerous, and the cold, isolating nature of space makes friends all the more important."
+					Holiday["Дня Дружбы"] = "Неофициальный праздник, который признает ценность друзей и товарищество.  В самом деле, отсутствие кого-то, кто прикрывал бы твою спину в космосе, может быть опасным, и холодная, изолирующая природа космоса делает друзей еще более важными."
 
 		if(8)	//Aug
 			switch(DD)
@@ -130,13 +126,13 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 //					Holiday["S'randarr's Day"] = "A Tajaran holiday that occurs on the longest day of the year in summer, \
 //					on Ahdomai. It is named after the Tajaran deity of Light, and huge celebrations are common."
 //VOREStation Add - Of course we need this.
-				if(8)
-					Holiday["Vore Day"] = "A holiday representing the innate desire in all/most/some/a few of us to devour each other or be devoured. \
+				//if(8)
+				//	Holiday["Vore Day"] = "A holiday representing the innate desire in all/most/some/a few of us to devour each other or be devoured. \
 					That's probably why you're here, isn't it? Get to it, then!"
 //VOREStation Add End.
 
 				if(27)
-					Holiday["Forgiveness Day"] = "A time to forgive and be forgiven."
+					Holiday["Дня Прощения"] = "Время прощать и быть прощенным."
 
 		if(9)	//Sep
 			switch(DD)
@@ -237,8 +233,8 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 			holidays.Add(p)
 			holiday_blurbs.Add("[Holiday[p]]")
 		var/holidays_string = english_list(holidays, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
-		to_world("<font color='blue'>and...</font>")
-		to_world("<h4>Happy [holidays_string] Everybody!</h4>")
+		to_world("<font color='blue'>и...</font>")
+		to_world("<h4>Счастливого [holidays_string] всем!</h4>")
 		if(holiday_blurbs.len != 0)
 			for(var/blurb in holiday_blurbs)
 				to_world("<div align='center'><font color='blue'>[blurb]</font></div>")

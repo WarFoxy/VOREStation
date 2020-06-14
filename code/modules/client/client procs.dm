@@ -420,7 +420,7 @@ client/proc/MayRespawn()
 	return 0
 
 client/verb/character_setup()
-	set name = "Character Setup"
+	set name = "Настройка персонажа"
 	set category = "Preferences"
 	if(prefs)
 		prefs.ShowChoices(usr)

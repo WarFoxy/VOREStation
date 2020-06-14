@@ -81,23 +81,23 @@
 	..()
 
 	if(statpanel("Lobby") && SSticker)
-		stat("Game Mode:", SSticker.hide_mode ? "Secret" : "[config.mode_names[master_mode]]")
+		stat("Режим:", SSticker.hide_mode ? "Секретный" : "[config.mode_names[master_mode]]")
 
 		if(SSvote.mode)
-			stat("Vote: [capitalize(SSvote.mode)]", "Time Left: [SSvote.time_remaining] s")
+			stat("Голосование: [capitalize(SSvote.mode)]", "Времени осталось: [SSvote.time_remaining] s")
 
 		if(SSticker.current_state == GAME_STATE_INIT)
-			stat("Time To Start:", "Server Initializing")
+			stat("До начала игры:", "Инициализация Сервера")
 
 		else if(SSticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[round(SSticker.pregame_timeleft,1)][round_progressing ? "" : " (DELAYED)"]")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+			stat("До начала игры:", "[round(SSticker.pregame_timeleft,1)][round_progressing ? "" : " (ОТЛОЖЕНО)"]")
+			stat("Игроки: [totalPlayers]", "Готовые игроки: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			var/datum/job/refJob = null
 			for(var/mob/new_player/player in player_list)
 				refJob = player.client.prefs.get_highest_job()
-				stat("[player.key]", (player.ready)?("(Playing as: [(refJob)?(refJob.title):("Unknown")])"):(null))
+				stat("[player.key]", (player.ready)?("(Играет за: [(refJob)?(refJob.title):("Неизвестно")])"):(null))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
@@ -122,7 +122,7 @@
 	if(href_list["observe"])
 		var/alert_time = ticker?.current_state <= GAME_STATE_SETTING_UP ? 1 : round(config.respawn_time/10/60)
 
-		if(alert(src,"Are you sure you wish to observe? You will have to wait up to [alert_time] minute\s before being able to spawn into the game!","Player Setup","Yes","No") == "Yes")
+		if(alert(src,"Вы уверены, что хотите наблюдать? Вам придется подождать [alert_time] минут, прежде чем вы сможете войти в игру!","Player Setup","Да","Нет") == "Да")
 			if(!client)	return 1
 
 			//Make a new mannequin quickly, and allow the observer to take the appearance
@@ -140,10 +140,10 @@
 			close_spawn_windows()
 			var/obj/O = locate("landmark*Observer-Start")
 			if(istype(O))
-				to_chat(src, "<span class='notice'>Now teleporting.</span>")
+				to_chat(src, "<span class='notice'>Переходим.</span>")
 				observer.forceMove(O.loc)
 			else
-				to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+				to_chat(src, "<span class='danger'>Не удалось найти точку появления наблюдателя. Используйте глагол *Teleport, чтобы перейти к карте станции.</span>")
 
 			announce_ghost_joinleave(src)
 
@@ -162,14 +162,14 @@
 	if(href_list["late_join"])
 
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
+			to_chat(usr, "<font color='red'>Раунд либо еще не начался, либо уже закончился...</font>")
 			return
 
 		var/time_till_respawn = time_till_respawn()
 		if(time_till_respawn == -1) // Special case, never allowed to respawn
-			to_chat(usr, "<span class='warning'>Respawning is not allowed!</span>")
+			to_chat(usr, "<span class='warning'>Возрождение не допускается!</span>")
 		else if(time_till_respawn) // Nonzero time to respawn
-			to_chat(usr, "<span class='warning'>You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes.</span>")
+			to_chat(usr, "<span class='warning'>Вы не можете возродиться! Вам нужно подождать еще [round(time_till_respawn/10/60, 0.1)] минут.</span>")
 			return
 /*
 		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
@@ -198,17 +198,17 @@
 			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
 		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
+			to_chat(usr, "<span class='danger'>Станция в настоящее время взрывается. Присоединяться явно не стоит.</span>")
 			return
 
 		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
-			alert(src, "You are currently not whitelisted to play [client.prefs.species].")
+			alert(src, "В настоящее время вы не находитесь в белом списке, чтобы играть за [client.prefs.species].")
 			return 0
 
 		var/datum/species/S = GLOB.all_species[client.prefs.species]
 
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
-			alert(src,"Your current species, [client.prefs.species], is not available for play on the station.")
+			alert(src,"Ваша текущая раста, [client.prefs.species], недоступна для игры на станции.")
 			return 0
 
 		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
@@ -249,7 +249,7 @@
 			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
 			var/DBQuery/query_insert = dbcon.NewQuery(sql)
 			query_insert.Execute()
-			to_chat(usr, "<b>Thank you for your vote!</b>")
+			to_chat(usr, "<b>Спасибо за ваш голос!</b>")
 			usr << browse(null,"window=privacypoll")
 
 	if(!ready && href_list["preference"])

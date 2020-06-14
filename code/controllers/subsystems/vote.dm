@@ -129,12 +129,12 @@ SUBSYSTEM_DEF(vote)
 			if(choices[current_votes[key]] == .)
 				round_voters += key // Keep track of who voted for the winning round.
 		if(mode != VOTE_GAMEMODE || . == "Extended" || ticker.hide_mode == 0) // Announce Extended gamemode, but not other gamemodes
-			text += "<b>Vote Result: [mode == VOTE_GAMEMODE ? gamemode_names[.] : .]</b>"
+			text += "<b>Результат голосования: [mode == VOTE_GAMEMODE ? gamemode_names[.] : .]</b>"
 		else
-			text += "<b>The vote has ended.</b>"
+			text += "<b>Голосование окончено.</b>"
 
 	else
-		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
+		text += "<b>Результат Голосования: Голосов Нет!</b>"
 		if(mode == VOTE_ADD_ANTAGONIST)
 			antag_add_failed = 1
 	log_vote(text)
@@ -167,7 +167,7 @@ SUBSYSTEM_DEF(vote)
 	if(mode == VOTE_GAMEMODE) //fire this even if the vote fails.
 		if(!round_progressing)
 			round_progressing = 1
-			to_world("<font color='red'><b>The round will start soon.</b></font>")
+			to_world("<font color='red'><b>Раунд начнется в ближайшее время...</b></font>")
 
 	if(restart)
 		to_world("Объявлен рестарт по результатам голосования...")
@@ -222,7 +222,7 @@ SUBSYSTEM_DEF(vote)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
 				question = "Ваш КПК подает звуковой сигнал с сообщением из Центра. Вы хотели бы получить дополнительный час, чтобы закончить текущие проекты?" //VOREStation Edit
-				choices.Add("Иниц. передачу экипажа", "Продлить смену")  //VOREStation Edit
+				choices.Add("Иниц. эвак. экипажа", "Продлить смену")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0

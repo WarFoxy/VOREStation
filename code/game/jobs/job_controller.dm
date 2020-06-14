@@ -535,7 +535,7 @@ var/global/datum/controller/occupations/job_master
 			to_chat(H, "<b>Чтобы говорить по радиоканалу вашего отдела, используйте в чате :h Для общения на других каналах используйте свою гарнитуру.</b>")
 
 		if(job.req_admin_notify)
-			to_chat(H, "<b>Вы играете в работу, которая важна для развития игры. Если вам придется отключиться, пожалуйста, сообщите об этом администраторам через adminhelp.</b>")
+			to_chat(H, "<b>Вы за профессию, которая важна для развития игры. Если вам придется отключиться, пожалуйста, сообщите об этом администраторам через adminhelp.</b>")
 
 		// EMAIL GENERATION
 		// Email addresses will be created under this domain name. Mostly for the looks.

@@ -15,27 +15,27 @@
 		privacy_poll()
 
 /mob/new_player/proc/privacy_poll()
-	var/output = "<div align='center'><B>Player poll</B>"
+	var/output = "<meta charset=\"utf-8\"><div align='center'><B>Опрос игроков</B>"
 	output +="<hr>"
-	output += "<b>We would like to expand our stats gathering.</b>"
-	output += "<br>This however involves gathering data about player behavior, play styles, unique player numbers, play times, etc. Data like that cannot be gathered fully anonymously, which is why we're asking you how you'd feel if player-specific data was gathered. Prior to any of this actually happening, a privacy policy will be discussed, but before that can begin, we'd preliminarily like to know how you feel about the concept."
+	output += "<b>Мы хотели бы расширить наш сбор статистики.</b>"
+	output += "<br>Однако, этот процесс включает в себя сбор данных о поведении игроков, стиле игры, уникальных ID игроков, времени игры и т. д. Такие данные не могут быть собраны полностью анонимно, поэтому мы спрашиваем вас, как вы относитесь к сбору данных, относящиеся к конкретным игрокам. Прежде чем что-либо из этого действительно произойдет, будет обсуждена Политика конфиденциальности, мы предварительно хотели бы знать, как вы относитесь к этой концепции."
 	output +="<hr>"
-	output += "How do you feel about the game gathering player-specific statistics? This includes statistics about individual players as well as in-game polling/opinion requests."
+	output += "Как вы относитесь к игре, собирающей статистику по конкретным игрокам? Это включает в себя статистику об отдельных игроках, а также внутриигровые опросы/запросы мнений."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=signed'>Signed stats gathering</A>"
-	output += "<br>Pick this option if you think usernames should be logged with stats. This allows us to have personalized stats as well as polls."
+	output += "<p><a href='byond://?src=\ref[src];privacy_poll=signed'>Сбор статистику</A>"
+	output += "<br>Выберите этот параметр, если вы считаете, что пользователи должны регистрироваться со статистикой. Это позволит нам иметь персонализированную статистику, а также предлагать на основе этого опросы."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=anonymous'>Anonymous stats gathering</A>"
-	output += "<br>Pick this option if you think only hashed (indecipherable) usernames should be logged with stats. This doesn't allow us to have personalized stats, as we can't tell who is who (hashed values aren't readable), we can however have ingame polls."
+	output += "<p><a href='byond://?src=\ref[src];privacy_poll=anonymous'>Сбор анонимной статистики</A>"
+	output += "<br>Выберите этот параметр, если вы считаете, что только хэшированные (нечитаемые) данные пользователей должны регистрироваться со статистикой. Это не позволит нам иметь персонализированную статистику, так как мы не можем сказать, кто есть кто, однако мы можем проводить общие игровые опросы."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=nostats'>No stats gathering</A>"
-	output += "<br>Pick this option if you don't want player-specific stats gathered. This does not allow us to have player-specific stats or polls."
+	output += "<p><a href='byond://?src=\ref[src];privacy_poll=nostats'>Не собирать статистику</A>"
+	output += "<br>Выберите этот вариант, если вы не хотите, чтобы мы собирали статистику по конкретным игрокам. Это не позволит нам содержать статистику конкретных игроков или опросов."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=later'>Ask again later</A>"
-	output += "<br>This poll will be brought up again next round."
+	output += "<p><a href='byond://?src=\ref[src];privacy_poll=later'>Спросить позже</A>"
+	output += "<br>Этот опрос будет снова поднят в следующем раунде."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=abstain'>Don't ask again</A>"
-	output += "<br>Only pick this if you are fine with whatever option wins."
+	output += "<p><a href='byond://?src=\ref[src];privacy_poll=abstain'>Не спрашивать больше</A>"
+	output += "<br>Выберите этот параметр только в том случае, если вас устраивает любой вариант."
 
 	output += "</div>"
 
@@ -56,7 +56,7 @@
 		var/DBQuery/select_query = dbcon.NewQuery("SELECT id, question FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime")
 		select_query.Execute()
 
-		var/output = "<div align='center'><B>Player polls</B>"
+		var/output = "<meta charset=\"utf-8\"><div align='center'><B>Опрос игроков</B>"
 		output +="<hr>"
 
 		var/pollid

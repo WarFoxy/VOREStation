@@ -153,14 +153,14 @@ var/global/datum/controller/subsystem/ticker/ticker
 		return 0
 
 	if(hide_mode)
-		to_world("<span class='notice'><B>The current game mode is - Secret!</B></span>")
+		to_world("<span class='notice'><B>Текущий режим игры - Секретный!</B></span>")
 		if(runnable_modes.len)
 			var/list/tmpmodes = new
 			for (var/datum/game_mode/M in runnable_modes)
 				tmpmodes+=M.name
 			tmpmodes = sortList(tmpmodes)
 			if(tmpmodes.len)
-				to_world("<span class='info'><B>Possibilities:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]</span>")
+				to_world("<span class='info'><B>Возможно:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]</span>")
 	else
 		src.mode.announce()
 	return 1
@@ -182,14 +182,14 @@ var/global/datum/controller/subsystem/ticker/ticker
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "ИИ")
 				qdel(S)
-		to_world("<span class='boldannounce notice'><em>Enjoy the game!</em></span>")
+		to_world("<span class='boldannounce notice'><em>Приятной игры!</em></span>")
 		world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
 	var/list/adm = get_admin_counts()
 	if(adm["total"] == 0)
-		send2adminirc("A round has started with no admins online.")
+		send2adminirc("Раунд начался без администраторов.")
 
 /*	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
 	master_controller.process()		//Start master_controller.process()
@@ -231,7 +231,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		end_game_state = END_GAME_MODE_FINISHED // Only do this cleanup once!
 		mode.cleanup()
 		//call a transfer shuttle vote
-		to_world("<span class='danger'>The round has ended!</span>")
+		to_world("<span class='danger'>Раунд окончен!</span>")
 		SSvote.autotransfer()
 
 // Called during GAME_STATE_FINISHED (RUNLEVEL_POSTGAME)
@@ -258,7 +258,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		if(END_GAME_ENDING)
 			restart_timeleft -= (world.time - last_fire)
 			if(delay_end)
-				to_world("<span class='notice'><b>An admin has delayed the round end.</b></span>")
+				to_world("<span class='notice'><b>Администратор отложил завершение раунда.</b></span>")
 				end_game_state = END_GAME_DELAYED
 			else if(restart_timeleft <= 0)
 				world.Reboot()
