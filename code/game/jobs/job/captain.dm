@@ -29,8 +29,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	job_description = "The Colony Director manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
 						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Colony Director is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
-	alt_titles = list("Site Manager" = /datum/alt_title/site_manager,
-						"Надзиратель" = /datum/alt_title/overseer)
+	alt_titles = list("Капитан" = /datum/alt_title/site_manager,
+						"Смотритель" = /datum/alt_title/overseer)
 
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
@@ -45,10 +45,10 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 // Captain Alt Titles
 /datum/alt_title/site_manager
-	title = "Site Manager"
+	title = "Капитан"
 
 /datum/alt_title/overseer
-	title = "Надзиратель"
+	title = "Смотритель"
 
 //////////////////////////////////
 //		Head of Personnel
