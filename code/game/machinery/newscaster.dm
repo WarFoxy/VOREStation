@@ -273,7 +273,7 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 		switch(screen)
 			if(0)
 				dat += "Приветсвтует в системе новостник #[unit_no].<BR> Интерфейс & Новостные сети функционируют."
-				dat += "<BR><FONT SIZE=1>Property of NanoTrasen Inc</FONT>"
+				dat += "<BR><FONT SIZE=1>Собственность NanoTrasen Inc</FONT>"
 				if(news_network.wanted_issue)
 					dat+= "<HR><A href='?src=\ref[src];view_wanted=1'>Списки розысков</A>"
 				dat+= "<HR><BR><A href='?src=\ref[src];create_channel=1'>Создать канал новостей</A>"
@@ -291,7 +291,7 @@ GLOBAL_LIST_BOILERPLATE(allCasters, /obj/machinery/newscaster)
 					dat+="<BR><A href='?src=\ref[src];menu_wanted=1'>[(wanted_already) ? ("Управление списком") : ("Публикация списка")] \"Розыска\"</A>"
 					dat+="<BR><A href='?src=\ref[src];menu_censor_story=1'>Censor Feed Stories</A>"
 					dat+="<BR><A href='?src=\ref[src];menu_censor_channel=1'>Mark Feed Channel with [using_map.company_name] D-Notice</A>"
-				dat+="<BR><HR>The newscaster recognises you as: <FONT COLOR='green'>[scanned_user]</FONT>"
+				dat+="<BR><HR>Новостник узнает вас как: <FONT COLOR='green'>[scanned_user]</FONT>"
 			if(1)
 				dat+= "Новостной канал станции<HR>"
 				if(isemptylist(news_network.network_channels))

@@ -76,8 +76,8 @@ var/global/datum/controller/subsystem/ticker/ticker
 			post_game_tick()
 
 /datum/controller/subsystem/ticker/proc/pregame_welcome()
-	to_world("<span class='boldannounce notice'><em>Welcome to the pregame lobby!</em></span>")
-	to_world("<span class='boldannounce notice'>Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.</span>")
+	to_world("<span class='boldannounce notice'><em>Добро пожаловать в предыгровое лобби!</em></span>")
+	to_world("<span class='boldannounce notice'>Пожалуйста, настройте своего персонажа и выберите \"Готов\". Раунд начнется через [pregame_timeleft] секунд.</span>")
 
 // Called during GAME_STATE_PREGAME (RUNLEVEL_LOBBY)
 /datum/controller/subsystem/ticker/proc/pregame_tick()

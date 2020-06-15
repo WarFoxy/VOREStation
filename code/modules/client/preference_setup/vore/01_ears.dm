@@ -164,7 +164,7 @@
 		tail_display = instance.name
 	else if(pref.tail_style)
 		tail_display = "REQUIRES UPDATE"
-	. += "<b>Хвостl</b><br>"
+	. += "<b>Хвост</b><br>"
 	. += " Стиль: <a href='?src=\ref[src];tail_style=1'>[tail_display]</a><br>"
 
 	if(tail_styles_list[pref.tail_style])

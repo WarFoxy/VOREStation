@@ -3,8 +3,8 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode
 	var/name = "invalid"
-	var/round_description = "How did you even vote this in?"
-	var/extended_round_description = "This roundtype should not be spawned, let alone votable. Someone contact a developer and tell them the game's broken again."
+	var/round_description = "Как вы вообще проголосовали за это?"
+	var/extended_round_description = "Этот тип раунд не должен быть использован, не говоря уже о голосовании. Свяжитесь с разработчиком и скажите, что игра снова сломалась."
 	var/config_tag = null
 	var/votable = 1
 	var/probability = 0

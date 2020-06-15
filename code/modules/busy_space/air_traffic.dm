@@ -65,7 +65,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/alt_atc_names = list("[using_map.station_short] TraCon","[using_map.station_short] Control","[using_map.station_short] STC","[using_map.station_short] Airspace")
 	var/wrong_atc_names = list("Sol Command","New Reykjavik StarCon", "[using_map.dock_name]")
 	var/mission_noun = list("flight","mission","route")
-	var/request_verb = list("requesting","calling for","запрашиваю")
+	var/request_verb = list("requesting","запрашиваю","запрашиваю")
 
 	//First response is 'yes', second is 'no'
 	var/requests = list("[using_map.station_short] transit clearance" = list("permission for transit granted", "permission for transit denied, contact regional on 953.5"),
@@ -75,7 +75,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 						"nearby traffic info" = list("sending you current traffic info", "no available info in your area"),
 						"remote telemetry data" = list("sending telemetry now", "no uplink from your ship, recheck your uplink and ask again"),
 						"refueling information" = list("sending refueling information now", "no fuel for your ship class in this sector"),
-						"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
+						"синхронизацию текущего системного времени" = list("посылаем вам код синхронизации времени", "ваш корабль не совместим с синхронизацией времени, установите время вручную."),
 						"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now"),
 						"permission to engage FTL" = list("permission to engage FTL granted, good day", "permission denied, wait for current traffic to pass"),
 						"permission to transit system" = list("permission to transit granted, good day", "permission denied, wait for current traffic to pass"),

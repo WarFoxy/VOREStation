@@ -42,9 +42,9 @@ var/list/gear_datums = list()
 	return 1
 
 /datum/category_item/player_setup_item/loadout
-	name = "Loadout"
+	name = "Предметы"
 	sort_order = 1
-	var/current_tab = "General"
+	var/current_tab = "Общее"
 
 /datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
 	from_file(S["gear_list"], pref.gear_list)
