@@ -326,7 +326,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in return_sorted_areas()
 	if(!A)
 		return
-	
+
 	usr.forceMove(pick(get_area_turfs(A)))
 	usr.on_mob_jump()
 
@@ -339,7 +339,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		input = input(usr, "Select a mob:", "Ghost Follow") as null|anything in getmobs()
 	if(!input)
 		return
-	
+
 	var/target = getmobs()[input]
 	if(!target) return
 	ManualFollow(target)
@@ -582,7 +582,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 
 	var/dat
-	dat += "<h4>Crew Manifest</h4>"
+	dat += "<meta charset=\"utf-8\"><h4>Crew Manifest</h4>"
 	dat += data_core.get_manifest()
 
 	src << browse(dat, "window=manifest;size=370x420;can_close=1")
@@ -859,7 +859,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	set category = "Ghost"
 	set name = "Blank pAI alert"
 	set desc = "Flash an indicator light on available blank pAI devices for a smidgen of hope."
-	
+
 	if(usr.client.prefs?.be_special & BE_PAI)
 		var/count = 0
 		for(var/obj/item/device/paicard/p in all_pai_cards)
