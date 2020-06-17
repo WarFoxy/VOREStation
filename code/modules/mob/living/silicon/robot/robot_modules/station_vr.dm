@@ -67,18 +67,18 @@
 /obj/item/weapon/robot_module/robot/medical/surgeon
 	pto_type = PTO_MEDICAL
 	vr_sprites = list(
-						"Acheron" = "mechoid-Medical",
-						"Shellguard Noble" = "Noble-MED",
-						"ZOOM-BA" = "zoomba-medical"
+					//	"Acheron" = "mechoid-Medical",
+					//	"Shellguard Noble" = "Noble-MED",
+					//	"ZOOM-BA" = "zoomba-medical"
 					 )
 
 /obj/item/weapon/robot_module/robot/medical/crisis
 	pto_type = PTO_MEDICAL
 	vr_sprites = list(
 						"Handy" = "handy-med",
-						"Acheron" = "mechoid-Medical",
-						"Shellguard Noble" = "Noble-MED",
-						"ZOOM-BA" = "zoomba-crisis"
+					//	"Acheron" = "mechoid-Medical",
+					//	"Shellguard Noble" = "Noble-MED",
+					//	"ZOOM-BA" = "zoomba-crisis"
 					 )
 
 /obj/item/weapon/robot_module/robot/clerical/butler
@@ -86,26 +86,26 @@
 	vr_sprites = list(
 						"Handy - Service" = "handy-service",
 						"Handy - Hydro" = "handy-hydro",
-						"Acheron" = "mechoid-Service",
-						"Shellguard Noble" = "Noble-SRV",
-						"ZOOM-BA" = "zoomba-service"
+					//	"Acheron" = "mechoid-Service",
+					//	"Shellguard Noble" = "Noble-SRV",
+					//	"ZOOM-BA" = "zoomba-service"
 					 )
 
 /obj/item/weapon/robot_module/robot/clerical/general
 	pto_type = PTO_CIVILIAN
 	vr_sprites = list(
 						"Handy" = "handy-clerk",
-						"Acheron" = "mechoid-Service",
-						"Shellguard Noble" = "Noble-SRV",
-						"ZOOM-BA" = "zoomba-clerical"
+					//	"Acheron" = "mechoid-Service",
+					//	"Shellguard Noble" = "Noble-SRV",
+					//	"ZOOM-BA" = "zoomba-clerical"
 					 )
 
 /obj/item/weapon/robot_module/robot/janitor
 	pto_type = PTO_CIVILIAN
 	vr_sprites = list(
 						"Handy" = "handy-janitor",
-						"Acheron" = "mechoid-Janitor",
-						"Shellguard Noble" = "Noble-CLN",
+					//	"Acheron" = "mechoid-Janitor",
+					//	"Shellguard Noble" = "Noble-CLN",
 						"ZOOM-BA" = "zoomba-janitor"
 					 )
 
@@ -113,16 +113,16 @@
 	pto_type = PTO_SECURITY
 	vr_sprites = list(
 						"Handy" = "handy-sec",
-						"Acheron" = "mechoid-Security",
+					//	"Acheron" = "mechoid-Security",
 						"Shellguard Noble" = "Noble-SEC",
-						"ZOOM-BA" = "zoomba-security"
+					//	"ZOOM-BA" = "zoomba-security"
 					 )
 
 /obj/item/weapon/robot_module/robot/miner
 	pto_type = PTO_CARGO
 	vr_sprites = list(
 						"Handy" = "handy-miner",
-						"Acheron" = "mechoid-Miner",
+					//	"Acheron" = "mechoid-Miner",
 						"Shellguard Noble" = "Noble-DIG",
 						"ZOOM-BA" = "zoomba-miner"
 					 )
@@ -131,8 +131,8 @@
 	pto_type = PTO_CIVILIAN
 	vr_sprites = list(
 						"Handy" = "handy-standard",
-						"Acheron" = "mechoid-Standard",
-						"Shellguard Noble" = "Noble-STD",
+					//	"Acheron" = "mechoid-Standard",
+					//	"Shellguard Noble" = "Noble-STD",
 						"ZOOM-BA" = "zoomba-standard"
 					 )
 /obj/item/weapon/robot_module/robot/engineering/general
@@ -140,21 +140,21 @@
 	vr_sprites = list(
 						"Acheron" = "mechoid-Engineering",
 						"Shellguard Noble" = "Noble-ENG",
-						"ZOOM-BA" = "zoomba-engineering"
+					//	"ZOOM-BA" = "zoomba-engineering"
 					 )
 
 /obj/item/weapon/robot_module/robot/research
 	pto_type = PTO_SCIENCE
 	vr_sprites = list(
-						"Acheron" = "mechoid-Science",
-						"ZOOM-BA" = "zoomba-research"
+					//	"Acheron" = "mechoid-Science",
+					//	"ZOOM-BA" = "zoomba-research"
 					 )
 
 /obj/item/weapon/robot_module/robot/security/combat
 	pto_type = PTO_SECURITY
 	vr_sprites = list(
-						"Acheron" = "mechoid-Combat",
-						"ZOOM-BA" = "zoomba-combat"
+					//	"Acheron" = "mechoid-Combat",
+					//	"ZOOM-BA" = "zoomba-combat"
 					 )
 
 /obj/item/weapon/robot_module/robot/knine
@@ -254,7 +254,7 @@
 
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(2000)
 	synths += medicine
-	
+
 	var/obj/item/stack/medical/advanced/clotting/C = new (src)
 	C.uses_charge = 1
 	C.charge_costs = list(1000)
@@ -535,6 +535,7 @@
 	src.modules += new /obj/item/weapon/gripper/circuit(src)
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
+	src.modules += new /obj/item/weapon/rms(src)
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src)
 
 	//Painfully slow charger regen but high capacity. Also starts with low amount.

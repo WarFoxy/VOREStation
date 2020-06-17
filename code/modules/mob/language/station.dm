@@ -1,9 +1,9 @@
 /datum/language/diona_local
 	name = LANGUAGE_ROOTLOCAL
 	desc = "A complex language known instinctively by Dionaea, 'spoken' by emitting modulated radio waves. This version uses high frequency waves for quick communication at short ranges."
-	speech_verb = "creaks and rustles"
-	ask_verb = "creaks"
-	exclaim_verb = "rustles"
+	speech_verb = "скрипит и шуршит"
+	ask_verb = "скрипит"
+	exclaim_verb = "шуршит"
 	colour = "soghun"
 	key = "q"
 	machine_understands = 0
@@ -25,9 +25,9 @@
 /datum/language/unathi
 	name = LANGUAGE_UNATHI
 	desc = "The common language of the Moghes Hegemony, composed of sibilant hisses and rattles. Spoken natively by Unathi."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verb = "roars"
+	speech_verb = "шипит"
+	ask_verb = "шипит"
+	exclaim_verb = "ревет"
 	colour = "soghun"
 	key = "o"
 	flags = WHITELISTED
@@ -52,9 +52,9 @@
 /datum/language/tajaran
 	name = LANGUAGE_SIIK
 	desc = "The most prevalant language of Meralar, composed of expressive yowls and chirps. Native to the Tajaran."
-	speech_verb = "mrowls"
-	ask_verb = "mrowls"
-	exclaim_verb = "yowls"
+	speech_verb = "мяукает"
+	ask_verb = "мяукает"
+	exclaim_verb = "воет"
 	colour = "tajaran"
 	key = "j"
 	flags = WHITELISTED
@@ -75,8 +75,8 @@
 	name = LANGUAGE_AKHANI
 	desc = "The language of the sea-faring Njarir'Akhan Tajaran. Borrowing some elements from Siik, the language is distinctly more structured."
 	speech_verb = "chatters"
-	ask_verb = "mrowls"
-	exclaim_verb = "wails"
+	ask_verb = "мяукает"
+	exclaim_verb = "причитает"
 	colour = "akhani"
 	key = "h"
 	flags = WHITELISTED
@@ -114,10 +114,10 @@
 /datum/language/skrell
 	name = LANGUAGE_SKRELLIAN
 	desc = "A set of warbles and hums, the language itself a complex mesh of both melodic and rhythmic components, exceptionally capable of conveying intent and emotion of the speaker."
-	speech_verb = "warbles"
-	ask_verb = "warbles"
-	exclaim_verb = "sings"
-	whisper_verb = "hums"
+	speech_verb = "пропевает"
+	ask_verb = "воспевает"
+	exclaim_verb = "поет"
+	whisper_verb = "напевает"
 	colour = "skrell"
 	key = "k"
 	space_chance = 30
@@ -127,10 +127,10 @@
 /datum/language/skrellfar
 	name = LANGUAGE_SKRELLIANFAR
 	desc = "The most common language among the Skrellian Far Kingdoms. Has an even higher than usual concentration of inaudible phonemes."
-	speech_verb = "warbles"
-	ask_verb = "warbles"
-	exclaim_verb = "sings"
-	whisper_verb = "hums"
+	speech_verb = "пропевает"
+	ask_verb = "воспевает"
+	exclaim_verb = "поет"
+	whisper_verb = "напевает"
 	colour = "skrellfar"
 	key = "p"
 	space_chance = 30
@@ -145,8 +145,8 @@
 /datum/language/human
 	name = LANGUAGE_SOL_COMMON
 	desc = "A bastardized hybrid of many languages, including Chinese, English, French, and more; it is the common language of the Sol system."
-	speech_verb = "says"
-	whisper_verb = "whispers"
+	speech_verb = "говорит"
+	whisper_verb = "шепчет"
 	colour = "solcom"
 	key = "1"
 	flags = WHITELISTED
@@ -155,7 +155,7 @@
 /datum/language/human/get_spoken_verb(var/msg_end)
 	switch(msg_end)
 		if("!")
-			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
+			return pick("восклицает","shouts","кричит") //TODO: make the basic proc handle lists of verbs.
 		if("?")
 			return ask_verb
 	return speech_verb
@@ -172,9 +172,9 @@
 /datum/language/machine
 	name = LANGUAGE_EAL
 	desc = "An efficient language of encoded tones developed by positronics."
-	speech_verb = "whistles"
-	ask_verb = "chirps"
-	exclaim_verb = "whistles loudly"
+	speech_verb = "свистит"
+	ask_verb = "щебечет"
+	exclaim_verb = "громко свистит"
 	colour = "changeling"
 	key = "6"
 	flags = NO_STUTTER
@@ -190,9 +190,9 @@
 /datum/language/seromi
 	name = LANGUAGE_SCHECHI
 	desc = "A trilling language spoken by the diminutive Teshari."
-	speech_verb = "chirps"
-	ask_verb = "chirrups"
-	exclaim_verb = "trills"
+	speech_verb = "щебечет"
+	ask_verb = "щебетает"
+	exclaim_verb = "поет"
 	colour = "alien"
 	key = "v"
 	flags = WHITELISTED
@@ -210,9 +210,9 @@
 /datum/language/zaddat
 	name = LANGUAGE_ZADDAT
 	desc = "A harsh buzzing language created by the Zaddat following their exodus from their homeworld."
-	speech_verb = "buzzes"
-	ask_verb = "buzzes"
-	exclaim_verb = "croaks"
+	speech_verb = "жужжит"
+	ask_verb = "жужжит"
+	exclaim_verb = "хрипит"
 	colour = "zaddat"
 	key = "z"
 	flags = WHITELISTED
@@ -223,9 +223,9 @@
 	name = LANGUAGE_PROMETHEAN
 	desc = "A complex language composed of guttural noises and bioluminescent signals"
 	signlang_verb = list("flickers","flashes","rapidly flashes a light","quickly flickers a light")
-	speech_verb = "gurgles"
-	ask_verb = "gurgles"
-	exclaim_verb = "gurgles"
+	speech_verb = "булькает"
+	ask_verb = "булькает"
+	exclaim_verb = "булькает"
 	colour = "promethean"
 	key = "t"
 	flags = WHITELISTED | NONVERBAL

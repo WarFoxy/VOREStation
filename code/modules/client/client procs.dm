@@ -82,7 +82,7 @@
 					return
 				sane = TRUE
 				break
-		
+
 		if(!sane)
 			to_chat(src, "<span class='warning'>Sorry, that link doesn't appear to be valid. Please try again.</span>")
 			return
@@ -212,7 +212,7 @@
 	screen += void
 
 	if((prefs.lastchangelog != changelog_hash) && isnewplayer(src.mob)) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+		to_chat(src, "<span class='info'>Вы можете прочитать об обновлениях на Github проекта.</span>")
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config.aggressive_changelog)
 			src.changes()
@@ -359,14 +359,16 @@
 			log_admin("Couldn't perform IP check on [key] with [address]")
 
 	// VOREStation Edit Start - Department Hours
-	if(config.time_off)
-		var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours, total_hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
-		query_hours.Execute()
-		LAZYINITLIST(department_hours)
-		LAZYINITLIST(play_hours)
+	var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours, total_hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
+	if(query_hours.Execute())
 		while(query_hours.NextRow())
 			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
 			play_hours[query_hours.item[1]] = text2num(query_hours.item[3])
+	else
+		var/error_message = query_hours.ErrorMsg() // Need this out here since the spawn below will split the stack and who knows what'll happen by the time it runs
+		log_debug("Error loading play hours for [ckey]: [error_message]")
+		spawn(0)
+			alert(src, "The query to load your existing playtime failed. Screenshot this, give the screenshot to a developer, and reconnect, otherwise you may lose any recorded play hours (which may limit access to jobs). ERROR: [error_message]", "PROBLEMS!!")
 	// VOREStation Edit End - Department Hours
 
 	if(sql_id)
@@ -420,7 +422,7 @@ client/proc/MayRespawn()
 	return 0
 
 client/verb/character_setup()
-	set name = "Character Setup"
+	set name = "Настройка персонажа"
 	set category = "Preferences"
 	if(prefs)
 		prefs.ShowChoices(usr)

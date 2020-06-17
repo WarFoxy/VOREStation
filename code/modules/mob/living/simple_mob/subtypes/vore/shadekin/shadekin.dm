@@ -170,18 +170,18 @@
 		"It almost feels like you're sinking into the soft, doughy flesh!",
 		"You can feel the walls press in around you. Almost molten, so squishy!!"
 		)
-	B.emote_lists[DM_DRAIN] = list(
-		"The walls churn down on you heavily!! It's hard to move!",
-		"You can feel yourself getting weaker with every moment! The doughy walls sap your strength!",
-		"You're practically smothered in the oppressive heat of the creature's stomach!",
-		"It's hot, wet and tight!"
-		)
-	B.emote_lists[DM_HEAL] = list(
-		"The walls pulse against you almost rhythmically. It feels nice, almost like a massage.",
-		"You're gently squeezed in pleasant warmth, softly churned.",
-		"The doughy feel of the heavy flesh clinging to you makes you feel a little stronger with every passing moment.",
-		"The flesh caresses across your body gently as you're held."
-		)
+	//B.emote_lists[DM_DRAIN] = list(
+	//	"The walls churn down on you heavily!! It's hard to move!",
+	//	"You can feel yourself getting weaker with every moment! The doughy walls sap your strength!",
+	//	"You're practically smothered in the oppressive heat of the creature's stomach!",
+	//	"It's hot, wet and tight!"
+	//	)
+	//B.emote_lists[DM_HEAL] = list(
+	//	"The walls pulse against you almost rhythmically. It feels nice, almost like a massage.",
+	//	"You're gently squeezed in pleasant warmth, softly churned.",
+	//	"The doughy feel of the heavy flesh clinging to you makes you feel a little stronger with every passing moment.",
+	//	"The flesh caresses across your body gently as you're held."
+	//	)
 	B.digest_messages_prey = list(
 		"Your body is steadily softened more and more over time! Eventually you pass out. The creature's stomach rumbles powerfully as you are reduced to paste, processed for energy!",
 		"The creature's slimy gut lets out a heavy groan as you're slowly melted away. Gushing deeper through the creature.",

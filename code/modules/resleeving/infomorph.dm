@@ -332,7 +332,7 @@ var/list/infomorph_emotions = list(
 	verbs -= /mob/living/silicon/infomorph/proc/choose_verbs
 
 /mob/living/silicon/infomorph/lay_down()
-	set name = "Rest"
+	set name = "Отдохнуть"
 	set category = "IC"
 
 	resting = !resting

@@ -1,7 +1,7 @@
 // A fluff structure to visually look like an AI core.
 // Unlike the decoy AI mob, this won't explode if someone tries to card it.
 /obj/structure/prop/fake_ai
-	name = "AI"
+	name = "ИИ"
 	desc = ""
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "ai"

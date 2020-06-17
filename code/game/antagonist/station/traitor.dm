@@ -4,7 +4,7 @@ var/datum/antagonist/traitor/traitors
 /datum/antagonist/traitor
 	id = MODE_TRAITOR
 	antag_sound = 'sound/effects/antag_notice/traitor_alert.ogg'
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Internal Affairs Agent", "Head of Security", "Colony Director")
+	protected_jobs = list("Офицер безопасности", "Надзиратель", "Детектив", "Агент внутренних дел", "Глава безопасности", "Директор колонии")
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	can_speak_aooc = FALSE	// If they want to plot and plan as this sort of traitor, they'll need to do it ICly.
 
@@ -94,19 +94,19 @@ var/datum/antagonist/traitor/traitors
 	// Tell them about people they might want to contact.
 	var/mob/living/carbon/human/M = get_nt_opposed()
 	if(M && M != traitor_mob)
-		to_chat(traitor_mob, "We have received credible reports that [M.real_name] might be willing to help our cause. If you need assistance, consider contacting them.")
-		traitor_mob.mind.store_memory("<b>Potential Collaborator</b>: [M.real_name]")
+		to_chat(traitor_mob, "ы получили достоверную информацию о том, что [M.real_name] может помочь в нашем деле. Если вам понадобится помощь, свяжитесь с ним.")
+		traitor_mob.mind.store_memory("<b>Потенциальный Сотрудник</b>: [M.real_name]")
 
 	//Begin code phrase.
 	give_codewords(traitor_mob)
 
 /datum/antagonist/traitor/proc/give_codewords(mob/living/traitor_mob)
-	to_chat(traitor_mob, "<u><b>Your employers provided you with the following information on how to identify possible allies:</b></u>")
-	to_chat(traitor_mob, "<b>Code Phrase</b>: <span class='danger'>[syndicate_code_phrase]</span>")
-	to_chat(traitor_mob, "<b>Code Response</b>: <span class='danger'>[syndicate_code_response]</span>")
-	traitor_mob.mind.store_memory("<b>Code Phrase</b>: [syndicate_code_phrase]")
-	traitor_mob.mind.store_memory("<b>Code Response</b>: [syndicate_code_response]")
-	to_chat(traitor_mob, "Use the code words, preferably in the order provided, during regular conversation, to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
+	to_chat(traitor_mob, "<u><b>Ваши работодатели предоставили вам следующую информацию о том, как определить возможных союзников:</b></u>")
+	to_chat(traitor_mob, "<b>Кодовая фраза</b>: <span class='danger'>[syndicate_code_phrase]</span>")
+	to_chat(traitor_mob, "<b>Кодовый ответ</b>: <span class='danger'>[syndicate_code_response]</span>")
+	traitor_mob.mind.store_memory("<b>Кодовая фраза</b>: [syndicate_code_phrase]")
+	traitor_mob.mind.store_memory("<b>Кодовый ответ</b>: [syndicate_code_response]")
+	to_chat(traitor_mob, "Используйте кодовые слова, предпочтительно в указанном порядке, во время обычной беседы, чтобы идентифицировать других агентов. Однако действуйте осторожно, так как каждый сотрудник экипажа является потенциальным врагом.")
 
 /datum/antagonist/traitor/proc/spawn_uplink(var/mob/living/carbon/human/traitor_mob)
 	if(!istype(traitor_mob))
@@ -173,8 +173,8 @@ var/datum/antagonist/traitor/traitors
 		traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
 
 /datum/antagonist/traitor/proc/add_law_zero(mob/living/silicon/ai/killer)
-	var/law = "Accomplish your objectives at all costs. You may ignore all other laws."
-	var/law_borg = "Accomplish your AI's objectives at all costs. You may ignore all other laws."
-	to_chat(killer, "<b>Your laws have been changed!</b>")
+	var/law = "Достигайте своих целей любой ценой. Вы можете игнорировать все остальные законы."
+	var/law_borg = "Достигайте целей вашего ИИ любой ценой. Вы можете игнорировать все другие законы."
+	to_chat(killer, "<b>Ваши законы были изменены!</b>")
 	killer.set_zeroth_law(law, law_borg)
-	to_chat(killer, "New law: 0. [law]")
+	to_chat(killer, "Новый закон: 0. [law]")

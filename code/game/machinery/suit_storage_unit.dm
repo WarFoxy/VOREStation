@@ -658,9 +658,30 @@
 	departments = list("Pilot Blue","Pilot")
 
 /obj/machinery/suit_cycler/vintage
-	name = "Vintage suit cycler"
+	name = "Vintage Crew suit cycler"
 	model_text = "Vintage"
-	departments = list("Vintage Crew","Vintage Engineering","Vintage Marine","Vintage Medical","Vintage Officer")
+	departments = list("Vintage Crew")
+	req_access = null
+
+/obj/machinery/suit_cycler/vintage/pilot
+	name = "Vintage Pilot suit cycler"
+	model_text = "Vintage Pilot"
+	departments = list("Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)")
+
+/obj/machinery/suit_cycler/vintage/medsci
+	name = "Vintage MedSci suit cycler"
+	model_text = "Vintage MedSci"
+	departments = list("Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)")
+
+/obj/machinery/suit_cycler/vintage/rugged
+	name = "Vintage Ruggedized suit cycler"
+	model_text = "Vintage Ruggedized"
+	departments = list("Vintage Engineering","Vintage Marine","Vintage Officer","Vintage Mercenary")
+
+/obj/machinery/suit_cycler/vintage/omni
+	name = "Vintage Master suit cycler"
+	model_text = "Vintage Master"
+	departments = list("Vintage Crew","Vintage Engineering","Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","Vintage Marine","Vintage Officer","Vintage Mercenary")
 
 /obj/machinery/suit_cycler/vintage/Initialize()
 	species -= SPECIES_TESHARI
@@ -775,7 +796,7 @@
 
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
-	departments = list("Engineering","Mining","Medical","Security","Atmospherics","HAZMAT","Construction","Biohazard","Crowd Control","Security EVA","Emergency Medical Response","^%###^%$", "Charring","Vintage Crew","Vintage Engineering","Vintage Marine","Vintage Medical","Vintage Officer")
+	departments = list("Engineering","Mining","Medical","Security","Atmospherics","HAZMAT","Construction","Biohazard","Crowd Control","Security EVA","Emergency Medical Response","^%###^%$", "Charring")
 	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_VULPKANIN) //VORESTATION EDIT
 
 	emagged = 1
@@ -800,33 +821,33 @@
 
 	user.set_machine(src)
 
-	var/dat = "<HEAD><TITLE>Suit Cycler Interface</TITLE></HEAD>"
+	var/dat = "<meta charset=\"utf-8\"><HEAD><TITLE>Suit Cycler Interface</TITLE></HEAD>"
 
 	if(active)
-		dat+= "<br><font color='red'><B>The [model_text ? "[model_text] " : ""]suit cycler is currently in use. Please wait...</b></font>"
+		dat+= "<br><font color='red'><B>Циклер [model_text ? "[model_text] " : ""]костюмов в настоящее время используется. Пожалуйста подождите...</b></font>"
 
 	else if(locked)
-		dat += "<br><font color='red'><B>The [model_text ? "[model_text] " : ""]suit cycler is currently locked. Please contact your system administrator.</b></font>"
+		dat += "<br><font color='red'><B>Циклер [model_text ? "[model_text] " : ""]костюмов в настоящее время заблокирован. Пожалуйста, свяжитесь с вашим системным администратором.</b></font>"
 		if(allowed(user))
-			dat += "<br><a href='?src=\ref[src];toggle_lock=1'>\[unlock unit\]</a>"
+			dat += "<br><a href='?src=\ref[src];toggle_lock=1'>\[разблок.\]</a>"
 	else
-		dat += "<h1>Suit cycler</h1>"
-		dat += "<B>Welcome to the [model_text ? "[model_text] " : ""]suit cycler control panel. <a href='?src=\ref[src];toggle_lock=1'>\[lock unit\]</a></B><HR>"
+		dat += "<h1>Циклер костюмов</h1>"
+		dat += "<B>Добро пожаловать в контрольную панель циклера [model_text ? "[model_text] " : ""]костюмов. <a href='?src=\ref[src];toggle_lock=1'>\[заблок.\]</a></B><HR>"
 
-		dat += "<h2>Maintenance</h2>"
-		dat += "<b>Helmet: </b> [helmet ? "\the [helmet]" : "no helmet stored" ]. <A href='?src=\ref[src];eject_helmet=1'>\[eject\]</a><br/>"
-		dat += "<b>Suit: </b> [suit ? "\the [suit]" : "no suit stored" ]. <A href='?src=\ref[src];eject_suit=1'>\[eject\]</a>"
+		dat += "<h2>Обеспечение</h2>"
+		dat += "<b>Шлем: </b> [helmet ? "\the [helmet]" : "no helmet stored" ]. <A href='?src=\ref[src];eject_helmet=1'>\[извлечь\]</a><br/>"
+		dat += "<b>Костюм: </b> [suit ? "\the [suit]" : "no suit stored" ]. <A href='?src=\ref[src];eject_suit=1'>\[извлечь\]</a>"
 
 		if(can_repair && suit && istype(suit))
 			dat += "[(suit.damage ? " <A href='?src=\ref[src];repair_suit=1'>\[repair\]</a>" : "")]"
 
-		dat += "<br/><b>UV decontamination systems:</b> <font color = '[emagged ? "red'>SYSTEM ERROR" : "green'>READY"]</font><br>"
-		dat += "Output level: [radiation_level]<br>"
-		dat += "<A href='?src=\ref[src];select_rad_level=1'>\[select power level\]</a> <A href='?src=\ref[src];begin_decontamination=1'>\[begin decontamination cycle\]</a><br><hr>"
+		dat += "<br/><b>УФ-система обеззараживания:</b> <font color = '[emagged ? "red'>ОШИБКА СИСТЕМЫ" : "green'>ГОТОВО"]</font><br>"
+		dat += "Уровень рад: [radiation_level]<br>"
+		dat += "<A href='?src=\ref[src];select_rad_level=1'>\[выбрать уровень\]</a> <A href='?src=\ref[src];begin_decontamination=1'>\[обеззаразить\]</a><br><hr>"
 
-		dat += "<h2>Customisation</h2>"
-		dat += "<b>Target product:</b> <A href='?src=\ref[src];select_department=1'>[target_department]</a>, <A href='?src=\ref[src];select_species=1'>[target_species]</a>."
-		dat += "<A href='?src=\ref[src];apply_paintjob=1'><br>\[apply customisation routine\]</a><br><hr>"
+		dat += "<h2>Настройка размера и типа</h2>"
+		dat += "<b>На кого и зачем:</b> <A href='?src=\ref[src];select_department=1'>[target_department]</a>, <A href='?src=\ref[src];select_species=1'>[target_species]</a>."
+		dat += "<A href='?src=\ref[src];apply_paintjob=1'><br>\[применить настройки\]</a><br><hr>"
 
 	if(panel_open)
 		wires.Interact(user)
@@ -845,16 +866,16 @@
 		helmet.loc = get_turf(src)
 		helmet = null
 	else if(href_list["select_department"])
-		var/choice = input("Please select the target department paintjob.","Suit cycler",null) as null|anything in departments
+		var/choice = input("Пожалуйста, выберите отдел для данного костюма.","Suit cycler",null) as null|anything in departments
 		if(choice) target_department = choice
 	else if(href_list["select_species"])
-		var/choice = input("Please select the target species configuration.","Suit cycler",null) as null|anything in species
+		var/choice = input("Пожалуйста, выберите расу под которую будет изменен костюм.","Suit cycler",null) as null|anything in species
 		if(choice) target_species = choice
 	else if(href_list["select_rad_level"])
 		var/choices = list(1,2,3)
 		if(emagged)
 			choices = list(1,2,3,4,5)
-		radiation_level = input("Please select the desired radiation level.","Suit cycler",null) as null|anything in choices
+		radiation_level = input("Пожалуйста, выберите нужный уровень защиты от радиации.","Suit cycler",null) as null|anything in choices
 	else if(href_list["repair_suit"])
 
 		if(!suit || !can_repair) return
@@ -878,9 +899,9 @@
 
 		if(allowed(usr))
 			locked = !locked
-			to_chat(usr, "You [locked ? "" : "un"]lock \the [src].")
+			to_chat(usr, "Вы [locked ? "заблокировали" : "разблокировали"] [src].")
 		else
-			to_chat(usr, "<span class='danger'>Access denied.</span>")
+			to_chat(usr, "<span class='danger'>Доступ запрещен.</span>")
 
 	else if(href_list["begin_decontamination"])
 
@@ -940,7 +961,7 @@
 
 /obj/machinery/suit_cycler/proc/finished_job()
 	var/turf/T = get_turf(src)
-	T.visible_message("[bicon(src)]<span class='notice'>The [src] beeps several times.</span>")
+	T.visible_message("[bicon(src)]<span class='notice'>[src] издает несколько звуковых сигналов.</span>")
 	icon_state = initial(icon_state)
 	active = 0
 	playsound(src, 'sound/machines/boobeebeep.ogg', 50)
@@ -956,7 +977,7 @@
 	return
 
 /obj/machinery/suit_cycler/verb/leave()
-	set name = "Eject Cycler"
+	set name = "Извлечь все из циклера"
 	set category = "Object"
 	set src in oview(1)
 
@@ -968,7 +989,7 @@
 /obj/machinery/suit_cycler/proc/eject_occupant(mob/user as mob)
 
 	if(locked || active)
-		to_chat(user, "<span class='warning'>The cycler is locked.</span>")
+		to_chat(user, "<span class='warning'>Циклер закрыт.</span>")
 		return
 
 	if(!occupant)
@@ -1084,7 +1105,10 @@
 		if("Vintage Engineering")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/engineering
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/engineering
-		if("Vintage Medical")
+		if("Vintage Medical (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/alt
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical
+		if("Vintage Medical (Closed Helm)")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical
 		if("Vintage Marine")
@@ -1093,6 +1117,21 @@
 		if("Vintage Officer")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/officer
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/officer
+		if("Vintage Pilot (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot
+		if("Vintage Pilot (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot
+		if("Vintage Research (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/alt
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research
+		if("Vintage Research (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research
+		if("Vintage Mercenary")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary
 		//BEGIN: Space for additional downstream variants
 		//VOREStation Addition Start
 		if("Director")
@@ -1107,7 +1146,10 @@
 		if("Talon Engineering")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/engineering/talon
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/engineering/talon
-		if("Talon Medical")
+		if("Talon Medical (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical/talon
+		if("Talon Medical (Closed Helm)")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/talon
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical/talon
 		if("Talon Marine")
@@ -1116,9 +1158,24 @@
 		if("Talon Officer")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/officer/talon
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/officer/talon
+		if("Talon Pilot (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot/talon
+		if("Talon Pilot (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot/talon
+		if("Talon Research (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research/talon
+		if("Talon Research (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research/talon
+		if("Talon Mercenary")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary/talon
 		//VOREStation Addition End
 		//END: downstream variant space
-	
+
 	//look at this! isn't it beautiful? -KK (well ok not beautiful but it's a lot cleaner)
 	if(helmet)
 		var/obj/item/clothing/H = new parent_helmet

@@ -2,9 +2,9 @@
 /datum/gear/gloves
 	display_name = "gloves, black"
 	path = /obj/item/clothing/gloves/black
-	cost = 2
+	cost = 1
 	slot = slot_gloves
-	sort_category = "Gloves and Handwear"
+	sort_category = "Перчатки"
 
 /datum/gear/gloves/blue
 	display_name = "gloves, blue"
@@ -29,10 +29,12 @@
 /datum/gear/gloves/latex
 	display_name = "gloves, latex"
 	path = /obj/item/clothing/gloves/sterile/latex
+	cost = 2
 
 /datum/gear/gloves/nitrile
 	display_name = "gloves, nitrile"
 	path = /obj/item/clothing/gloves/sterile/nitrile
+	cost = 2
 
 /datum/gear/gloves/orange
 	display_name = "gloves, orange"
@@ -70,7 +72,7 @@
 /datum/gear/gloves/forensic
 	display_name = "gloves, forensic (Detective)"
 	path = /obj/item/clothing/gloves/forensic
-	allowed_roles = list("Detective")
+	allowed_roles = list("Детектив")
 
 /datum/gear/gloves/fingerless
 	display_name = "fingerless gloves"

@@ -139,8 +139,8 @@
 	corpsepocket1 = /obj/item/weapon/bikehorn
 	corpseback = /obj/item/weapon/storage/backpack/clown
 	corpseid = 1
-	corpseidjob = "Clown"
-	corpseidaccess = "Clown"
+	corpseidjob = "Клоун"
+	corpseidaccess = "Клоун"
 
 
 

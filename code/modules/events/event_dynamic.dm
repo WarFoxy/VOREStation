@@ -33,8 +33,8 @@ var/list/event_last_fired = list()
 	//var/engineer_count = number_active_with_role("Engineer")
 	//var/security_count = number_active_with_role("Security")
 	//var/medical_count = number_active_with_role("Medical")
-	//var/AI_count = number_active_with_role("AI")
-	//var/janitor_count = number_active_with_role("Janitor")
+	//var/AI_count = number_active_with_role("ИИ")
+	//var/janitor_count = number_active_with_role("Уборщик")
 
 	// Maps event names to event chances
 	// For each chance, 100 represents "normal likelihood", anything below 100 is "reduced likelihood", anything above 100 is "increased likelihood"
@@ -56,23 +56,23 @@ var/list/event_last_fired = list()
 		possibleEvents[/datum/event/money_hacker] = max(min(25, player_list.len) * 4, 200)
 
 
-	possibleEvents[/datum/event/carp_migration] = 20 + 10 * active_with_role["Engineer"]
-	possibleEvents[/datum/event/brand_intelligence] = 20 + 25 * active_with_role["Janitor"]
+	possibleEvents[/datum/event/carp_migration] = 20 + 10 * active_with_role["Инженер"]
+	possibleEvents[/datum/event/brand_intelligence] = 20 + 25 * active_with_role["Уборщик"]
 
-	possibleEvents[/datum/event/rogue_drone] = 5 + 25 * active_with_role["Engineer"] + 25 * active_with_role["Security"]
-	possibleEvents[/datum/event/infestation] = 100 + 100 * active_with_role["Janitor"]
+	possibleEvents[/datum/event/rogue_drone] = 5 + 25 * active_with_role["Инженер"] + 25 * active_with_role["Security"]
+	possibleEvents[/datum/event/infestation] = 100 + 100 * active_with_role["Уборщик"]
 
-	possibleEvents[/datum/event/communications_blackout] = 50 + 25 * active_with_role["AI"] + active_with_role["Scientist"] * 25
-	possibleEvents[/datum/event/ionstorm] = active_with_role["AI"] * 25 + active_with_role["Cyborg"] * 25 + active_with_role["Engineer"] * 10 + active_with_role["Scientist"] * 5
-	possibleEvents[/datum/event/grid_check] = 25 + 10 * active_with_role["Engineer"]
-	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Janitor"] + 5 * active_with_role["Engineer"]
-	possibleEvents[/datum/event/wallrot] = 30 * active_with_role["Engineer"] + 50 * active_with_role["Gardener"]
+	possibleEvents[/datum/event/communications_blackout] = 50 + 25 * active_with_role["ИИ"] + active_with_role["Ученый"] * 25
+	possibleEvents[/datum/event/ionstorm] = active_with_role["ИИ"] * 25 + active_with_role["Киборг"] * 25 + active_with_role["Инженер"] * 10 + active_with_role["Ученый"] * 5
+	possibleEvents[/datum/event/grid_check] = 25 + 10 * active_with_role["Инженер"]
+	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Уборщик"] + 5 * active_with_role["Engineer"]
+	possibleEvents[/datum/event/wallrot] = 30 * active_with_role["Инженер"] + 50 * active_with_role["Садовник"]
 
 	if(!spacevines_spawned)
-		possibleEvents[/datum/event/spacevine] = 10 + 5 * active_with_role["Engineer"]
+		possibleEvents[/datum/event/spacevine] = 10 + 5 * active_with_role["Инженер"]
 	if(minutes_passed >= 30) // Give engineers time to set up engine
-		possibleEvents[/datum/event/meteor_wave] = 10 * active_with_role["Engineer"]
-		possibleEvents[/datum/event/blob] = 10 * active_with_role["Engineer"]
+		possibleEvents[/datum/event/meteor_wave] = 10 * active_with_role["Инженер"]
+		possibleEvents[/datum/event/blob] = 10 * active_with_role["Инженер"]
 
 	if(active_with_role["Medical"] > 0)
 		possibleEvents[/datum/event/radiation_storm] = active_with_role["Medical"] * 10
@@ -179,14 +179,14 @@ var/list/event_last_fired = list()
 // Note that this isn't sorted by department, because e.g. having a roboticist shouldn't make meteors spawn.
 /proc/number_active_with_role()
 	var/list/active_with_role = list()
-	active_with_role["Engineer"] = 0
+	active_with_role["Инженер"] = 0
 	active_with_role["Medical"] = 0
 	active_with_role["Security"] = 0
-	active_with_role["Scientist"] = 0
-	active_with_role["AI"] = 0
-	active_with_role["Cyborg"] = 0
-	active_with_role["Janitor"] = 0
-	active_with_role["Gardener"] = 0
+	active_with_role["Ученый"] = 0
+	active_with_role["ИИ"] = 0
+	active_with_role["Киборг"] = 0
+	active_with_role["Уборщик"] = 0
+	active_with_role["Садовник"] = 0
 
 	for(var/mob/M in player_list)
 		if(!M.mind || !M.client || M.client.is_afk(10 MINUTES)) // longer than 10 minutes AFK counts them as inactive
@@ -198,16 +198,16 @@ var/list/event_last_fired = list()
 			var/mob/living/silicon/robot/R = M
 			if(R.module)
 				if(istype(R.module, /obj/item/weapon/robot_module/robot/engineering))
-					active_with_role["Engineer"]++
+					active_with_role["Инженер"]++
 				else if(istype(R.module, /obj/item/weapon/robot_module/robot/security))
 					active_with_role["Security"]++
 				else if(istype(R.module, /obj/item/weapon/robot_module/robot/medical))
 					active_with_role["Medical"]++
 				else if(istype(R.module, /obj/item/weapon/robot_module/robot/research))
-					active_with_role["Scientist"]++
+					active_with_role["Ученый"]++
 
 		if(M.mind.assigned_role in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
-			active_with_role["Engineer"]++
+			active_with_role["Инженер"]++
 
 		if(M.mind.assigned_role in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 			active_with_role["Medical"]++
@@ -216,18 +216,18 @@ var/list/event_last_fired = list()
 			active_with_role["Security"]++
 
 		if(M.mind.assigned_role in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
-			active_with_role["Scientist"]++
+			active_with_role["Ученый"]++
 
-		if(M.mind.assigned_role == "AI")
-			active_with_role["AI"]++
+		if(M.mind.assigned_role == "ИИ")
+			active_with_role["ИИ"]++
 
-		if(M.mind.assigned_role == "Cyborg")
-			active_with_role["Cyborg"]++
+		if(M.mind.assigned_role == "Киборг")
+			active_with_role["Киборг"]++
 
-		if(M.mind.assigned_role == "Janitor")
-			active_with_role["Janitor"]++
+		if(M.mind.assigned_role == "Уборщик")
+			active_with_role["Уборщик"]++
 
-		if(M.mind.assigned_role == "Gardener")
-			active_with_role["Gardener"]++
+		if(M.mind.assigned_role == "Садовник")
+			active_with_role["Садовник"]++
 
 	return active_with_role

@@ -3,19 +3,19 @@
 	id_type = /obj/item/weapon/card/id/assistant
 
 /decl/hierarchy/outfit/job/assistant/visitor
-	name = OUTFIT_JOB_NAME("Visitor")
-	id_pda_assignment = "Visitor"
+	name = OUTFIT_JOB_NAME("Посетитель")
+	id_pda_assignment = "Посетитель"
 	uniform = /obj/item/clothing/under/assistantformal
 
 //VOREStation Add - Interns
 /decl/hierarchy/outfit/job/assistant/intern
-	name = OUTFIT_JOB_NAME("Intern")
+	name = OUTFIT_JOB_NAME("Интерн")
 	id_type = /obj/item/weapon/card/id/civilian
 //VOREStation Add End - Interns
 
 /decl/hierarchy/outfit/job/assistant/resident
-	name = OUTFIT_JOB_NAME("Resident")
-	id_pda_assignment = "Resident"
+	name = OUTFIT_JOB_NAME("Резидент")
+	id_pda_assignment = "Резидент"
 	uniform = /obj/item/clothing/under/color/white
 
 /decl/hierarchy/outfit/job/service
@@ -23,7 +23,7 @@
 	hierarchy_type = /decl/hierarchy/outfit/job/service
 
 /decl/hierarchy/outfit/job/service/bartender
-	name = OUTFIT_JOB_NAME("Bartender")
+	name = OUTFIT_JOB_NAME("Бармен")
 	uniform = /obj/item/clothing/under/rank/bartender
 	id_type = /obj/item/weapon/card/id/civilian
 	pda_type = /obj/item/device/pda/bar
@@ -35,12 +35,12 @@
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/service/bartender/barista
-	name = OUTFIT_JOB_NAME("Barista")
-	id_pda_assignment = "Barista"
+	name = OUTFIT_JOB_NAME("Бариста")
+	id_pda_assignment = "Бариста"
 	backpack_contents = null
 
 /decl/hierarchy/outfit/job/service/chef
-	name = OUTFIT_JOB_NAME("Chef")
+	name = OUTFIT_JOB_NAME("Шеф-повар")
 	uniform = /obj/item/clothing/under/rank/chef
 	suit = /obj/item/clothing/suit/chef
 	head = /obj/item/clothing/head/chefhat
@@ -48,8 +48,8 @@
 	pda_type = /obj/item/device/pda/chef
 
 /decl/hierarchy/outfit/job/service/chef/cook
-	name = OUTFIT_JOB_NAME("Cook")
-	id_pda_assignment = "Cook"
+	name = OUTFIT_JOB_NAME("Повар")
+	id_pda_assignment = "Повар"
 
 // Rykka adds Server Outfit
 
@@ -60,7 +60,7 @@
 // End Outfit addition
 
 /decl/hierarchy/outfit/job/service/gardener
-	name = OUTFIT_JOB_NAME("Gardener")
+	name = OUTFIT_JOB_NAME("Садовник")
 	uniform = /obj/item/clothing/under/rank/hydroponics
 	suit = /obj/item/clothing/suit/storage/apron
 	gloves = /obj/item/clothing/gloves/botanic_leather
@@ -72,13 +72,13 @@
 	pda_type = /obj/item/device/pda/botanist
 
 /decl/hierarchy/outfit/job/service/janitor
-	name = OUTFIT_JOB_NAME("Janitor")
+	name = OUTFIT_JOB_NAME("Уборщик")
 	uniform = /obj/item/clothing/under/rank/janitor
 	id_type = /obj/item/weapon/card/id/civilian
 	pda_type = /obj/item/device/pda/janitor
 
 /decl/hierarchy/outfit/job/librarian
-	name = OUTFIT_JOB_NAME("Librarian")
+	name = OUTFIT_JOB_NAME("Библиотекарь")
 	uniform = /obj/item/clothing/under/suit_jacket/red
 	l_hand = /obj/item/weapon/barcodescanner
 	id_type = /obj/item/weapon/card/id/civilian
@@ -96,14 +96,14 @@
 	pda_type = /obj/item/device/pda/lawyer
 
 /decl/hierarchy/outfit/job/chaplain
-	name = OUTFIT_JOB_NAME("Chaplain")
+	name = OUTFIT_JOB_NAME("Священник")
 	uniform = /obj/item/clothing/under/rank/chaplain
 	l_hand = /obj/item/weapon/storage/bible
 	id_type = /obj/item/weapon/card/id/civilian
 	pda_type = /obj/item/device/pda/chaplain
 
 /decl/hierarchy/outfit/job/explorer
-	name = OUTFIT_JOB_NAME("Explorer")
+	name = OUTFIT_JOB_NAME("Искатель")
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer
 	mask = /obj/item/clothing/mask/gas/explorer
@@ -115,4 +115,4 @@
 	pda_slot = slot_belt
 	pda_type = /obj/item/device/pda/cargo // Brown looks more rugged
 	r_pocket = /obj/item/device/gps/explorer
-	id_pda_assignment = "Explorer"
+	id_pda_assignment = "Искатель"

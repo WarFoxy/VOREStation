@@ -17,7 +17,7 @@ var/list/SKILL_ENGINEER = list("field" = "Engineering", "EVA" = SKILL_BASIC, "co
 var/list/SKILL_ORGAN_ROBOTICIST = list("field" = "Science", "devices" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "computer" = SKILL_ADEPT, "anatomy" = SKILL_BASIC)
 var/list/SKILL_SECURITY_OFFICER = list("field" = "Security", "combat" = SKILL_BASIC, "weapons" = SKILL_ADEPT, "law" = SKILL_ADEPT, "forensics" = SKILL_BASIC)
 var/list/SKILL_CHEMIST = list("field" = "Science", "chemistry" = SKILL_ADEPT, "science" = SKILL_ADEPT, "medical" = SKILL_BASIC, "devices" = SKILL_BASIC)
-var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKILL_ORGAN_ROBOTICIST, "Security Officer" = SKILL_SECURITY_OFFICER, "Chemist" = SKILL_CHEMIST)
+var/global/list/SKILL_PRE = list("Инженер" = SKILL_ENGINEER, "Роботехник" = SKILL_ORGAN_ROBOTICIST, "Офицер безопасности" = SKILL_SECURITY_OFFICER, "Химик" = SKILL_CHEMIST)
 
 /datum/skill/management
 	ID = "management"
@@ -203,7 +203,7 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 	HTML += "</table>"
 
 	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=show_skills;size=600x800")
+	user << browse(HTML, "<meta charset=\"utf-8\">window=show_skills;size=600x800")
 	return
 
 /mob/living/carbon/human/verb/show_skills()

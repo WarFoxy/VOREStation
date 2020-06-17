@@ -68,16 +68,16 @@
 			// VOREStation Edit - End
 			if(istype(H) && health < config.health_threshold_crit)
 				if(!H.check_has_mouth())
-					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
+					to_chat(H, "<span class='danger'>У вас нет рта, вы не можете выполнить ИВЛ!</span>")
 					return
 				if(!check_has_mouth())
-					to_chat(H, "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>")
+					to_chat(H, "<span class='danger'>У них нет рта, вы не можете выполнить ИВЛ!</span>")
 					return
 				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove your mask!</span>")
+					to_chat(H, "<span class='notice'>Снимите свою маску!</span>")
 					return 0
 				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
+					to_chat(H, "<span class='notice'>Снимите маску [src]!</span>")
 					return 0
 
 				if (!cpr_time)

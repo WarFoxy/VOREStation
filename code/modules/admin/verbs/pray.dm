@@ -1,9 +1,9 @@
 /mob/verb/pray(msg as text)
 	set category = "IC"
-	set name = "Pray"
+	set name = "Молиться"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
+		to_chat(usr, "<font color='red'>Речь в настоящее время отключена администратором.</font>")
 		return
 
 	msg = sanitize(msg)
@@ -13,18 +13,18 @@
 		if(msg)
 			client.handle_spam_prevention(MUTE_PRAY)
 			if(usr.client.prefs.muted & MUTE_PRAY)
-				to_chat(usr, "<font color='red'> You cannot pray (muted).</font>")
+				to_chat(usr, "<font color='red'> Вы не можете молиться (мут).</font>")
 				return
 
 	var/image/cross = image('icons/obj/storage.dmi',"bible")
-	msg = "<font color='blue'>[bicon(cross)] <b><font color=purple>PRAY: </font>[key_name(src, 1)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[src]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[src]'>SM</A>) ([admin_jump_link(src, src)]) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=holder;adminspawncookie=\ref[src]'>SC</a>) (<A HREF='?_src_=holder;adminsmite=\ref[src]'>SMITE</a>):</b> [msg]</font>"
+	msg = "<font color='blue'>[bicon(cross)] <b><font color=purple>МОЛИТСЯ: </font>[key_name(src, 1)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[src]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[src]'>SM</A>) ([admin_jump_link(src, src)]) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=holder;adminspawncookie=\ref[src]'>SC</a>) (<A HREF='?_src_=holder;adminsmite=\ref[src]'>SMITE</a>):</b> [msg]</font>"
 
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN|R_EVENT & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/admin/show_chat_prayers))
 				to_chat(C,msg)
 				C << 'sound/effects/ding.ogg'
-	to_chat(usr, "Your prayers have been received by the gods.")
+	to_chat(usr, "Ваши молитвы были услышаны богами.")
 
 	feedback_add_details("admin_verb","PR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	//log_admin("HELP: [key_name(src)]: [msg]")

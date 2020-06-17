@@ -28,7 +28,7 @@ var/list/flooring_types
 	var/icon
 	var/icon_base // initial base icon_state without edges or corners.
 
-	var/has_base_range // This will pick between a range of 0 - x. Number icon_states accordingly. 
+	var/has_base_range // This will pick between a range of 0 - x. Number icon_states accordingly.
 					   // Note that this will append a 0 - x number automatically to icon_base, but NOT the dmi. Do icon_base = "grass", but name grass0 inside the dmi. etc etc.
 	var/has_damage_range
 	var/has_burn_range
@@ -43,7 +43,7 @@ var/list/flooring_types
 	var/descriptor = "tiles"
 	var/flags
 	var/can_paint
-	var/list/footstep_sounds = list() // key=species name, value = list of sounds, 
+	var/list/footstep_sounds = list() // key=species name, value = list of sounds,
 									  // For instance, footstep_sounds = list("key" = list(sound.ogg))
 	var/is_plating = FALSE
 	var/list/flooring_cache = list() // Cached overlays for our edges and corners and junk
@@ -117,7 +117,7 @@ var/list/flooring_types
 /decl/flooring/proc/get_plating_type(var/turf/T)
 	return plating_type
 
-/decl/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = ABOVE_TURF_LAYER)
+/decl/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = BUILTIN_DECAL_LAYER)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
 		I.layer = layer
@@ -428,6 +428,22 @@ var/list/flooring_types
 	icon_base = "freezer"
 	build_type = /obj/item/stack/tile/floor/freezer
 
+/decl/flooring/wmarble
+	name = "marble floor"
+	desc = "Very regal white marble flooring."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "lightmarble"
+	build_type = /obj/item/stack/tile/wmarble
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/bmarble
+	name = "marble floor"
+	desc = "Very regal black marble flooring."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "darkmarble"
+	build_type = /obj/item/stack/tile/bmarble
+	flags = TURF_REMOVE_CROWBAR
+
 /decl/flooring/wood
 	name = "wooden floor"
 	desc = "Polished redwood planks."
@@ -498,6 +514,8 @@ var/list/flooring_types
 	desc = "Lava. Y'know. Sets you on fire. AAAAAAAAAAA"
 	icon = 'icons/turf/outdoors.dmi'
 	icon_base = "lava"
+	is_plating = TRUE
+	flags = 0
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/lava1.ogg',
 		'sound/effects/footstep/lava2.ogg',

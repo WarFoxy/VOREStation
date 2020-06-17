@@ -10,8 +10,8 @@
 	departments_managed = list(DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO, DEPARTMENT_PLANET)
 	dept_time_required = 60
 
-	alt_titles = list("Crew Resources Officer" = /datum/alt_title/cro,
-					  "Deputy Director" = /datum/alt_title/deputy_director)
+	alt_titles = list("Старший офицер" = /datum/alt_title/cro,
+					  "Зам. директора" = /datum/alt_title/deputy_director)
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
@@ -27,7 +27,7 @@
 			            access_hop, access_RC_announce, access_keycard_auth)
 
 /datum/alt_title/deputy_director
-	title = "Deputy Director"
+	title = "Зам. директора"
 
 /datum/job/secretary
 	disallow_jobhop = TRUE

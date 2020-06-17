@@ -18,4 +18,4 @@
 /datum/gear/head/detective_alt
 	display_name = "cyberscope headgear, detective"
 	path = /obj/item/clothing/head/helmet/detective_alt
-	allowed_roles = list("Head of Security", "Detective")
+	allowed_roles = list("Глава безопасности", "Детектив")

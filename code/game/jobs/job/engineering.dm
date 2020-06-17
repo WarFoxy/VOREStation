@@ -2,7 +2,7 @@
 //		Chief Engineer
 //////////////////////////////////
 /datum/job/chief_engineer
-	title = "Chief Engineer"
+	title = "Главный инженер"
 	flag = CHIEF
 	departments_managed = list(DEPARTMENT_ENGINEERING)
 	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_COMMAND)
@@ -11,7 +11,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "Директором Колонии"
 	selection_color = "#7F6E2C"
 	req_admin_notify = 1
 	economic_modifier = 10
@@ -39,20 +39,20 @@
 //			Engineer
 //////////////////////////////////
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Инженер"
 	flag = ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the Chief Engineer"
+	supervisors = "Главным Инженером"
 	selection_color = "#5B4D20"
 	economic_modifier = 5
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
 	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
-	alt_titles = list("Maintenance Technician" = /datum/alt_title/maint_tech,
-						"Engine Technician" = /datum/alt_title/engine_tech, "Electrician" = /datum/alt_title/electrician)
+	alt_titles = list("Ремонтник" = /datum/alt_title/maint_tech,
+						"Инженер двигателей" = /datum/alt_title/engine_tech, "Электрик" = /datum/alt_title/electrician)
 
 	minimal_player_age = 3
 
@@ -62,17 +62,17 @@
 
 // Engineer Alt Titles
 /datum/alt_title/maint_tech
-	title = "Maintenance Technician"
+	title = "Ремонтник"
 	title_blurb = "A Maintenance Technician is generally a junior Engineer, and can be expected to run the mildly unpleasant or boring tasks that other \
 					Engineers don't care to do."
 
 /datum/alt_title/engine_tech
-	title = "Engine Technician"
+	title = "Инженер двигателей"
 	title_blurb = "An Engine Technician tends to the engine, most commonly a Supermatter crystal. They are expected to be able to keep it stable, and \
 					possibly even run it beyond normal tolerances."
 
 /datum/alt_title/electrician
-	title = "Electrician"
+	title = "Электрик"
 	title_blurb = "An Electrician's primary duty is making sure power is properly distributed thoughout the station, utilizing solars, substations, and other \
 					methods to ensure every department has power in an emergency."
 
@@ -80,14 +80,14 @@
 //			Atmos Tech
 //////////////////////////////////
 /datum/job/atmos
-	title = "Atmospheric Technician"
+	title = "Атмосферный техник"
 	flag = ATMOSTECH
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the Chief Engineer"
+	supervisors = "Главным Инженером"
 	selection_color = "#5B4D20"
 	economic_modifier = 5
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_external_airlocks)

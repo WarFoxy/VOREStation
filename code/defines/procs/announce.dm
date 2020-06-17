@@ -136,10 +136,10 @@
 	return I.assignment ? "[I.registered_name] ([I.assignment])" : I.registered_name
 
 /proc/level_seven_announcement()
-	command_announcement.Announce("Confirmed outbreak of level 7 biohazard aboard \the [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
+	command_announcement.Announce("Подтверждена вспышка биологической угрозы 7 уровня на [station_name()]. Всему персоналу объявлено сдерживать вспышку болезни.", "Оповещение о биологической опасности", new_sound = 'sound/AI/outbreak7.ogg')
 
 /proc/ion_storm_announcement()
-	command_announcement.Announce("It has come to our attention that \the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
+	command_announcement.Announce("Нам стало известно, что [station_name()] прошел через ионную бурю. Пожалуйста, проконтролируйте все электронное оборудование на предмет неисправностей.", "Оповещение об аномалиях")
 
 /proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message, var/channel = "Common", var/zlevel)
 	if (ticker.current_state == GAME_STATE_PLAYING)
@@ -148,5 +148,5 @@
 			rank = character.mind.role_alt_title
 		AnnounceArrivalSimple(character.real_name, rank, join_message, channel, zlevels)
 
-/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly", var/channel = "Common", var/list/zlevels)
-	global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer", channel, zlevels)
+/proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "мы прибудем на станцию в ближайшее время", var/channel = "Common", var/list/zlevels)
+	global_announcer.autosay("[name], [rank], [join_message].", "Компьютер объявления прибытия", channel, zlevels)

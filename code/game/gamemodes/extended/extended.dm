@@ -2,5 +2,5 @@
 	name = "Extended"
 	config_tag = "extended"
 	required_players = 0
-	round_description = "Just have fun and role-play!"
-	extended_round_description = "There are no antagonists during extended, unless an admin decides to be cheeky. Just play your character, mess around with your job, and have fun."
+	round_description = "Просто веселитесь и играйте в ролевку!"
+	extended_round_description = "Антагонистов нет во время этого решима, если только администратор не решит назначить их. Просто играйте своим персонажем, возитесь со своей профессией и получайте удовольствие от игры."

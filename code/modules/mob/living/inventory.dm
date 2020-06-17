@@ -131,14 +131,14 @@
 	// We're the first!
 	if(!L)
 		L = list()
-	
+
 	// Lefty grab!
 	if (istype(l_hand, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/G = l_hand
 		L |= G.affecting
 		if(mobchain_limit-- > 0)
 			G.affecting?.ret_grab(L, mobchain_limit) // Recurse! They can update the list. It's the same instance as ours.
-	
+
 	// Righty grab!
 	if (istype(r_hand, /obj/item/weapon/grab))
 		var/obj/item/weapon/grab/G = r_hand
@@ -150,13 +150,13 @@
 	return L
 
 /mob/living/mode()
-	set name = "Activate Held Object"
+	set name = "Активация Удерж. Объекта"
 	set category = "Object"
 	set src = usr
 
 	if(!checkClickCooldown())
 		return
-	
+
 	setClickCooldown(1)
 
 	if(istype(loc,/obj/mecha)) return

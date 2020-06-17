@@ -1,6 +1,6 @@
 // Global stuff that will put us on the map
 /datum/category_group/player_setup_category/vore
-	name = "VORE"
+	name = "Д.Н.П"
 	sort_order = 7
 	category_item_type = /datum/category_item/player_setup_item/vore
 
@@ -140,7 +140,7 @@
 
 
 /datum/category_item/player_setup_item/vore/ears/content(var/mob/user)
-	. += "<h2>VORE Station Settings</h2>"
+	. += "<h2>Дополнительные настройки персонажа</h2>"
 
 	var/ear_display = "Normal"
 	if(pref.ear_style && (pref.ear_style in ear_styles_list))
@@ -164,7 +164,7 @@
 		tail_display = instance.name
 	else if(pref.tail_style)
 		tail_display = "REQUIRES UPDATE"
-	. += "<b>Хвостl</b><br>"
+	. += "<b>Хвост</b><br>"
 	. += " Стиль: <a href='?src=\ref[src];tail_style=1'>[tail_display]</a><br>"
 
 	if(tail_styles_list[pref.tail_style])

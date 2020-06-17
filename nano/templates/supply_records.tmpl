@@ -9,7 +9,7 @@
 	<div class='item'>
 		<H4>Шаттл поставок</H4>
 		<div class='itemLabelNarrow'>
-			Расположение:<br>
+			Положение:<br>
 			Двигатели:
 		</div>
 		<div class='itemContent'>
@@ -50,20 +50,20 @@
 		
 		<!-- Accepted orders -->
 		<div class='item'>
-			{{:helper.link('Принятые заказы', 'cart', {'switch_tab' : "Approved"})}}
+			{{:helper.link('Принятые заказы', 'cart', {'switch_tab' : "Одобрено"})}}
 		</div>
 		
 		<!-- Pending orders -->
 		<div class='item'>
-			{{:helper.link('Ожидающие заказы', 'cart', {'switch_tab' : "Requested"})}}
+			{{:helper.link('Ожидающие заказы', 'cart', {'switch_tab' : "Запрошено"})}}
 		</div>
 		
 		<!-- Order history -->
-		{{:helper.link('История заказов', 'document', {'switch_tab' : "All"})}}
+		{{:helper.link('История заказов', 'document', {'switch_tab' : "Все"})}}
 		
 		<!-- Receipt history -->
 		<div class='item'>
-			{{:helper.link('История экспорта', 'document', {'switch_tab' : "Export"})}}
+			{{:helper.link('История экспорта', 'document', {'switch_tab' : "Экспорт"})}}
 		</div>
 	</div>
 	
@@ -136,7 +136,7 @@
 	<!-- currentTab == "Запрошено": Orders waiting to be accepted -->
 	<!-- currentTab == "Все": All orders -->	
 	{{else data.currentTab == "Одобрено" || data.currentTab == "Запрошено" || data.currentTab == "Все"}}
-		<H3>{{:data.currentTab}} Orders</H3>
+		<H3>Заказы: {{:data.currentTab}} </H3>
 		{{for data.orders}}
 			{{if (value.status == data.currentTab) || (data.currentTab == "Все")}}
 				<hr>

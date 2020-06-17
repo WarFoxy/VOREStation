@@ -827,10 +827,10 @@ default behaviour is:
 
 	if(pulling) // we were pulling a thing and didn't lose it during our move.
 		var/pull_dir = get_dir(src, pulling)
-		
+
 		if(pulling.anchored || !isturf(pulling.loc))
 			stop_pulling()
-			
+
 		else if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir))) // puller and pullee more than one tile away or in diagonal position
 			// If it is too far away or across z-levels from old location, stop pulling.
 			if(get_dist(pulling.loc, oldloc) > 1 || pulling.loc.z != oldloc?.z)
@@ -846,7 +846,7 @@ default behaviour is:
 				stop_pulling()
 
 	if(!isturf(loc))
-		return	
+		return
 	else if(lastarea?.has_gravity == 0)
 		inertial_drift()
 	//VOREStation Edit Start
@@ -863,7 +863,7 @@ default behaviour is:
 		if(Process_Spacemove(1))
 			inertia_dir = 0
 			return
-		
+
 		var/locthen = loc
 		spawn(5)
 			if(!anchored && !pulledby && loc == locthen)
@@ -930,11 +930,11 @@ default behaviour is:
 	return
 
 /mob/living/verb/lay_down()
-	set name = "Rest"
+	set name = "Отдохнуть"
 	set category = "IC"
 
 	resting = !resting
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+	to_chat(src, "<span class='notice'>Вы [resting ? "отдыхаете" : "встраете"]</span>")
 	update_canmove()
 
 //called when the mob receives a bright flash

@@ -273,15 +273,15 @@
 
 // If they're in an FBP, what braintype.
 #define FBP_NONE	""
-#define FBP_CYBORG	"Cyborg"
+#define FBP_CYBORG	"Киборг"
 #define FBP_POSI	"Positronic"
-#define FBP_DRONE	"Drone"
+#define FBP_DRONE	"Дрон"
 
 // Similar to above but for borgs.
 // Seperate defines are unfortunately required since borgs display the brain differently for some reason.
-#define BORG_BRAINTYPE_CYBORG	"Cyborg"
-#define BORG_BRAINTYPE_POSI		"Robot"
-#define BORG_BRAINTYPE_DRONE	"Drone"
+#define BORG_BRAINTYPE_CYBORG	"Киборг"
+#define BORG_BRAINTYPE_POSI		"Робот"
+#define BORG_BRAINTYPE_DRONE	"Дрон"
 #define BORG_BRAINTYPE_AI_SHELL	"AI Shell"
 
 // 'Regular' species.

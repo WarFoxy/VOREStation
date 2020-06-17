@@ -35,11 +35,11 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 /datum/lore/atc_controller/proc/reroute_traffic(var/yes = 1)
 	if(yes)
 		if(!squelched)
-			msg("Rerouting traffic away from [using_map.station_name].")
+			msg("Перенаправление движения в сторону от [using_map.station_name].")
 		squelched = 1
 	else
 		if(squelched)
-			msg("Resuming normal traffic routing around [using_map.station_name].")
+			msg("Возобновление нормальной маршрутизации трафика вокруг [using_map.station_name].")
 		squelched = 0
 
 /datum/lore/atc_controller/proc/shift_ending(var/evac = 0)
@@ -65,7 +65,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/alt_atc_names = list("[using_map.station_short] TraCon","[using_map.station_short] Control","[using_map.station_short] STC","[using_map.station_short] Airspace")
 	var/wrong_atc_names = list("Sol Command","New Reykjavik StarCon", "[using_map.dock_name]")
 	var/mission_noun = list("flight","mission","route")
-	var/request_verb = list("requesting","calling for","asking for")
+	var/request_verb = list("requesting","запрашиваю","запрашиваю")
 
 	//First response is 'yes', second is 'no'
 	var/requests = list("[using_map.station_short] transit clearance" = list("permission for transit granted", "permission for transit denied, contact regional on 953.5"),
@@ -75,12 +75,12 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 						"nearby traffic info" = list("sending you current traffic info", "no available info in your area"),
 						"remote telemetry data" = list("sending telemetry now", "no uplink from your ship, recheck your uplink and ask again"),
 						"refueling information" = list("sending refueling information now", "no fuel for your ship class in this sector"),
-						"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
+						"синхронизацию текущего системного времени" = list("посылаем вам код синхронизации времени", "ваш корабль не совместим с синхронизацией времени, установите время вручную."),
 						"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now"),
 						"permission to engage FTL" = list("permission to engage FTL granted, good day", "permission denied, wait for current traffic to pass"),
 						"permission to transit system" = list("permission to transit granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to depart system" = list("permission to depart granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to enter system" = list("good day, permission to enter granted", "permission denied, wait for current traffic to pass"),
+						"разрешение на вылет из системы" = list("разрешение на вылет одобрено, добрый день", "разрешение на вылет отклонено, подождите, пока пройдет текущий трафик"),
+						"разрешение на вход в систему" = list("добрый день, доступ на вход одобрен", "доступ на вход в систему отклонен, подождите, пока пройдет текущий трафик"),
 						)
 
 	//Random chance things for variety
@@ -103,9 +103,9 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	switch(chatter_type)
 		if("wrong_freq")
 			callname = pick(wrong_atc_names)
-			full_request = "[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
-			full_response = "[combined_name], this is [using_map.station_short] TraCon, wrong frequency. Switch to [rand(700,999)].[rand(1,9)]."
-			full_closure = "[using_map.station_short] TraCon, understood, apologies."
+			full_request = "[callname], это [combined_name] на [mission] [pick(mission_noun)] в [destname], [pick(request_verb)] [request]."
+			full_response = "[combined_name], это [using_map.station_short] TraCon, wrong frequency. Switch to [rand(700,999)].[rand(1,9)]."
+			full_closure = "[using_map.station_short] TraCon, принято, извините за беспокойство."
 		if("wrong_lang")
 			//Can't implement this until autosay has language support
 		if("emerg")
@@ -114,9 +114,9 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			full_response = "[combined_name], this is [using_map.station_short] TraCon, copy. Switch to emergency responder channel [rand(700,999)].[rand(1,9)]."
 			full_closure = "[using_map.station_short] TraCon, okay, switching now."
 		else
-			full_request = "[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
-			full_response = "[combined_name], this is [using_map.station_short] TraCon, [response]." //Station TraCon always calls themselves TraCon
-			full_closure = "[using_map.station_short] TraCon, [yes ? "thank you" : "understood"], good day." //They always copy what TraCon called themselves in the end when they realize they said it wrong
+			full_request = "[callname], это [combined_name] на [mission] [pick(mission_noun)] в [destname], [pick(request_verb)] [request]."
+			full_response = "[combined_name], это [using_map.station_short] TraCon, [response]." //Station TraCon always calls themselves TraCon
+			full_closure = "[using_map.station_short] TraCon, [yes ? "спасибо" : "принято"], хорошего вам дня." //They always copy what TraCon called themselves in the end when they realize they said it wrong
 
 	//Ship sends request to ATC
 	msg(full_request,"[prefix] [shipname]")

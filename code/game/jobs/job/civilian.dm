@@ -5,27 +5,26 @@
 //////////////////////////////////
 
 /datum/job/bartender
-	title = "Bartender"
+	title = "Бармен"
 	flag = BARTENDER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
-	job_description = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
-	alt_titles = list("Barista" = /datum/alt_title/barista)
+	job_description = "Бармен смешивает напитки для экипажа. Как правило, у него есть разрешение взимать плату за напитки или отказывать в обслуживании непослушным посетителям."
+	alt_titles = list("Бариста" = /datum/alt_title/barista)
 
 // Bartender Alt Titles
 /datum/alt_title/barista
-	title = "Barista"
-	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
-					or deny service to unruly patrons."
+	title = "Бариста"
+	title_blurb = "В кафе работает Бариста, который подает экипажу в основном безалкогольные напитки. Как правило, у него есть разрешение взимать плату за напитки или отказывать в обслуживании непослушным посетителям."
 	title_outfit = /decl/hierarchy/outfit/job/service/bartender/barista
 
 //////////////////////////////////
@@ -33,59 +32,59 @@
 //////////////////////////////////
 
 /datum/job/chef
-	title = "Chef"
+	title = "Шеф-повар"
 	flag = CHEF
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
-	job_description = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
-	alt_titles = list("Cook" = /datum/alt_title/cook)
+	job_description = "Шеф-повар готовит еду для экипажа. Он обычно имеет разрешение взимать плату за еду или отказывать в обслуживании непослушным посетителям."
+	alt_titles = list("Повар" = /datum/alt_title/cook)
 
 // Chef Alt Titles
 /datum/alt_title/cook
-	title = "Cook"
-	title_blurb = "A Cook has the same duties, though they may be less experienced."
+	title = "Повар"
+	title_blurb = "У Повара есть же обязанности, хотя он может быть менее опытным."
 
 //////////////////////////////////
 //			Botanist
 //////////////////////////////////
 
 /datum/job/hydro
-	title = "Botanist"
+	title = "Ботаник"
 	flag = BOTANIST
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
-	job_description = "A Botanist grows plants for the Chef and Bartender."
-	alt_titles = list("Gardener" = /datum/alt_title/gardener)
+	job_description = "Ботаник выращивает растения для шеф-повара и бармена."
+	alt_titles = list("Садовник" = /datum/alt_title/gardener)
 
 //Botanist Alt Titles
 /datum/alt_title/gardener
-	title = "Gardener"
-	title_blurb = "A Gardener may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
+	title = "Садовник"
+	title_blurb = "Садовник может быть менее профессионален, чем его коллеги, и с большей вероятностью будет ухаживать за отделом гидропоники, если он не нужен в другом месте."
 
 //Cargo
 //////////////////////////////////
 //			Quartermaster
 //////////////////////////////////
 /datum/job/qm
-	title = "Quartermaster"
+	title = "Интендант"
 	flag = QUARTERMASTER
 	departments = list(DEPARTMENT_CARGO)
 	sorting_order = 1 // QM is above the cargo techs, but below the HoP.
@@ -94,7 +93,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#9b633e"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
@@ -104,24 +103,24 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
 	job_description = "The Quartermaster manages the Supply department, checking cargo orders and ensuring supplies get to where they are needed."
-	alt_titles = list("Supply Chief" = /datum/alt_title/supply_chief)
+	alt_titles = list("Начальник снабжения" = /datum/alt_title/supply_chief)
 
 // Quartermaster Alt Titles
 /datum/alt_title/supply_chief
-	title = "Supply Chief"
+	title = "Начальник снабжения"
 
 //////////////////////////////////
 //			Cargo Tech
 //////////////////////////////////
 /datum/job/cargo_tech
-	title = "Cargo Technician"
+	title = "Грузчик"
 	flag = CARGOTECH
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Quartermaster and the Head of Personnel"
+	supervisors = "Интендантом и Главой Персонала"
 	selection_color = "#7a4f33"
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
@@ -135,14 +134,14 @@
 //////////////////////////////////
 
 /datum/job/mining
-	title = "Shaft Miner"
+	title = "Шахтер"
 	flag = MINER
 	departments = list(DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Quartermaster and the Head of Personnel"
+	supervisors = "Интендантом и Главой Персонала"
 	selection_color = "#7a4f33"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
@@ -150,10 +149,10 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
 	job_description = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
-	alt_titles = list("Drill Technician" = /datum/alt_title/drill_tech)
+	alt_titles = list("Бурильщик" = /datum/alt_title/drill_tech)
 
 /datum/alt_title/drill_tech
-	title = "Drill Technician"
+	title = "Бурильщик"
 	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
 //Service
@@ -161,54 +160,54 @@
 //			Janitor
 //////////////////////////////////
 /datum/job/janitor
-	title = "Janitor"
+	title = "Уборщик"
 	flag = JANITOR
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 	job_description = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
-	alt_titles = list("Custodian" = /datum/alt_title/custodian)
+	alt_titles = list("Дворник" = /datum/alt_title/custodian)
 
 // Janitor Alt Titles
 /datum/alt_title/custodian
-	title = "Custodian"
+	title = "Дворник"
 
 //More or less assistants
 //////////////////////////////////
 //			Librarian
 //////////////////////////////////
 /datum/job/librarian
-	title = "Librarian"
+	title = "Библиотекарь"
 	flag = LIBRARIAN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
 	job_description = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
-	alt_titles = list("Journalist" = /datum/alt_title/journalist, "Writer" = /datum/alt_title/writer)
+	alt_titles = list("Журналист" = /datum/alt_title/journalist, "Писатель" = /datum/alt_title/writer)
 
 // Librarian Alt Titles
 /datum/alt_title/journalist
-	title = "Journalist"
+	title = "Журналист"
 	title_blurb = "The Journalist uses the Library as a base of operations, from which they can report the news and goings-on on the station with their camera."
 
 /datum/alt_title/writer
-	title = "Writer"
+	title = "Писатель"
 	title_blurb = "The Writer uses the Library as a quiet place to write whatever it is they choose to write."
 
 //////////////////////////////////
@@ -217,14 +216,14 @@
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
-	title = "Internal Affairs Agent"
+	title = "Агент внутренних дел"
 	flag = LAWYER
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "company officials and Corporate Regulations"
+	supervisors = "должностными лицами компании NT и Корпоративными Правилами"
 	selection_color = "#515151"
 	economic_modifier = 7
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)

@@ -8,7 +8,7 @@
 
 /datum/event/dust/announce()
 	if(!victim)
-		command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching \the [location_name()]", "Dust Alert")
+		command_announcement.Announce("Обломки, образовавшиеся в результате активности на другом близлежащем астероиде, приближаются к [location_name()]", "Dust Alert")
 
 /datum/event/dust/tick()
 	if(prob(10))
@@ -17,7 +17,7 @@
 /datum/event/dust/end()
 	..()
 	if(!victim)
-		command_announcement.Announce("\The [location_name()] is no longer in danger of impact from space debris.", "Dust Notice")
+		command_announcement.Announce("[location_name()] больше не подвергается опасности столкновения с космическим мусором.", "Dust Notice")
 
 /datum/event/dust/proc/get_severity()
 	switch(severity)

@@ -35,7 +35,7 @@
 			piece = SP.speaking.format_message(piece)
 
 		msg += (piece + " ")
-	
+
 	if(msg == "")
 		// There is literally no content left in this message, we need to shut this shit down
 		. = "" // hear_say will suppress it
@@ -79,7 +79,7 @@
 	var/message = combine_message(message_pieces, verb, speaker)
 	if(message == "")
 		return
-	
+
 	if(sleeping || stat == UNCONSCIOUS)
 		hear_sleep(multilingual_to_message(message_pieces))
 		return FALSE
@@ -149,7 +149,7 @@
 	return list()
 
 /mob/living/silicon/ai/special_mentions()
-	return list("AI") // AI door!
+	return list("ИИ") // AI door!
 
 /proc/encode_html_emphasis(message)
     var/tagged_message = message
@@ -157,7 +157,7 @@
         var/regex/R = new("\\[delimiter](.+?)\\[delimiter]","g")
         var/tag = GLOB.speech_toppings[delimiter]
         tagged_message = R.Replace(tagged_message,"<[tag]>$1</[tag]>")
-        
+
     return tagged_message
 
 /mob/proc/hear_radio(var/list/message_pieces, var/verb = "says", var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname = "")
@@ -279,4 +279,4 @@
 		name = speaker.voice_name
 
 	var/rendered = "<span class='game say'><span class='name'>[name]</span> [message]</span>"
-	to_chat(src, rendered) 
+	to_chat(src, rendered)

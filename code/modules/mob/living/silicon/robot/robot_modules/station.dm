@@ -5,11 +5,11 @@ var/global/list/robot_modules = list(
 	"Research" 		= /obj/item/weapon/robot_module/robot/research,
 	"Miner" 		= /obj/item/weapon/robot_module/robot/miner,
 	"Crisis" 		= /obj/item/weapon/robot_module/robot/medical/crisis,
-	"Surgeon" 		= /obj/item/weapon/robot_module/robot/medical/surgeon,
+	"Хирург" 		= /obj/item/weapon/robot_module/robot/medical/surgeon,
 	"Security" 		= /obj/item/weapon/robot_module/robot/security/general,
 	"Combat" 		= /obj/item/weapon/robot_module/robot/security/combat,
 	"Engineering"	= /obj/item/weapon/robot_module/robot/engineering/general,
-	"Janitor" 		= /obj/item/weapon/robot_module/robot/janitor
+	"Уборщик" 		= /obj/item/weapon/robot_module/robot/janitor
 	)
 
 /obj/item/weapon/robot_module
@@ -182,7 +182,7 @@ var/global/list/robot_modules = list(
 					"Cabeiri" = "eyebot-standard",
 					"Haruka" = "marinaSD",
 					"Usagi" = "tallflower",
-					"Telemachus" = "toiletbot",
+				//	"Telemachus" = "toiletbot",
 					"WTOperator" = "sleekstandard",
 					"WTOmni" = "omoikane",
 					"XI-GUS" = "spider",
@@ -191,8 +191,8 @@ var/global/list/robot_modules = list(
 					"Android" = "droid",
 					"Drone" = "drone-standard",
 					"Insekt" = "insekt-Default",
-					"Usagi-II" = "tall2standard",
-					"Pyralis" = "Glitterfly-Standard"
+				//	"Usagi-II" = "tall2standard",
+				//	"Pyralis" = "Glitterfly-Standard"
 					)
 
 
@@ -217,7 +217,7 @@ var/global/list/robot_modules = list(
 					"Cabeiri" = "eyebot-medical",
 					"Haruka" = "marinaMD",
 					"Minako" = "arachne",
-					"Usagi" = "tallwhite",
+				//	"Usagi" = "tallwhite",
 					"Telemachus" = "toiletbotsurgeon",
 					"WTOperator" = "sleekcmo",
 					"XI-ALP" = "heavyMed",
@@ -227,8 +227,8 @@ var/global/list/robot_modules = list(
 					"Drone" = "drone-surgery",
 					"Handy" = "handy-med",
 					"Insekt" = "insekt-Med",
-					"Usagi-II" = "tall2medical",
-					"Pyralis" = "Glitterfly-Surgeon"
+				//	"Usagi-II" = "tall2medical",
+				//	"Pyralis" = "Glitterfly-Surgeon"
 					)
 
 /obj/item/weapon/robot_module/robot/medical/surgeon/New()
@@ -290,7 +290,7 @@ var/global/list/robot_modules = list(
 					"Cabeiri" = "eyebot-medical",
 					"Haruka" = "marinaMD",
 					"Minako" = "arachne",
-					"Usagi" = "tallwhite",
+				//	"Usagi" = "tallwhite",
 					"Telemachus" = "toiletbotmedical",
 					"WTOperator" = "sleekmedic",
 					"XI-ALP" = "heavyMed",
@@ -300,8 +300,8 @@ var/global/list/robot_modules = list(
 					"Drone - Medical" = "drone-medical",
 					"Drone - Chemistry" = "drone-chemistry",
 					"Insekt" = "insekt-Med",
-					"Usagi-II" = "tall2medical",
-					"Pyralis" = "Glitterfly-Crisis"
+				//	"Usagi-II" = "tall2medical",
+				//	"Pyralis" = "Glitterfly-Crisis"
 					)
 
 /obj/item/weapon/robot_module/robot/medical/crisis/New()
@@ -364,8 +364,8 @@ var/global/list/robot_modules = list(
 					"M-USE NanoTrasen" = "robotEngi",
 					"Cabeiri" = "eyebot-engineering",
 					"Haruka" = "marinaENG",
-					"Usagi" = "tallyellow",
-					"Telemachus" = "toiletbotengineering",
+				//	"Usagi" = "tallyellow",
+				//	"Telemachus" = "toiletbotengineering",
 					"WTOperator" = "sleekce",
 					"XI-GUS" = "spidereng",
 					"XI-ALP" = "heavyEng",
@@ -376,8 +376,8 @@ var/global/list/robot_modules = list(
 					"Drone" = "drone-engineer",
 					"Treadwell" = "treadwell",
 					"Handy" = "handy-engineer",
-					"Usagi-II" = "tall2engineer",
-					"Pyralis" = "Glitterfly-Engineering"
+				//	"Usagi-II" = "tall2engineer",
+				//	"Pyralis" = "Glitterfly-Engineering"
 					)
 
 /obj/item/weapon/robot_module/robot/engineering/general/New()
@@ -481,8 +481,8 @@ var/global/list/robot_modules = list(
 					"Cerberus" = "bloodhound",
 					"Cerberus - Treaded" = "treadhound",
 					"Haruka" = "marinaSC",
-					"Usagi" = "tallred",
-					"Telemachus" = "toiletbotsecurity",
+				//	"Usagi" = "tallred",
+				//	"Telemachus" = "toiletbotsecurity",
 					"WTOperator" = "sleeksecurity",
 					"XI-GUS" = "spidersec",
 					"XI-ALP" = "heavySec",
@@ -490,8 +490,8 @@ var/global/list/robot_modules = list(
 					"Black Knight" = "securityrobot",
 					"Drone" = "drone-sec",
 					"Insekt" = "insekt-Sec",
-					"Usagi-II" = "tall2security",
-					"Pyralis" = "Glitterfly-Security"
+				//	"Usagi-II" = "tall2security",
+				//	"Pyralis" = "Glitterfly-Security"
 					)
 
 /obj/item/weapon/robot_module/robot/security/general/New()
@@ -526,17 +526,17 @@ var/global/list/robot_modules = list(
 	sprites = list(
 					"M-USE NanoTrasen" = "robotJani",
 					"Arachne" = "crawler",
-					"Cabeiri" = "eyebot-janitor",
+				//	"Cabeiri" = "eyebot-janitor",
 					"Haruka" = "marinaJN",
-					"Telemachus" = "toiletbotjanitor",
-					"WTOperator" = "sleekjanitor",
+				//	"Telemachus" = "toiletbotjanitor",
+				//	"WTOperator" = "sleekjanitor",
 					"XI-ALP" = "heavyRes",
 					"Basic" = "JanBot2",
 					"Mopbot"  = "janitorrobot",
 					"Mop Gear Rex" = "mopgearrex",
 					"Drone" = "drone-janitor",
-					"Usagi-II" = "tall2janitor",
-					"Pyralis" = "Glitterfly-Janitor"
+				//	"Usagi-II" = "tall2janitor",
+				//	"Pyralis" = "Glitterfly-Janitor"
 					)
 
 /obj/item/weapon/robot_module/robot/janitor/New()
@@ -585,9 +585,9 @@ var/global/list/robot_modules = list(
 					"Cabeiri" = "eyebot-standard",
 					"Haruka" = "marinaSV",
 					"Michiru" = "maidbot",
-					"Usagi" = "tallgreen",
-					"Telemachus" = "toiletbot",
-					"WTOperator" = "sleekservice",
+				//	"Usagi" = "tallgreen",
+				//	"Telemachus" = "toiletbot",
+				//	"WTOperator" = "sleekservice",
 					"WTOmni" = "omoikane",
 					"XI-GUS" = "spider",
 					"XI-ALP" = "heavyServ",
@@ -597,8 +597,8 @@ var/global/list/robot_modules = list(
 					"Rich" = "maximillion",
 					"Drone - Service" = "drone-service",
 					"Drone - Hydro" = "drone-hydro",
-					"Usagi-II" = "tall2service",
-					"Pyralis" = "Glitterfly-Service"
+				//	"Usagi-II" = "tall2service",
+				//	"Pyralis" = "Glitterfly-Service"
 				  	)
 
 /obj/item/weapon/robot_module/robot/clerical/butler/New()
@@ -640,9 +640,9 @@ var/global/list/robot_modules = list(
 					"M-USE NanoTrasen" = "robotCler",
 					"Cabeiri" = "eyebot-standard",
 					"Haruka" = "marinaSV",
-					"Usagi" = "tallgreen",
-					"Telemachus" = "toiletbot",
-					"WTOperator" = "sleekclerical",
+				//	"Usagi" = "tallgreen",
+				//	"Telemachus" = "toiletbot",
+				//	"WTOperator" = "sleekclerical",
 					"WTOmni" = "omoikane",
 					"XI-GUS" = "spidercom",
 					"XI-ALP" = "heavyServ",
@@ -651,8 +651,8 @@ var/global/list/robot_modules = list(
 					"Rich" = "maximillion",
 					"Default" = "Service2",
 					"Drone" = "drone-blu",
-					"Usagi-II" = "tall2service",
-					"Pyralis" = "Glitterfly-Clerical"
+				//	"Usagi-II" = "tall2service",
+				//	"Pyralis" = "Glitterfly-Clerical"
 					)
 
 /obj/item/weapon/robot_module/robot/clerical/general/New()
@@ -681,7 +681,7 @@ var/global/list/robot_modules = list(
 					"NM-USE NanoTrasen" = "robotMine",
 					"Cabeiri" = "eyebot-miner",
 					"Haruka" = "marinaMN",
-					"Telemachus" = "toiletbotminer",
+				//	"Telemachus" = "toiletbotminer",
 					"WTOperator" = "sleekminer",
 					"XI-GUS" = "spidermining",
 					"XI-ALP" = "heavyMiner",
@@ -689,8 +689,8 @@ var/global/list/robot_modules = list(
 					"Advanced Droid" = "droid-miner",
 					"Treadhead" = "Miner",
 					"Drone" = "drone-miner",
-					"Usagi-II" = "tall2miner",
-					"Pyralis" = "Glitterfly-Miner"
+				//	"Usagi-II" = "tall2miner",
+				//	"Pyralis" = "Glitterfly-Miner"
 				)
 
 /obj/item/weapon/robot_module/robot/miner/New()
@@ -714,13 +714,13 @@ var/global/list/robot_modules = list(
 					"Cabeiri" = "eyebot-science",
 					"Haruka" = "marinaSCI",
 					"WTDove" = "whitespider",
-					"WTOperator" = "sleekscience",
+				//	"WTOperator" = "sleekscience",
 					"Droid" = "droid-science",
 					"Drone" = "drone-science",
 					"Handy" = "handy-science",
 					"Insekt" = "insekt-Sci",
-					"Usagi-II" = "tall2peace",
-					"Pyralis" = "Glitterfly-Research"
+				//	"Usagi-II" = "tall2peace",
+				//	"Pyralis" = "Glitterfly-Research"
 					)
 
 /obj/item/weapon/robot_module/robot/research/New()

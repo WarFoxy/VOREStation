@@ -1,7 +1,7 @@
 <h3>Tank Status</h3>
 <div class="item">
 	<div class="itemLabel">
-		Tank Label:
+		Этикетка Бака:
 	</div>
 	<div class="itemContent">
 		<div style="float: left; width: 180px;">{{:data.name}}</div> {{:helper.link('Relabel', 'pencil', {'relabel' : 1}, data.canLabel ? null : 'disabled')}}
@@ -10,7 +10,7 @@
 
 <div class="item">
 	<div class="itemLabel">
-		Tank Pressure:
+		Давление внутри:
 	</div>
 	<div class="itemContent">
 		{{:data.tankPressure}} kPa
@@ -19,42 +19,42 @@
 
 <div class="item">
 	<div class="itemLabel">
-		Port Status:
+		Состояние порта:
 	</div>
 	<div class="itemContent">
-		{{:data.portConnected ? '<span class="good">Connected</span>' : '<span class="average">Disconnected</span>'}}
+		{{:data.portConnected ? '<span class="good">Подключен</span>' : '<span class="average">Отключен</span>'}}
 	</div>
 </div>
 
-<h3>Holding Tank Status</h3>
+<h3>Статус резервуара</h3>
 {{if data.hasHoldingTank}}
 	<div class="item">
 		<div class="itemLabel">
-			Tank Label:
+			Этикетка Бака:
 		</div>
 		<div class="itemContent">
-			<div style="float: left; width: 180px;">{{:data.holdingTank.name}}</div> {{:helper.link('Eject', 'eject', {'remove_tank' : 1})}}
+			<div style="float: left; width: 180px;">{{:data.holdingTank.name}}</div> {{:helper.link('Извлечь', 'eject', {'remove_tank' : 1})}}
 		</div>
 	</div>
 
 	<div class="item">
 		<div class="itemLabel">
-			Tank Pressure:
+			Давление внутри:
 		</div>
 		<div class="itemContent">
 			{{:data.holdingTank.tankPressure}} kPa
 		</div>
 	</div>
 {{else}}
-	<div class="item"><span class="average"><i>No holding tank inserted.</i></span></div>
+	<div class="item"><span class="average"><i>Резервуар не вставлен.</i></span></div>
 	<div class="item">&nbsp;</div>
 {{/if}}
 
 
-<h3>Release Valve Status</h3>
+<h3>Состояние выпускного клапана</h3>
 <div class="item">
 	<div class="itemLabel">
-		Release Pressure:
+		Давление выпуска:
 	</div>
 	<div class="itemContent">
 		{{:helper.displayBar(data.releasePressure, data.minReleasePressure, data.maxReleasePressure)}}
@@ -74,10 +74,10 @@
 
 <div class="item">
 	<div class="itemLabel">
-		Release Valve:
+		Выпускной клапан:
 	</div>
 	<div class="itemContent">
-		{{:helper.link('Open', 'unlocked', {'toggle' : 1}, data.valveOpen ? 'selected' : null)}}{{:helper.link('Close', 'locked', {'toggle' : 1}, data.valveOpen ? null : 'selected')}}
+		{{:helper.link('Открыт', 'unlocked', {'toggle' : 1}, data.valveOpen ? 'selected' : null)}}{{:helper.link('Закрыт', 'locked', {'toggle' : 1}, data.valveOpen ? null : 'selected')}}
 	</div>
 </div>
 

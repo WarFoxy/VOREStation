@@ -1,24 +1,24 @@
 //Due to how large this one is it gets its own file
 /datum/job/chaplain
-	title = "Chaplain"
+	title = "Священник"
 	flag = CHAPLAIN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Head of Personnel"
+	supervisors = "Главой Персонала"
 	selection_color = "#515151"
 	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
 	minimal_access = list(access_chapel_office, access_crematorium)
 
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
 	job_description = "The Chaplain ministers to the spiritual needs of the crew."
-	alt_titles = list("Counselor" = /datum/alt_title/counselor)
+	alt_titles = list("Советник" = /datum/alt_title/counselor)
 
 // Chaplain Alt Titles
 /datum/alt_title/counselor
-	title = "Counselor"
+	title = "Советник"
 	title_blurb = "The Counselor attends to the emotional needs of the crew, without a specific medicinal or spiritual focus."
 
 /datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)

@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////
 
 /mob/verb/me_verb_subtle(message as text) //This would normally go in say.dm
-	set name = "Subtle"
+	set name = "Утонченная эмоция"
 	set category = "IC"
 	set desc = "Emote to nearby people (and your pred/prey)"
 

@@ -139,13 +139,13 @@
 	preserve_item = 1
 
 /obj/item/weapon/card/id/gold/captain
-	assignment = "Colony Director"
-	rank = "Colony Director"
+	assignment = "Директор колонии"
+	rank = "Директор колонии"
 
 /obj/item/weapon/card/id/gold/captain/spare
 	name = "\improper Colony Director's spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Colony Director"
+	registered_name = "Директор колонии"
 
 /obj/item/weapon/card/id/synthetic
 	name = "\improper Synthetic ID"
@@ -196,8 +196,8 @@
 	icon_state = "medGold"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(255,223,127)
-	assignment = "Chief Medical Officer"
-	rank = "Chief Medical Officer"
+	assignment = "Главврач"
+	rank = "Главврач"
 
 /obj/item/weapon/card/id/security
 	name = "identification card"
@@ -212,8 +212,8 @@
 	icon_state = "secGold"
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Head of Security"
-	rank = "Head of Security"
+	assignment = "Глава безопасности"
+	rank = "Глава безопасности"
 
 /obj/item/weapon/card/id/engineering
 	name = "identification card"
@@ -228,8 +228,8 @@
 	icon_state = "engGold"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Chief Engineer"
-	rank = "Chief Engineer"
+	assignment = "Главный инженер"
+	rank = "Главный инженер"
 
 /obj/item/weapon/card/id/science
 	name = "identification card"
@@ -244,8 +244,8 @@
 	icon_state = "sciGold"
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(255,223,127)
-	assignment = "Research Director"
-	rank = "Research Director"
+	assignment = "Директор исследований"
+	rank = "Директор исследований"
 
 /obj/item/weapon/card/id/cargo
 	name = "identification card"
@@ -260,8 +260,8 @@
 	icon_state = "cargoGold"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Quartermaster"
-	rank = "Quartermaster"
+	assignment = "Интендант"
+	rank = "Интендант"
 
 /obj/item/weapon/card/id/assistant
 	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
@@ -274,7 +274,7 @@
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(95,159,191)
 	assignment = "Civilian"
-	rank = "Assistant"
+	rank = "Ассистент"
 
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "identification card"

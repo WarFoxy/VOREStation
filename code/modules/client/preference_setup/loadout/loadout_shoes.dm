@@ -3,7 +3,7 @@
 	display_name = "jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots
 	slot = slot_shoes
-	sort_category = "Shoes and Footwear"
+	sort_category = "Обувь"
 
 /datum/gear/shoes/toeless
 	display_name = "toe-less jackboots"
@@ -186,7 +186,7 @@
 /datum/gear/shoes/boots/winter/security
 	display_name = "security winter boots"
 	path = /obj/item/clothing/shoes/boots/winter/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Офицер безопасности", "Глава безопасности", "Надзиратель", "Детектив")
 
 /datum/gear/shoes/boots/winter/science
 	display_name = "science winter boots"
@@ -195,7 +195,7 @@
 /datum/gear/shoes/boots/winter/command
 	display_name = "colony director's winter boots"
 	path = /obj/item/clothing/shoes/boots/winter/command
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Директор колонии")
 
 /datum/gear/shoes/boots/winter/engineering
 	display_name = "engineering winter boots"

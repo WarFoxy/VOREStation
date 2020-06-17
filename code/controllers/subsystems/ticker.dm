@@ -76,8 +76,8 @@ var/global/datum/controller/subsystem/ticker/ticker
 			post_game_tick()
 
 /datum/controller/subsystem/ticker/proc/pregame_welcome()
-	to_world("<span class='boldannounce notice'><em>Welcome to the pregame lobby!</em></span>")
-	to_world("<span class='boldannounce notice'>Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.</span>")
+	to_world("<span class='boldannounce notice'><em>Добро пожаловать в предыгровое лобби!</em></span>")
+	to_world("<span class='boldannounce notice'>Пожалуйста, настройте своего персонажа и выберите \"Готов\". Раунд начнется через [pregame_timeleft] секунд.</span>")
 
 // Called during GAME_STATE_PREGAME (RUNLEVEL_LOBBY)
 /datum/controller/subsystem/ticker/proc/pregame_tick()
@@ -153,14 +153,14 @@ var/global/datum/controller/subsystem/ticker/ticker
 		return 0
 
 	if(hide_mode)
-		to_world("<span class='notice'><B>The current game mode is - Secret!</B></span>")
+		to_world("<span class='notice'><B>Текущий режим игры - Секретный!</B></span>")
 		if(runnable_modes.len)
 			var/list/tmpmodes = new
 			for (var/datum/game_mode/M in runnable_modes)
 				tmpmodes+=M.name
 			tmpmodes = sortList(tmpmodes)
 			if(tmpmodes.len)
-				to_world("<span class='info'><B>Possibilities:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]</span>")
+				to_world("<span class='info'><B>Возможно:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]</span>")
 	else
 		src.mode.announce()
 	return 1
@@ -180,16 +180,16 @@ var/global/datum/controller/subsystem/ticker/ticker
 		//Cleanup some stuff
 		for(var/obj/effect/landmark/start/S in landmarks_list)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
-			if (S.name != "AI")
+			if (S.name != "ИИ")
 				qdel(S)
-		to_world("<span class='boldannounce notice'><em>Enjoy the game!</em></span>")
+		to_world("<span class='boldannounce notice'><em>Приятной игры!</em></span>")
 		world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
 	var/list/adm = get_admin_counts()
 	if(adm["total"] == 0)
-		send2adminirc("A round has started with no admins online.")
+		send2adminirc("Раунд начался без администраторов.")
 
 /*	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
 	master_controller.process()		//Start master_controller.process()
@@ -231,7 +231,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		end_game_state = END_GAME_MODE_FINISHED // Only do this cleanup once!
 		mode.cleanup()
 		//call a transfer shuttle vote
-		to_world("<span class='danger'>The round has ended!</span>")
+		to_world("<span class='danger'>Раунд окончен!</span>")
 		SSvote.autotransfer()
 
 // Called during GAME_STATE_FINISHED (RUNLEVEL_POSTGAME)
@@ -258,7 +258,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 		if(END_GAME_ENDING)
 			restart_timeleft -= (world.time - last_fire)
 			if(delay_end)
-				to_world("<span class='notice'><b>An admin has delayed the round end.</b></span>")
+				to_world("<span class='notice'><b>Администратор отложил завершение раунда.</b></span>")
 				end_game_state = END_GAME_DELAYED
 			else if(restart_timeleft <= 0)
 				world.Reboot()
@@ -400,17 +400,17 @@ var/global/datum/controller/subsystem/ticker/ticker
 	for(var/mob/new_player/player in player_list)
 		if(player && player.ready && player.mind?.assigned_role)
 			var/datum/job/J = SSjob.get_job(player.mind.assigned_role)
-			
+
 			// Snowflakey AI treatment
 			if(J?.mob_type & JOB_SILICON_AI)
 				player.close_spawn_windows()
 				player.AIize(move = TRUE)
 				continue
-			
+
 			// Ask their new_player mob to spawn them
 			if(!player.spawn_checks_vr(player.mind.assigned_role)) continue //VOREStation Add
 			var/mob/living/carbon/human/new_char = player.create_character()
-			
+
 			// Created their playable character, delete their /mob/new_player
 			if(new_char)
 				qdel(player)
@@ -429,7 +429,7 @@ var/global/datum/controller/subsystem/ticker/ticker
 	var/captainless=1
 	for(var/mob/living/carbon/human/player in player_list)
 		if(player && player.mind && player.mind.assigned_role)
-			if(player.mind.assigned_role == "Colony Director")
+			if(player.mind.assigned_role == "Директор колонии")
 				captainless=0
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
 				job_master.EquipRank(player, player.mind.assigned_role, 0)

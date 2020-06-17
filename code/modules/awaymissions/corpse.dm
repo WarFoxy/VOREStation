@@ -124,7 +124,7 @@
 ///////////Civilians//////////////////////
 
 /obj/effect/landmark/corpse/chef
-	name = "Chef"
+	name = "Шеф-повар"
 	corpseuniform = /obj/item/clothing/under/rank/chef
 	corpsesuit = /obj/item/clothing/suit/chef/classic
 	corpseshoes = /obj/item/clothing/shoes/black
@@ -132,8 +132,8 @@
 	corpseback = /obj/item/weapon/storage/backpack
 	corpseradio = /obj/item/device/radio/headset
 	corpseid = 1
-	corpseidjob = "Chef"
-	corpseidaccess = "Chef"
+	corpseidjob = "Шеф-повар"
+	corpseidaccess = "Шеф-повар"
 
 
 /obj/effect/landmark/corpse/doctor
@@ -145,8 +145,8 @@
 	corpsepocket1 = /obj/item/device/flashlight/pen
 	corpseshoes = /obj/item/clothing/shoes/black
 	corpseid = 1
-	corpseidjob = "Medical Doctor"
-	corpseidaccess = "Medical Doctor"
+	corpseidjob = "Медик"
+	corpseidaccess = "Медик"
 
 /obj/effect/landmark/corpse/engineer
 	name = "Engineer"
@@ -158,8 +158,8 @@
 	corpsegloves = /obj/item/clothing/gloves/yellow
 	corpsehelmet = /obj/item/clothing/head/hardhat
 	corpseid = 1
-	corpseidjob = "Station Engineer"
-	corpseidaccess = "Station Engineer"
+	corpseidjob = "Инженер"
+	corpseidaccess = "Инженер"
 
 /obj/effect/landmark/corpse/engineer/rig
 	corpsesuit = /obj/item/clothing/suit/space/void/engineering
@@ -175,8 +175,8 @@
 	corpsepocket1 = /obj/item/weapon/bikehorn
 	corpseback = /obj/item/weapon/storage/backpack/clown
 	corpseid = 1
-	corpseidjob = "Clown"
-	corpseidaccess = "Clown"
+	corpseidjob = "Клоун"
+	corpseidaccess = "Клоун"
 
 /obj/effect/landmark/corpse/scientist
 	name = "Scientist"
@@ -186,8 +186,8 @@
 	corpseback = /obj/item/weapon/storage/backpack
 	corpseshoes = /obj/item/clothing/shoes/white
 	corpseid = 1
-	corpseidjob = "Scientist"
-	corpseidaccess = "Scientist"
+	corpseidjob = "Ученый"
+	corpseidaccess = "Ученый"
 
 /obj/effect/landmark/corpse/miner
 	corpseradio = /obj/item/device/radio/headset/headset_cargo
@@ -196,8 +196,8 @@
 	corpseback = /obj/item/weapon/storage/backpack/industrial
 	corpseshoes = /obj/item/clothing/shoes/black
 	corpseid = 1
-	corpseidjob = "Shaft Miner"
-	corpseidaccess = "Shaft Miner"
+	corpseidjob = "Шахтер"
+	corpseidaccess = "Шахтер"
 
 /obj/effect/landmark/corpse/miner/rig
 	corpsesuit = /obj/item/clothing/suit/space/void/mining

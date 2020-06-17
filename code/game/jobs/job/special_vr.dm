@@ -1,11 +1,11 @@
 /datum/job/centcom_officer //For Business
-	title = "CentCom Officer"
+	title = "Офицер ЦентКома"
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "company officials and Corporate Regulations"
+	supervisors = "должностными лицами компании NT и Корпоративными Правилами"
 	selection_color = "#1D1D4F"
 	access = list()
 	minimal_access = list()
@@ -67,7 +67,7 @@
 		return access*/
 
 /datum/job/clown
-	title = "Clown"
+	title = "Клоун"
 	flag = CLOWN
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
@@ -80,20 +80,20 @@
 	access = list()
 	minimal_access = list()
 	job_description = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
-	alt_titles = list("Clown" = /datum/alt_title/clown, "Comedian" = /datum/alt_title/comedian, "Jester" = /datum/alt_title/jester)
+	alt_titles = list("Клоун" = /datum/alt_title/clown, "Комик" = /datum/alt_title/comedian, "Шут" = /datum/alt_title/jester)
 	whitelist_only = 1
 	latejoin_only = 1
 	outfit_type = /decl/hierarchy/outfit/job/clown
 	pto_type = PTO_CIVILIAN
 
 /datum/alt_title/clown
-	title = "Clown"
+	title = "Клоун"
 
 /datum/alt_title/comedian
-	title = "Comedian"
+	title = "Комик"
 
 /datum/alt_title/jester
-	title = "Jester"
+	title = "Шут"
 
 /datum/job/clown/get_access()
 	if(config.assistant_maint)
@@ -102,7 +102,7 @@
 		return list()
 
 /datum/job/mime
-	title = "Mime"
+	title = "Мим"
 	flag = MIME
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN
@@ -115,14 +115,14 @@
 	access = list()
 	minimal_access = list()
 	job_description = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
-	alt_titles = list("Mime" = /datum/alt_title/mime, "Performer" = /datum/alt_title/performer, "Interpretive Dancer" = /datum/alt_title/interpretive_dancer)
+	alt_titles = list("Мим" = /datum/alt_title/mime, "Performer" = /datum/alt_title/performer, "Interpretive Dancer" = /datum/alt_title/interpretive_dancer)
 	whitelist_only = 1
 	latejoin_only = 1
 	outfit_type = /decl/hierarchy/outfit/job/mime
 	pto_type = PTO_CIVILIAN
 
 /datum/alt_title/mime
-	title = "Mime"
+	title = "Мим"
 
 /datum/alt_title/performer
 	title = "Performer"

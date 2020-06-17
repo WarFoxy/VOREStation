@@ -39,7 +39,7 @@
 	options["Stone - Snake"] = "stonesnake"
 	options["Bronze - Elephantine"] = "elephant"
 	options["Bronze - Many-armed"] = "bronzearms"
-	options["Robot"] = "robot"
+	options["Робот"] = "robot"
 	options["Singularity"] = "singularity"
 	options["Gemstone Eye"] = "gemeye"
 	options["Golden Skull"] = "skull"

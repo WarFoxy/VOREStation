@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(vote)
 	if(mode)
 		time_remaining = round((started_time + duration - world.time)/10)
 		if(mode == VOTE_GAMEMODE && ticker.current_state >= GAME_STATE_SETTING_UP)
-			to_chat(world, "<b>Gamemode vote aborted: Game has already started.</b>")
+			to_chat(world, "<b>Голосование за режим игры прервано: игра уже началась.</b>")
 			reset()
 			return
 		if(time_remaining <= 0)
@@ -129,12 +129,12 @@ SUBSYSTEM_DEF(vote)
 			if(choices[current_votes[key]] == .)
 				round_voters += key // Keep track of who voted for the winning round.
 		if(mode != VOTE_GAMEMODE || . == "Extended" || ticker.hide_mode == 0) // Announce Extended gamemode, but not other gamemodes
-			text += "<b>Vote Result: [mode == VOTE_GAMEMODE ? gamemode_names[.] : .]</b>"
+			text += "<b>Результат голосования: [mode == VOTE_GAMEMODE ? gamemode_names[.] : .]</b>"
 		else
-			text += "<b>The vote has ended.</b>"
+			text += "<b>Голосование окончено.</b>"
 
 	else
-		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
+		text += "<b>Результат Голосования: Голосов Нет!</b>"
 		if(mode == VOTE_ADD_ANTAGONIST)
 			antag_add_failed = 1
 	log_vote(text)
@@ -167,10 +167,10 @@ SUBSYSTEM_DEF(vote)
 	if(mode == VOTE_GAMEMODE) //fire this even if the vote fails.
 		if(!round_progressing)
 			round_progressing = 1
-			to_world("<font color='red'><b>The round will start soon.</b></font>")
+			to_world("<font color='red'><b>Раунд начнется в ближайшее время...</b></font>")
 
 	if(restart)
-		to_world("World restarting due to vote...")
+		to_world("Объявлен рестарт по результатам голосования...")
 		feedback_set_details("end_error", "restart vote")
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
@@ -221,8 +221,8 @@ SUBSYSTEM_DEF(vote)
 					if(ticker.current_state <= GAME_STATE_SETTING_UP)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
-				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
-				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
+				question = "Ваш КПК подает звуковой сигнал с сообщением из Центра. Вы хотели бы получить дополнительный час, чтобы закончить текущие проекты?" //VOREStation Edit
+				choices.Add("Иниц. эвак. экипажа", "Продлить смену")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
@@ -232,11 +232,11 @@ SUBSYSTEM_DEF(vote)
 						choices.Add(antag.role_text)
 				choices.Add("None")
 			if(VOTE_CUSTOM)
-				question = sanitizeSafe(input(usr, "What is the vote for?") as text|null)
+				question = sanitizeSafe(input(usr, "За что голосуем?") as text|null)
 				if(!question)
 					return 0
 				for(var/i = 1 to 10)
-					var/option = capitalize(sanitize(input(usr, "Please enter an option or hit cancel to finish") as text|null))
+					var/option = capitalize(sanitize(input(usr, "Пожалуйста, введите опцию или нажмите \"Отмена\", чтобы закончить") as text|null))
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
@@ -247,20 +247,20 @@ SUBSYSTEM_DEF(vote)
 		initiator = initiator_key
 		started_time = world.time
 		duration = time
-		var/text = "[capitalize(mode)] vote started by [initiator]."
+		var/text = "Голосование за [capitalize(mode)], начато [initiator]."
 		if(mode == VOTE_CUSTOM)
 			text += "\n[question]"
 
 		log_vote(text)
 
-		to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period / 10] seconds to vote.</font>")
+		to_world("<font color='purple'><b>[text]</b>\nДля <b>голосования</b> нажмите <a href='?src=\ref[src]'>сюда</a>.\nУ вас есть [config.vote_period / 10] секунд.</font>")
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
 			world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3)
 
 		if(mode == VOTE_GAMEMODE && round_progressing)
 			gamemode_vote_called = TRUE
 			round_progressing = 0
-			to_world("<font color='red'><b>Round start has been delayed.</b></font>")
+			to_world("<font color='red'><b>Начало раунда было отложено.</b></font>")
 
 		time_remaining = round(config.vote_period / 10)
 		return 1
@@ -274,16 +274,16 @@ SUBSYSTEM_DEF(vote)
 		if(C.holder.rights & R_ADMIN|R_EVENT)
 			admin = TRUE
 
-	. = "<html><head><title>Voting Panel</title></head><body>"
+	. = "<html><meta charset=\"UTF-8\"><head><title>Панель голосования</title></head><body>"
 	if(mode)
 		if(question)
-			. += "<h2>Vote: '[question]'</h2>"
+			. += "<h2>Голосование: '[question]'</h2>"
 		else
-			. += "<h2>Vote: [capitalize(mode)]</h2>"
-		. += "Time Left: [time_remaining] s<hr>"
-		. += "<table width = '100%'><tr><td align = 'center'><b>Choices</b></td><td align = 'center'><b>Votes</b></td>"
+			. += "<h2>Голосование: [capitalize(mode)]</h2>"
+		. += "Времени осталось: [time_remaining] s<hr>"
+		. += "<table width = '100%'><tr><td align = 'center'><b>Выбор</b></td><td align = 'center'><b>Голоса</b></td>"
 		if(mode == VOTE_GAMEMODE)
-			.+= "<td align = 'center'><b>Minimum Players</b></td></tr>"
+			.+= "<td align = 'center'><b>Минимум игроков</b></td></tr>"
 
 		for(var/i = 1 to choices.len)
 			var/votes = choices[choices[i]]
@@ -299,48 +299,48 @@ SUBSYSTEM_DEF(vote)
 				. += additional_text[i]
 			. += "</tr>"
 
-		. += "<tr><td><a href='?src=\ref[src];vote=unvote'>Unvote</a></td></tr>"
+		. += "<tr><td><a href='?src=\ref[src];vote=unvote'>Убрать голос</a></td></tr>"
 
 		. += "</table><hr>"
 		if(admin)
-			. += "(<a href='?src=\ref[src];vote=cancel'>Cancel Vote</a>) "
+			. += "(<a href='?src=\ref[src];vote=cancel'>Отменить голосование</a>) "
 	else
-		. += "<h2>Start a vote:</h2><hr><ul><li>"
+		. += "<h2>Начать голосование:</h2><hr><ul><li>"
 		if(admin || config.allow_vote_restart)
-			. += "<a href='?src=\ref[src];vote=restart'>Restart</a>"
+			. += "<a href='?src=\ref[src];vote=restart'>Рестарт</a>"
 		else
-			. += "<font color='grey'>Restart (Disallowed)</font>"
+			. += "<font color='grey'>Рестарт (Запрещено)</font>"
 		. += "</li><li>"
 
 		if(admin || config.allow_vote_restart)
-			. += "<a href='?src=\ref[src];vote=crew_transfer'>Crew Transfer</a>"
+			. += "<a href='?src=\ref[src];vote=crew_transfer'>Эвакуация</a>"
 		else
-			. += "<font color='grey'>Crew Transfer (Disallowed)</font>"
+			. += "<font color='grey'>Эвакуация (Запрещено)</font>"
 
 		if(admin)
-			. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config.allow_vote_restart ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config.allow_vote_restart ? "Разрешено" : "Запрещено"]</a>)"
 		. += "</li><li>"
 
 		if(admin || config.allow_vote_mode)
-			. += "<a href='?src=\ref[src];vote=gamemode'>GameMode</a>"
+			. += "<a href='?src=\ref[src];vote=gamemode'>Режим</a>"
 		else
-			. += "<font color='grey'>GameMode (Disallowed)</font>"
+			. += "<font color='grey'>Режим (Запрещено)</font>"
 
 		if(admin)
-			. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config.allow_vote_mode ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config.allow_vote_mode ? "Разрешено" : "Запрещено"]</a>)"
 		. += "</li><li>"
 
 		if(!antag_add_failed && config.allow_extra_antags)
-			. += "<a href='?src=\ref[src];vote=add_antagonist'>Add Antagonist Type</a>"
+			. += "<a href='?src=\ref[src];vote=add_antagonist'>Добавить антага</a>"
 		else
-			. += "<font color='grey'>Add Antagonist (Disallowed)</font>"
+			. += "<font color='grey'>Добавить антага. (Запрещено)</font>"
 		. += "</li>"
 
 		if(admin)
-			. += "<li><a href='?src=\ref[src];vote=custom'>Custom</a></li>"
+			. += "<li><a href='?src=\ref[src];vote=custom'>Кастомный</a></li>"
 		. += "</ul><hr>"
 
-	. += "<a href='?src=\ref[src];vote=close' style='position:absolute;right:50px'>Close</a></body></html>"
+	. += "<a href='?src=\ref[src];vote=close' style='position:absolute;right:50px'>Закрыть</a></body></html>"
 
 /datum/controller/subsystem/vote/Topic(href, href_list[])
 	if(!usr || !usr.client)
@@ -352,7 +352,7 @@ SUBSYSTEM_DEF(vote)
 
 		if("cancel")
 			if(usr.client.holder)
-				if("Yes" == alert(usr, "You are about to cancel this vote. Are you sure?", "Cancel Vote", "No", "Yes"))
+				if("Да" == alert(usr, "Вы собираетесь отменить это голосование. Вы уверены?", "Отмена голосования", "Нет", "Да"))
 					reset()
 		if("toggle_restart")
 			if(usr.client.holder)
@@ -388,7 +388,7 @@ SUBSYSTEM_DEF(vote)
 
 /client/verb/vote()
 	set category = "OOC"
-	set name = "Vote"
+	set name = "Голосование"
 
 	if(SSvote)
 		src << browse(SSvote.interface(src), "window=vote;size=500x[300 + SSvote.choices.len * 25]")

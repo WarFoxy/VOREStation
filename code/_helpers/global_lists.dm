@@ -18,12 +18,15 @@ var/global/list/mechas_list = list()				//list of all mechs. Used by hostile mob
 var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM) //VOREStaton Edit
-#define all_genders_text_list list("Male","Female","Plural","Neuter","Herm") //VOREStation Edit
+#define all_genders_text_list list("Муж.","Жен.","Множ. число","Небинар.","Герм.") //VOREStation Edit
 
 var/list/mannequins_
 
 // Times that players are allowed to respawn ("ckey" = world.time)
 GLOBAL_LIST_EMPTY(respawn_timers)
+
+// Closets have magic appearances
+GLOBAL_LIST_EMPTY(closet_appearances)
 
 // Posters
 var/global/list/poster_designs = list()
@@ -203,6 +206,12 @@ var/global/list/string_slot_flags = list(
 	for(var/T in paths)
 		var/datum/poster/P = new T
 		NT_poster_designs += P
+
+	//Closet appearances
+	paths = typesof(/decl/closet_appearance)
+	for(var/T in paths)
+		var/decl/closet_appearance/app = new T()
+		GLOB.closet_appearances[T] = app
 
 	// VOREStation Add - Vore Modes!
 	paths = typesof(/datum/digest_mode) - /datum/digest_mode/transform

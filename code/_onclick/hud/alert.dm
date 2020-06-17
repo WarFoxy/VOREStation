@@ -153,94 +153,93 @@ The box in your backpack has an oxygen tank and gas mask in it."
 
 
 /obj/screen/alert/fat
-	name = "Fat"
-	desc = "You ate too much food, lardass. Run around the station and lose some weight."
+	name = "Ожирение"
+	desc = "Вы съели слишком много еды. Побегайте по станции и сбросьте немного веса."
 	icon_state = "fat"
 
 /obj/screen/alert/fat/vampire
-	desc = "You drank too much blood, lardass. Run around the station and lose some weight."
+	desc = "Вы выпили слишком много крови. Побегайте по станции и сбросьте немного веса."
 	icon_state = "v_fat"
 
 /obj/screen/alert/fat/synth
-	desc = "Your battery is full! Don't overvolt it."
+	desc = "Ваша батарея полна! Не перегружайте ее."
 	icon_state = "c_fat"
 
 /obj/screen/alert/hungry
-	name = "Hungry"
-	desc = "Some food would be good right about now."
+	name = "Голод"
+	desc = "Перекусить сейчас бы не помешало"
 	icon_state = "hungry"
 
 /obj/screen/alert/hungry/vampire
-	desc = "You could use a bloodsnack or two."
+	desc = "Вам не помешало бы подкрепиться кровью, а лучше дважды."
 	icon_state = "v_hungry"
 
 /obj/screen/alert/hungry/synth
-	desc = "Battery's running a bit low, could use a topoff."
+	desc = "Батарея разряжена, следует проследовать на станцию зарядки."
 	icon_state = "c_hungry"
 
 /obj/screen/alert/starving
-	name = "Starving"
-	desc = "You're severely malnourished. The hunger pains make moving around a chore."
+	name = "Голодание"
+	desc = "Вы сильно голодаете. Боли в животе превращают передвижение в вялый шаг."
 	icon_state = "starving"
 
 /obj/screen/alert/starving/vampire
-	desc = "You *need* blood; go rip out someone's throat already!"
+	desc = "Вам *нужна* кровь; идите и разорвите чью нибудь шею!"
 	icon_state = "v_starving"
 
 /obj/screen/alert/starving/synth
-	desc = "Your battery is about to die! Charge it ASAP!"
+	desc = "Ваша батарея вот-вот сядет! Зарядите ее как можно скорее!"
 	icon_state = "c_starving"
 
 /obj/screen/alert/hot
-	name = "Too Hot"
-	desc = "You're flaming hot! Get somewhere cooler and take off any insulating clothing like a fire suit."
+	name = "Очень жарко"
+	desc = "Ваше тело пылает от жары! Попробуйте где-нибудь охладиться и снимите любую изоляционную одежду."
 	icon_state = "hot"
 
 /obj/screen/alert/hot/robot
-	desc = "The air around you is too hot for a humanoid. Be careful to avoid exposing them to this enviroment."
+	desc = "Воздух вокруг вас слишком горячий. Будьте осторожны, при работе в этой среде."
 
 /obj/screen/alert/cold
-	name = "Too Cold"
-	desc = "You're freezing cold! Get somewhere warmer and take off any insulating clothing like a space suit."
+	name = "Очень холодно"
+	desc = "Вы совсем замерзли! Доберитесь до теплого места и снимите любую изолирующую одежду."
 	icon_state = "cold"
 
 /obj/screen/alert/cold/robot
-	desc = "The air around you is too cold for a humanoid. Be careful to avoid exposing them to this enviroment."
+	desc = "Воздух вокруг вас слишком холоден. Будьте осторожны, при работе в этой среде."
 
 /obj/screen/alert/lowpressure
-	name = "Low Pressure"
-	desc = "The air around you is hazardously thin. A space suit would protect you."
+	name = "Низкое давление"
+	desc = "Воздух вокруг вас опасно разрежен. Необходим скафандр."
 	icon_state = "lowpressure"
 
 /obj/screen/alert/highpressure
-	name = "High Pressure"
-	desc = "The air around you is hazardously thick. A fire suit would protect you."
+	name = "Высокое давление"
+	desc = "Воздух вокруг вас очень плотный. Необходим пожарный костюм."
 	icon_state = "highpressure"
 
 /obj/screen/alert/blind
-	name = "Blind"
-	desc = "You can't see! This may be caused by a genetic defect, eye trauma, being unconscious, \
-or something covering your eyes."
+	name = "Слепота"
+	desc = "Вы ничего не видите! Это может быть вызвано генетическим дефектом, травмой глаза, бессознательным состоянием или чем-то, что закрывает ваши глаза."
 	icon_state = "blind"
 
 /obj/screen/alert/stunned
-	name = "Stunned"
-	desc = "You're temporarily stunned! You'll have trouble moving or performing actions, but it should clear up on it's own."
+	name = "Оглушение"
+	desc = "Вы временно оглушены! У вас будут проблемы с перемещением или выполнением действий, но это должно проясниться само по себе."
 	icon_state = "stun"
 
 /obj/screen/alert/paralyzed
-	name = "Paralyzed"
-	desc = "You're paralyzed! This could be due to drugs or serious injury. You'll be unable to move or perform actions."
+	name = "Паралич"
+	desc = "Вы парализованы! Это может быть связано с наркотиками или серьезной травмой. Вы не сможете двигаться или выполнять действия."
 	icon_state = "paralysis"
 
 /obj/screen/alert/weakened
-	name = "Weakened"
-	desc = "You're weakened! This could be a temporary issue due to injury or the result of drugs or drinking."
+	name = "Слабость"
+	desc = "Вы ослабли! Это может быть временная проблема из-за травмы или в результате употребления наркотиков или алкоголя."
 	icon_state = "weaken"
 
 /obj/screen/alert/confused
-	name = "Confused"
-	desc = "You're confused, and may stumble into things! This may be from concussive effects, drugs, or dizzyness. Walking will help reduce incidents."
+	name = "Конфуз"
+	desc = "Вы запутались, и можете наткнуться на предметы! Это может быть связано с сотрясения мозга, наркотиками или головокружением. Ходьба поможет уменьшить количество инцидентов."
 	icon_state = "confused"
 
 /obj/screen/alert/high
@@ -249,9 +248,8 @@ or something covering your eyes."
 	icon_state = "high"
 
 /obj/screen/alert/embeddedobject
-	name = "Embedded Object"
-	desc = "Something got lodged into your flesh and is causing major bleeding. It might fall out with time, but surgery is the safest way. \
-If you're feeling frisky, right click on yourself and select \"Remove embedded object\" to pull the object out."
+	name = "Инородный Объект"
+	desc = "Что-то застряло в вашей плоти и вызывает сильное кровотечение. Со временем оно может выпасть, но хирургия самый безопасный способ. Если вы чувствуете себя нормально, щелкните правой кнопкой мыши на себе и выберите \"Удалить инородный объект\", чтобы вытащить объект."
 	icon_state = "embeddedobject"
 
 /obj/screen/alert/embeddedobject/Click()
@@ -260,21 +258,18 @@ If you're feeling frisky, right click on yourself and select \"Remove embedded o
 		return M.help_shake_act(M)
 
 /obj/screen/alert/asleep
-	name = "Asleep"
-	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
+	name = "Во сне"
+	desc = "Вы заснули. Подождите немного, и вы проснетесь. Если только вы этого не сделаете, учитывая, насколько вы беспомощны."
 	icon_state = "asleep"
 
 /obj/screen/alert/weightless
-	name = "Weightless"
-	desc = "Gravity has ceased affecting you, and you're floating around aimlessly. You'll need something large and heavy, like a \
-wall or lattice, to push yourself off if you want to move. A jetpack would enable free range of motion. A pair of \
-magboots would let you walk around normally on the floor. Barring those, you can throw things, use a fire extinguisher, \
-or shoot a gun to move around via Newton's 3rd Law of Motion."
+	name = "Невесомость"
+	desc = "Гравитация перестала влиять на вас, и вы бесцельно летите. Вам понадобится что-то большое и тяжелое, например стена или решетка, чтобы оттолкнуться, если вы хотите двигаться. Реактивный ранец позволит свободно перемещаться. Пара магнитных ботинок позволит вам нормально ходить по полу. За исключением этого, вы можете бросать вещи, использовать огнетушитель или стрелять из пистолета, чтобы двигаться по 3-му закону движения Ньютона."
 	icon_state = "weightless"
 
 /obj/screen/alert/fire
-	name = "On Fire"
-	desc = "You're on fire. Stop, drop and roll to put the fire out or move to a vacuum area."
+	name = "В огне"
+	desc = "Вы в огне. Остановитесь, упадите и покатайтесь по полу, чтобы потушить огонь или переместитесь в вакуумную зону."
 	icon_state = "fire"
 
 /obj/screen/alert/fire/Click()
@@ -286,21 +281,21 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //ALIENS
 
 /obj/screen/alert/alien_tox
-	name = "Plasma"
-	desc = "There's flammable plasma in the air. If it lights up, you'll be toast."
+	name = "Плазма"
+	desc = "В воздухе есть горючая плазма. Если она загорится, вы будете поджарены."
 	icon_state = "alien_tox"
 	alerttooltipstyle = "alien"
 
 /obj/screen/alert/alien_fire
 // This alert is temporarily gonna be thrown for all hot air but one day it will be used for literally being on fire
-	name = "Too Hot"
-	desc = "It's too hot! Flee to space or at least away from the flames. Standing on weeds will heal you."
+	name = "Очень жарко"
+	desc = "Здесь слишком жарко! Бегите в космос или хотя бы подальше от пламени. Стояние на сорняках исцелит вас."
 	icon_state = "alien_fire"
 	alerttooltipstyle = "alien"
 
 /obj/screen/alert/alien_vulnerable
-	name = "Severed Matriarchy"
-	desc = "Your queen has been killed, you will suffer movement penalties and loss of hivemind. A new queen cannot be made until you recover."
+	name = "Смерть королевы"
+	desc = "Ваша королева была убита, вы будете страдать от штрафов за передвижение и потерей hivemind. Новую королеву нельзя сделать, пока вы не поправитесь."
 	icon_state = "alien_noqueen"
 	alerttooltipstyle = "alien"
 
@@ -315,25 +310,24 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //SILICONS
 
 /obj/screen/alert/nocell
-	name = "Missing Power Cell"
-	desc = "Unit has no power cell. No modules available until a power cell is reinstalled. Robotics may provide assistance."
+	name = "Нет энергоячейки"
+	desc = "Юнит не имеет энергоячейки. Модули недоступны до тех пор, пока энергоячейка не будет переустановлена. Робототехник может оказать помощь."
 	icon_state = "nocell"
 
 /obj/screen/alert/emptycell
-	name = "Out of Power"
-	desc = "Unit's power cell has no charge remaining. No modules available until power cell is recharged. \
-Recharging stations are available in robotics, the dormitory bathrooms, and the AI satellite."
+	name = "Нет заряда"
+	desc = "В энергоячейке устройства не осталось заряда. Модули будут недоступны, пока энергоячейка не будет перезаряжена. Зарядные станции доступны в отделе робототехники, общих ванных комнатах и в комнате искусственного интеллекта."
 	icon_state = "emptycell"
 
 /obj/screen/alert/lowcell
-	name = "Low Charge"
-	desc = "Unit's power cell is running low. Recharging stations are available in robotics, the dormitory bathrooms, and the AI satellite."
+	name = "Низкий заряд"
+	desc = "Энергоячейка юнита на исходе. Зарядные станции имеются в отделе робототехники, общих ванных комнатах и в комнате искусственного интеллекта."
 	icon_state = "lowcell"
 
 //Need to cover all use cases - emag, illegal upgrade module, malf AI hack, traitor cyborg
 /obj/screen/alert/hacked
-	name = "Hacked"
-	desc = "Hazardous non-standard equipment detected. Please ensure any usage of this equipment is in line with unit's laws, if any."
+	name = "Взломан"
+	desc = "Обнаружено опасное нестандартное оборудование. Пожалуйста, убедитесь, что любое использование этого оборудования соответствует законам NT о продукции, если таковые имеются."
 	icon_state = "hacked"
 	no_underlay = TRUE
 
@@ -345,9 +339,8 @@ office by your AI master or any qualified human may resolve this matter. Robotic
 	no_underlay = TRUE
 
 /obj/screen/alert/newlaw
-	name = "Law Update"
-	desc = "Laws have potentially been uploaded to or removed from this unit. Please be aware of any changes \
-so as to remain in compliance with the most up-to-date laws."
+	name = "Обновление законов"
+	desc = "Законы были загружены в этот юнит или удалены из него. Пожалуйста, будьте в курсе любых изменений, чтобы оставаться в соответствии с самыми современными законами NT."
 	icon_state = "newlaw"
 	timeout = 300
 	no_underlay = TRUE
@@ -396,16 +389,16 @@ so as to remain in compliance with the most up-to-date laws."
 //OBJECT-BASED
 
 /obj/screen/alert/restrained/buckled
-	name = "Buckled"
-	desc = "You've been buckled to something. Click the alert to unbuckle unless you're handcuffed."
+	name = "Пристегнут"
+	desc = "Вы были пристегнуты к чему-то. Нажмите эту кнопку, чтобы отстегнуться, если вы не в наручниках."
 
 /obj/screen/alert/restrained/handcuffed
-	name = "Handcuffed"
-	desc = "You're handcuffed and can't act. If anyone drags you, you won't be able to move. Click the alert to free yourself."
+	name = "В наруч. (Рука)"
+	desc = "Вы в наручниках и не можете действовать. Если кто-то будет тащить вас, вы не сможете двигаться. Нажмите на эту кнопку, чтобы освободиться."
 
 /obj/screen/alert/restrained/legcuffed
-	name = "Legcuffed"
-	desc = "You're legcuffed, which slows you down considerably. Click the alert to free yourself."
+	name = "В наруч. (Нога)"
+	desc = "На вашей ноге наручники, что значительно замедляет ваш бег. Нажмите на эту кнопку, чтобы освободиться."
 
 /obj/screen/alert/restrained/Click()
 	if(isliving(usr))
@@ -422,16 +415,16 @@ so as to remain in compliance with the most up-to-date laws."
 		return 1
 	for(var/i = 1, i <= alerts.len, i++)
 		var/obj/screen/alert/alert = alerts[alerts[i]]
-		
+
 		if(alert.icon_state in cached_icon_states(ui_style))
 			alert.icon = ui_style
-		
+
 		else if(!alert.no_underlay)
 			var/image/I = image(icon = ui_style, icon_state = "template")
 			I.color = ui_color
 			I.alpha = ui_alpha
 			alert.underlays = list(I)
-		
+
 		switch(i)
 			if(1)
 				. = ui_alert1

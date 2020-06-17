@@ -19,7 +19,7 @@ var/global/datum/controller/occupations/job_master
 		//var/list/all_jobs = typesof(/datum/job)
 		var/list/all_jobs = list(/datum/job/assistant) | using_map.allowed_jobs
 		if(!all_jobs.len)
-			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
+			to_world("<span class='warning'>Ошибка настройки профессий, данные профессий не найдены!</span>")
 			return 0
 		for(var/J in all_jobs)
 			var/datum/job/job = new J()
@@ -229,7 +229,7 @@ var/global/datum/controller/occupations/job_master
 		//Holder for Triumvirate is stored in the ticker, this just processes it
 		if(ticker && ticker.triai)
 			for(var/datum/job/A in occupations)
-				if(A.title == "AI")
+				if(A.title == "ИИ")
 					A.spawn_positions = 3
 					break
 
@@ -374,7 +374,7 @@ var/global/datum/controller/occupations/job_master
 				var/list/spawn_props = LateSpawn(H.client, rank)
 				var/turf/T = spawn_props["turf"]
 				if(!T)
-					to_chat(H, "<span class='critical'>You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one.</span>")
+					to_chat(H, "<span class='critical'>Вы не смогли появиться в выбранной вами точке позднего присоединения. Пожалуйста, проверьте, что ваша комбинация профессии/точки появления указана правильно, или попробуйте другую.</span>")
 					return
 				else
 					H.forceMove(T)
@@ -410,7 +410,7 @@ var/global/datum/controller/occupations/job_master
 
 					// If they aren't, tell them
 					if(!permitted)
-						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
+						to_chat(H, "<span class='warning'>Ваша текущая раса или профессия не позволяют вам появиться с [thing]!</span>")
 						continue
 
 					// Implants get special treatment
@@ -426,7 +426,7 @@ var/global/datum/controller/occupations/job_master
 						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 							custom_equip_leftovers += thing
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-							to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
+							to_chat(H, "<span class='notice'>[thing] была одета на вас!</span>")
 							custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers.Add(thing)
@@ -454,7 +454,7 @@ var/global/datum/controller/occupations/job_master
 				else
 					var/metadata = H.client.prefs.gear[G.display_name]
 					if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-						to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
+						to_chat(H, "<span class='notice'>[thing] была одета на вас!</span>")
 						custom_equip_slots.Add(G.slot)
 					else
 						spawn_in_storage += thing
@@ -471,9 +471,9 @@ var/global/datum/controller/occupations/job_master
 			for(var/D in job.department_accounts)
 				var/datum/money_account/department_account = department_accounts[D]
 				if(department_account)
-					remembered_info += "<b>Department account number ([D]):</b> #[department_account.account_number]<br>"
-					remembered_info += "<b>Department account pin ([D]):</b> [department_account.remote_access_pin]<br>"
-					remembered_info += "<b>Department account funds ([D]):</b> $[department_account.money]<br>"
+					remembered_info += "<b>Номер профиля отдела ([D]):</b> #[department_account.account_number]<br>"
+					remembered_info += "<b>Пароль профиля отдела ([D]):</b> [department_account.remote_access_pin]<br>"
+					remembered_info += "<b>Денег у отдела ([D]):</b> $[department_account.money]<br>"
 
 			H.mind.store_memory(remembered_info)
 
@@ -489,9 +489,9 @@ var/global/datum/controller/occupations/job_master
 				return H
 
 			// TWEET PEEP
-			if(rank == "Colony Director")
+			if(rank == "Директор колонии")
 				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP) ? null : sound('sound/misc/boatswain.ogg', volume=20)
-				captain_announcement.Announce("All hands, [alt_title ? alt_title : "Colony Director"] [H.real_name] on deck!", new_sound = announce_sound, zlevel = H.z)
+				captain_announcement.Announce("Всему персоналу, [alt_title ? alt_title : "Директор Колонии"] [H.real_name] вновь на станции!", new_sound = announce_sound, zlevel = H.z)
 
 			//Deferred item spawning.
 			if(spawn_in_storage && spawn_in_storage.len)
@@ -502,7 +502,7 @@ var/global/datum/controller/occupations/job_master
 
 				if(!isnull(B))
 					for(var/thing in spawn_in_storage)
-						to_chat(H, "<span class='notice'>Placing \the [thing] in your [B.name]!</span>")
+						to_chat(H, "<span class='notice'>[thing] теперь лежит в [B.name]!</span>")
 						var/datum/gear/G = gear_datums[thing]
 						var/metadata = H.client.prefs.gear[G.display_name]
 						G.spawn_item(B, metadata)
@@ -535,7 +535,7 @@ var/global/datum/controller/occupations/job_master
 			to_chat(H, "<b>Чтобы говорить по радиоканалу вашего отдела, используйте в чате :h Для общения на других каналах используйте свою гарнитуру.</b>")
 
 		if(job.req_admin_notify)
-			to_chat(H, "<b>Вы играете в работу, которая важна для развития игры. Если вам придется отключиться, пожалуйста, сообщите об этом администраторам через adminhelp.</b>")
+			to_chat(H, "<b>Вы за профессию, которая важна для развития игры. Если вам придется отключиться, пожалуйста, сообщите об этом администраторам через adminhelp.</b>")
 
 		// EMAIL GENERATION
 		// Email addresses will be created under this domain name. Mostly for the looks.
@@ -550,8 +550,8 @@ var/global/datum/controller/occupations/job_master
 
 		// If even fallback login generation failed, just don't give them an email. The chance of this happening is astronomically low.
 		if(ntnet_global.does_email_exist(complete_login))
-			to_chat(H, "You were not assigned an email address.")
-			H.mind.store_memory("You were not assigned an email address.")
+			to_chat(H, "Вам не был назначен адрес электронной почты.")
+			H.mind.store_memory("Вам не был назначен адрес электронной почты.")
 		else
 			var/datum/computer_file/data/email_account/EA = new/datum/computer_file/data/email_account()
 			EA.password = GenerateKey()
@@ -654,10 +654,10 @@ var/global/datum/controller/occupations/job_master
 	if(C && C.prefs.spawnpoint)
 		if(!(C.prefs.spawnpoint in using_map.allowed_spawns))
 			if(fail_deadly)
-				to_chat(C, "<span class='warning'>Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint. Please correct your spawn point choice.</span>")
+				to_chat(C, "<span class='warning'>Выбранная вами точка спавна недоступна для этой карты или ваша профессия требует определенной точки спавна. Пожалуйста, исправьте свой выбор точки спавна.</span>")
 				return
 			else
-				to_chat(C, "<span class='warning'>Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead.</span>")
+				to_chat(C, "<span class='warning'>Выбранная вами точка спавна ([C.prefs.spawnpoint]) недоступна для текущей карты. Вместо этого вы начнете игру в одной из включенных точек спавна.</span>")
 				spawnpos = null
 		else
 			spawnpos = spawntypes[C.prefs.spawnpoint]
@@ -671,13 +671,13 @@ var/global/datum/controller/occupations/job_master
 			.["channel"] = spawnpos.announce_channel
 		else
 			if(fail_deadly)
-				to_chat(C, "<span class='warning'>Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Please correct your spawn point choice.</span>")
+				to_chat(C, "<span class='warning'>Выбранная вами точка спавна ([spawnpos.display_name]) недоступна для выбранной вами профессии. Пожалуйста, исправьте свой выбор точки спавна.</span>")
 				return
-			to_chat(C, "Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
+			to_chat(C, "Выбранная вами точка спавна ([spawnpos.display_name]) недоступна для выбранной вами профессии. Вместо этого вас заставнят в шаттле прибытия.")
 			var/spawning = pick(latejoin)
 			.["turf"] = get_turf(spawning)
-			.["msg"] = "will arrive at the station shortly"  //VOREStation Edit - Grammar but mostly 'shuttle' reference removal, and this also applies to notified spawn-character verb use
+			.["msg"] = "прибудет на станцию в ближайшее время"  //VOREStation Edit - Grammar but mostly 'shuttle' reference removal, and this also applies to notified spawn-character verb use
 	else if(!fail_deadly)
 		var/spawning = pick(latejoin)
 		.["turf"] = get_turf(spawning)
-		.["msg"] = "has arrived on the station"
+		.["msg"] = "прибывает на станцию"

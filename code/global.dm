@@ -35,7 +35,7 @@ var/href_logfile		= null
 // var/const/company_short	= "NT"
 // var/const/star_name		= "Vir"
 // var/const/starsys_name	= "Vir"
-var/const/game_version	= "FURRYStation"
+var/const/game_version	= "XenosStation"
 var/changelog_hash		= ""
 var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 300) //VOREStation Edit
 var/round_progressing = 1
@@ -139,8 +139,8 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
+	"Standard", "Engineering", "Хирург",  "Crisis",
+	"Miner",    "Уборщик",     "Service",      "Clerical", "Security",
 	"Research"
 )
 

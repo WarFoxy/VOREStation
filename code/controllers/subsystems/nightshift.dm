@@ -49,9 +49,9 @@ SUBSYSTEM_DEF(nightshift)
 		if(night_time)
 			announcing = FALSE
 			if(!emergency)
-				announce("Restoring night lighting configuration to normal operation.")
+				announce("Восстановление конфигурации ночного освещения в режим нормальной работы.")
 			else
-				announce("Disabling night lighting: Station is in a state of emergency.")
+				announce("Отключение ночного освещения: станция находится в аварийном состоянии.")
 	if(emergency)
 		night_time = FALSE
 	if(nightshift_active != night_time)
@@ -61,9 +61,9 @@ SUBSYSTEM_DEF(nightshift)
 	nightshift_active = active
 	if(announce)
 		if(active)
-			announce("Добрый вечер, экипаж. Чтобы уменьшить потребление энергии и стимулировать циркадные ритмы некоторых рас, все освещение на борту станции было приглушено на ночное время.")
+			announce("Добрый вечер, экипаж. Чтобы уменьшить потребление энергии и стимулировать циркадные ритмы некоторых рас, все освещение на борту станции было приглушено для симуляции ночного времени суток.")
 		else
-			announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+			announce("Доброе утро, экипаж. Поскольку сейчас день, все освещение на борту станции было восстановлено до прежней яркости.")
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
 		if(apc.z in using_map.station_levels)
 			apc.set_nightshift(active, TRUE)

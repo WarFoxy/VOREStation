@@ -692,7 +692,7 @@
 	icon_state = "conference_room"
 
 /obj/structure/sign/department/ai
-	name = "AI"
+	name = "ИИ"
 	icon_state = "ai"
 
 /obj/structure/sign/department/cargo

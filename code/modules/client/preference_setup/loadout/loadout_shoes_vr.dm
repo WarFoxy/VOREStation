@@ -1,8 +1,8 @@
 /datum/gear/shoes/boots/winter/science
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+	allowed_roles = list("Директор исследований","Ученый", "Роботехник", "Ксенобиолог", "Искатель", "Следопыт")
 
 /datum/gear/shoes/boots/winter/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Военврач")
 
 /datum/gear/shoes/black/cuffs
 	display_name = "legwraps, black"

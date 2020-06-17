@@ -1,7 +1,7 @@
 /datum/game_mode/cult
 	name = "Cult"
-	round_description = "Some crewmembers are attempting to start a cult!"
-	extended_round_description = "The station has been infiltrated by a fanatical group of death-cultists! They will use powers from beyond your comprehension to subvert you to their cause and ultimately please their gods through sacrificial summons and physical immolation! Try to survive!"
+	round_description = "Некоторые члены экипажа пытаются создать культ!"
+	extended_round_description = "На станцию проникла группа фанатиков-культистов смерти! Они будут использовать силы, находящиеся за пределами вашего понимания, чтобы подчинить вас своему делу и в конечном счете угодить своим богам через жертвенный призыв и физическое жертвоприношение! Попробуйте выжить!"
 	config_tag = "cult"
 	required_players = 5
 	required_players_secret = 5

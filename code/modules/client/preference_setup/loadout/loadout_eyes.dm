@@ -3,7 +3,7 @@
 	display_name = "eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 	slot = slot_glasses
-	sort_category = "Glasses and Eyewear"
+	sort_category = "Очки"
 
 /datum/gear/eyes/glasses
 	display_name = "Glasses, prescription"
@@ -36,7 +36,7 @@
 /datum/gear/eyes/security
 	display_name = "Security HUD (Security)"
 	path = /obj/item/clothing/glasses/hud/security
-	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель", "Детектив")
 
 /datum/gear/eyes/security/prescriptionsec
 	display_name = "Security HUD, prescription (Security)"
@@ -57,7 +57,7 @@
 /datum/gear/eyes/medical
 	display_name = "Medical HUD (Medical)"
 	path = /obj/item/clothing/glasses/hud/health
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
+	allowed_roles = list("Медик","Главврач","Химик","Парамедик","Geneticist", "Психиатр", "Search and Rescue")
 
 /datum/gear/eyes/medical/prescriptionmed
 	display_name = "Medical HUD, prescription (Medical)"
@@ -74,7 +74,7 @@
 /datum/gear/eyes/meson
 	display_name = "Optical Meson Scanners (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/meson
-	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
+	allowed_roles = list("Инженер","Главный инженер","Атмосферный техник", "Ученый", "Директор исследований", "Шахтер")
 
 /datum/gear/eyes/meson/prescription
 	display_name = "Optical Meson Scanners, prescription (Engineering, Science, Mining)"
@@ -83,7 +83,7 @@
 /datum/gear/eyes/material
 	display_name = "Optical Material Scanners (Mining)"
 	path = /obj/item/clothing/glasses/material
-	allowed_roles = list("Shaft Miner","Quartermaster")
+	allowed_roles = list("Шахтер","Интендант")
 
 /datum/gear/eyes/material/prescription
 	display_name = "Prescription Optical Material Scanners (Mining)"
@@ -108,7 +108,7 @@
 /datum/gear/eyes/sun
 	display_name = "Sunglasses (Security/Command)"
 	path = /obj/item/clothing/glasses/sunglasses
-	allowed_roles = list("Security Officer","Head of Security","Warden","Colony Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
+	allowed_roles = list("Офицер безопасности","Глава безопасности","Надзиратель","Директор колонии","Глава персонала","Интендант","Агент внутренних дел","Детектив")
 
 /datum/gear/eyes/sun/shades
 	display_name = "Sunglasses, fat (Security/Command)"

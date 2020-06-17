@@ -109,7 +109,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 
 
 /decl/hierarchy/outfit/job/explorer2
-	name = OUTFIT_JOB_NAME("Explorer")
+	name = OUTFIT_JOB_NAME("Искатель")
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer
 	l_ear = /obj/item/device/radio/headset/explorer
@@ -117,7 +117,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	pda_slot = slot_l_store
 	pda_type = /obj/item/device/pda/explorer //VORESTation Edit - Better Brown
 	id_type = /obj/item/weapon/card/id/explorer //VOREStation Edit
-	id_pda_assignment = "Explorer"
+	id_pda_assignment = "Искатель"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
 
@@ -127,7 +127,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/pilot
-	name = OUTFIT_JOB_NAME("Pilot")
+	name = OUTFIT_JOB_NAME("Пилот")
 	shoes = /obj/item/clothing/shoes/black
 	uniform = /obj/item/clothing/under/rank/pilot1
 	suit = /obj/item/clothing/suit/storage/toggle/bomber/pilot
@@ -137,11 +137,11 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	id_slot = slot_wear_id
 	pda_slot = slot_belt
 	pda_type = /obj/item/device/pda //VOREStation Edit - Civilian
-	id_pda_assignment = "Pilot"
+	id_pda_assignment = "Пилот"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 /decl/hierarchy/outfit/job/medical/sar
-	name = OUTFIT_JOB_NAME("Field Medic") //VOREStation Edit
+	name = OUTFIT_JOB_NAME("Военврач") //VOREStation Edit
 	uniform = /obj/item/clothing/under/utility/blue
 	//suit = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar //VOREStation Edit
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
@@ -150,11 +150,11 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	belt = /obj/item/weapon/storage/belt/medical/emt
 	pda_slot = slot_l_store
 	pda_type = /obj/item/device/pda/sar //VOREStation Add
-	id_pda_assignment = "Field Medic" //VOREStation Edit
+	id_pda_assignment = "Военврач" //VOREStation Edit
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 /decl/hierarchy/outfit/job/pathfinder
-	name = OUTFIT_JOB_NAME("Pathfinder")
+	name = OUTFIT_JOB_NAME("Следопыт")
 	shoes = /obj/item/clothing/shoes/boots/winter/explorer
 	uniform = /obj/item/clothing/under/explorer //TODO: Uniforms.
 	l_ear = /obj/item/device/radio/headset/pathfinder
@@ -162,7 +162,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	pda_slot = slot_l_store
 	pda_type = /obj/item/device/pda/pathfinder
 	id_type = /obj/item/weapon/card/id/explorer/head
-	id_pda_assignment = "Pathfinder"
+	id_pda_assignment = "Следопыт"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
 

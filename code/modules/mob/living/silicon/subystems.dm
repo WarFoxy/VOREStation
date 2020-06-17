@@ -73,7 +73,7 @@
 *	Law Manager	*
 ****************/
 /mob/living/silicon/proc/subsystem_law_manager()
-	set name = "Law Manager"
+	set name = "Диспетчер законов"
 	set category = "Subystems"
 
 	law_manager.ui_interact(usr, state = conscious_state)

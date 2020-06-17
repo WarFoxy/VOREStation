@@ -96,6 +96,60 @@
 
 	return
 
+//EMP vulnerability for non-synth carbons. could be useful for diona, vox, or others
+//the species' emp_sensitivity var needs to be greater than 0 for this to proc, and it defaults to 0 - shouldn't stack with prosthetics/fbps in most cases
+//higher sensitivity values incur additional effects, starting with confusion/blinding/knockdown and ending with increasing amounts of damage
+//the degree of damage and duration of effects can be tweaked up or down based on the species emp_dmg_mod and emp_stun_mod vars (default 1) on top of tuning the random ranges
+/mob/living/carbon/emp_act(severity)
+	//pregen our stunning stuff, had to do this seperately or else byond complained. remember that severity falls off with distance based on the source, so we don't need to do any extra distance calcs here.
+	var/agony_str = ((rand(4,6)*15)-(15*severity))*species.emp_stun_mod //big ouchies at high severity, causes 0-75 halloss/agony; shotgun beanbags and revolver rubbers do 60
+	var/deafen_dur = (rand(9,16)-severity)*species.emp_stun_mod //5-15 deafen, on par with a flashbang
+	var/confuse_dur = (rand(4,11)-severity)*species.emp_stun_mod //0-10 wobbliness, on par with a flashbang
+	var/weaken_dur = (rand(2,4)-severity)*species.emp_stun_mod //0-3 knockdown, on par with.. you get the idea
+	var/blind_dur = (rand(3,6)-severity)*species.emp_stun_mod //0-5 blind
+	if(species.emp_sensitivity) //receive warning message and basic effects
+		to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
+		switch(severity)
+			if(1)
+				to_chat(src, "<span class='danger'>DANGER: Extreme EM flux detected!</span>")
+			if(2)
+				to_chat(src, "<span class='danger'>Danger: High EM flux detected!</span>")
+			if(3)
+				to_chat(src, "<span class='danger'>Warning: Moderate EM flux detected!</span>")
+			if(4)
+				to_chat(src, "<span class='danger'>Warning: Minor EM flux detected!</span>")
+		if(prob(90-(10*severity))) //50-80% chance to fire an emote. most are harmless, but vomit might reduce your nutrition level which could suck (so the whole thing is padded out with extras)
+			src.emote(pick("twitch", "twitch_v", "choke", "pale", "blink", "blink_r", "shiver", "sneeze", "vomit", "gasp", "cough", "drool"))
+		//stun effects block, effects vary wildly
+		if(species.emp_sensitivity & EMP_PAIN)
+			to_chat(src, "<span class='danger'>A wave of intense pain washes over you.</span>")
+			src.adjustHalLoss(agony_str)
+		if(species.emp_sensitivity & EMP_BLIND)
+			if(blind_dur >= 1) //don't flash them unless they actually roll a positive blind duration
+				src.flash_eyes(3)	//3 allows it to bypass any tier of eye protection, necessary or else sec sunglasses/etc. protect you from this
+			Blind(max(0,blind_dur))
+		if(species.emp_sensitivity & EMP_DEAFEN)
+			src.ear_damage += rand(0,deafen_dur) //this will heal pretty quickly, but spamming them at someone could cause serious damage
+			src.ear_deaf = max(src.ear_deaf,deafen_dur)
+		if(species.emp_sensitivity & EMP_CONFUSE)
+			if(confuse_dur >= 1)
+				to_chat(src, "<span class='danger'>Oh god, everything's spinning!</span>")
+			Confuse(max(0,confuse_dur))
+		if(species.emp_sensitivity & EMP_WEAKEN)
+			if(weaken_dur >= 1) 
+				to_chat(src, "<span class='danger'>Your limbs go slack!</span>")
+			Weaken(max(0,weaken_dur))
+		//physical damage block, deals (minor-4) 5-15, 10-20, 15-25, 20-30 (extreme-1) of *each* type
+		if(species.emp_sensitivity & EMP_BRUTE_DMG)
+			src.adjustBruteLoss(rand(25-(severity*5),35-(severity*5)) * species.emp_dmg_mod)
+		if(species.emp_sensitivity & EMP_BURN_DMG)
+			src.adjustFireLoss(rand(25-(severity*5),35-(severity*5)) * species.emp_dmg_mod)
+		if(species.emp_sensitivity & EMP_TOX_DMG)
+			src.adjustToxLoss(rand(25-(severity*5),35-(severity*5)) * species.emp_dmg_mod)
+		if(species.emp_sensitivity & EMP_OXY_DMG)
+			src.adjustOxyLoss(rand(25-(severity*5),35-(severity*5)) * species.emp_dmg_mod)
+	..()
+
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
@@ -113,15 +167,15 @@
 	playsound(src, "sparks", 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(
-			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
-			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
+			"<span class='warning'>[src] ударило током[source ? " [source]" : ""]!</span>", \
+			"<span class='danger'>Вы чувствуете мощный удар шоком по всему телу!</span>", \
+			"<span class='warning'>Вы слышите тяжелый электрический треск.</span>" \
 		)
 	else
 		src.visible_message(
-			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
-			"<span class='warning'>You feel a shock course through your body.</span>", \
-			"<span class='warning'>You hear a zapping sound.</span>" \
+			"<span class='warning'>[src] шокировало[source ? " [source]" : ""].</span>", \
+			"<span class='warning'>Вы чувствуете, как шок проходит по всему телу.</span>", \
+			"<span class='warning'>Вы слышите какой-то треск.</span>" \
 		)
 
 	if(stun)
@@ -145,10 +199,10 @@
 	if (src.health >= config.health_threshold_crit)
 		if(src == M && istype(src, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			//var/datum/gender/T = gender_datums[H.get_visible_gender()]
 			src.visible_message( \
-				"<span class='notice'>[src] examines [T.himself].</span>", \
-				"<span class='notice'>You check yourself for injuries.</span>" \
+				"<span class='notice'>[src] проверяет себя.</span>", \
+				"<span class='notice'>Вы проверяете себя на наличие травм.</span>" \
 				)
 
 			for(var/obj/item/organ/external/org in H.organs)
@@ -164,60 +218,60 @@
 				*/
 				switch(brutedamage)
 					if(1 to 20)
-						status += "bruised"
+						status += "в синяках"
 					if(20 to 40)
-						status += "wounded"
+						status += "имеет ранение"
 					if(40 to INFINITY)
-						status += "mangled"
+						status += "искалечена"
 
 				switch(burndamage)
 					if(1 to 10)
-						status += "numb"
+						status += "онемела"
 					if(10 to 40)
-						status += "blistered"
+						status += "покрыта волдырями"
 					if(40 to INFINITY)
-						status += "peeling away"
+						status += "отслаивается"
 
 				if(org.is_stump())
-					status += "MISSING"
+					status += "ОТСУТСТВУЕТ"
 				if(org.status & ORGAN_MUTATED)
-					status += "weirdly shapen"
+					status += "имеет странную форму"
 				if(org.dislocated == 2)
-					status += "dislocated"
+					status += "вывихнута"
 				if(org.status & ORGAN_BROKEN)
-					status += "hurts when touched"
+					status += "болит при касании"
 				if(org.status & ORGAN_DEAD)
-					status += "is bruised and necrotic"
+					status += "покрыта синяками и омертвела"
 				if(!org.is_usable() || org.is_dislocated())
-					status += "dangling uselessly"
+					status += "бесполезно болтается"
 				if(status.len)
-					src.show_message("My [org.name] is <span class='warning'> [english_list(status)].</span>",1)
+					src.show_message("[org.name]:<span class='warning'> [english_list(status)].</span>",1)
 				else
-					src.show_message("My [org.name] is <span class='notice'> OK.</span>",1)
+					src.show_message("[org.name]:<span class='notice'> в норме.</span>",1)
 
 			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if (on_fire)
 			playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			if (M.on_fire)
-				M.visible_message("<span class='warning'>[M] tries to pat out [src]'s flames, but to no avail!</span>",
-				"<span class='warning'>You try to pat out [src]'s flames, but to no avail! Put yourself out first!</span>")
+				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src], но безрезультатно!</span>",
+				"<span class='warning'>Вы пытаетесь погасить пламя [src] но безрезультатно! Убирайтесь оттуда!</span>")
 			else
-				M.visible_message("<span class='warning'>[M] tries to pat out [src]'s flames!</span>",
-				"<span class='warning'>You try to pat out [src]'s flames! Hot!</span>")
+				M.visible_message("<span class='warning'>[M] пытается погасить пламя [src]!</span>",
+				"<span class='warning'>Вы пытаетесь погасить пламя [src]! Горячо!</span>")
 				if(do_mob(M, src, 15))
 					src.adjust_fire_stacks(-0.5)
 					if (prob(10) && (M.fire_stacks <= 0))
 						M.adjust_fire_stacks(1)
 					M.IgniteMob()
 					if (M.on_fire)
-						M.visible_message("<span class='danger'>The fire spreads from [src] to [M]!</span>",
-						"<span class='danger'>The fire spreads to you as well!</span>")
+						M.visible_message("<span class='danger'>Огонь распространяется от [src] до [M]!</span>",
+						"<span class='danger'>Огонь распространяется и на вас!</span>")
 					else
 						src.adjust_fire_stacks(-0.5) //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
 						if (src.fire_stacks <= 0)
-							M.visible_message("<span class='warning'>[M] successfully pats out [src]'s flames.</span>",
-							"<span class='warning'>You successfully pat out [src]'s flames.</span>")
+							M.visible_message("<span class='warning'>[M] успешно гасит пламя [src].</span>",
+							"<span class='warning'>Вы успешно погасили пламя [src].</span>")
 							src.ExtinguishMob()
 							src.fire_stacks = 0
 		else
@@ -227,24 +281,24 @@
 
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			//var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
 			if(istype(H)) show_ssd = H.species.show_ssd
 			if(show_ssd && !client && !teleop)
-				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
-				"<span class='notice'>You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?</span>")
+				M.visible_message("<span class='notice'>[M] трясет [src] пытаясь разбудить!</span>", \
+				"<span class='notice'>Вы трясете [src], но реакции ноль... Может не стоит тогда?</span>")
 			else if(lying || src.sleeping)
 				src.sleeping = max(0,src.sleeping-5)
 				if(src.sleeping == 0)
 					src.resting = 0
 				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
-				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
-									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
+				M.visible_message("<span class='notice'>[M] трясет и пытается разбудить [src]!</span>", \
+									"<span class='notice'>Вы трясете и пытаетесь разбудить [src]!</span>")
 			else
 				var/mob/living/carbon/human/hugger = M
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				//var/datum/gender/TM = gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
-					M.visible_message("<span class='notice'>[M] grabs onto [src] and pulls [TM.himself] up</span>", \
-							"<span class='notice'>You grip onto [src] and pull yourself up off the ground!</span>")
+					M.visible_message("<span class='notice'>[M] хватается и тянет вверх [src]</span>", \
+							"<span class='notice'>Вы хватаете и тянете [src] вверх, помогая встать с земли!</span>")
 					if(M.fire_stacks >= (src.fire_stacks + 3)) //Fire checks.
 						src.adjust_fire_stacks(1)
 						M.adjust_fire_stacks(-1)
@@ -255,8 +309,8 @@
 				else if(istype(hugger))
 					hugger.species.hug(hugger,src)
 				else
-					M.visible_message("<span class='notice'>[M] hugs [src] to make [T.him] feel better!</span>", \
-								"<span class='notice'>You hug [src] to make [T.him] feel better!</span>")
+					M.visible_message("<span class='notice'>[M] обнимает [src]!</span>", \
+								"<span class='notice'>Вы обнимаете [src]!</span>")
 				if(M.fire_stacks >= (src.fire_stacks + 3))
 					src.adjust_fire_stacks(1)
 					M.adjust_fire_stacks(-1)
@@ -342,13 +396,13 @@
 //			output for machines^	^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
-	set name = "Sleep"
+	set name = "Спать"
 	set category = "IC"
 
 	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>You are already sleeping</font>")
+		to_chat(usr, "<font color='red'>Вы уже спите</font>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+	if(alert(src,"Вы уверены, что хотите немного поспать?","Спать","Да","Нет") == "Да")
 		usr.sleeping = 20 //Short nap
 
 /mob/living/carbon/Bump(atom/A)

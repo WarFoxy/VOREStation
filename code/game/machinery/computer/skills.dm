@@ -209,7 +209,7 @@ What a mess.*/
 				if (istype(usr, /mob/living/silicon/ai))
 					src.active1 = null
 					src.authenticated = usr.name
-					src.rank = "AI"
+					src.rank = "ИИ"
 					src.screen = 1
 				else if (istype(usr, /mob/living/silicon/robot))
 					src.active1 = null
@@ -373,7 +373,7 @@ What a mess.*/
 								return
 							active1.fields["age"] = t1
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Colony Director", "AI" )
+						var/list/L = list( "Глава персонала", "Директор колонии", "ИИ" )
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 						if ((istype(active1, /datum/data/record) && L.Find(rank)))
 							temp = "<h5>Rank:</h5>"

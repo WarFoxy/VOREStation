@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(ai)
-	name = "AI"
+	name = "ИИ"
 	init_order = INIT_ORDER_AI
 	priority = FIRE_PRIORITY_AI
 	wait = 2 SECONDS
@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(ai)
 	var/list/currentrun = list()
 
 	var/slept_mobs = 0
-	var/list/process_z = list()	
+	var/list/process_z = list()
 
 /datum/controller/subsystem/ai/stat_entry(msg_prefix)
 	..("P: [processing.len] | S: [slept_mobs]")
@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(ai)
 		--currentrun.len
 		if(!A || QDELETED(A) || A.busy) // Doesn't exist or won't exist soon or not doing it this tick
 			continue
-		
+
 		if(process_z[get_z(A.holder)])
 			A.handle_strategicals()
 		else

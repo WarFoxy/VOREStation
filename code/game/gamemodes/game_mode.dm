@@ -3,8 +3,8 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode
 	var/name = "invalid"
-	var/round_description = "How did you even vote this in?"
-	var/extended_round_description = "This roundtype should not be spawned, let alone votable. Someone contact a developer and tell them the game's broken again."
+	var/round_description = "Как вы вообще проголосовали за это?"
+	var/extended_round_description = "Этот тип раунд не должен быть использован, не говоря уже о голосовании. Свяжитесь с разработчиком и скажите, что игра снова сломалась."
 	var/config_tag = null
 	var/votable = 1
 	var/probability = 0
@@ -107,7 +107,7 @@ var/global/list/additional_antag_types = list()
 			if(!islist(ticker.mode.antag_templates))
 				ticker.mode.antag_templates = list()
 			ticker.mode.antag_templates |= antag
-			message_admins("Admin [key_name_admin(usr)] added [antag.role_text] template to game mode.")
+			message_admins("Админ [key_name_admin(usr)] добавляет [antag.role_text] в шаблон текущего режима игры.")
 
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
 	spawn(1)
@@ -117,13 +117,13 @@ var/global/list/additional_antag_types = list()
 				return
 
 /datum/game_mode/proc/announce() //to be called when round starts
-	to_world("<B>The current game mode is [capitalize(name)]!</B>")
+	to_world("<B>Текущий режим игры [capitalize(name)]!</B>")
 	if(round_description)
 		to_world("[round_description]")
 	if(round_autoantag)
-		to_world("Antagonists will be added to the round automagically as needed.")
+		to_world("Антагонисты будут добавлены в раунд автоматически по мере необходимости.")
 	if(antag_templates && antag_templates.len)
-		var/antag_summary = "<b>Possible antagonist types:</b> "
+		var/antag_summary = "<b>Возможные типы антагонистов:</b> "
 		var/i = 1
 		for(var/datum/antagonist/antag in antag_templates)
 			if(i > 1)
@@ -338,10 +338,10 @@ var/global/list/additional_antag_types = list()
 
 	var/text = ""
 	if(surviving_total > 0)
-		text += "<br>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"]"
+		text += "<br>В живых [surviving_total>1 ? "осталось <b>[surviving_total] выживших</b>" : "остался <b>один выживштй</b>"]"
 		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [emergency_shuttle.evac ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
 	else
-		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
+		text += "Выживших <b>не осталось</b> (<b>призраков: [ghosts]</b>)."
 	to_world(text)
 
 	if(clients > 0)

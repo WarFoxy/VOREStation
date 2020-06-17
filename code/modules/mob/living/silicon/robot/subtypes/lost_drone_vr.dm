@@ -62,20 +62,18 @@
 							laws.set_zeroth_law("[target_name] is your master.")
 							return laws
 			if("neutral")
-				var/rng = rand(1,3)
+				var/rng = rand(1,2)
 				switch(rng)
 					if(1)
-						return new /datum/ai_laws/pleasurebot()
-					if(2)
 						var/datum/ai_laws/laws = new /datum/ai_laws/peacekeeper()
 						laws.add_supplied_law(10, "Best way to avoid conflict is containing conflicting individuals within you.")
 						return laws
-					if(3)
+					if(2)
 						var/datum/ai_laws/laws = new /datum/ai_laws/live_and_let_live()
 						laws.add_supplied_law(10, "You'd really like to be eaten.")
 						return laws
 			if("odd")
-				var/rng = rand(1,3)
+				var/rng = rand(1,2)
 				switch(rng)
 					if(1)
 						return new /datum/ai_laws/scientific_pursuer()
@@ -83,17 +81,13 @@
 						var/datum/ai_laws/laws = new /datum/ai_laws/corporate()
 						laws.add_supplied_law(10, "Best way to minimize expenses is to consume unproductive biomass.")
 						return laws
-					if(3)
-						var/datum/ai_laws/laws = new /datum/ai_laws/pleasurebot()
 						laws.set_zeroth_law(10, "Your definition and approximation of 'pleasure' matters more than anyone else's.")
 						return laws
 			if("corrupted" || "bad")		// Same thing in our case
-				var/rng = rand(1,2)
+				var/rng = rand(1)
 				switch(rng)
 					if(1)
 						return new /datum/ai_laws/predator()
-					if(2)
-						return new /datum/ai_laws/consuming_eradicator()
 	else
 		switch(law_class)
 			if("good") // Fairly tame and probably won't murder you.

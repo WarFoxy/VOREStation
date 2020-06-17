@@ -4,16 +4,11 @@
 	set desc = "Type what you want to know about.  This will open the wiki on your web browser."
 	set category = "OOC"
 	if(config.wikiurl)
-		if(query)
-			if(config.wikisearchurl)
-				var/output = replacetext(config.wikisearchurl, "%s", url_encode(query))
-				src << link(output)
-			else
-				to_chat(src, "<span class='warning'> URL-адрес поиска в вики не задан в конфигурации сервера.</span>")
-		else
-			src << link(config.wikiurl)
+		if(alert("Это действите откроет Вики сервера в вашем браузере. Вы уверены, что хотите продолжить?",,"Да","Нет")=="Нет")
+			return
+		src << link(config.wikiurl)
 	else
-		to_chat(src, "<span class='warning'>URL вики не задан в конфигурации сервера.</span>")
+		to_chat(src, "<span class='warning'>URL Вики не задан в конфигурации сервера.</span>")
 		return
 /*
 /client/verb/forum()
@@ -31,10 +26,10 @@
 
 /client/verb/discordurl()
 	set name = "discordurl"
-	set desc = "Посетить сервер Discorf."
+	set desc = "Посетить сервер Discord."
 	set hidden = 1
 	if( config.discordurl )
-		if(alert("Это откроет приглашение на серве Discord FURRYStation в вашем браузере. Вы уверены, что хотите продолжить?",,"Да","Нет")=="Нет")
+		if(alert("Данное действие откроет приглашение на сервер Discord XenosStation в вашем браузере. Вы уверены, что хотите продолжить?",,"Да","Нет")=="Нет")
 			return
 		src << link(config.discordurl)
 	else

@@ -209,7 +209,7 @@
 			else
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
-		return 1
+		return TRUE
 
 
 /mob/proc/show_inv(mob/user as mob)
@@ -217,11 +217,11 @@
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
 /mob/verb/examinate(atom/A as mob|obj|turf in view())
-	set name = "Examine"
+	set name = "Обследовать"
 	set category = "IC"
 
 	if((is_blind(src) || usr.stat) && !isobserver(src))
-		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
+		to_chat(src, "<span class='notice'>Там что-то есть, но вы этого не видите.</span>")
 		return 1
 
 	//Could be gone by the time they finally pick something
@@ -231,11 +231,11 @@
 	face_atom(A)
 	var/list/results = A.examine(src)
 	if(!results || !results.len)
-		results = list("You were unable to examine that. Tell a developer!")
+		results = list("Вы не в состоянии изучить это. Скажите разработчику!")
 	to_chat(src, jointext(results, "<br>"))
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
-	set name = "Point To"
+	set name = "Указать на"
 	set category = "Object"
 
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
@@ -262,7 +262,7 @@
 	return
 
 /mob/verb/mode()
-	set name = "Activate Held Object"
+	set name = "Активация Удерж. Объекта"
 	set category = "Object"
 	set src = usr
 
@@ -280,7 +280,7 @@
 */
 
 /mob/verb/memory()
-	set name = "Notes"
+	set name = "Заметки"
 	set category = "IC"
 	if(mind)
 		mind.show_memory(src)
@@ -288,7 +288,7 @@
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
 /mob/verb/add_memory(msg as message)
-	set name = "Add Note"
+	set name = "Добавить заметку"
 	set category = "IC"
 
 	msg = sanitize(msg)
@@ -343,7 +343,7 @@
 
 /mob/proc/set_respawn_timer(var/time)
 	// Try to figure out what time to use
-	
+
 	// Special cases, can never respawn
 	if(ticker?.mode?.deny_respawn)
 		time = -1
@@ -351,22 +351,22 @@
 		time = -1
 	else if(!config.respawn)
 		time = -1
-	
+
 	// Special case for observing before game start
 	else if(ticker?.current_state <= GAME_STATE_SETTING_UP)
 		time = 1 MINUTE
-	
+
 	// Wasn't given a time, use the config time
 	else if(!time)
 		time = config.respawn_time
-	
+
 	var/keytouse = ckey
 	// Try harder to find a key to use
 	if(!keytouse && key)
 		keytouse = ckey(key)
 	else if(!keytouse && mind?.key)
 		keytouse = ckey(mind.key)
-	
+
 	GLOB.respawn_timers[keytouse] = world.time + time
 
 /mob/observer/dead/set_respawn_timer()
@@ -376,7 +376,7 @@
 		return // Don't set it, no need
 
 /mob/verb/abandon_mob()
-	set name = "Return to Menu"
+	set name = "Вернуться в лобби"
 	set category = "OOC"
 
 	if(stat != DEAD || !ticker)
@@ -385,10 +385,10 @@
 
 	// Final chance to abort "respawning"
 	if(mind && timeofdeath) // They had spawned before
-		var/choice = alert(usr, "Returning to the menu will prevent your character from being revived in-round. Are you sure?", "Confirmation", "No, wait", "Yes, leave")
-		if(choice == "No, wait")
+		var/choice = alert(usr, "Возвращение в лобби предотвратит возрождение вашего персонажа в раунде. Вы уверены?", "Confirmation", "Нет, остаться", "Да, уйти")
+		if(choice == "Нет, остаться")
 			return
-	
+
 	// Beyond this point, you're going to respawn
 	to_chat(usr, config.respawn_message)
 
@@ -415,7 +415,7 @@
 	return
 
 /client/verb/changes()
-	set name = "Changelog"
+	set name = "Обновления"
 	set category = "OOC"
 	src << browse('html/changelog.html', "window=changes;size=675x650")
 	if(prefs.lastchangelog != changelog_hash)
@@ -424,7 +424,7 @@
 		winset(src, "rpane.changelog", "background-color=none;font-style=;")
 
 /mob/verb/observe()
-	set name = "Observe"
+	set name = "Наблюдать"
 	set category = "OOC"
 	var/is_admin = 0
 
@@ -531,7 +531,7 @@
 
 /mob/verb/stop_pulling()
 
-	set name = "Stop Pulling"
+	set name = "Перестать тянуть"
 	set category = "IC"
 
 	if(pulling)
@@ -624,7 +624,7 @@
 	return stat == DEAD
 
 /mob/proc/is_mechanical()
-	if(mind && (mind.assigned_role == "Cyborg" || mind.assigned_role == "AI"))
+	if(mind && (mind.assigned_role == "Киборг" || mind.assigned_role == "ИИ"))
 		return 1
 	return istype(src, /mob/living/silicon) || get_species() == "Machine"
 
@@ -1011,16 +1011,16 @@ mob/proc/yank_out_object()
 
 /mob/verb/face_direction()
 
-	set name = "Face Direction"
+	set name = "Удержание взгляда"
 	set category = "IC"
 	set src = usr
 
 	set_face_dir()
 
 	if(!facing_dir)
-		to_chat(usr, "You are now not facing anything.")
+		to_chat(usr, "Вы больше не удерживаете взгляд")
 	else
-		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
+		to_chat(usr, "Теперь вы смотрите [dir2text(facing_dir)].")
 
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == facing_dir)

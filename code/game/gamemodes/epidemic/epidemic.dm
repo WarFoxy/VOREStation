@@ -3,7 +3,7 @@
 	config_tag = "epidemic"
 	required_players = 1
 	required_players_secret = 15
-	round_description = "A deadly epidemic is spreading on the station. Find a cure as fast as possible, and keep your distance to anyone who speaks in a hoarse voice!"
+	round_description = "На станции распространяется смертельная эпидемия. Найдите лекарство как можно быстрее и держись подальше от любого, кто говорит хриплым голосом!"
 
 	var/cruiser_arrival
 	var/virus_name = ""
@@ -17,7 +17,7 @@
 /datum/game_mode/epidemic/pre_setup()
 	doctors = 0
 	for(var/mob/new_player/player in world)
-		if(player.mind.assigned_role in list("Chief Medical Officer","Medical Doctor"))
+		if(player.mind.assigned_role in list("Главврач","Медик"))
 			doctors++
 			break
 

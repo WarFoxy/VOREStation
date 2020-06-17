@@ -24,7 +24,9 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/ai_checklaws,
 	/mob/living/silicon/ai/proc/toggle_camera_light,
 	/mob/living/silicon/ai/proc/take_image,
-	/mob/living/silicon/ai/proc/view_images
+	/mob/living/silicon/ai/proc/view_images,
+	/mob/living/silicon/ai/proc/toggle_multicam_verb,
+	/mob/living/silicon/ai/proc/add_multicam_verb
 )
 
 //Not sure why this is necessary...
@@ -40,7 +42,7 @@ var/list/ai_verbs_default = list(
 
 
 /mob/living/silicon/ai
-	name = "AI"
+	name = "ИИ"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
 	anchored = 1 // -- TLE
@@ -85,7 +87,7 @@ var/list/ai_verbs_default = list(
 	var/datum/ai_icon/selected_sprite			// The selected icon set
 	var/custom_sprite 	= 0 					// Whether the selected icon is custom
 	var/carded
-	
+
 	// Multicam Vars
 	var/multicam_allowed = TRUE
 	var/multicam_on = FALSE
@@ -217,7 +219,7 @@ var/list/ai_verbs_default = list(
 		show_laws()
 		to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
 
-	job = "AI"
+	job = "ИИ"
 	setup_icon()
 
 /mob/living/silicon/ai/Destroy()
@@ -291,7 +293,7 @@ var/list/ai_verbs_default = list(
 
 	// Set ai pda name
 	if(aiPDA)
-		aiPDA.ownjob = "AI"
+		aiPDA.ownjob = "ИИ"
 		aiPDA.owner = pickedName
 		aiPDA.name = pickedName + " (" + aiPDA.ownjob + ")"
 
@@ -349,7 +351,7 @@ var/list/ai_verbs_default = list(
 		return
 
 	if (!custom_sprite)
-		var/new_sprite = input("Select an icon!", "AI", selected_sprite) as null|anything in ai_icons
+		var/new_sprite = input("Select an icon!", "ИИ", selected_sprite) as null|anything in ai_icons
 		if(new_sprite) selected_sprite = new_sprite
 	updateicon()
 
@@ -483,7 +485,7 @@ var/list/ai_verbs_default = list(
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
 		return
-		
+
 	if(href_list["trackbot"])
 		var/mob/living/bot/target = locate(href_list["trackbot"]) in mob_list
 		if(target)
@@ -816,21 +818,21 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/proc/check_unable(var/flags = 0, var/feedback = 1)
 	if(stat == DEAD)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>You are dead!</span>")
 		return 1
 
 	if(aiRestorePowerRoutine)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>You lack power!</span>")
 		return 1
 
 	if((flags & AI_CHECK_WIRELESS) && src.control_disabled)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>Wireless control is disabled!</span>")
 		return 1
 	if((flags & AI_CHECK_RADIO) && src.aiRadio.disabledAi)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>System Error - Transceiver Disabled!</span>")
 		return 1
 	return 0
@@ -893,7 +895,7 @@ var/list/ai_verbs_default = list(
 
 // Pass lying down or getting up to our pet human, if we're in a rig.
 /mob/living/silicon/ai/lay_down()
-	set name = "Rest"
+	set name = "Отдохнуть"
 	set category = "IC"
 
 	resting = 0
@@ -943,9 +945,9 @@ var/list/ai_verbs_default = list(
 	else if(iscarbon(speaker)) // Nonhuman carbon mob
 		jobname = "No id"
 	else if(isAI(speaker))
-		jobname = "AI"
+		jobname = "ИИ"
 	else if(isrobot(speaker))
-		jobname = "Cyborg"
+		jobname = "Киборг"
 	else if(istype(speaker, /mob/living/silicon/pai))
 		jobname = "Personal AI"
 	else
@@ -973,6 +975,16 @@ var/list/ai_verbs_default = list(
 	//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
 	var/rendered = "<i><span class='game say'>Relayed Speech: <span class='name'>[name_used]</span> [message]</span></i>"
 	show_message(rendered, 2)
+
+/mob/living/silicon/ai/proc/toggle_multicam_verb()
+	set name = "Toggle Multicam"
+	set category = "AI Commands"
+	toggle_multicam()
+
+/mob/living/silicon/ai/proc/add_multicam_verb()
+	set name = "Add Multicam Viewport"
+	set category = "AI Commands"
+	drop_new_multicam()
 
 //Special subtype kept around for global announcements
 /mob/living/silicon/ai/announcer/

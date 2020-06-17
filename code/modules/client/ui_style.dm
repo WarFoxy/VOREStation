@@ -36,7 +36,7 @@ var/global/list/all_tooltip_styles = list(
 
 
 /client/verb/change_ui()
-	set name = "Change UI"
+	set name = "Изменить UI"
 	set category = "Preferences"
 	set desc = "Настройка пользовательского интерфейса"
 

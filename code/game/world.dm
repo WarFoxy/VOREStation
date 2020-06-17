@@ -183,12 +183,12 @@ var/world_topic_spam_protect_time = world.timeofday
 				if(!positions["misc"])
 					positions["misc"] = list()
 				positions["misc"][name] = rank
-		
+
 		for(var/datum/data/record/t in data_core.hidden_general)
 			var/name = t.fields["name"]
 			var/rank = t.fields["rank"]
 			var/real_rank = make_list_rank(t.fields["real_rank"])
-			
+
 			var/datum/job/J = SSjob.get_job(real_rank)
 			if(J?.offmap_spawn)
 				if(!positions["off"])
@@ -508,9 +508,9 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
+	s += "<a href=\"https://discord.gg/4Jt5x8V\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
-	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+	s += "Discord"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"
 
@@ -651,11 +651,11 @@ proc/establish_old_db_connection()
 	if(!istype(GLOB.players_by_zlevel, /list))
 		GLOB.players_by_zlevel = new /list(world.maxz, 0)
 		GLOB.living_players_by_zlevel = new /list(world.maxz, 0)
-	
+
 	while(GLOB.players_by_zlevel.len < world.maxz)
 		GLOB.players_by_zlevel.len++
 		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
-		
+
 		GLOB.living_players_by_zlevel.len++
 		GLOB.living_players_by_zlevel[GLOB.living_players_by_zlevel.len] = list()
 

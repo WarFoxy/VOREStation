@@ -81,23 +81,23 @@
 	..()
 
 	if(statpanel("Lobby") && SSticker)
-		stat("Game Mode:", SSticker.hide_mode ? "Secret" : "[config.mode_names[master_mode]]")
+		stat("Режим:", SSticker.hide_mode ? "Секретный" : "[config.mode_names[master_mode]]")
 
 		if(SSvote.mode)
-			stat("Vote: [capitalize(SSvote.mode)]", "Time Left: [SSvote.time_remaining] s")
+			stat("Голосование: [capitalize(SSvote.mode)]", "Времени осталось: [SSvote.time_remaining] s")
 
 		if(SSticker.current_state == GAME_STATE_INIT)
-			stat("Time To Start:", "Server Initializing")
+			stat("До начала игры:", "Инициализация Сервера")
 
 		else if(SSticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[round(SSticker.pregame_timeleft,1)][round_progressing ? "" : " (DELAYED)"]")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+			stat("До начала игры:", "[round(SSticker.pregame_timeleft,1)][round_progressing ? "" : " (ОТЛОЖЕНО)"]")
+			stat("Игроки: [totalPlayers]", "Готовые игроки: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			var/datum/job/refJob = null
 			for(var/mob/new_player/player in player_list)
 				refJob = player.client.prefs.get_highest_job()
-				stat("[player.key]", (player.ready)?("(Playing as: [(refJob)?(refJob.title):("Unknown")])"):(null))
+				stat("[player.key]", (player.ready)?("(Играет за: [(refJob)?(refJob.title):("Неизвестно")])"):(null))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
@@ -122,7 +122,7 @@
 	if(href_list["observe"])
 		var/alert_time = ticker?.current_state <= GAME_STATE_SETTING_UP ? 1 : round(config.respawn_time/10/60)
 
-		if(alert(src,"Are you sure you wish to observe? You will have to wait up to [alert_time] minute\s before being able to spawn into the game!","Player Setup","Yes","No") == "Yes")
+		if(alert(src,"Вы уверены, что хотите наблюдать? Вам придется подождать [alert_time] минут, прежде чем вы сможете войти в игру!","Player Setup","Да","Нет") == "Да")
 			if(!client)	return 1
 
 			//Make a new mannequin quickly, and allow the observer to take the appearance
@@ -140,10 +140,10 @@
 			close_spawn_windows()
 			var/obj/O = locate("landmark*Observer-Start")
 			if(istype(O))
-				to_chat(src, "<span class='notice'>Now teleporting.</span>")
+				to_chat(src, "<span class='notice'>Переходим.</span>")
 				observer.forceMove(O.loc)
 			else
-				to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+				to_chat(src, "<span class='danger'>Не удалось найти точку появления наблюдателя. Используйте глагол *Teleport, чтобы перейти к карте станции.</span>")
 
 			announce_ghost_joinleave(src)
 
@@ -162,14 +162,14 @@
 	if(href_list["late_join"])
 
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
+			to_chat(usr, "<font color='red'>Раунд либо еще не начался, либо уже закончился...</font>")
 			return
 
 		var/time_till_respawn = time_till_respawn()
 		if(time_till_respawn == -1) // Special case, never allowed to respawn
-			to_chat(usr, "<span class='warning'>Respawning is not allowed!</span>")
+			to_chat(usr, "<span class='warning'>Возрождение не допускается!</span>")
 		else if(time_till_respawn) // Nonzero time to respawn
-			to_chat(usr, "<span class='warning'>You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes.</span>")
+			to_chat(usr, "<span class='warning'>Вы не можете возродиться! Вам нужно подождать еще [round(time_till_respawn/10/60, 0.1)] минут.</span>")
 			return
 /*
 		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
@@ -198,17 +198,17 @@
 			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
 		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
+			to_chat(usr, "<span class='danger'>Станция в настоящее время взрывается. Присоединяться явно не стоит.</span>")
 			return
 
 		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
-			alert(src, "You are currently not whitelisted to play [client.prefs.species].")
+			alert(src, "В настоящее время вы не находитесь в белом списке, чтобы играть за [client.prefs.species].")
 			return 0
 
 		var/datum/species/S = GLOB.all_species[client.prefs.species]
 
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
-			alert(src,"Your current species, [client.prefs.species], is not available for play on the station.")
+			alert(src,"Ваша текущая раста, [client.prefs.species], недоступна для игры на станции.")
 			return 0
 
 		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
@@ -249,7 +249,7 @@
 			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
 			var/DBQuery/query_insert = dbcon.NewQuery(sql)
 			query_insert.Execute()
-			to_chat(usr, "<b>Thank you for your vote!</b>")
+			to_chat(usr, "<b>Спасибо за ваш голос!</b>")
 			usr << browse(null,"window=privacypoll")
 
 	if(!ready && href_list["preference"])
@@ -472,21 +472,21 @@
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
 
-	var/dat = "<html><body><center>"
-	dat += "<b>Welcome, [name].<br></b>"
-	dat += "Round Duration: [roundduration2text()]<br>"
+	var/dat = "<html><meta charset=\"utf-8\"><body><center>"
+	dat += "<b>Приветики, [name].<br></b>"
+	dat += "Раунд длится: [roundduration2text()]<br>"
 
 	if(emergency_shuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
 		if(emergency_shuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
-			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
+			dat += "<font color='red'><b>Станция была эвакуирована.</b></font><br>"
 		if(emergency_shuttle.online())
 			if (emergency_shuttle.evac)	// Emergency shuttle is past the point of no recall
-				dat += "<font color='red'>The station is currently undergoing evacuation procedures.</font><br>"
+				dat += "<font color='red'>В настоящее время станция проходит процедуру эвакуации.</font><br>"
 			else						// Crew transfer initiated
-				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
+				dat += "<font color='red'>В настоящее время на станции проходят процедуры трансфера экипажа.</font><br>"
 
-	dat += "Choose from the following open/valid positions:<br>"
-	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
+	dat += "Выберите профессию (если возможно):<br>"
+	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Скрыть":"Показать"] профессии.</a><br>"
 
 	var/deferred = ""
 	for(var/datum/job/job in job_master.occupations)
@@ -498,14 +498,14 @@
 			if(!(client.prefs.GetJobDepartment(job, 1) & job.flag))
 				if(!(client.prefs.GetJobDepartment(job, 2) & job.flag))
 					if(!(client.prefs.GetJobDepartment(job, 3) & job.flag))
-						if(!show_hidden_jobs && job.title != "Assistant")	// Assistant is always an option
+						if(!show_hidden_jobs && job.title != "Интерн")	// Assistant is always an option
 							continue
 			var/active = 0
 			// Only players with the job assigned and AFK for less than 10 minutes count as active
 			for(var/mob/M in player_list) if(M.mind && M.client && M.mind.assigned_role == job.title && M.client.inactivity <= 10 MINUTES)
 				active++
 
-			var/string = "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Active: [active])</a><br>"
+			var/string = "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Активно: [active])</a><br>"
 
 			if(job.offmap_spawn) //At the bottom
 				deferred += string
@@ -551,7 +551,7 @@
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
 		// VOREStation edit to disable the destructive forced renaming for our responsible whitelist clowns.
-		//if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
+		//if(mind.assigned_role == "Клоун")				//give them a clownname if they are a clown
 		//	new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
 		mind.original = new_character

@@ -13,7 +13,7 @@
 #define SUP_CONTRABAND	  0x4 // Able to order contraband supply packs
 
 // Supply_order status values
-#define SUP_ORDER_REQUESTED "Requested"
-#define SUP_ORDER_APPROVED  "Approved"
-#define SUP_ORDER_DENIED    "Denied"
-#define SUP_ORDER_SHIPPED   "Shipped"
+#define SUP_ORDER_REQUESTED "Запрошено"
+#define SUP_ORDER_APPROVED  "Одобрено"
+#define SUP_ORDER_DENIED    "Отклонить"
+#define SUP_ORDER_SHIPPED   "Отгружено"

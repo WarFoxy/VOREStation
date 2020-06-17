@@ -116,7 +116,7 @@
 // Panel. Lists floors (HTML), moves with the elevator, schedules a move to a given floor.
 /obj/structure/lift/panel
 	name = "elevator control panel"
-	desc = "Панель управления для перемещения лифта. Там есть слот для считывания ID, чтобы включить дополнительные элементы управления."
+	desc = "Панель управления для управления лифтом. Там есть слот для считывания ID карты, чтобы включить дополнительные элементы управления."
 	icon_state = "panel"
 	req_access = list(access_eva)
 	req_one_access = list(access_heads, access_atmospherics, access_medical)
@@ -130,7 +130,7 @@
 			return
 		lift.update_fire_mode(!lift.fire_mode)
 		if(lift.fire_mode)
-			audible_message("<span class='danger'>Активирован Режим Пожарного.  Дверные предохранители отключены.  Включено ручное управление.</span>")
+			audible_message("<span class='danger'>Активирован Режим Пожарной тревоги.  Дверные предохранители отключены.  Включено ручное управление.</span>")
 			playsound(src, 'sound/machines/airalarm.ogg', 25, 0, 4)
 		else
 			audible_message("<span class='warning'>Режим Пожарного Отключен. Дверные предохранители включены.  Включено автоматическое управление.</span>")
@@ -145,7 +145,7 @@
 		return
 
 	var/dat = list()
-	dat += "<html><body><hr><b>Lift panel</b><hr>"
+	dat += "<html><body><hr><b>Панель лифта</b><hr>"
 
 	//the floors list stores levels in order of increasing Z
 	//therefore, to display upper levels at the top of the menu and

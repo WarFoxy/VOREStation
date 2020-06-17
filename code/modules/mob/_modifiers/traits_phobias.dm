@@ -57,7 +57,7 @@
 
 /datum/modifier/trait/phobia/haemophobia
 	name = "haemophobia"
-	desc = "Seeing a bunch of blood isn't really pleasant for most people, but for you, it is very distressing."
+	desc = "Видеть кровь не очень приятное дело, а в вашем случае это пугает вас вдвойне."
 	fear_decay_rate = 4
 
 	on_created_text = "<span class='warning'>You are terrified of seeing blood.</span>"

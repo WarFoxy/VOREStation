@@ -72,10 +72,10 @@
 
 /obj/machinery/station_map/attack_hand(var/mob/user)
 	if(watching_mob && (watching_mob != user))
-		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
+		to_chat(user, "<span class='warning'>Кто-то еще сейчас смотрит голограмму.</span>")
 		return
 	if(user.loc != loc)
-		to_chat(user, "<span class='warning'>You need to stand in front of \the [src].</span>")
+		to_chat(user, "<span class='warning'>Вам нужно встать перед [src].</span>")
 		return
 	startWatching(user)
 
@@ -126,9 +126,9 @@
 			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)
-				to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
+				to_chat(user, "<span class='warning'>Голографическая карта не смогла инициализироваться. Эта область пространства не может быть отображена.</span>")
 			else
-				to_chat(user, "<span class='notice'>A hologram of the station appears before your eyes.</span>")
+				to_chat(user, "<span class='notice'>Перед вашими глазами появляется голограмма станции.</span>")
 
 /obj/machinery/station_map/attack_ai(var/mob/living/silicon/robot/user)
 	return // TODO - Implement for AI ~Leshana
@@ -171,7 +171,7 @@
 /obj/machinery/station_map/update_icon()
 	if(!holomap_datum)
 		return //Not yet.
-		
+
 	overlays.Cut()
 	if(stat & BROKEN)
 		icon_state = "station_mapb"

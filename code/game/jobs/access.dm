@@ -49,7 +49,7 @@
 	switch(job)
 		if("VIP Guest")
 			return list(access_cent_general)
-		if("Custodian")
+		if("Дворник")
 			return list(access_cent_general, access_cent_living, access_cent_storage)
 		if("Thunderdome Overseer")
 			return list(access_cent_general, access_cent_thunder)
@@ -194,7 +194,7 @@
 
 /proc/get_all_centcom_jobs()
 	return list("VIP Guest",
-		"Custodian",
+		"Дворник",
 		"Thunderdome Overseer",
 		"Intel Officer",
 		"Medical Officer",

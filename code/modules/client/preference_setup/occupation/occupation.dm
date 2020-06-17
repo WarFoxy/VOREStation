@@ -150,12 +150,12 @@
 			continue
 		//VOREStation Add End
 		if(job.minimum_character_age && user.client && (user.client.prefs.age < job.minimum_character_age))
-			. += "<del>[rank]</del></td></a><td> \[МИНИЛЬНЫЙ ВОЗРАСТ	: [job.minimum_character_age]]</td></tr>"
+			. += "<del>[rank]</del></td></a><td> \[МИНИМАЛЬНЫЙ ВОЗРАСТ	: [job.minimum_character_age]]</td></tr>"
 			continue
 		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/assistant)
 			. += "<font color=grey>[rank]</font></a></td><td></td></tr>"
 			continue
-		if((rank in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND) ) || (rank == "AI"))//Bold head jobs
+		if((rank in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND) ) || (rank == "ИИ"))//Bold head jobs
 			. += "<b>[rank]</b></a>"
 		else
 			. += "[rank]</a>"

@@ -27,23 +27,23 @@
 /datum/job/janitor //Lots of janitor substations on station.
 	total_positions = 3
 	spawn_positions = 3
-	alt_titles = list("Custodian" = /datum/alt_title/custodian, "Sanitation Technician" = /datum/alt_title/sanitation_tech, "Maid" = /datum/alt_title/maid)
+	alt_titles = list("Дворник" = /datum/alt_title/custodian, "Сантехник" = /datum/alt_title/sanitation_tech, "Горничная" = /datum/alt_title/maid)
 	pto_type = PTO_CIVILIAN
 
 /datum/alt_title/sanitation_tech
-	title = "Sanitation Technician"
+	title = "Сантехник"
 
 /datum/alt_title/maid
-	title = "Maid"
+	title = "Горничная"
 
 /datum/job/librarian
 	total_positions = 2
 	spawn_positions = 2
-	alt_titles = list("Journalist" = /datum/alt_title/journalist, "Writer" = /datum/alt_title/writer, "Historian" = /datum/alt_title/historian)
+	alt_titles = list("Журналист" = /datum/alt_title/journalist, "Писатель" = /datum/alt_title/writer, "Историк" = /datum/alt_title/historian)
 	pto_type = PTO_CIVILIAN
 
 /datum/alt_title/historian
-	title = "Historian"
+	title = "Историк"
 	title_blurb = "The Historian uses the Library as a base of operation to record any important events occuring on station."
 
 /datum/job/lawyer

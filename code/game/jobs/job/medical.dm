@@ -2,7 +2,7 @@
 //		Chief Medical Officer
 //////////////////////////////////
 /datum/job/cmo
-	title = "Chief Medical Officer"
+	title = "Главврач"
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_COMMAND)
@@ -11,7 +11,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "Директором Колонии"
 	selection_color = "#026865"
 	req_admin_notify = 1
 	economic_modifier = 10
@@ -36,14 +36,14 @@
 //		Medical Doctor
 //////////////////////////////////
 /datum/job/doctor
-	title = "Medical Doctor"
+	title = "Медик"
 	flag = DOCTOR
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	economic_modifier = 7
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
@@ -53,34 +53,34 @@
 						familiar with basic first aid, and a number of accompanying medications, and can generally save, if not cure, a majority of the \
 						patients they encounter."
 	alt_titles = list(
-					"Surgeon" = /datum/alt_title/surgeon,
-					"Emergency Physician" = /datum/alt_title/emergency_physician,
-					"Nurse" = /datum/alt_title/nurse,
-					"Virologist" = /datum/alt_title/virologist)
+					"Хирург" = /datum/alt_title/surgeon,
+					"Старщий Фельдшер" = /datum/alt_title/emergency_physician,
+					"Медсестра" = /datum/alt_title/nurse,
+					"Вирусолог" = /datum/alt_title/virologist)
 
 //Medical Doctor Alt Titles
 /datum/alt_title/surgeon
-	title = "Surgeon"
+	title = "Хирург"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/surgeon
 
 /datum/alt_title/emergency_physician
-	title = "Emergency Physician"
+	title = "Старщий Фельдшер"
 	title_blurb = "An Emergency Physician is a Medical professional trained for stabilizing and treating severely injured and/or dying patients. \
 					They are generally the first response for any such individual brought to the Medbay, and can sometimes be expected to help their patients \
 					make a full recovery."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician
 
 /datum/alt_title/nurse
-	title = "Nurse"
+	title = "Медсестра"
 	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/nurse
 
 /datum/alt_title/virologist
-	title = "Virologist"
+	title = "Вирусолог"
 	title_blurb = "A Virologist cures active diseases in the crew, and prepares antibodies for possible infections. They also have the skills \
 					to produce the various types of virus foods or mutagens."
 	title_outfit = /decl/hierarchy/outfit/job/medical/doctor/virologist
@@ -90,14 +90,14 @@
 //			Chemist
 //////////////////////////////////
 /datum/job/chemist
-	title = "Chemist"
+	title = "Химик"
 	flag = CHEMIST
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
@@ -107,11 +107,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/chemist
 	job_description = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
-	alt_titles = list("Pharmacist" = /datum/alt_title/pharmacist)
+	alt_titles = list("Фармацевт" = /datum/alt_title/pharmacist)
 
 // Chemist Alt Titles
 /datum/alt_title/pharmacist
-	title = "Pharmacist"
+	title = "Фармацевт"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
 
 /* I'm commenting out Geneticist so you can't actually see it in the job menu, given that you can't play as one - Jon.
@@ -141,7 +141,7 @@
 //			Psychiatrist
 //////////////////////////////////
 /datum/job/psychiatrist
-	title = "Psychiatrist"
+	title = "Психиатр"
 	flag = PSYCHIATRIST
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
@@ -149,18 +149,18 @@
 	total_positions = 1
 	spawn_positions = 1
 	economic_modifier = 5
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
 	job_description = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
-	alt_titles = list("Psychologist" = /datum/alt_title/psychologist)
+	alt_titles = list("Психолог" = /datum/alt_title/psychologist)
 
 //Psychiatrist Alt Titles
 /datum/alt_title/psychologist
-	title = "Psychologist"
+	title = "Психолог"
 	title_blurb =  "A Psychologist provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
 	title_outfit = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist
@@ -169,14 +169,14 @@
 //			Paramedic
 //////////////////////////////////
 /datum/job/paramedic
-	title = "Paramedic"
+	title = "Парамедик"
 	flag = PARAMEDIC
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Medical Officer"
+	supervisors = "Главврачом"
 	selection_color = "#013D3B"
 	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
@@ -184,11 +184,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	job_description = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
-	alt_titles = list("Emergency Medical Technician" = /datum/alt_title/emt)
+	alt_titles = list("Фельдшер" = /datum/alt_title/emt)
 
 // Paramedic Alt Titles
 /datum/alt_title/emt
-	title = "Emergency Medical Technician"
+	title = "Фельдшер"
 	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
 	title_outfit = /decl/hierarchy/outfit/job/medical/paramedic/emt
