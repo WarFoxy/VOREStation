@@ -74,12 +74,12 @@
 	var/default_access = list()
 	var/id_type = /obj/item/weapon/card/id
 
-	var/antag_text = "You are an antagonist! Within the rules, \
-		try to act as an opposing force to the crew. Further RP and try to make sure \
-		other players have <i>fun</i>! If you are confused or at a loss, always adminhelp, \
-		and before taking extreme actions, please try to also contact the administration! \
-		Think through your actions and make the roleplay immersive! <b>Please remember all \
-		rules aside from those without explicit exceptions apply to antagonists.</b>"
+	var/antag_text = "Вы антагонист! В рамках правил, \
+		старайтесь действовать как противоборствующая сила экипажу. Вы должны отыгрывать свою роль \
+		но так, чтобы другие игроки получали не меньше <i>удовольствия</i> чем вы! Если вы растеряны, обратитесь за помощью к администрации, с помощью кнопки adminhelp, \
+		и прежде чем предпринимать неординарные решения, пожалуйста, проконсультируйтесь с администрацией! \
+		Продумывайте свои действия и вносите разнообразие в игру для всех игроков! <b>Пожалуйста, помните \
+		что все правила без явных исключений применяются к антагонистам.</b>"
 
 //	var/can_use_aooc = TRUE                // If true, will be given the AOOC verb, along with the ability to use it.
 	var/can_hear_aooc = TRUE		// If FALSE, the antag can neither speak nor hear AOOC. If TRUE, they can at least hear it.
@@ -145,8 +145,8 @@
 	if(!istype(player))
 		message_admins("[uppertext(ticker.mode.name)]: Failed to find a candidate for [role_text].")
 		return 0
-	to_chat(player.current, "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>")
-	message_admins("[uppertext(ticker.mode.name)]: Selected [player] as a [role_text].")
+	to_chat(player.current, "<span class='danger'><i>Вы были выбраны в этом раунде в качестве антагониста!</i></span>")
+	message_admins("[uppertext(ticker.mode.name)]: [player] теперь [role_text].")
 	if(istype(player.current, /mob/observer/dead))
 		create_default(player.current)
 	else
